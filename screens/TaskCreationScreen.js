@@ -25,8 +25,8 @@ const MyButton = (props) => (
       start: { x: 0, y: 0.5 },
       end: { x: 1, y: 0.5 },
     }}
-    titleStyle={{ fontSize: 30 }}
-    buttonStyle={{ borderRadius: 20, marginTop: 20, width: 150, height: 60, marginRight: 5 }}
+    titleStyle={{ fontSize: 20 }}
+    buttonStyle={{ borderRadius: 20, marginTop: 20, height: 45, marginRight: 5 }}
     icon={
       <Icon
         name={`arrow-${props.iconRight ? 'right' : 'left'}`}
@@ -54,7 +54,7 @@ const StartScreen = ({ toNext }) => {
         </View>
         <Image
           source={require('../assets/images/search-for-flat.jpg')}
-          style={{ width: 300, height: 300 }}>
+          style={{ width: 200, height: 200 }}>
         </Image>
       </View>
       <View style={styles.actionsBlock}>
@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
   stepContentTextBlock: {
     display: "flex",
     alignItems: "center",
-    minHeight: '75%',
+    minHeight: '80%',
   },
   actionsBlock: {
     display: "flex",
