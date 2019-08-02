@@ -6,6 +6,7 @@ import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import TaskCreationScreen from '../screens/TaskCreationScreen';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -67,7 +68,24 @@ SettingsStack.navigationOptions = {
 
 SettingsStack.path = '';
 
+const TaskCreationStack = createStackNavigator(
+  {
+    TaskCreation: TaskCreationScreen,
+  },
+  config
+);
+
+TaskCreationStack.navigationOptions = {
+  tabBarLabel: 'TaskCreation',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-code' : 'md-code'} />
+  ),
+};
+
+TaskCreationStack.path = '';
+
 const tabNavigator = createBottomTabNavigator({
+  TaskCreationStack,
   HomeStack,
   LinksStack,
   SettingsStack,
