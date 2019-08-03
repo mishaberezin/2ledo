@@ -3,10 +3,11 @@ import {
   StyleSheet,
   Image,
   View,
+  ActivityIndicator,
 } from 'react-native';
 import {
   Text, Icon as RneIcon, Button, CheckBox,
-  ButtonGroup, Slider
+  ButtonGroup, Slider, Card
 } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -17,7 +18,7 @@ const mainColor = '#ab2efe';
 const MyButton = (props) => (
   <Button
     {...props}
-    ViewComponent={LinearGradient} // Don't forget this!
+    ViewComponent={LinearGradient}
     linearGradientProps={{
       colors: props.iconRight ? [mainColor, mainColorLight] : [mainColorLight, mainColor],
       start: { x: 0, y: 0.5 },
@@ -50,18 +51,21 @@ const StartScreen = ({ toNext }) => {
           </View>
           <Text h3 style={styles.headerText}>Создание предложения</Text>
         </View>
-        <Image
-          source={require('../assets/images/search-for-flat.jpg')}
-          style={{ width: 200, height: 200 }}>
-        </Image>
-        <Text style={styles.questionText}>Ответите на нескольо вопросов?</Text>
+        <View style={{ ...styles.stepContentQuestionBlock, alignItems: 'center' }}>
+          <Image
+            source={require('../assets/images/search-for-flat.jpg')}
+            style={{ width: 250, height: 200 }}>
+          </Image>
+          <Text style={styles.questionText}>Ответите на нескольо вопросов?</Text>
+        </View>
+
       </View>
       <View style={styles.actionsBlock}>
         <MyButton title='Начать' onPress={toNext} iconRight />
       </View>
     </View>
   )
-}
+};
 
 const SecondScreen = ({ toNext, toPrev }) => {
   const types = ['Комнату', 'Квартиру'];
@@ -71,6 +75,7 @@ const SecondScreen = ({ toNext, toPrev }) => {
   const [price, setPrice] = useState(30);
   const [typeCount, setTypeCount] = useState(1);
   const [remont, setRemont] = useState(false);
+  const [newFlat, setNewFlat] = useState(false);
 
   return (
     <View style={styles.screenStepBlock}>
@@ -84,7 +89,8 @@ const SecondScreen = ({ toNext, toPrev }) => {
               color={mainColor}
             />
           </View>
-          <Text h3 style={styles.headerText}>О поиске</Text>
+        </View>
+        <View style={styles.stepContentQuestionBlock}>
           <Text style={styles.questionText}>Что Вы ищете?</Text>
           <ButtonGroup
             buttons={types}
@@ -95,27 +101,28 @@ const SecondScreen = ({ toNext, toPrev }) => {
             textStyle={{ color: mainColor }}
             selectedTextStyle={{ color: '#fff' }}
           />
+        </View>
 
-          {
-            type === 1 ?
-              <React.Fragment>
-                <Text style={styles.questionText}>Сколько комнат?</Text>
-                <ButtonGroup
-                  buttons={typesCount}
-                  selectedIndex={typeCount}
-                  buttonStyle={{ backgroundColor: '#fff' }}
-                  onPress={setTypeCount}
-                  selectedButtonStyle={{ backgroundColor: mainColor }}
-                  textStyle={{ color: mainColor }}
-                  selectedTextStyle={{ color: '#fff' }}
-                />
-              </React.Fragment>
-              :
-              null
-          }
-
-          <Text style={styles.questionText}>Ваш бюджет</Text>
-          <View style={{ width: 250, alignItems: 'stretch', justifyContent: 'center' }}>
+        {
+          type === 1 ?
+            <View style={styles.stepContentQuestionBlock}>
+              <Text style={styles.questionText}>Сколько комнат?</Text>
+              <ButtonGroup
+                buttons={typesCount}
+                selectedIndex={typeCount}
+                buttonStyle={{ backgroundColor: '#fff' }}
+                onPress={setTypeCount}
+                selectedButtonStyle={{ backgroundColor: mainColor }}
+                textStyle={{ color: mainColor }}
+                selectedTextStyle={{ color: '#fff' }}
+              />
+            </View>
+            :
+            null
+        }
+        <View style={styles.stepContentQuestionBlock}>
+          <Text style={styles.questionText}>Сколько за месяц?</Text>
+          <View style={{ alignItems: 'stretch', justifyContent: 'center' }}>
             <Slider
               step={1}
               maximumValue={200}
@@ -125,38 +132,126 @@ const SecondScreen = ({ toNext, toPrev }) => {
             />
             <Text style={styles.sliderText}>{price} 000 Руб.</Text>
           </View>
-
+        </View>
+        <View style={styles.stepContentQuestionBlock}>
           <Text style={styles.questionText}>Дополнительно</Text>
           <CheckBox
-            iconRight
             title='С ремонтом'
             checked={remont}
             checkedColor={mainColor}
             onPress={() => setRemont(!remont)}
           />
-
+          <CheckBox
+            title='Новый дом'
+            checked={newFlat}
+            checkedColor={mainColor}
+            onPress={() => setNewFlat(!newFlat)}
+          />
         </View>
       </View>
       <View style={styles.actionsBlock}>
         <MyButton title='Назад' onPress={toPrev} />
-        <MyButton title='Далее' onPress={toNext} iconRight />
+        <MyButton title='Далее' onPress={() => toNext({
+          type,
+          price,
+          typeCount,
+          remont,
+          newFlat
+        })} iconRight />
       </View>
     </View>
   )
 }
 
-export default function TaskCreationScreen() {
+
+const FinalScreen = ({ data, toNext }) => {
+  return (
+    <View style={styles.screenStepBlock}>
+      <View style={styles.stepContentTextBlock}>
+        <View style={styles.headerBlock}>
+          <View style={styles.headerIcon}>
+            <RneIcon
+              size={60}
+              name='home'
+              type='font-awesome'
+              color={mainColor}
+            />
+          </View>
+          <Text h3 style={styles.headerText}>Мы готовы!</Text>
+        </View>
+        <View style={{ ...styles.stepContentQuestionBlock, alignItems: 'center' }}>
+          <Image
+            source={require('../assets/images/ready_to_road.gif')}
+            style={{ width: 150, height: 150 }}>
+          </Image>
+          {/* Ваще огонь код */}
+          <Text h4 style={styles.headerText}>
+            Вы ищете {data.type === 0 && 'комнату'}
+            {data.type === 1 ? (
+              data.typeCount < 3 ? ['одно', 'двух', 'трех'][data.typeCount] + ' комантную квартиру' : 'Студию'
+            ) : ' '}
+            &nbsp;за&nbsp;
+            {data.price}&nbsp;000&nbsp;рублей в&nbsp;месяц.
+            {data.remont && 'С ремонтом.'}
+            {data.newFlat && 'В новом доме.'}
+          </Text>
+        </View>
+        <View style={{ ...styles.stepContentQuestionBlock, alignItems: 'center' }}>
+          <Card>
+            <Image
+              source={require('../assets/images/man.png')}
+              style={{ width: 150, height: 150 }}>
+            </Image>
+          </Card>
+        </View>
+
+      </View>
+      <Text style={styles.questionText}>Хотите посмотреть, что мы для Вас нашли?</Text>
+      <View style={styles.actionsBlock}>
+        <MyButton title='Посмотреть' iconRight onPress={toNext}/>
+      </View>
+    </View>
+  )
+};
+
+export default function TaskCreationScreen(props) {
   const [activeScreen, setActiveScreen] = useState('start');
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState({});
+
   const screens = {
     start: () => <StartScreen toNext={() => setActiveScreen('second')} />,
-    second: () => <SecondScreen toPrev={() => setActiveScreen('start')} />,
+    second: () => <SecondScreen
+      toPrev={() => setActiveScreen('start')}
+      toNext={data => {
+        setLoading(true);
+        setData(data);
+        (new Promise(res => setTimeout(res, 200))).then(() => {
+          setActiveScreen('final');
+        }).finally(() => setLoading(false));
+      }}
+    />,
+    final: () => <FinalScreen data={data} toNext={() => {
+      setLoading(true);
+      (new Promise(res => setTimeout(res, 200))).then(() => {
+        props.navigation.navigate('Home');
+        setData({});
+        setActiveScreen('start');
+      }).finally(() => setLoading(false));
+    }}/>
   };
-
+  
   return (
     <View style={styles.container}>
       <LinearGradient style={styles.gradientWrap} colors={[mainColor, mainColorLight]}>
         <View style={styles.contentContainer}>
-          {screens[activeScreen]()}
+          {loading
+            ?
+            <View style={{ height: '100%', display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
+              <ActivityIndicator size="large" color={mainColor} />
+            </View>
+            :
+            screens[activeScreen]()}
         </View>
       </LinearGradient>
     </View>
@@ -200,11 +295,16 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: mainColor,
   },
+  stepContentQuestionBlock: {
+    alignSelf: 'stretch',
+    textAlign: 'center',
+  },
   questionText: {
     textAlign: "left",
     fontSize: 20,
     marginBottom: 10,
     marginTop: 15,
+    color: 'darkgray',
   },
   sliderText: {
     textAlign: "center",
@@ -212,9 +312,9 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   stepContentTextBlock: {
-    display: "flex",
-    alignItems: "center",
+    alignItems: 'stretch',
     minHeight: '80%',
+    alignSelf: 'stretch',
   },
   actionsBlock: {
     display: "flex",
