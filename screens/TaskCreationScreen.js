@@ -1,31 +1,39 @@
 import React, { useState } from 'react';
+import { StyleSheet, Image, View, ActivityIndicator } from 'react-native';
 import {
-  StyleSheet,
-  Image,
-  View,
-  ActivityIndicator,
-} from 'react-native';
-import {
-  Text, Icon as RneIcon, Button, CheckBox,
-  ButtonGroup, Slider, Card
+  Text,
+  Icon as RneIcon,
+  Button,
+  CheckBox,
+  ButtonGroup,
+  Slider,
+  Card
 } from 'react-native-elements';
-import Icon from 'react-native-vector-icons/FontAwesome';
+// import Icon from 'react-native-vector-icons/FontAwesome';
+import { Icon } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 
 const mainColorLight = '#e4bdfe';
 const mainColor = '#ab2efe';
 
-const MyButton = (props) => (
+const MyButton = props => (
   <Button
     {...props}
     ViewComponent={LinearGradient}
     linearGradientProps={{
-      colors: props.iconRight ? [mainColor, mainColorLight] : [mainColorLight, mainColor],
+      colors: props.iconRight
+        ? [mainColor, mainColorLight]
+        : [mainColorLight, mainColor],
       start: { x: 0, y: 0.5 },
-      end: { x: 1, y: 0.5 },
+      end: { x: 1, y: 0.5 }
     }}
     titleStyle={{ fontSize: 20 }}
-    buttonStyle={{ borderRadius: 20, marginTop: 20, height: 45, marginRight: 5 }}
+    buttonStyle={{
+      borderRadius: 20,
+      marginTop: 20,
+      height: 45,
+      marginRight: 5
+    }}
     icon={
       <Icon
         name={`arrow-${props.iconRight ? 'right' : 'left'}`}
@@ -34,7 +42,7 @@ const MyButton = (props) => (
       />
     }
   />
-)
+);
 
 const StartScreen = ({ toNext }) => {
   return (
@@ -44,27 +52,32 @@ const StartScreen = ({ toNext }) => {
           <View style={styles.headerIcon}>
             <RneIcon
               size={60}
-              name='home'
-              type='font-awesome'
+              name="home"
+              type="font-awesome"
               color={mainColor}
             />
           </View>
-          <Text h3 style={styles.headerText}>Создание предложения</Text>
+          <Text h3 style={styles.headerText}>
+            Создание предложения
+          </Text>
         </View>
-        <View style={{ ...styles.stepContentQuestionBlock, alignItems: 'center' }}>
+        <View
+          style={{ ...styles.stepContentQuestionBlock, alignItems: 'center' }}
+        >
           <Image
             source={require('../assets/images/search-for-flat.jpg')}
-            style={{ width: 250, height: 200 }}>
-          </Image>
-          <Text style={styles.questionText}>Ответите на нескольо вопросов?</Text>
+            style={{ width: 250, height: 200 }}
+          />
+          <Text style={styles.questionText}>
+            Ответите на нескольо вопросов?
+          </Text>
         </View>
-
       </View>
       <View style={styles.actionsBlock}>
-        <MyButton title='Начать' onPress={toNext} iconRight />
+        <MyButton title="Начать" onPress={toNext} iconRight />
       </View>
     </View>
-  )
+  );
 };
 
 const SecondScreen = ({ toNext, toPrev }) => {
@@ -84,8 +97,8 @@ const SecondScreen = ({ toNext, toPrev }) => {
           <View style={styles.headerIcon}>
             <RneIcon
               size={60}
-              name='home'
-              type='font-awesome'
+              name="home"
+              type="font-awesome"
               color={mainColor}
             />
           </View>
@@ -103,23 +116,20 @@ const SecondScreen = ({ toNext, toPrev }) => {
           />
         </View>
 
-        {
-          type === 1 ?
-            <View style={styles.stepContentQuestionBlock}>
-              <Text style={styles.questionText}>Сколько комнат?</Text>
-              <ButtonGroup
-                buttons={typesCount}
-                selectedIndex={typeCount}
-                buttonStyle={{ backgroundColor: '#fff' }}
-                onPress={setTypeCount}
-                selectedButtonStyle={{ backgroundColor: mainColor }}
-                textStyle={{ color: mainColor }}
-                selectedTextStyle={{ color: '#fff' }}
-              />
-            </View>
-            :
-            null
-        }
+        {type === 1 ? (
+          <View style={styles.stepContentQuestionBlock}>
+            <Text style={styles.questionText}>Сколько комнат?</Text>
+            <ButtonGroup
+              buttons={typesCount}
+              selectedIndex={typeCount}
+              buttonStyle={{ backgroundColor: '#fff' }}
+              onPress={setTypeCount}
+              selectedButtonStyle={{ backgroundColor: mainColor }}
+              textStyle={{ color: mainColor }}
+              selectedTextStyle={{ color: '#fff' }}
+            />
+          </View>
+        ) : null}
         <View style={styles.stepContentQuestionBlock}>
           <Text style={styles.questionText}>Сколько за месяц?</Text>
           <View style={{ alignItems: 'stretch', justifyContent: 'center' }}>
@@ -136,13 +146,13 @@ const SecondScreen = ({ toNext, toPrev }) => {
         <View style={styles.stepContentQuestionBlock}>
           <Text style={styles.questionText}>Дополнительно</Text>
           <CheckBox
-            title='С ремонтом'
+            title="С ремонтом"
             checked={remont}
             checkedColor={mainColor}
             onPress={() => setRemont(!remont)}
           />
           <CheckBox
-            title='Новый дом'
+            title="Новый дом"
             checked={newFlat}
             checkedColor={mainColor}
             onPress={() => setNewFlat(!newFlat)}
@@ -150,19 +160,24 @@ const SecondScreen = ({ toNext, toPrev }) => {
         </View>
       </View>
       <View style={styles.actionsBlock}>
-        <MyButton title='Назад' onPress={toPrev} />
-        <MyButton title='Далее' onPress={() => toNext({
-          type,
-          price,
-          typeCount,
-          remont,
-          newFlat
-        })} iconRight />
+        <MyButton title="Назад" onPress={toPrev} />
+        <MyButton
+          title="Далее"
+          onPress={() =>
+            toNext({
+              type,
+              price,
+              typeCount,
+              remont,
+              newFlat
+            })
+          }
+          iconRight
+        />
       </View>
     </View>
-  )
-}
-
+  );
+};
 
 const FinalScreen = ({ data, toNext }) => {
   return (
@@ -172,46 +187,56 @@ const FinalScreen = ({ data, toNext }) => {
           <View style={styles.headerIcon}>
             <RneIcon
               size={60}
-              name='home'
-              type='font-awesome'
+              name="home"
+              type="font-awesome"
               color={mainColor}
             />
           </View>
-          <Text h3 style={styles.headerText}>Мы готовы!</Text>
+          <Text h3 style={styles.headerText}>
+            Мы готовы!
+          </Text>
         </View>
-        <View style={{ ...styles.stepContentQuestionBlock, alignItems: 'center' }}>
+        <View
+          style={{ ...styles.stepContentQuestionBlock, alignItems: 'center' }}
+        >
           <Image
             source={require('../assets/images/ready_to_road.gif')}
-            style={{ width: 150, height: 150 }}>
-          </Image>
+            style={{ width: 150, height: 150 }}
+          />
           {/* Ваще огонь код */}
           <Text h4 style={styles.headerText}>
             Вы ищете {data.type === 0 && 'комнату'}
-            {data.type === 1 ? (
-              data.typeCount < 3 ? ['одно', 'двух', 'трех'][data.typeCount] + ' комантную квартиру' : 'Студию'
-            ) : ' '}
+            {data.type === 1
+              ? data.typeCount < 3
+                ? ['одно', 'двух', 'трех'][data.typeCount] +
+                  ' комантную квартиру'
+                : 'Студию'
+              : ' '}
             &nbsp;за&nbsp;
             {data.price}&nbsp;000&nbsp;рублей в&nbsp;месяц.
             {data.remont && 'С ремонтом.'}
             {data.newFlat && 'В новом доме.'}
           </Text>
         </View>
-        <View style={{ ...styles.stepContentQuestionBlock, alignItems: 'center' }}>
+        <View
+          style={{ ...styles.stepContentQuestionBlock, alignItems: 'center' }}
+        >
           <Card>
             <Image
               source={require('../assets/images/man.png')}
-              style={{ width: 150, height: 150 }}>
-            </Image>
+              style={{ width: 150, height: 150 }}
+            />
           </Card>
         </View>
-
       </View>
-      <Text style={styles.questionText}>Хотите посмотреть, что мы для Вас нашли?</Text>
+      <Text style={styles.questionText}>
+        Хотите посмотреть, что мы для Вас нашли?
+      </Text>
       <View style={styles.actionsBlock}>
-        <MyButton title='Посмотреть' iconRight onPress={toNext}/>
+        <MyButton title="Посмотреть" iconRight onPress={toNext} />
       </View>
     </View>
-  )
+  );
 };
 
 export default function TaskCreationScreen(props) {
@@ -221,54 +246,73 @@ export default function TaskCreationScreen(props) {
 
   const screens = {
     start: () => <StartScreen toNext={() => setActiveScreen('second')} />,
-    second: () => <SecondScreen
-      toPrev={() => setActiveScreen('start')}
-      toNext={data => {
-        setLoading(true);
-        setData(data);
-        (new Promise(res => setTimeout(res, 200))).then(() => {
-          setActiveScreen('final');
-        }).finally(() => setLoading(false));
-      }}
-    />,
-    final: () => <FinalScreen data={data} toNext={() => {
-      setLoading(true);
-      (new Promise(res => setTimeout(res, 200))).then(() => {
-        props.navigation.navigate('Home');
-        setData({});
-        setActiveScreen('start');
-      }).finally(() => setLoading(false));
-    }}/>
+    second: () => (
+      <SecondScreen
+        toPrev={() => setActiveScreen('start')}
+        toNext={data => {
+          setLoading(true);
+          setData(data);
+          new Promise(res => setTimeout(res, 200))
+            .then(() => {
+              setActiveScreen('final');
+            })
+            .finally(() => setLoading(false));
+        }}
+      />
+    ),
+    final: () => (
+      <FinalScreen
+        data={data}
+        toNext={() => {
+          setLoading(true);
+          new Promise(res => setTimeout(res, 200))
+            .then(() => {
+              props.navigation.navigate('Home');
+              setData({});
+              setActiveScreen('start');
+            })
+            .finally(() => setLoading(false));
+        }}
+      />
+    )
   };
-  
+
   return (
     <View style={styles.container}>
-      <LinearGradient style={styles.gradientWrap} colors={[mainColor, mainColorLight]}>
+      <LinearGradient
+        style={styles.gradientWrap}
+        colors={[mainColor, mainColorLight]}
+      >
         <View style={styles.contentContainer}>
-          {loading
-            ?
-            <View style={{ height: '100%', display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
+          {loading ? (
+            <View
+              style={{
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'center'
+              }}
+            >
               <ActivityIndicator size="large" color={mainColor} />
             </View>
-            :
-            screens[activeScreen]()}
+          ) : (
+            screens[activeScreen]()
+          )}
         </View>
       </LinearGradient>
     </View>
   );
-};
-
-
+}
 
 TaskCreationScreen.navigationOptions = {
-  header: null,
+  header: null
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 50,
-    height: '100%',
+    height: '100%'
   },
   gradientWrap: {
     height: '100%',
@@ -283,44 +327,44 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderBottomLeftRadius: 0,
     borderBottomRightRadius: 0,
-    borderColor: '#fff',
+    borderColor: '#fff'
   },
   headerBlock: {
-    display: "flex",
-    alignItems: "center",
+    display: 'flex',
+    alignItems: 'center',
     fontSize: 30,
-    marginBottom: 10,
+    marginBottom: 10
   },
   headerText: {
-    textAlign: "center",
-    color: mainColor,
+    textAlign: 'center',
+    color: mainColor
   },
   stepContentQuestionBlock: {
     alignSelf: 'stretch',
-    textAlign: 'center',
+    textAlign: 'center'
   },
   questionText: {
-    textAlign: "left",
+    textAlign: 'left',
     fontSize: 20,
     marginBottom: 10,
     marginTop: 15,
-    color: 'darkgray',
+    color: 'darkgray'
   },
   sliderText: {
-    textAlign: "center",
+    textAlign: 'center',
     color: 'gray',
-    fontSize: 20,
+    fontSize: 20
   },
   stepContentTextBlock: {
     alignItems: 'stretch',
     minHeight: '80%',
-    alignSelf: 'stretch',
+    alignSelf: 'stretch'
   },
   actionsBlock: {
-    display: "flex",
-    justifyContent: "center",
-    flexDirection: "row",
-    flexWrap: "nowrap",
-    alignItems: "center",
+    display: 'flex',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    flexWrap: 'nowrap',
+    alignItems: 'center'
   }
 });
