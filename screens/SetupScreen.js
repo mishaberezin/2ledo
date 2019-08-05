@@ -1,21 +1,28 @@
-import React, { useState, useCallback } from 'react';
-import { View, StyleSheet, TextInput, Image } from 'react-native';
-import { MonoText } from '../components/StyledText';
+import React, { useState, useCallback } from "react";
+import { View, StyleSheet, Button, Image } from "react-native";
 
 const SetupScreen = props => {
   const { navigation } = props;
 
+  const onPress = () => {
+    navigation.navigate("Main");
+  };
+
   return (
     <View style={styles.container}>
-      <MonoText>SETUP</MonoText>
+      <Button title="Дальше поехали 🚍" onPress={onPress} />
     </View>
   );
+};
+
+SetupScreen.navigationOptions = {
+  title: "Немного о себе"
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center'
+    alignItems: "center"
   }
 });
 
