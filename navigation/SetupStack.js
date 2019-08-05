@@ -1,6 +1,6 @@
-import React from 'react';
-import { createStackNavigator } from 'react-navigation';
-import SetupScreen from '../screens/SetupScreen';
+import React from "react";
+import { createStackNavigator } from "react-navigation";
+import SetupScreen from "../screens/SetupScreen";
 
 const SetupStack = createStackNavigator({ Setup: SetupScreen });
 

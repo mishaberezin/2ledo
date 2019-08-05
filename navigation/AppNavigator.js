@@ -1,15 +1,15 @@
-import React from 'react';
+import React from "react";
 import {
   createAppContainer,
   createSwitchNavigator,
   createStackNavigator
-} from 'react-navigation';
+} from "react-navigation";
 
-import InitialScreen from '../screens/InitialScreen';
-import MainTabNavigator from './MainTabNavigator';
-import DemoStack from './DemoStack';
-import AuthStack from './AuthStack';
-import SetupStack from './SetupStack';
+import InitialScreen from "../screens/InitialScreen";
+import MainTabNavigator from "./MainTabNavigator";
+import DemoStack from "./DemoStack";
+import AuthStack from "./AuthStack";
+import SetupStack from "./SetupStack";
 
 export default createAppContainer(
   createSwitchNavigator(
@@ -21,7 +21,7 @@ export default createAppContainer(
       Setup: SetupStack
     },
     {
-      initialRouteName: 'Init'
+      initialRouteName: "Init"
     }
   )
 );
