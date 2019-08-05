@@ -1,19 +1,11 @@
-import React from "react";
-import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-  Animated,
-  Image,
-  Easing
-} from "react-native";
+import React from 'react';
+import { StyleSheet, View, Animated, Easing } from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center"
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 });
 
@@ -36,7 +28,7 @@ class MyAnimation extends React.Component {
   render() {
     const spin = this.spinValue.interpolate({
       inputRange: [0, 1],
-      outputRange: ["0deg", "360deg"]
+      outputRange: ['0deg', '360deg']
     });
     return (
       <View style={styles.container}>
@@ -46,7 +38,7 @@ class MyAnimation extends React.Component {
             height: 150,
             transform: [{ rotate: spin }]
           }}
-          source={require("../assets/images/robot-dev.png")}
+          source={require('../assets/images/robot-dev.png')}
         />
       </View>
     );

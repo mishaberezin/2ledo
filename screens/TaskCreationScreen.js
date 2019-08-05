@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { StyleSheet, Image, View, ActivityIndicator } from "react-native";
+import React, { useState } from 'react';
+import { StyleSheet, Image, View, ActivityIndicator } from 'react-native';
 import {
   Text,
   Icon as RneIcon,
@@ -8,13 +8,13 @@ import {
   ButtonGroup,
   Slider,
   Card
-} from "react-native-elements";
+} from 'react-native-elements';
 // import Icon from 'react-native-vector-icons/FontAwesome';
-import { Icon } from "@expo/vector-icons";
-import { LinearGradient } from "expo-linear-gradient";
+import { Icon } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';
 
-const mainColorLight = "#e4bdfe";
-const mainColor = "#ab2efe";
+const mainColorLight = '#e4bdfe';
+const mainColor = '#ab2efe';
 
 const MyButton = props => (
   <Button
@@ -36,7 +36,7 @@ const MyButton = props => (
     }}
     icon={
       <Icon
-        name={`arrow-${props.iconRight ? "right" : "left"}`}
+        name={`arrow-${props.iconRight ? 'right' : 'left'}`}
         size={25}
         color="white"
       />
@@ -62,10 +62,10 @@ const StartScreen = ({ toNext }) => {
           </Text>
         </View>
         <View
-          style={{ ...styles.stepContentQuestionBlock, alignItems: "center" }}
+          style={{ ...styles.stepContentQuestionBlock, alignItems: 'center' }}
         >
           <Image
-            source={require("../assets/images/search-for-flat.jpg")}
+            source={require('../assets/images/search-for-flat.jpg')}
             style={{ width: 250, height: 200 }}
           />
           <Text style={styles.questionText}>
@@ -81,8 +81,8 @@ const StartScreen = ({ toNext }) => {
 };
 
 const SecondScreen = ({ toNext, toPrev }) => {
-  const types = ["Комнату", "Квартиру"];
-  const typesCount = ["Одна", "Две", "Три", "Студия"];
+  const types = ['Комнату', 'Квартиру'];
+  const typesCount = ['Одна', 'Две', 'Три', 'Студия'];
 
   const [type, setType] = useState(0);
   const [price, setPrice] = useState(30);
@@ -108,11 +108,11 @@ const SecondScreen = ({ toNext, toPrev }) => {
           <ButtonGroup
             buttons={types}
             selectedIndex={type}
-            buttonStyle={{ backgroundColor: "#fff" }}
+            buttonStyle={{ backgroundColor: '#fff' }}
             onPress={setType}
             selectedButtonStyle={{ backgroundColor: mainColor }}
             textStyle={{ color: mainColor }}
-            selectedTextStyle={{ color: "#fff" }}
+            selectedTextStyle={{ color: '#fff' }}
           />
         </View>
 
@@ -122,17 +122,17 @@ const SecondScreen = ({ toNext, toPrev }) => {
             <ButtonGroup
               buttons={typesCount}
               selectedIndex={typeCount}
-              buttonStyle={{ backgroundColor: "#fff" }}
+              buttonStyle={{ backgroundColor: '#fff' }}
               onPress={setTypeCount}
               selectedButtonStyle={{ backgroundColor: mainColor }}
               textStyle={{ color: mainColor }}
-              selectedTextStyle={{ color: "#fff" }}
+              selectedTextStyle={{ color: '#fff' }}
             />
           </View>
         ) : null}
         <View style={styles.stepContentQuestionBlock}>
           <Text style={styles.questionText}>Сколько за месяц?</Text>
-          <View style={{ alignItems: "stretch", justifyContent: "center" }}>
+          <View style={{ alignItems: 'stretch', justifyContent: 'center' }}>
             <Slider
               step={1}
               maximumValue={200}
@@ -197,33 +197,33 @@ const FinalScreen = ({ data, toNext }) => {
           </Text>
         </View>
         <View
-          style={{ ...styles.stepContentQuestionBlock, alignItems: "center" }}
+          style={{ ...styles.stepContentQuestionBlock, alignItems: 'center' }}
         >
           <Image
-            source={require("../assets/images/ready_to_road.gif")}
+            source={require('../assets/images/ready_to_road.gif')}
             style={{ width: 150, height: 150 }}
           />
           {/* Ваще огонь код */}
           <Text h4 style={styles.headerText}>
-            Вы ищете {data.type === 0 && "комнату"}
+            Вы ищете {data.type === 0 && 'комнату'}
             {data.type === 1
               ? data.typeCount < 3
-                ? ["одно", "двух", "трех"][data.typeCount] +
-                  " комантную квартиру"
-                : "Студию"
-              : " "}
+                ? ['одно', 'двух', 'трех'][data.typeCount] +
+                  ' комантную квартиру'
+                : 'Студию'
+              : ' '}
             &nbsp;за&nbsp;
             {data.price}&nbsp;000&nbsp;рублей в&nbsp;месяц.
-            {data.remont && "С ремонтом."}
-            {data.newFlat && "В новом доме."}
+            {data.remont && 'С ремонтом.'}
+            {data.newFlat && 'В новом доме.'}
           </Text>
         </View>
         <View
-          style={{ ...styles.stepContentQuestionBlock, alignItems: "center" }}
+          style={{ ...styles.stepContentQuestionBlock, alignItems: 'center' }}
         >
           <Card>
             <Image
-              source={require("../assets/images/man.png")}
+              source={require('../assets/images/man.png')}
               style={{ width: 150, height: 150 }}
             />
           </Card>
@@ -240,21 +240,21 @@ const FinalScreen = ({ data, toNext }) => {
 };
 
 export default function TaskCreationScreen(props) {
-  const [activeScreen, setActiveScreen] = useState("start");
+  const [activeScreen, setActiveScreen] = useState('start');
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState({});
 
   const screens = {
-    start: () => <StartScreen toNext={() => setActiveScreen("second")} />,
+    start: () => <StartScreen toNext={() => setActiveScreen('second')} />,
     second: () => (
       <SecondScreen
-        toPrev={() => setActiveScreen("start")}
+        toPrev={() => setActiveScreen('start')}
         toNext={data => {
           setLoading(true);
           setData(data);
           new Promise(res => setTimeout(res, 200))
             .then(() => {
-              setActiveScreen("final");
+              setActiveScreen('final');
             })
             .finally(() => setLoading(false));
         }}
@@ -267,9 +267,9 @@ export default function TaskCreationScreen(props) {
           setLoading(true);
           new Promise(res => setTimeout(res, 200))
             .then(() => {
-              props.navigation.navigate("Home");
+              props.navigation.navigate('Home');
               setData({});
-              setActiveScreen("start");
+              setActiveScreen('start');
             })
             .finally(() => setLoading(false));
         }}
@@ -287,10 +287,10 @@ export default function TaskCreationScreen(props) {
           {loading ? (
             <View
               style={{
-                height: "100%",
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "center"
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'row',
+                justifyContent: 'center'
               }}
             >
               <ActivityIndicator size="large" color={mainColor} />
@@ -312,59 +312,59 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 50,
-    height: "100%"
+    height: '100%'
   },
   gradientWrap: {
-    height: "100%",
+    height: '100%',
     padding: 10,
     paddingBottom: 0
   },
   contentContainer: {
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
     padding: 20,
     flex: 1,
     borderWidth: 1,
     borderRadius: 5,
     borderBottomLeftRadius: 0,
     borderBottomRightRadius: 0,
-    borderColor: "#fff"
+    borderColor: '#fff'
   },
   headerBlock: {
-    display: "flex",
-    alignItems: "center",
+    display: 'flex',
+    alignItems: 'center',
     fontSize: 30,
     marginBottom: 10
   },
   headerText: {
-    textAlign: "center",
+    textAlign: 'center',
     color: mainColor
   },
   stepContentQuestionBlock: {
-    alignSelf: "stretch",
-    textAlign: "center"
+    alignSelf: 'stretch',
+    textAlign: 'center'
   },
   questionText: {
-    textAlign: "left",
+    textAlign: 'left',
     fontSize: 20,
     marginBottom: 10,
     marginTop: 15,
-    color: "darkgray"
+    color: 'darkgray'
   },
   sliderText: {
-    textAlign: "center",
-    color: "gray",
+    textAlign: 'center',
+    color: 'gray',
     fontSize: 20
   },
   stepContentTextBlock: {
-    alignItems: "stretch",
-    minHeight: "80%",
-    alignSelf: "stretch"
+    alignItems: 'stretch',
+    minHeight: '80%',
+    alignSelf: 'stretch'
   },
   actionsBlock: {
-    display: "flex",
-    justifyContent: "center",
-    flexDirection: "row",
-    flexWrap: "nowrap",
-    alignItems: "center"
+    display: 'flex',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    flexWrap: 'nowrap',
+    alignItems: 'center'
   }
 });

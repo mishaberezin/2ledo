@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   NativeModules,
   LayoutAnimation,
@@ -7,7 +7,7 @@ import {
   StyleSheet,
   View,
   ImageBackground
-} from "react-native";
+} from 'react-native';
 
 const { UIManager } = NativeModules;
 
@@ -17,23 +17,23 @@ UIManager.setLayoutAnimationEnabledExperimental &&
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center"
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   box: {
     width: 250,
     height: 200,
-    backgroundColor: "red"
+    backgroundColor: 'red'
   },
   button: {
-    backgroundColor: "black",
+    backgroundColor: 'black',
     paddingHorizontal: 20,
     paddingVertical: 15,
     marginTop: 15
   },
   buttonText: {
-    color: "#fff",
-    fontWeight: "bold"
+    color: '#fff',
+    fontWeight: 'bold'
   }
 });
 
@@ -53,7 +53,7 @@ class MyAnimation extends React.Component {
     return (
       <View style={styles.container}>
         <ImageBackground
-          source={require("../assets/images/robot-dev.png")}
+          source={require('../assets/images/robot-dev.png')}
           style={{ width: this.state.w, height: this.state.h }}
         ></ImageBackground>
 

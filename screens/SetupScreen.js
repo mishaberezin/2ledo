@@ -1,11 +1,11 @@
-import React, { useState, useCallback } from "react";
-import { View, StyleSheet, Button, Image } from "react-native";
+import React from 'react';
+import { View, StyleSheet, Button } from 'react-native';
 
 const SetupScreen = props => {
   const { navigation } = props;
 
   const onPress = () => {
-    navigation.navigate("Main");
+    navigation.navigate('Main');
   };
 
   return (
@@ -16,13 +16,13 @@ const SetupScreen = props => {
 };
 
 SetupScreen.navigationOptions = {
-  title: "Немного о себе"
+  title: 'Немного о себе'
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center"
+    alignItems: 'center'
   }
 });
 

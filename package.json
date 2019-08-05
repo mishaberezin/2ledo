@@ -33,7 +33,12 @@
     "react-navigation": "^3.11.0"
   },
   "devDependencies": {
+    "babel-eslint": "^10.0.2",
     "babel-preset-expo": "^5.1.0",
+    "eslint": "^6.1.0",
+    "eslint-plugin-jest": "^22.14.1",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-native": "^3.7.0",
     "husky": "^3.0.2",
     "jest-expo": "^33.0.0",
     "lint-staged": "^9.2.1",
@@ -53,6 +58,56 @@
     "*.{js,css,json,md}": [
       "prettier --write",
       "git add"
+    ],
+    "*.js": [
+      "eslint --fix",
+      "git add"
     ]
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "singleQuote": true
+  },
+  "eslintConfig": {
+    "env": {
+      "es6": true,
+      "react-native/react-native": true,
+      "jest/globals": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended",
+      "plugin:jest/recommended"
+    ],
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    },
+    "globals": {
+      "Atomics": "readonly",
+      "SharedArrayBuffer": "readonly"
+    },
+    "parser": "babel-eslint",
+    "parserOptions": {
+      "ecmaFeatures": {
+        "jsx": true
+      },
+      "ecmaVersion": 2018,
+      "sourceType": "module"
+    },
+    "plugins": [
+      "react",
+      "react-native",
+      "jest"
+    ],
+    "rules": {
+      "react/prop-types": [
+        0
+      ],
+      "react/display-name": [
+        0
+      ]
+    }
   }
 }

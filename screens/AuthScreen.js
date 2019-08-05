@@ -1,26 +1,29 @@
-import React, { useState, useCallback } from "react";
-import { View, StyleSheet, TextInput, Image } from "react-native";
+import React, { useState, useCallback } from 'react';
+import { View, StyleSheet, TextInput, Image } from 'react-native';
 
 const AuthScreen = props => {
   const { navigation } = props;
 
-  const [telValue, setTelValue] = useState("");
-  const [smsValue, setSmsValue] = useState("");
+  const [telValue, setTelValue] = useState('');
+  const [smsValue, setSmsValue] = useState('');
+
   const handleTelChange = useCallback(e => {
     setTelValue(e.target.value);
   });
+
   const handleSmsChange = useCallback(e => {
     setSmsValue(e.target.value);
 
-    // XXX
-    navigation.navigate("Setup");
+    if (String(smsValue).length >= 4) {
+      navigation.navigate('Setup');
+    }
   });
 
   return (
     <View style={styles.container}>
       <Image
         style={styles.image}
-        source={require("../assets/images/welcome.jpg")}
+        source={require('../assets/images/welcome.jpg')}
       />
       <TextInput
         style={styles.input}
@@ -44,18 +47,22 @@ const AuthScreen = props => {
   );
 };
 
+AuthScreen.navigationOptions = {
+  title: 'Немного о себе'
+};
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center"
+    alignItems: 'center'
   },
   image: {
-    height: "65%"
+    height: '65%'
   },
   input: {
     borderWidth: 1,
-    borderColor: "black",
-    borderStyle: "solid",
+    borderColor: 'black',
+    borderStyle: 'solid',
     borderRadius: 10,
     height: 40,
     width: 200,

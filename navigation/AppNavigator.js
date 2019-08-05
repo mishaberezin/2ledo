@@ -1,27 +1,22 @@
-import React from "react";
-import {
-  createAppContainer,
-  createSwitchNavigator,
-  createStackNavigator
-} from "react-navigation";
+import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 
-import InitialScreen from "../screens/InitialScreen";
-import MainTabNavigator from "./MainTabNavigator";
-import DemoStack from "./DemoStack";
-import AuthStack from "./AuthStack";
-import SetupStack from "./SetupStack";
+import InitialScreen from '../screens/InitialScreen';
+import MainNavigator from './MainNavigator';
+// import DemoStack from "./DemoStack";
+import AuthStack from './AuthStack';
+import SetupStack from './SetupStack';
 
 export default createAppContainer(
   createSwitchNavigator(
     {
       Init: InitialScreen,
-      Main: MainTabNavigator,
+      Main: MainNavigator,
       // Demo: DemoStack,
       Auth: AuthStack,
       Setup: SetupStack
     },
     {
-      initialRouteName: "Init"
+      initialRouteName: 'Init'
     }
   )
 );
