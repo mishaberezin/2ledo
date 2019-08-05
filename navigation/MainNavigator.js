@@ -62,11 +62,16 @@ TaskCreationStack.navigationOptions = {
 
 TaskCreationStack.path = '';
 
-const MainNavigator = createBottomTabNavigator({
-  // TaskCreationStack,
-  HomeStack,
-  SettingsStack
-});
+const MainNavigator = createBottomTabNavigator(
+  {
+    TaskCreationStack,
+    HomeStack,
+    SettingsStack
+  },
+  {
+    initialRouteName: 'HomeStack'
+  }
+);
 
 MainNavigator.path = '';
 
