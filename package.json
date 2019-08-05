@@ -34,11 +34,25 @@
   },
   "devDependencies": {
     "babel-preset-expo": "^5.1.0",
-    "jest-expo": "^33.0.0"
+    "husky": "^3.0.2",
+    "jest-expo": "^33.0.0",
+    "lint-staged": "^9.2.1",
+    "prettier": "^1.18.2"
   },
   "babel": {
     "presets": [
       "babel-preset-expo"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,css,json,md}": [
+      "prettier --write",
+      "git add"
     ]
   }
 }
