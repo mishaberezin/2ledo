@@ -10,7 +10,7 @@ import {
   Card
 } from 'react-native-elements';
 // import Icon from 'react-native-vector-icons/FontAwesome';
-import { Icon } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 
 const mainColorLight = '#e4bdfe';
@@ -35,8 +35,8 @@ const MyButton = props => (
       marginRight: 5
     }}
     icon={
-      <Icon
-        name={`arrow-${props.iconRight ? 'right' : 'left'}`}
+      <Ionicons
+        name={`ios-arrow-${props.iconRight ? 'forward' : 'back'}`}
         size={25}
         color="white"
       />
@@ -51,7 +51,7 @@ const StartScreen = ({ toNext }) => {
         <View style={styles.headerBlock}>
           <View style={styles.headerIcon}>
             <RneIcon
-              size={60}
+              size={45}
               name="home"
               type="font-awesome"
               color={mainColor}
@@ -96,7 +96,7 @@ const SecondScreen = ({ toNext, toPrev }) => {
         <View style={styles.headerBlock}>
           <View style={styles.headerIcon}>
             <RneIcon
-              size={60}
+              size={45}
               name="home"
               type="font-awesome"
               color={mainColor}
@@ -186,13 +186,13 @@ const FinalScreen = ({ data, toNext }) => {
         <View style={styles.headerBlock}>
           <View style={styles.headerIcon}>
             <RneIcon
-              size={60}
+              size={45}
               name="home"
               type="font-awesome"
               color={mainColor}
             />
           </View>
-          <Text h3 style={styles.headerText}>
+          <Text h4 style={styles.headerText}>
             Мы готовы!
           </Text>
         </View>
@@ -201,10 +201,10 @@ const FinalScreen = ({ data, toNext }) => {
         >
           <Image
             source={require('../assets/images/ready_to_road.gif')}
-            style={{ width: 150, height: 150 }}
+            style={{ width: 120, height: 120 }}
           />
           {/* Ваще огонь код */}
-          <Text h4 style={styles.headerText}>
+          <Text h5 style={styles.headerText}>
             Вы ищете {data.type === 0 && 'комнату'}
             {data.type === 1
               ? data.typeCount < 3
@@ -224,7 +224,7 @@ const FinalScreen = ({ data, toNext }) => {
           <Card>
             <Image
               source={require('../assets/images/man.png')}
-              style={{ width: 150, height: 150 }}
+              style={{ width: 120, height: 120 }}
             />
           </Card>
         </View>
