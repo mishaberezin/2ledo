@@ -1,7 +1,8 @@
 import React, { useState, useCallback } from 'react';
+import { connect } from 'react-redux';
 import { View, StyleSheet, TextInput, Image } from 'react-native';
 
-const AuthScreen = props => {
+function AuthScreen(props) {
   const { navigation } = props;
 
   const [telValue, setTelValue] = useState('');
@@ -45,7 +46,7 @@ const AuthScreen = props => {
       />
     </View>
   );
-};
+}
 
 AuthScreen.navigationOptions = {
   title: 'Немного о себе'
@@ -70,4 +71,8 @@ const styles = StyleSheet.create({
   }
 });
 
-export default AuthScreen;
+const mapStateToProps = state => {
+  return { user: state.user };
+};
+
+export default connect(mapStateToProps)(AuthScreen);
