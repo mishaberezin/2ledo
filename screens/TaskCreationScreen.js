@@ -14,6 +14,9 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 
+import * as Location from 'expo-location';
+import * as Permissions from 'expo-permissions';
+
 const mainColorLight = '#e4bdfe';
 const mainColor = '#ab2efe';
 
@@ -45,7 +48,7 @@ const MyButton = props => (
   />
 );
 
-const StartScreen = ({ toNext }) => {
+const StartScreen = ({ toNext, location }) => {
   return (
     <View style={styles.screenStepBlock}>
       <View style={styles.stepContentTextBlock}>
@@ -71,6 +74,10 @@ const StartScreen = ({ toNext }) => {
           />
           <Text style={styles.questionText}>
             Ответите на нескольо вопросов?
+          </Text>
+          <Text style={styles.questionText}>
+            {location &&
+              `Ваши координаты (${location.coords.latitude},${location.coords.longitude})`}
           </Text>
         </View>
       </View>
@@ -244,9 +251,29 @@ function TaskCreationScreen(props) {
   const [activeScreen, setActiveScreen] = useState('start');
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState({});
+  const [location, setLocation] = useState(null);
+
+  const getLocationAsync = async () => {
+    let { status } = await Permissions.askAsync(Permissions.LOCATION);
+    if (status !== 'granted') {
+      return;
+    }
+
+    let location = await Location.getCurrentPositionAsync({});
+    setLocation(location);
+  };
+
+  if (!location) {
+    getLocationAsync();
+  }
 
   const screens = {
-    start: () => <StartScreen toNext={() => setActiveScreen('second')} />,
+    start: () => (
+      <StartScreen
+        toNext={() => setActiveScreen('second')}
+        location={location}
+      />
+    ),
     second: () => (
       <SecondScreen
         toPrev={() => setActiveScreen('start')}
