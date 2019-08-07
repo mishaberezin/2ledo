@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Image, View, ActivityIndicator } from 'react-native';
+import { connect } from 'react-redux';
 import {
   Text,
   Icon as RneIcon,
@@ -179,7 +180,7 @@ const SecondScreen = ({ toNext, toPrev }) => {
   );
 };
 
-const FinalScreen = ({ data, toNext }) => {
+const FinalScreen = ({ data, toNext, userPhoto }) => {
   return (
     <View style={styles.screenStepBlock}>
       <View style={styles.stepContentTextBlock}>
@@ -223,7 +224,7 @@ const FinalScreen = ({ data, toNext }) => {
         >
           <Card>
             <Image
-              source={require('../assets/images/man.png')}
+              source={{ uri: userPhoto }}
               style={{ width: 120, height: 120 }}
             />
           </Card>
@@ -239,7 +240,7 @@ const FinalScreen = ({ data, toNext }) => {
   );
 };
 
-export default function TaskCreationScreen(props) {
+function TaskCreationScreen(props) {
   const [activeScreen, setActiveScreen] = useState('start');
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState({});
@@ -263,6 +264,7 @@ export default function TaskCreationScreen(props) {
     final: () => (
       <FinalScreen
         data={data}
+        userPhoto={props.user.photo}
         toNext={() => {
           setLoading(true);
           new Promise(res => setTimeout(res, 200))
@@ -307,6 +309,8 @@ export default function TaskCreationScreen(props) {
 TaskCreationScreen.navigationOptions = {
   header: null
 };
+
+export default connect(({ user }) => ({ user }))(TaskCreationScreen);
 
 const styles = StyleSheet.create({
   container: {

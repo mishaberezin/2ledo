@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { setUserName } from '../actions/userActions.js';
+import { setUserName, setUserPhoto } from '../actions/userActions.js';
 import { View, StyleSheet, Button, Text, TextInput, Image } from 'react-native';
 import { ImagePicker, Permissions, Constants } from 'expo';
 
@@ -15,8 +15,7 @@ async function getPermissionAsync() {
 }
 
 function SetupScreen(props) {
-  const { navigation, user } = props;
-  const [photo, setPhoto] = useState(null);
+  const { navigation, user, setUserPhoto } = props;
 
   const handleNextButtonPress = () => {
     navigation.navigate('Main');
@@ -30,10 +29,8 @@ function SetupScreen(props) {
       aspect: [4, 3]
     });
 
-    console.log(result);
-
     if (!result.cancelled) {
-      setPhoto(result.uri);
+      setUserPhoto(result.uri);
     }
   };
 
@@ -55,8 +52,11 @@ function SetupScreen(props) {
           }}
         />
         <Button title="Фото" onPress={handlePhotoButtonPress} />
-        {photo && (
-          <Image source={{ uri: photo }} style={{ width: 200, height: 200 }} />
+        {user.photo && (
+          <Image
+            source={{ uri: user.photo }}
+            style={{ width: 200, height: 200 }}
+          />
         )}
         <Button title="Дальше поехали 🚍" onPress={handleNextButtonPress} />
       </View>
@@ -103,7 +103,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      setUserName
+      setUserName,
+      setUserPhoto
     },
     dispatch
   );
