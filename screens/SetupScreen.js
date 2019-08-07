@@ -1,44 +1,78 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { setUserName } from '../actions/userActions.js';
-import { View, StyleSheet, Button, Text, TextInput } from 'react-native';
+import { View, StyleSheet, Button, Text, TextInput, Image } from 'react-native';
+import { ImagePicker, Permissions, Constants } from 'expo';
 
-const SetupScreen = props => {
+async function getPermissionAsync() {
+  if (Constants.platform.ios) {
+    const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
+    if (status !== 'granted') {
+      alert('Без камеры никак!');
+    }
+  }
+}
+
+function SetupScreen(props) {
   const { navigation, user } = props;
+  const [photo, setPhoto] = useState(null);
 
-  const onPress = () => {
+  const handleNextButtonPress = () => {
     navigation.navigate('Main');
+  };
+
+  const handlePhotoButtonPress = async () => {
+    await getPermissionAsync();
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4, 3]
+    });
+
+    console.log(result);
+
+    if (!result.cancelled) {
+      setPhoto(result.uri);
+    }
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.headView}>
+        <Text style={styles.header}>О себе</Text>
+      </View>
+      <View style={styles.mainView}>
         <TextInput
           style={styles.input}
-          keyboardType="phone-pad"
+          keyboardType="default"
           placeholder="Имя"
-          textContentType="telephoneNumber"
+          textContentType="name"
           returnKeyType="done"
           value={user.name}
           onChangeText={text => {
             props.setUserName(text);
           }}
         />
-      </View>
-      <View style={styles.mainView}>
-        <Text style={styles.textName}>{user.name}</Text>
-        <Button title="Дальше поехали 🚍" onPress={onPress} />
+        <Button title="Фото" onPress={handlePhotoButtonPress} />
+        {photo && (
+          <Image source={{ uri: photo }} style={{ width: 200, height: 200 }} />
+        )}
+        <Button title="Дальше поехали 🚍" onPress={handleNextButtonPress} />
       </View>
     </View>
   );
-};
+}
 
 SetupScreen.navigationOptions = {
   title: 'Немного о себе'
 };
 
 const styles = StyleSheet.create({
+  header: {
+    fontSize: 50,
+    textAlign: 'left'
+  },
   container: {
     flex: 1,
     alignItems: 'center'
@@ -51,13 +85,14 @@ const styles = StyleSheet.create({
   },
   headView: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center'
+    alignItems: 'flex-start',
+    justifyContent: 'flex-end'
   },
   mainView: {
     flex: 3,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'flex-start',
+    paddingTop: 40
   }
 });
 
