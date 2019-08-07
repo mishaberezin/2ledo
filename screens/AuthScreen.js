@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { connect } from 'react-redux';
-import { View, StyleSheet, TextInput, Image } from 'react-native';
+import { View, StyleSheet, TextInput, Image, Button } from 'react-native';
 
 function AuthScreen(props) {
   const { navigation } = props;
@@ -20,30 +20,37 @@ function AuthScreen(props) {
     }
   });
 
+  const handleNextButtonPress = () => {
+    navigation.navigate('Setup');
+  };
+
   return (
     <View style={styles.container}>
       <Image
         style={styles.image}
-        source={require('../assets/images/welcome.jpg')}
+        source={require('../assets/images/interior.png')}
       />
-      <TextInput
-        style={styles.input}
-        keyboardType="phone-pad"
-        placeholder="Телефон"
-        textContentType="telephoneNumber"
-        returnKeyType="done"
-        value={telValue}
-        onChange={handleTelChange}
-      />
-      <TextInput
-        style={[styles.input, styles.sms]}
-        keyboardType="phone-pad"
-        placeholder="Код из смс"
-        textContentType="oneTimeCode"
-        returnKeyType="done"
-        value={smsValue}
-        onChange={handleSmsChange}
-      />
+      <View style={styles.form}>
+        <TextInput
+          style={styles.input}
+          keyboardType="phone-pad"
+          placeholder="Телефон"
+          textContentType="telephoneNumber"
+          returnKeyType="done"
+          value={telValue}
+          onChange={handleTelChange}
+        />
+        <TextInput
+          style={[styles.input, styles.sms]}
+          keyboardType="phone-pad"
+          placeholder="Код из смс"
+          textContentType="oneTimeCode"
+          returnKeyType="done"
+          value={smsValue}
+          onChange={handleSmsChange}
+        />
+        <Button title="Дальше поехали 🚍" onPress={handleNextButtonPress} />
+      </View>
     </View>
   );
 }
@@ -58,7 +65,13 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   image: {
-    height: '65%'
+    flex: 1,
+    resizeMode: 'cover',
+    backgroundColor: '#000',
+    padding: 0
+  },
+  form: {
+    flex: 1
   },
   input: {
     borderWidth: 1,
