@@ -3,7 +3,6 @@ import { StyleSheet, Image, View, ActivityIndicator } from 'react-native';
 import { connect } from 'react-redux';
 import {
   Text,
-  Icon as RneIcon,
   Button,
   CheckBox,
   ButtonGroup,
@@ -11,7 +10,6 @@ import {
   Card
 } from 'react-native-elements';
 // import Icon from 'react-native-vector-icons/FontAwesome';
-import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import * as Location from 'expo-location';
@@ -38,13 +36,6 @@ const MyButton = props => (
       height: 45,
       marginRight: 5
     }}
-    icon={
-      <Ionicons
-        name={`ios-arrow-${props.iconRight ? 'forward' : 'back'}`}
-        size={25}
-        color="white"
-      />
-    }
   />
 );
 
@@ -53,14 +44,7 @@ const StartScreen = ({ toNext, location }) => {
     <View style={styles.screenStepBlock}>
       <View style={styles.stepContentTextBlock}>
         <View style={styles.headerBlock}>
-          <View style={styles.headerIcon}>
-            <RneIcon
-              size={45}
-              name="home"
-              type="font-awesome"
-              color={mainColor}
-            />
-          </View>
+          <View style={styles.headerIcon}></View>
           <Text h3 style={styles.headerText}>
             Создание предложения
           </Text>
@@ -102,14 +86,7 @@ const SecondScreen = ({ toNext, toPrev }) => {
     <View style={styles.screenStepBlock}>
       <View style={styles.stepContentTextBlock}>
         <View style={styles.headerBlock}>
-          <View style={styles.headerIcon}>
-            <RneIcon
-              size={45}
-              name="home"
-              type="font-awesome"
-              color={mainColor}
-            />
-          </View>
+          <View style={styles.headerIcon}></View>
         </View>
         <View style={styles.stepContentQuestionBlock}>
           <Text style={styles.questionText}>Что Вы ищете?</Text>
@@ -192,14 +169,7 @@ const FinalScreen = ({ data, toNext, userPhoto }) => {
     <View style={styles.screenStepBlock}>
       <View style={styles.stepContentTextBlock}>
         <View style={styles.headerBlock}>
-          <View style={styles.headerIcon}>
-            <RneIcon
-              size={45}
-              name="home"
-              type="font-awesome"
-              color={mainColor}
-            />
-          </View>
+          <View style={styles.headerIcon}></View>
           <Text h4 style={styles.headerText}>
             Мы готовы!
           </Text>
