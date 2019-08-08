@@ -62,7 +62,7 @@ TaskCreationStack.navigationOptions = {
 
 TaskCreationStack.path = '';
 
-const MainNavigator = createBottomTabNavigator(
+const MainStack = createBottomTabNavigator(
   {
     TaskCreationStack,
     HomeStack,
@@ -73,6 +73,6 @@ const MainNavigator = createBottomTabNavigator(
   }
 );
 
-MainNavigator.path = '';
+MainStack.path = '';
 
-export default MainNavigator;
+export default MainStack;
