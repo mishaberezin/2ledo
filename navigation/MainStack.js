@@ -9,6 +9,7 @@ import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import TaskCreationScreen from '../screens/TaskCreationScreen';
+import CardsScreen from '../components/CardsList';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen
@@ -46,6 +47,22 @@ SettingsStack.navigationOptions = {
 
 SettingsStack.path = '';
 
+const CardsStack = createStackNavigator({
+  Cards: CardsScreen
+});
+
+CardsStack.navigationOptions = {
+  tabBarLabel: 'Cards',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'}
+    />
+  )
+};
+
+CardsStack.path = '';
+
 const TaskCreationStack = createStackNavigator({
   TaskCreation: TaskCreationScreen
 });
@@ -65,6 +82,7 @@ TaskCreationStack.path = '';
 const MainStack = createBottomTabNavigator(
   {
     TaskCreationStack,
+    CardsStack,
     HomeStack,
     SettingsStack
   },

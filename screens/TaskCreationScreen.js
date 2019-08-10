@@ -1,19 +1,14 @@
 import React, { useState } from 'react';
 import { StyleSheet, Image, View, ActivityIndicator } from 'react-native';
 import { connect } from 'react-redux';
-import {
-  Text,
-  Button,
-  CheckBox,
-  ButtonGroup,
-  Slider,
-  Card
-} from 'react-native-elements';
-// import Icon from 'react-native-vector-icons/FontAwesome';
+import { Text, Button, ButtonGroup, Slider, Card } from 'react-native-elements';
+
 import { LinearGradient } from 'expo-linear-gradient';
 
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
+
+import CardsList from '../components/CardsList';
 
 const mainColorLight = '#e4bdfe';
 const mainColor = '#ab2efe';
@@ -23,9 +18,7 @@ const MyButton = props => (
     {...props}
     ViewComponent={LinearGradient}
     linearGradientProps={{
-      colors: props.iconRight
-        ? [mainColor, mainColorLight]
-        : [mainColorLight, mainColor],
+      colors: [mainColor, mainColorLight],
       start: { x: 0, y: 0.5 },
       end: { x: 1, y: 0.5 }
     }}
@@ -66,7 +59,7 @@ const StartScreen = ({ toNext, location }) => {
         </View>
       </View>
       <View style={styles.actionsBlock}>
-        <MyButton title="Начать" onPress={toNext} iconRight />
+        <MyButton title="Начать" onPress={toNext} />
       </View>
     </View>
   );
@@ -79,8 +72,6 @@ const SecondScreen = ({ toNext, toPrev }) => {
   const [type, setType] = useState(0);
   const [price, setPrice] = useState(30);
   const [typeCount, setTypeCount] = useState(1);
-  const [remont, setRemont] = useState(false);
-  const [newFlat, setNewFlat] = useState(false);
 
   return (
     <View style={styles.screenStepBlock}>
@@ -128,21 +119,6 @@ const SecondScreen = ({ toNext, toPrev }) => {
             <Text style={styles.sliderText}>{price} 000 Руб.</Text>
           </View>
         </View>
-        <View style={styles.stepContentQuestionBlock}>
-          <Text style={styles.questionText}>Дополнительно</Text>
-          <CheckBox
-            title="С ремонтом"
-            checked={remont}
-            checkedColor={mainColor}
-            onPress={() => setRemont(!remont)}
-          />
-          <CheckBox
-            title="Новый дом"
-            checked={newFlat}
-            checkedColor={mainColor}
-            onPress={() => setNewFlat(!newFlat)}
-          />
-        </View>
       </View>
       <View style={styles.actionsBlock}>
         <MyButton title="Назад" onPress={toPrev} />
@@ -152,12 +128,9 @@ const SecondScreen = ({ toNext, toPrev }) => {
             toNext({
               type,
               price,
-              typeCount,
-              remont,
-              newFlat
+              typeCount
             })
           }
-          iconRight
         />
       </View>
     </View>
@@ -192,8 +165,6 @@ const FinalScreen = ({ data, toNext, userPhoto }) => {
               : ' '}
             &nbsp;за&nbsp;
             {data.price}&nbsp;000&nbsp;рублей в&nbsp;месяц.
-            {data.remont && 'С ремонтом.'}
-            {data.newFlat && 'В новом доме.'}
           </Text>
         </View>
         <View
@@ -211,7 +182,7 @@ const FinalScreen = ({ data, toNext, userPhoto }) => {
         Хотите посмотреть, что мы для Вас нашли?
       </Text>
       <View style={styles.actionsBlock}>
-        <MyButton title="Посмотреть" iconRight onPress={toNext} />
+        <MyButton title="Посмотреть" onPress={toNext} />
       </View>
     </View>
   );
@@ -266,14 +237,14 @@ function TaskCreationScreen(props) {
           setLoading(true);
           new Promise(res => setTimeout(res, 200))
             .then(() => {
-              props.navigation.navigate('Home');
               setData({});
-              setActiveScreen('start');
+              setActiveScreen('cardsList');
             })
             .finally(() => setLoading(false));
         }}
       />
-    )
+    ),
+    cardsList: () => <CardsList />
   };
 
   return (
