@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
   View,
   Animated,
+  Image,
   PanResponder,
   Dimensions,
   StyleSheet
@@ -12,7 +13,9 @@ const SWIPE_THRESHOLD = 0.4 * SCREEN_WIDTH;
 
 class Deck extends Component {
   state = {
-    index: 0
+    index: 0,
+    opacity: 0,
+    status: null
   };
 
   constructor(props) {
@@ -22,6 +25,8 @@ class Deck extends Component {
       onStartShouldSetPanResponder: () => true,
       onPanResponderMove: (evt, gesture) => {
         this.position.setValue({ x: gesture.dx, y: gesture.dy });
+        const opacity = Math.abs(gesture.dx) / (SCREEN_WIDTH / 2);
+        this.setState({ opacity, status: gesture.dx < 0 ? 'no' : 'yes' });
       },
       onPanResponderRelease: (evt, gesture) => {
         if (gesture.dx > SWIPE_THRESHOLD) {
@@ -49,7 +54,10 @@ class Deck extends Component {
     const { onSwipeLeft, onSwipeRight } = this.props;
     const item = this.props.data[this.state.index];
     direction === 'right' ? onSwipeRight(item) : onSwipeLeft(item);
-    this.setState({ index: this.state.index + 1 });
+    this.setState({
+      index: this.state.index + 1,
+      opacity: 0
+    });
 
     this.position.setValue({ x: 0, y: 0 });
   };
@@ -59,6 +67,7 @@ class Deck extends Component {
       toValue: { x: 0, y: 0 },
       friction: 4
     }).start();
+    this.setState({ opacity: 0 });
   };
 
   getCardStyle = () => {
@@ -76,10 +85,22 @@ class Deck extends Component {
 
   render() {
     const { data, renderCard, renderNoMoreCards } = this.props;
+    const { opacity } = this.state;
 
     if (this.state.index >= data.length) {
       return renderNoMoreCards();
     }
+
+    const statusWatermark = (
+      <Image
+        source={
+          this.state.status === 'yes'
+            ? require('../assets/images/ok.png')
+            : require('../assets/images/nope.png')
+        }
+        style={[styles.cardStatus, { opacity }]}
+      />
+    );
 
     return (
       <View>
@@ -92,10 +113,11 @@ class Deck extends Component {
               return (
                 <Animated.View
                   key={card.id}
-                  style={[this.getCardStyle(card), styles.cardStyle]}
+                  style={[this.getCardStyle(), styles.cardStyle]}
                   {...this.panResponder.panHandlers}
                 >
                   {renderCard(card)}
+                  {statusWatermark}
                 </Animated.View>
               );
             }
@@ -114,7 +136,15 @@ class Deck extends Component {
 const styles = StyleSheet.create({
   cardStyle: {
     position: 'absolute',
-    width: SCREEN_WIDTH
+    width: SCREEN_WIDTH,
+    justifyContent: 'center'
+  },
+  cardStatus: {
+    position: 'absolute',
+    width: 200,
+    height: 200,
+    alignSelf: 'center',
+    opacity: 0
   }
 });
 
