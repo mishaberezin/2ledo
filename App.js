@@ -11,6 +11,11 @@ import { Ionicons } from '@expo/vector-icons';
 import Router from './navigation/RootStack';
 import { ThemeProvider } from 'react-native-elements';
 
+if (__DEV__) {
+  // Убирает нотификации внизу экрана.
+  console.disableYellowBox = true;
+}
+
 const store = createStore(reducer);
 
 export default function App(props) {

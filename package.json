@@ -6,7 +6,8 @@
     "android": "expo start --android",
     "ios": "open -a Simulator & expo start --ios",
     "eject": "expo eject",
-    "test": "jest --watchAll"
+    "test": "jest --watchAll",
+    "react-devtools": "react-devtools"
   },
   "jest": {
     "preset": "jest-expo"
@@ -45,7 +46,8 @@
     "husky": "^3.0.2",
     "jest-expo": "^33.0.0",
     "lint-staged": "^9.2.1",
-    "prettier": "^1.18.2"
+    "prettier": "^1.18.2",
+    "react-devtools": "^3.6.3"
   },
   "babel": {
     "presets": [
