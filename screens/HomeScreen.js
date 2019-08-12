@@ -9,6 +9,8 @@ import {
   TouchableOpacity,
   View
 } from 'react-native';
+import robotDevImage from '../assets/images/robot-dev.png';
+import robotProdImage from '../assets/images/robot-prod.png';
 
 import { MonoText } from '../components/StyledText';
 
@@ -21,11 +23,7 @@ export default function HomeScreen() {
       >
         <View style={styles.welcomeContainer}>
           <Image
-            source={
-              __DEV__
-                ? require('../assets/images/robot-dev.png')
-                : require('../assets/images/robot-prod.png')
-            }
+            source={__DEV__ ? robotDevImage : robotProdImage}
             style={styles.welcomeImage}
           />
         </View>

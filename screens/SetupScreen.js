@@ -18,7 +18,7 @@ function SetupScreen(props) {
   const { navigation, user, setUserPhoto } = props;
 
   const handleNextButtonPress = () => {
-    navigation.navigate('Main');
+    navigation.navigate('Test');
   };
 
   const handlePhotoButtonPress = async () => {

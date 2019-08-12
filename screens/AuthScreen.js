@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { connect } from 'react-redux';
 import { View, StyleSheet, TextInput, Image, Button } from 'react-native';
+import interiorImage from '../assets/images/interior.png';
 
 function AuthScreen(props) {
   const { navigation } = props;
@@ -26,10 +27,7 @@ function AuthScreen(props) {
 
   return (
     <View style={styles.container}>
-      <Image
-        style={styles.image}
-        source={require('../assets/images/interior.png')}
-      />
+      <Image style={styles.image} source={interiorImage} />
       <View style={styles.form}>
         <TextInput
           style={styles.input}
@@ -66,6 +64,7 @@ const styles = StyleSheet.create({
   },
   image: {
     flex: 1,
+    width: '100%',
     resizeMode: 'cover',
     backgroundColor: '#000',
     padding: 0
