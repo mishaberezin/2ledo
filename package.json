@@ -7,7 +7,8 @@
     "ios": "open -a Simulator & expo start --ios",
     "eject": "expo eject",
     "test": "jest --watchAll",
-    "react-devtools": "react-devtools"
+    "react-devtools": "react-devtools",
+    "lint": "eslint ."
   },
   "jest": {
     "preset": "jest-expo"
@@ -42,6 +43,7 @@
     "eslint": "^6.1.0",
     "eslint-plugin-jest": "^22.14.1",
     "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^1.7.0",
     "eslint-plugin-react-native": "^3.7.0",
     "husky": "^3.0.2",
     "jest-expo": "^33.0.0",
@@ -68,51 +70,5 @@
       "eslint --fix",
       "git add"
     ]
-  },
-  "prettier": {
-    "tabWidth": 2,
-    "singleQuote": true
-  },
-  "eslintConfig": {
-    "env": {
-      "es6": true,
-      "react-native/react-native": true,
-      "jest/globals": true
-    },
-    "extends": [
-      "eslint:recommended",
-      "plugin:react/recommended",
-      "plugin:jest/recommended"
-    ],
-    "settings": {
-      "react": {
-        "version": "detect"
-      }
-    },
-    "globals": {
-      "Atomics": "readonly",
-      "SharedArrayBuffer": "readonly"
-    },
-    "parser": "babel-eslint",
-    "parserOptions": {
-      "ecmaFeatures": {
-        "jsx": true
-      },
-      "ecmaVersion": 2018,
-      "sourceType": "module"
-    },
-    "plugins": [
-      "react",
-      "react-native",
-      "jest"
-    ],
-    "rules": {
-      "react/prop-types": [
-        0
-      ],
-      "react/display-name": [
-        0
-      ]
-    }
   }
 }

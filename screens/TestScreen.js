@@ -9,33 +9,33 @@ import {
 } from 'react-native';
 import Logo from '../assets/images/dragon.gif';
 
-export default class App extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-        <View style={styles.topContainer}>
-          <Text style={styles.h1}>AlligatorChef</Text>
-          <Text style={styles.h2}>
-            Providing cajun bacon recipes since 1987.
-          </Text>
-        </View>
-        <View style={styles.middleContainer}>
-          <Image source={Logo} style={styles.image} />
-        </View>
-        <ProgressViewIOS number={1} />
-        <View style={styles.bottomContainer}>
-          <View style={styles.buttonContainer}>
-            <Button
-              title="LET'S START"
-              style={styles.button}
-              onPress={() => this.onPress()}
-              color="#fff"
-            />
-          </View>
+export default function TestScreen({ navigation }) {
+  const onPressButton = () => {
+    navigation.navigate('Home');
+  };
+
+  return (
+    <View style={styles.container}>
+      <View style={styles.topContainer}>
+        <Text style={styles.h1}>Heroes of M&amp;M</Text>
+        <Text style={styles.h2}>Best dragons since 1987.</Text>
+      </View>
+      <View style={styles.middleContainer}>
+        <Image source={Logo} style={styles.image} />
+      </View>
+      <ProgressViewIOS number={1} />
+      <View style={styles.bottomContainer}>
+        <View style={styles.buttonContainer}>
+          <Button
+            title="LET'S START"
+            style={styles.button}
+            onPress={onPressButton}
+            color="#fff"
+          />
         </View>
       </View>
-    );
-  }
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({

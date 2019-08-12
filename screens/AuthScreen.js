@@ -11,15 +11,18 @@ function AuthScreen(props) {
 
   const handleTelChange = useCallback(e => {
     setTelValue(e.target.value);
-  });
+  }, []);
 
-  const handleSmsChange = useCallback(e => {
-    setSmsValue(e.target.value);
+  const handleSmsChange = useCallback(
+    e => {
+      setSmsValue(e.target.value);
 
-    if (String(smsValue).length >= 4) {
-      navigation.navigate('Setup');
-    }
-  });
+      if (String(smsValue).length >= 4) {
+        navigation.navigate('Setup');
+      }
+    },
+    [navigation, smsValue]
+  );
 
   const handleNextButtonPress = () => {
     navigation.navigate('Setup');
