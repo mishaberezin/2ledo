@@ -1,2 +1,3 @@
 export const SET_USER_NAME = 'SET_USER_NAME';
 export const SET_USER_PHOTO = 'SET_USER_PHOTO';
+export const SET_INITIAL_STORE = 'SET_INITIAL_STORE';

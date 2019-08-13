@@ -1,22 +1,20 @@
 import React, { useState } from 'react';
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import reducer from './reducers/index.js';
 import { AppLoading } from 'expo';
 import { Asset } from 'expo-asset';
 import * as Font from 'expo-font';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-
-import Router from './navigation/RootStack';
+import Navigation from './navigation/AppStack';
 import { ThemeProvider } from 'react-native-elements';
+import store from './redux/store';
+import { getInitialStore } from './redux/actions/initActions';
 
 if (__DEV__) {
-  // Убирает нотификации внизу экрана.
   console.disableYellowBox = true;
 }
 
-const store = createStore(reducer);
+store.dispatch(getInitialStore());
 
 export default function App(props) {
   const [isLoadingComplete, setLoadingComplete] = useState(false);
@@ -35,7 +33,7 @@ export default function App(props) {
         <ThemeProvider>
           <View style={styles.container}>
             {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-            <Router />
+            <Navigation />
           </View>
         </ThemeProvider>
       </Provider>

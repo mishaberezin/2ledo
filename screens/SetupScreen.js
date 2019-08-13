@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { setUserName, setUserPhoto } from '../actions/userActions.js';
+import { setUserName, setUserPhoto } from '../redux/actions/userActions.js';
 import { View, StyleSheet, Button, Text, TextInput, Image } from 'react-native';
 import { ImagePicker, Permissions, Constants } from 'expo';
 
