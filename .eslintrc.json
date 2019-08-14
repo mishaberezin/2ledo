@@ -1,15 +1,10 @@
 {
   "env": {
     "es6": true,
-    "react-native/react-native": true,
-    "jest/globals": true
+    "react-native/react-native": true
   },
-  "plugins": ["react", "react-hooks", "react-native", "jest"],
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:jest/recommended"
-  ],
+  "plugins": ["react", "react-hooks", "react-native"],
+  "extends": ["eslint:recommended", "plugin:react/recommended"],
   "settings": {
     "react": {
       "version": "detect"
