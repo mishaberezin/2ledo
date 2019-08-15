@@ -11,7 +11,7 @@ function InitScreen(props) {
     <AppLoading
       startAsync={loadResourcesAsync}
       onError={handleLoadingError}
-      onFinish={() => navigation.navigate('Auth')}
+      onFinish={() => navigation.navigate('Main')}
     />
   );
 }
@@ -23,15 +23,15 @@ async function loadResourcesAsync() {
       require('../assets/images/robot-prod.png'),
       require('../assets/images/search-for-flat.jpg'),
       require('../assets/images/ready_to_road.gif'),
-      require('../assets/images/welcome.jpg')
+      require('../assets/images/welcome.jpg'),
     ]),
     Font.loadAsync({
       // This is the font that we are using for our tab bar
       ...Ionicons.font,
       // We include SpaceMono because we use it in HomeScreen.js. Feel free to
       // remove this if you are not using it in your app
-      'space-mono': require('../assets/fonts/SpaceMono-Regular.ttf')
-    })
+      'space-mono': require('../assets/fonts/SpaceMono-Regular.ttf'),
+    }),
   ]);
 }
 

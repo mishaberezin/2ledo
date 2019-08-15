@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
-import Navigation from './navigation/AppStack';
+import { StatusBar, StyleSheet, View } from 'react-native';
+import Navigation from './navigation/RootStack';
 import { ThemeProvider } from 'react-native-elements';
 import store from './redux/store';
 
@@ -14,7 +14,7 @@ export default function App() {
     <Provider store={store}>
       <ThemeProvider>
         <View style={styles.container}>
-          {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+          <StatusBar barStyle="default" />
           <Navigation />
         </View>
       </ThemeProvider>
@@ -25,6 +25,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff'
-  }
+    backgroundColor: '#fff',
+  },
 });

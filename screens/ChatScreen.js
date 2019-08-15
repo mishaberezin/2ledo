@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { View, StyleSheet, TextInput, Image, Button } from 'react-native';
 import interiorImage from '../assets/images/interior.png';
 
-function AuthScreen(props) {
+function ChatScreen(props) {
   const { navigation } = props;
 
   const [telValue, setTelValue] = useState('');
@@ -56,8 +56,8 @@ function AuthScreen(props) {
   );
 }
 
-AuthScreen.navigationOptions = {
-  title: 'Немного о себе'
+ChatScreen.navigationOptions = {
+  title: 'Чатбот'
 };
 
 const styles = StyleSheet.create({
@@ -90,4 +90,4 @@ const mapStateToProps = state => {
   return { user: state.user };
 };
 
-export default connect(mapStateToProps)(AuthScreen);
+export default connect(mapStateToProps)(ChatScreen);
