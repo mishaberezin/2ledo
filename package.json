@@ -2,12 +2,9 @@
   "private": true,
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "open -a Simulator & expo start --ios",
-    "eject": "expo eject",
+    "start": "open -a Simulator & expo start --ios",
     "test": "echo 🐷",
-    "react-devtools": "react-devtools",
+    "devtools": "react-devtools",
     "lint": "eslint ."
   },
   "dependencies": {

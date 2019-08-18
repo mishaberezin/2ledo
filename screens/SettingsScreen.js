@@ -65,7 +65,7 @@ function SettingsScreen(props) {
 }
 
 SettingsScreen.navigationOptions = {
-  title: 'Settings',
+  title: '⚙️',
 };
 
 const styles = StyleSheet.create({

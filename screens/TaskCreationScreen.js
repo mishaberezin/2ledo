@@ -1,14 +1,13 @@
+// TODO Унести в чатбота.
+
 import React, { useState } from 'react';
 import { StyleSheet, Image, View, ActivityIndicator } from 'react-native';
 import { connect } from 'react-redux';
 import { Text, Button, ButtonGroup, Slider, Card } from 'react-native-elements';
-
 import { LinearGradient } from 'expo-linear-gradient';
 
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
-
-import CardsList from '../components/CardsList';
 
 const mainColorLight = '#e4bdfe';
 const mainColor = '#ab2efe';
@@ -20,14 +19,14 @@ const MyButton = props => (
     linearGradientProps={{
       colors: [mainColor, mainColorLight],
       start: { x: 0, y: 0.5 },
-      end: { x: 1, y: 0.5 }
+      end: { x: 1, y: 0.5 },
     }}
     titleStyle={{ fontSize: 20 }}
     buttonStyle={{
       borderRadius: 20,
       marginTop: 20,
       height: 45,
-      marginRight: 5
+      marginRight: 5,
     }}
   />
 );
@@ -128,7 +127,7 @@ const SecondScreen = ({ toNext, toPrev }) => {
             toNext({
               type,
               price,
-              typeCount
+              typeCount,
             })
           }
         />
@@ -189,6 +188,7 @@ const FinalScreen = ({ data, toNext, userPhoto }) => {
 };
 
 function TaskCreationScreen(props) {
+  const { navigation } = props;
   const [activeScreen, setActiveScreen] = useState('start');
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState({});
@@ -235,16 +235,10 @@ function TaskCreationScreen(props) {
         userPhoto={props.user.photo}
         toNext={() => {
           setLoading(true);
-          new Promise(res => setTimeout(res, 200))
-            .then(() => {
-              setData({});
-              setActiveScreen('cardsList');
-            })
-            .finally(() => setLoading(false));
+          navigation.navigate('Serp');
         }}
       />
     ),
-    cardsList: () => <CardsList />
   };
 
   return (
@@ -260,7 +254,7 @@ function TaskCreationScreen(props) {
                 height: '100%',
                 display: 'flex',
                 flexDirection: 'row',
-                justifyContent: 'center'
+                justifyContent: 'center',
               }}
             >
               <ActivityIndicator size="large" color={mainColor} />
@@ -275,7 +269,8 @@ function TaskCreationScreen(props) {
 }
 
 TaskCreationScreen.navigationOptions = {
-  header: null
+  title: '👨‍🎨',
+  header: null,
 };
 
 export default connect(({ user }) => ({ user }))(TaskCreationScreen);
@@ -284,12 +279,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 50,
-    height: '100%'
+    height: '100%',
   },
   gradientWrap: {
     height: '100%',
     padding: 10,
-    paddingBottom: 0
+    paddingBottom: 0,
   },
   contentContainer: {
     backgroundColor: '#fff',
@@ -299,44 +294,44 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderBottomLeftRadius: 0,
     borderBottomRightRadius: 0,
-    borderColor: '#fff'
+    borderColor: '#fff',
   },
   headerBlock: {
     display: 'flex',
     alignItems: 'center',
     fontSize: 30,
-    marginBottom: 10
+    marginBottom: 10,
   },
   headerText: {
     textAlign: 'center',
-    color: mainColor
+    color: mainColor,
   },
   stepContentQuestionBlock: {
     alignSelf: 'stretch',
-    textAlign: 'center'
+    textAlign: 'center',
   },
   questionText: {
     textAlign: 'left',
     fontSize: 20,
     marginBottom: 10,
     marginTop: 15,
-    color: 'darkgray'
+    color: 'darkgray',
   },
   sliderText: {
     textAlign: 'center',
     color: 'gray',
-    fontSize: 20
+    fontSize: 20,
   },
   stepContentTextBlock: {
     alignItems: 'stretch',
     minHeight: '80%',
-    alignSelf: 'stretch'
+    alignSelf: 'stretch',
   },
   actionsBlock: {
     display: 'flex',
     justifyContent: 'center',
     flexDirection: 'row',
     flexWrap: 'nowrap',
-    alignItems: 'center'
-  }
+    alignItems: 'center',
+  },
 });
