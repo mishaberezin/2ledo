@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Text } from 'react-native-elements';
+import { Text } from 'react-native';
 
 function MatchScreen() {
   return (
