@@ -2,6 +2,7 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { persistMiddleware } from './persist';
 import rootReducer from './reducer.js';
+import api from '../api';
 
 // Времянка. Потом из кеша будем брать.
 const preloadedState = {
@@ -16,7 +17,7 @@ const preloadedState = {
 const store = createStore(
   rootReducer,
   preloadedState,
-  applyMiddleware(thunk, persistMiddleware)
+  applyMiddleware(thunk.withExtraArgument(api), persistMiddleware)
 );
 
 export default store;
