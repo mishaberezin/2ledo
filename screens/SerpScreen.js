@@ -1,5 +1,5 @@
-import React from 'react';
-import { StyleSheet, Text, View, Dimensions } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, ScrollView, Dimensions } from 'react-native';
 import { Card, Button } from 'react-native-elements';
 import Deck from '../components/Deck';
 
@@ -9,13 +9,17 @@ const DATA = [
   {
     id: 1,
     text: 'Card #1',
-    desc: 'Видовая двушка в Котельниках',
+    title: 'Видовая двушка в Котельниках',
     uri: 'http://imgs.abduzeedo.com/files/paul0v2/unsplash/unsplash-04.jpg',
+    desc:
+      'Уютная стандартная отделка. Апартаменты полностью укомплектованы мебелью и всей необходимой техникой бытовой и кухонной техникой. Функциональная планировка: Кухня-студия, совмещенная с просторной гостиной, спальня с собственной ванной и сан.узлом (сан.узлы так же полностью укомплектованы (См. фото)), просторный холл, постирочная и сушильная зона. Панорамное остекление по всему периметру апартаментов. Видовые характеристики: футуристический вид на город. В ночное время огни небоскребов никого не оставят равнодушными. Москва Сити - это Москва будущего, строящийся международный деловой квартал из ультрасовременных небоскрёбов.',
   },
   {
     id: 2,
     text: 'Card #2',
     uri: 'http://www.fluxdigital.co/wp-content/uploads/2015/04/Unsplash.jpg',
+    desc:
+      'Уютная стандартная отделка. Апартаменты полностью укомплектованы мебелью и всей необходимой техникой бытовой и кухонной техникой. Функциональная планировка: Кухня-студия, совмещенная с просторной гостиной, спальня с собственной ванной и сан.узлом (сан.узлы так же полностью укомплектованы (См. фото)), просторный холл, постирочная и сушильная зона. Панорамное остекление по всему периметру апартаментов. Видовые характеристики: футуристический вид на город. В ночное время огни небоскребов никого не оставят равнодушными. Москва Сити - это Москва будущего, строящийся международный деловой квартал из ультрасовременных небоскрёбов.',
   },
   {
     id: 3,
@@ -45,33 +49,42 @@ const DATA = [
   {
     id: 8,
     text: 'Card #8',
-    desc: 'Видовая двушка в Котельниках',
+    title: 'Видовая двушка в Котельниках',
     uri: 'http://imgs.abduzeedo.com/files/paul0v2/unsplash/unsplash-01.jpg',
   },
 ];
 
-function SerpScreen(props) {
-  const { navigation } = props;
+function SerpScreen() {
+  const [cardOpened, setCardOpened] = useState(false);
+  const openCard = () => setCardOpened(true);
+  const closeCard = () => setCardOpened(false);
 
   const onDetailsButtonPress = () => {
-    navigation.navigate('Card');
+    cardOpened ? closeCard() : openCard();
   };
 
-  const renderCard = ({ text, desc = 'no desc', uri }) => {
+  const renderCard = ({ text, title = 'no title', desc, uri }) => {
     return (
-      <Card
-        title={text}
-        image={{ uri }}
-        imageStyle={styles.image}
-        resizeMode="cover"
-      >
-        <Text style={styles.cardText}>{desc}</Text>
-        <Button
-          backgroundColor="#03A9F4"
-          title="Подробнее"
-          onPress={onDetailsButtonPress}
-        />
-      </Card>
+      <ScrollView style={{ backgroundColor: 'white' }}>
+        <Card
+          title={text}
+          image={{ uri }}
+          imageStyle={styles.image}
+          resizeMode="cover"
+        >
+          <Text style={styles.cardTitle}>{title}</Text>
+          <Button
+            backgroundColor="#03A9F4"
+            title={cardOpened ? 'Свернуть' : 'Подробнее'}
+            onPress={onDetailsButtonPress}
+          />
+          {cardOpened ? (
+            <View style={styles.cardDescriptionWrap}>
+              <Text style={styles.cardDescriptionText}>{desc}</Text>
+            </View>
+          ) : null}
+        </Card>
+      </ScrollView>
     );
   };
 
@@ -88,6 +101,7 @@ function SerpScreen(props) {
   return (
     <View style={styles.container}>
       <Deck
+        swipeDisabled={cardOpened}
         data={DATA}
         renderCard={renderCard}
         renderNoMoreCards={renderNoMoreCards}
@@ -111,7 +125,15 @@ const styles = StyleSheet.create({
   image: {
     height: SCREEN_HEIGHT * 0.5,
   },
-  cardText: { marginBottom: 20 },
+  cardTitle: {
+    marginBottom: 20,
+  },
+  cardDescriptionWrap: {
+    marginTop: 20,
+  },
+  cardDescriptionText: {
+    fontSize: 20,
+  },
 });
 
 export default SerpScreen;
