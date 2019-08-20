@@ -1,26 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { View, StyleSheet } from 'react-native';
-import { Button } from 'react-native-elements';
+import Conversation from '../components/Conversation';
 
-function ChatScreen(props) {
-  const { navigation } = props;
-
-  const onDataButtonPress = () => {
-    navigation.navigate('Serp');
-  };
-
+function ChatScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.main}>
-        <View style={styles.buttonContainer}>
-          <Button
-            style={styles.button}
-            type="outline"
-            title="Provide Welcome Data"
-            onPress={onDataButtonPress}
-          />
-        </View>
+        <Conversation />
       </View>
     </View>
   );
@@ -33,19 +20,10 @@ ChatScreen.navigationOptions = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
+    paddingTop: 30
   },
   main: {
-    flex: 1,
-    justifyContent: 'center',
-  },
-
-  button: {
-    width: '100%',
-  },
-
-  buttonContainer: {
-    margin: 10,
+    flex: 1
   },
 });
 
