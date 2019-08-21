@@ -2,10 +2,9 @@ import React, { Component } from 'react';
 import {
   View,
   Animated,
-  Image,
   PanResponder,
   Dimensions,
-  StyleSheet
+  StyleSheet,
 } from 'react-native';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
@@ -15,18 +14,17 @@ class Deck extends Component {
   state = {
     index: 0,
     opacity: 0,
-    status: null
+    status: null,
   };
 
   constructor(props) {
     super(props);
     this.position = new Animated.ValueXY(0, 0);
+
     this.panResponder = PanResponder.create({
       onStartShouldSetPanResponder: () => true,
       onPanResponderMove: (evt, gesture) => {
         this.position.setValue({ x: gesture.dx, y: gesture.dy });
-        const opacity = Math.abs(gesture.dx) / (SCREEN_WIDTH / 2);
-        this.setState({ opacity, status: gesture.dx < 0 ? 'no' : 'yes' });
       },
       onPanResponderRelease: (evt, gesture) => {
         if (gesture.dx > SWIPE_THRESHOLD) {
@@ -36,7 +34,7 @@ class Deck extends Component {
         } else {
           this.resetPosition();
         }
-      }
+      },
     });
   }
 
@@ -44,7 +42,7 @@ class Deck extends Component {
     const x = (direction === 'right' ? SCREEN_WIDTH : -SCREEN_WIDTH) * 2;
     Animated.timing(this.position, {
       toValue: { x, y: 0 },
-      duration: 250
+      duration: 250,
     }).start(() => {
       this.onSwipeComplete(direction);
     });
@@ -56,7 +54,6 @@ class Deck extends Component {
     direction === 'right' ? onSwipeRight(item) : onSwipeLeft(item);
     this.setState({
       index: this.state.index + 1,
-      opacity: 0
     });
 
     this.position.setValue({ x: 0, y: 0 });
@@ -65,42 +62,38 @@ class Deck extends Component {
   resetPosition = () => {
     Animated.spring(this.position, {
       toValue: { x: 0, y: 0 },
-      friction: 4
+      friction: 4,
     }).start();
-    this.setState({ opacity: 0 });
   };
 
   getCardStyle = () => {
+    if (this.props.swipeDisabled) {
+      return;
+    }
     const { position } = this;
     const rotate = position.x.interpolate({
       inputRange: [-SCREEN_WIDTH * 1.5, 0, SCREEN_WIDTH * 1.5],
-      outputRange: ['-45deg', '0deg', '45deg']
+      outputRange: ['-45deg', '0deg', '45deg'],
     });
 
     return {
       ...this.position.getLayout(),
-      transform: [{ rotate }]
+      transform: [{ rotate }],
     };
   };
 
   render() {
-    const { data, renderCard, renderNoMoreCards } = this.props;
-    const { opacity } = this.state;
+    const { data, renderCard, renderNoMoreCards, swipeDisabled } = this.props;
 
     if (this.state.index >= data.length) {
       return renderNoMoreCards();
     }
 
-    const statusWatermark = (
-      <Image
-        source={
-          this.state.status === 'yes'
-            ? require('../assets/images/ok.png')
-            : require('../assets/images/nope.png')
-        }
-        style={[styles.cardStatus, { opacity }]}
-      />
-    );
+    const cardStyles = [this.getCardStyle(), styles.cardStyle];
+
+    if (swipeDisabled) {
+      cardStyles.push(styles.cardStyleStatic);
+    }
 
     return (
       <View>
@@ -113,11 +106,10 @@ class Deck extends Component {
               return (
                 <Animated.View
                   key={card.id}
-                  style={[this.getCardStyle(), styles.cardStyle]}
-                  {...this.panResponder.panHandlers}
+                  style={cardStyles}
+                  {...(swipeDisabled ? {} : this.panResponder.panHandlers)}
                 >
                   {renderCard(card)}
-                  {statusWatermark}
                 </Animated.View>
               );
             }
@@ -135,17 +127,20 @@ class Deck extends Component {
 
 const styles = StyleSheet.create({
   cardStyle: {
-    position: 'absolute',
     width: SCREEN_WIDTH,
-    justifyContent: 'center'
+    justifyContent: 'center',
+    position: 'absolute',
+  },
+  cardStyleStatic: {
+    position: 'relative',
   },
   cardStatus: {
     position: 'absolute',
     width: 200,
     height: 200,
     alignSelf: 'center',
-    opacity: 0
-  }
+    opacity: 0,
+  },
 });
 
 export default Deck;
