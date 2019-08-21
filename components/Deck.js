@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {
   View,
   Animated,
-  Image,
   PanResponder,
   Dimensions,
   StyleSheet,
@@ -26,8 +25,6 @@ class Deck extends Component {
       onStartShouldSetPanResponder: () => true,
       onPanResponderMove: (evt, gesture) => {
         this.position.setValue({ x: gesture.dx, y: gesture.dy });
-        const opacity = Math.abs(gesture.dx) / (SCREEN_WIDTH / 2);
-        this.setState({ opacity, status: gesture.dx < 0 ? 'no' : 'yes' });
       },
       onPanResponderRelease: (evt, gesture) => {
         if (gesture.dx > SWIPE_THRESHOLD) {
@@ -57,7 +54,6 @@ class Deck extends Component {
     direction === 'right' ? onSwipeRight(item) : onSwipeLeft(item);
     this.setState({
       index: this.state.index + 1,
-      opacity: 0,
     });
 
     this.position.setValue({ x: 0, y: 0 });
@@ -68,7 +64,6 @@ class Deck extends Component {
       toValue: { x: 0, y: 0 },
       friction: 4,
     }).start();
-    this.setState({ opacity: 0 });
   };
 
   getCardStyle = () => {
@@ -89,22 +84,10 @@ class Deck extends Component {
 
   render() {
     const { data, renderCard, renderNoMoreCards, swipeDisabled } = this.props;
-    const { opacity } = this.state;
 
     if (this.state.index >= data.length) {
       return renderNoMoreCards();
     }
-
-    const statusWatermark = !swipeDisabled && (
-      <Image
-        source={
-          this.state.status === 'yes'
-            ? require('../assets/images/ok.png')
-            : require('../assets/images/nope.png')
-        }
-        style={[styles.cardStatus, { opacity }]}
-      />
-    );
 
     const cardStyles = [this.getCardStyle(), styles.cardStyle];
 
@@ -127,7 +110,6 @@ class Deck extends Component {
                   {...(swipeDisabled ? {} : this.panResponder.panHandlers)}
                 >
                   {renderCard(card)}
-                  {statusWatermark}
                 </Animated.View>
               );
             }
