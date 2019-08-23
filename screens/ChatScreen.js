@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { View, StyleSheet } from 'react-native';
 import Conversation from '../components/Conversation';
 
@@ -27,8 +26,4 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = state => {
-  return { user: state.user };
-};
-
-export default connect(mapStateToProps)(ChatScreen);
+export default ChatScreen;
