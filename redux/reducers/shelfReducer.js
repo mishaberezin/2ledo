@@ -1,10 +1,10 @@
 const INITIAL_STATE = {};
 
-const profilesReducer = (state = INITIAL_STATE, action) => {
+const shelfReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     default:
       return state;
   }
 };
 
-export default profilesReducer;
+export default shelfReducer;
