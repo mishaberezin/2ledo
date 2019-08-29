@@ -5,6 +5,7 @@ import SerpScreen from '../screens/SerpScreen';
 import CardScreen from '../screens/CardScreen';
 import ChatScreen from '../screens/ChatScreen';
 import MatchScreen from '../screens/MatchScreen';
+import FavoritesScreen from '../screens/FavoritesScreen';
 
 const MainStack = createBottomTabNavigator(
   {
@@ -12,6 +13,7 @@ const MainStack = createBottomTabNavigator(
     Serp: SerpScreen,
     Card: CardScreen,
     TaskCreation: TaskCreationScreen,
+    Favorites: FavoritesScreen,
     Settings: SettingsScreen,
     Match: MatchScreen,
   },
