@@ -1,12 +1,14 @@
 import { combineReducers } from 'redux';
-import appReducer from './reducers/appReducer.js';
-import userReducer from './reducers/userReducer.js';
-import profilesReducer from './reducers/profilesReducer.js';
-import cardsReducer from './reducers/cardsReducer.js';
+import appReducer from './reducers/appReducer';
+import userReducer from './reducers/userReducer';
+import profileReducer from './reducers/profileReducer';
+import deckReducer from './reducers/deckReducer';
+import shelfReducer from './reducers/shelfReducer';
 
 export default combineReducers({
   app: appReducer,
   user: userReducer,
-  profiles: profilesReducer,
-  cards: cardsReducer,
+  profile: profileReducer,
+  deck: deckReducer,
+  shelf: shelfReducer,
 });

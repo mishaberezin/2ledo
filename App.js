@@ -15,16 +15,14 @@ export default function App() {
   return (
     <Provider store={store}>
       <ThemeProvider>
-      <ApplicationProvider
-        mapping={mapping}
-        theme={lightTheme}>
-        <Layout style={{flex: 1}}>
-          <View style={styles.container}>
-            <StatusBar barStyle="default" />
-            <Navigation />
-          </View>
-        </Layout>
-      </ApplicationProvider>
+        <ApplicationProvider mapping={mapping} theme={lightTheme}>
+          <Layout style={{ flex: 1 }}>
+            <View style={styles.container}>
+              <StatusBar barStyle="default" />
+              <Navigation />
+            </View>
+          </Layout>
+        </ApplicationProvider>
       </ThemeProvider>
     </Provider>
   );

@@ -6,8 +6,13 @@ import {
 
 const INITIAL_STATE = {
   name: null,
-  phone: null,
+  phoneNumber: null,
+  profile: null,
   photo: null,
+  bio: null,
+  gender: null,
+  age: null,
+  links: null,
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {

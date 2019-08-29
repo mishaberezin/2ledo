@@ -4,15 +4,7 @@ import { persistMiddleware } from './persist';
 import rootReducer from './reducer.js';
 import api from '../api';
 
-// Времянка. Потом из кеша будем брать.
-const preloadedState = {
-  app: {},
-  user: {
-    name: 'Misha',
-  },
-  profiles: [],
-  cards: [],
-};
+import preloadedState from './__preloadedState';
 
 const store = createStore(
   rootReducer,
