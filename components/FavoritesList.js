@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback } from 'react';
 import { List, withStyles } from 'react-native-ui-kitten';
 import { View } from 'react-native';
 
@@ -9,18 +9,10 @@ const FavoritesListContainer = ({ items, themedStyle }) => {
     return <FavoritesListItem item={item} />;
   }, []);
 
-  const listRef = useMemo(() => React.createRef(), []);
-
-  const handleListContentSizeChange = useCallback(() => {
-    setTimeout(() => listRef.current.scrollToEnd({ animated: true }), 0);
-  }, [listRef]);
-
   return (
     <View style={themedStyle.container}>
       <List
-        ref={listRef}
         contentContainerStyle={themedStyle.listContainer}
-        onContentSizeChange={handleListContentSizeChange}
         data={items}
         renderItem={renderItem}
       />
