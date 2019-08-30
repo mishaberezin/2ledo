@@ -4,9 +4,9 @@ import { withStyles, Text } from 'react-native-ui-kitten';
 
 import { Ionicons } from '@expo/vector-icons';
 
-const FavoritesListItemContainer = ({ item, themedStyle }) => {
+const FavoritesListItemContainer = ({ item, style, themedStyle }) => {
   return (
-    <View style={themedStyle.listItemContainer}>
+    <View style={[style, themedStyle.listItemContainer]}>
       <ScrollView
         style={themedStyle.listItemInfo}
         showsHorizontalScrollIndicator={false}
@@ -52,7 +52,6 @@ const FavoritesListItem = withStyles(FavoritesListItemContainer, () => ({
     paddingHorizontal: 10,
     paddingVertical: 10,
     marginBottom: 10,
-
     backgroundColor: '#fff',
     minWidth: Dimensions.get('window').width,
   },

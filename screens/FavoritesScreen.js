@@ -87,7 +87,7 @@ function FavoritesScreen() {
   return (
     <Layout style={styles.container}>
       <Layout style={styles.main}>
-        <FavoritesList items={DATA} />
+        <FavoritesList title="Да" items={DATA} />
       </Layout>
     </Layout>
   );
@@ -104,6 +104,7 @@ const styles = StyleSheet.create({
   },
   main: {
     flex: 1,
+    paddingTop: 100,
   },
 });
 

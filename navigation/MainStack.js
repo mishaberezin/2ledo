@@ -21,7 +21,7 @@ const MainStack = createBottomTabNavigator(
     Favorites: FavoritesScreen,
   },
   {
-    initialRouteName: 'Chat',
+    initialRouteName: 'Favorites',
   }
 );
 
