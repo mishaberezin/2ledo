@@ -1,16 +1,43 @@
-import { createAppContainer, createSwitchNavigator } from 'react-navigation';
+import {
+  createAppContainer,
+  createSwitchNavigator,
+  createBottomTabNavigator,
+} from 'react-navigation';
 
 import InitScreen from '../screens/InitScreen';
-import MainStack from './MainStack';
+// import TaskCreationScreen from '../screens/TaskCreationScreen';
+import SerpScreen from '../screens/SerpScreen';
+import CardScreen from '../screens/CardScreen';
+import ChatScreen from '../screens/ChatScreen';
+import MatchScreen from '../screens/MatchScreen';
+import SettingsStack from './SettingsStack';
+import FavoritesStack from './FavoritesStack';
 
-export default createAppContainer(
+const MainStack = createBottomTabNavigator(
+  {
+    Chat: ChatScreen,
+    Serp: SerpScreen,
+    Card: CardScreen,
+    // TaskCreation: TaskCreationScreen,
+    Settings: SettingsStack,
+    Match: MatchScreen,
+    Favorites: FavoritesStack,
+  },
+  {
+    initialRouteName: 'Favorites',
+  }
+);
+
+const RootStack = createAppContainer(
   createSwitchNavigator(
     {
       Init: InitScreen,
-      Main: MainStack
+      Main: MainStack,
     },
     {
-      initialRouteName: 'Init'
+      initialRouteName: 'Init',
     }
   )
 );
+
+export default RootStack;
