@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, ScrollView } from 'react-native';
 import { Layout, Text } from 'react-native-ui-kitten';
 import COLORS from '../constants/colors';
 
@@ -93,11 +93,13 @@ const groups = [
 function FavoritesScreen() {
   return (
     <Layout style={styles.container}>
-      <FavoritesGroupsList groups={groups} />
+      <ScrollView>
+        <FavoritesGroupsList groups={groups} />
 
-      <PlateWithContenet>
-        <Text>Привет мир!</Text>
-      </PlateWithContenet>
+        <PlateWithContenet>
+          <Text>Привет мир!</Text>
+        </PlateWithContenet>
+      </ScrollView>
     </Layout>
   );
 }
