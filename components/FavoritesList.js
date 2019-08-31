@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { withStyles } from 'react-native-ui-kitten';
 
-import Plate from './Plate';
+import PlateWithList from './PlateWithList';
 
 import FavoritesListItem from './FavoritesListItem';
 import FavoritesListHeader from './FavoritesListHeader';
@@ -19,7 +19,7 @@ const FavoritesListContainer = ({ title, items, themedStyle }) => {
   );
 
   return (
-    <Plate
+    <PlateWithList
       items={items}
       renderItem={renderItem}
       opened={opened}

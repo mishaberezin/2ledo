@@ -1,9 +1,10 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-import { Layout } from 'react-native-ui-kitten';
+import { Layout, Text } from 'react-native-ui-kitten';
 import COLORS from '../constants/colors';
 
 import FavoritesGroupsList from '../components/FavoritesGroupsList';
+import PlateWithContenet from '../components/PlateWithContenet';
 
 const DATA = [
   {
@@ -93,6 +94,10 @@ function FavoritesScreen() {
   return (
     <Layout style={styles.container}>
       <FavoritesGroupsList groups={groups} />
+
+      <PlateWithContenet>
+        <Text>Привет мир!</Text>
+      </PlateWithContenet>
     </Layout>
   );
 }

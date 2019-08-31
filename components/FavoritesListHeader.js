@@ -7,13 +7,12 @@ const FavoritesListHeaderContainer = ({
   title,
   opened,
   onTogglePress,
-  style,
   themedStyle,
 }) => {
   const handleToggle = useCallback(onTogglePress, [opened]);
 
   return (
-    <View style={[themedStyle.headerContainer, style]}>
+    <View style={themedStyle.headerContainer}>
       <View style={themedStyle.headerText}>
         <Text category="h6">{title}</Text>
       </View>

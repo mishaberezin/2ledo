@@ -1,8 +1,9 @@
 import React from 'react';
 import { withStyles } from 'react-native-ui-kitten';
 import { View, FlatList } from 'react-native';
+import COLORS from '../constants/colors'
 
-const PlateContainer = ({
+const PlateWithListContainer = ({
   themedStyle,
   items,
   opened,
@@ -34,7 +35,7 @@ const PlateContainer = ({
 
 const LIST_MARGIN = 10;
 
-const Plate = withStyles(PlateContainer, () => ({
+const PlateWithList = withStyles(PlateWithListContainer, () => ({
   container: {
     justifyContent: 'center',
     allignItems: 'center',
@@ -48,7 +49,7 @@ const Plate = withStyles(PlateContainer, () => ({
   },
   listContainer: {
     backgroundColor: '#fff',
-    borderColor: '#EAE2FC',
+    borderColor: COLORS.mainBackgroundColor,
     borderWidth: 2,
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
@@ -59,8 +60,8 @@ const Plate = withStyles(PlateContainer, () => ({
   },
   listContainerOpened: {
     paddingBottom: 20,
-    backgroundColor: '#EAE2FC',
+    backgroundColor: COLORS.mainBackgroundColor,
   },
 }));
 
-export default Plate;
+export default PlateWithList;
