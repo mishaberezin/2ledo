@@ -7,6 +7,7 @@ export default {
     gender: 'male',
     birthYear: 1988,
     photos: ['sgtv5765ig7ubhj'],
+    profile: 'dsfs',
   },
   profile: {
     type: 'landlord', // tenant
@@ -22,5 +23,5 @@ export default {
       metro: 'Строгино',
     },
   },
-  deck: [],
+  deck: [{}],
 };

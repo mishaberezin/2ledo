@@ -13,6 +13,7 @@ function SettingsTuneScreen(props) {
       style={{
         flex: 1,
         backgroundColor: '#FCFBFF',
+        paddingTop: 10,
       }}
     >
       <View

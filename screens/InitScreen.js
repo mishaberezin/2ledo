@@ -25,6 +25,8 @@ async function loadResourcesAsync() {
     ]),
     Font.loadAsync({
       'space-mono': require('../assets/fonts/SpaceMono-Regular.ttf'),
+      'ceracy-desktop-medium': require('../assets/fonts/CeraCY-Desktop-Medium.otf'),
+      'ceracy-desktop-bold': require('../assets/fonts/CeraCY-Desktop-Bold.otf'),
     }),
   ]);
 }
