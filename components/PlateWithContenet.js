@@ -99,7 +99,7 @@ const PlateWithContenet = withStyles(PlateWithContenetContainer, () => ({
   headerControls: {
     flex: 2,
     flexDirection: 'row',
-    paddingRight: 10,
+    paddingRight: 20,
     alignItems: 'flex-end',
     justifyContent: 'space-between',
   },
