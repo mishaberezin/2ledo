@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { setUserName, setUserPhoto } from '../redux/actions/userActions.js';
-import { View } from 'react-native';
+import { View, SectionList } from 'react-native';
 import { Text } from 'react-native-ui-kitten';
 
 function SettingsTuneScreen(props) {
@@ -25,6 +25,21 @@ function SettingsTuneScreen(props) {
         <Text>numberOfRooms: {tune.numberOfRooms}</Text>
         <Text>FLOOR: {tune.floor}</Text>
         <Text>metro: {tune.metro}</Text>
+        <SectionList
+          ItemSeparatorComponent={() => (
+            <Text appearance="hint">Separator View</Text>
+          )}
+          renderItem={({ item, index }) => <Text key={index}>{item}</Text>}
+          renderSectionHeader={({ section: { title } }) => (
+            <Text style={{ fontWeight: 'bold' }}>{title}</Text>
+          )}
+          sections={[
+            { title: 'Title1', data: ['item1', 'item2'] },
+            { title: 'Title2', data: ['item3', 'item4'] },
+            { title: 'Title3', data: ['item5', 'item6'] },
+          ]}
+          keyExtractor={(item, index) => item + index}
+        />
       </View>
     </View>
   );

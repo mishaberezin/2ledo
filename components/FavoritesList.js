@@ -4,7 +4,6 @@ import { View, FlatList } from 'react-native';
 
 import FavoritesListItem from './FavoritesListItem';
 import FavoritesListHeader from './FavoritesListHeader';
-import Colors from '../constants/Colors';
 
 const FavoritesListContainer = ({ title, items, themedStyle }) => {
   const [listItems, setListItems] = useState([]);
@@ -55,7 +54,7 @@ const FavoritesList = withStyles(FavoritesListContainer, () => ({
     marginBottom: 10,
   },
   listContainer: {
-    backgroundColor: Colors.mainBackgroundColor,
+    backgroundColor: '#EAE2FC',
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
     borderTopLeftRadius: 20,
