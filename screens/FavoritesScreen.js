@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Layout } from 'react-native-ui-kitten';
 
-import FavoritesList from '../components/FavoritesList';
+import FavoritesGroupsList from '../components/FavoritesGroupsList';
 
 const DATA = [
   {
@@ -83,11 +83,16 @@ const DATA = [
   },
 ];
 
+const groups = [
+  { title: 'Да', items: DATA.slice(0, 1) },
+  { title: 'Думаем', items: DATA.slice(1) },
+];
+
 function FavoritesScreen() {
   return (
     <Layout style={styles.container}>
       <Layout style={styles.main}>
-        <FavoritesList title="Да" items={DATA} />
+        <FavoritesGroupsList groups={groups} />
       </Layout>
     </Layout>
   );

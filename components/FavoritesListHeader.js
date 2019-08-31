@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { Text, withStyles } from 'react-native-ui-kitten';
-import { View } from 'react-native';
+import { View, TouchableWithoutFeedback } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 const FavoritesListHeaderContainer = ({
@@ -18,24 +18,25 @@ const FavoritesListHeaderContainer = ({
         <Text category="h6">{title}</Text>
       </View>
       <View style={themedStyle.headerControls}>
-        <Ionicons name="md-more" size={32} color="gray" />
-        {opened ? (
+        <View style={themedStyle.controlWrapper}>
           <Ionicons
-            style={themedStyle.iconToggle}
-            name="ios-arrow-up"
-            size={22}
-            color="black"
-            onPress={handleToggle}
+            style={themedStyle.iconMore}
+            name="md-more"
+            size={32}
+            color="gray"
           />
-        ) : (
-          <Ionicons
-            style={themedStyle.iconToggle}
-            name="ios-arrow-down"
-            size={22}
-            color="black"
-            onPress={handleToggle}
-          />
-        )}
+        </View>
+        <TouchableWithoutFeedback activeOpacity={1} onPress={handleToggle}>
+          <View style={themedStyle.controlWrapper}>
+            {
+              <Ionicons
+                name={opened ? 'ios-arrow-up' : 'ios-arrow-down'}
+                size={22}
+                color="black"
+              />
+            }
+          </View>
+        </TouchableWithoutFeedback>
       </View>
     </View>
   );
@@ -49,17 +50,21 @@ const FavoritesListHeader = withStyles(FavoritesListHeaderContainer, () => ({
   headerText: {
     paddingLeft: 20,
     justifyContent: 'center',
-    flex: 5,
+    flex: 4,
   },
   headerControls: {
-    flex: 1,
+    flex: 2,
     flexDirection: 'row',
     paddingRight: 10,
     alignItems: 'flex-end',
     justifyContent: 'space-between',
   },
-  iconToggle: {
-    marginBottom: 5,
+  controlWrapper: {
+    width: 50,
+    paddingBottom: 10,
+    paddingTop: 10,
+    paddingHorizontal: 10,
+    alignItems: 'center',
   },
 }));
 

@@ -1,55 +1,45 @@
 import React, { useCallback, useState } from 'react';
-import { List, withStyles } from 'react-native-ui-kitten';
-import { View } from 'react-native';
+import { withStyles } from 'react-native-ui-kitten';
+import { View, FlatList } from 'react-native';
 
 import FavoritesListItem from './FavoritesListItem';
 import FavoritesListHeader from './FavoritesListHeader';
 import Colors from '../constants/Colors';
 
 const FavoritesListContainer = ({ title, items, themedStyle }) => {
-  const [opened, setOpened] = useState(false);
+  const [listItems, setListItems] = useState([]);
 
-  const handleToggle = useCallback(() => {
-    setOpened(!opened);
-  }, [opened]);
+  const handleToggle = () => setListItems(listItems.length ? [] : items);
 
   const renderItem = useCallback(
-    ({ item, index }) => {
-      if (index === 0) {
-        return (
-          <FavoritesListHeader
-            title={title}
-            opened={opened}
-            style={themedStyle.listHeaderStyle}
-            onTogglePress={handleToggle}
-          />
-        );
-      }
+    ({ item }) => {
       return (
         <FavoritesListItem style={themedStyle.listItemStyle} item={item} />
       );
     },
-    [
-      themedStyle.listItemStyle,
-      themedStyle.listHeaderStyle,
-      title,
-      opened,
-      handleToggle,
-    ]
+    [themedStyle.listItemStyle]
   );
-
-  const data = opened ? [null, ...items] : [null];
 
   const contentContainerStyle = [
     themedStyle.listContainer,
-    opened && themedStyle.listContainerOpened,
+    listItems.length && themedStyle.listContainerOpened,
   ];
 
   return (
     <View style={themedStyle.container}>
-      <List
+      <FlatList
+        keyExtractor={item => '' + item.id}
+        showsVerticalScrollIndicator={false}
+        ListHeaderComponent={
+          <FavoritesListHeader
+            title={title}
+            opened={listItems.length > 0}
+            onTogglePress={handleToggle}
+          />
+        }
+        ListHeaderComponentStyle={themedStyle.headerContainer}
         contentContainerStyle={contentContainerStyle}
-        data={data}
+        data={listItems}
         renderItem={renderItem}
       />
     </View>
@@ -60,25 +50,28 @@ const LIST_MARGIN = 10;
 
 const FavoritesList = withStyles(FavoritesListContainer, () => ({
   container: {
-    flex: 1,
     justifyContent: 'center',
     allignItems: 'center',
+    marginBottom: 10,
   },
   listContainer: {
     backgroundColor: Colors.mainBackgroundColor,
-    borderRadius: 20,
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
     marginLeft: LIST_MARGIN,
     marginRight: LIST_MARGIN,
+  },
+  headerContainer: {
+    height: 50,
+    marginHorizontal: LIST_MARGIN,
   },
   listContainerOpened: {
     paddingBottom: 20,
   },
   listItemStyle: {
     transform: [{ translateX: -LIST_MARGIN }],
-  },
-  listHeaderStyle: {
-    paddingHorizontal: LIST_MARGIN,
-    paddingVertical: 5,
   },
 }));
 
