@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { setUserName, setUserPhoto } from '../redux/actions/userActions.js';
 import { View, SectionList } from 'react-native';
 import { Text } from 'react-native-ui-kitten';
+import COLORS from '../constants/colors';
 
 function SettingsTuneScreen(props) {
   const { profile } = props;
@@ -13,7 +14,8 @@ function SettingsTuneScreen(props) {
     <View
       style={{
         flex: 1,
-        backgroundColor: '#FCFBFF',
+        backgroundColor: COLORS.screenBackground,
+        paddingTop: 10,
       }}
     >
       <View

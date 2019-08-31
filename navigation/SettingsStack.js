@@ -1,5 +1,5 @@
 import React from 'react';
-import SettingsHeader from '../components/SettingsHeader';
+import NavHeader from '../components/NavHeader';
 import { createStackNavigator } from 'react-navigation';
 import SettingsTuneScreen from '../screens/SettingsTuneScreen';
 import SettingsDataScreen from '../screens/SettingsDataScreen';
@@ -16,10 +16,13 @@ const SettingsStack = createStackNavigator(
     defaultNavigationOptions: ({ navigation }) => {
       return {
         header: (
-          <SettingsHeader
-            onTunePress={() => navigation.navigate('Tune')}
-            onDataPress={() => navigation.navigate('Data')}
-            onUserPress={() => navigation.navigate('User')}
+          <NavHeader
+            title="Настройки"
+            menuItems={[
+              { text: 'Ищу', onPress: () => navigation.navigate('Tune') },
+              { text: 'Предлагаю', onPress: () => navigation.navigate('Data') },
+              { text: 'О себе', onPress: () => navigation.navigate('User') },
+            ]}
           />
         ),
       };

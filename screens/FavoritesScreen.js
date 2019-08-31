@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { Layout } from 'react-native-ui-kitten';
+import COLORS from '../constants/colors';
 
 import FavoritesGroupsList from '../components/FavoritesGroupsList';
 
@@ -91,25 +92,16 @@ const groups = [
 function FavoritesScreen() {
   return (
     <Layout style={styles.container}>
-      <Layout style={styles.main}>
-        <FavoritesGroupsList groups={groups} />
-      </Layout>
+      <FavoritesGroupsList groups={groups} />
     </Layout>
   );
 }
-
-FavoritesScreen.navigationOptions = {
-  title: '💌',
-};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 30,
-  },
-  main: {
-    flex: 1,
-    paddingTop: 100,
+    backgroundColor: COLORS.screenBackground,
   },
 });
 
