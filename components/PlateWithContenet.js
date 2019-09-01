@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withStyles } from 'react-native-ui-kitten';
-import { View, Animated } from 'react-native';
+import { Animated } from 'react-native';
 
 import COLORS from '../constants/colors';
 import PlateHeader from './PlateHeader';
@@ -11,6 +11,7 @@ class PlateWithContenetContainer extends Component {
   constructor(props) {
     super(props);
     this.animatedHeight = new Animated.Value(INITIAL_HEIGHT);
+    this.animatedOpacity = new Animated.Value(0);
     this.state = {
       opened: props.opened || false,
       height: INITIAL_HEIGHT,
@@ -30,25 +31,36 @@ class PlateWithContenetContainer extends Component {
     }
   };
 
+  openPlate = () => {
+    Animated.timing(this.animatedHeight, {
+      toValue: this.state.openedHeight,
+    }).start(() => {
+      Animated.spring(this.animatedOpacity, {
+        toValue: 1,
+      }).start();
+    });
+  };
+
+  closePlate = () => {
+    this.animatedOpacity.setValue(0);
+    Animated.timing(this.animatedHeight, {
+      toValue: INITIAL_HEIGHT,
+    }).start();
+  };
+
   render() {
     const { title, children, themedStyle, contentStyle } = this.props;
 
     const { opened } = this.state;
 
     const handleToggle = () => {
-      const { height, openedHeight } = this.state;
-
-      const newHeight =
-        height === INITIAL_HEIGHT ? openedHeight : INITIAL_HEIGHT;
-
+      const { opened, openedHeight } = this.state;
+      const newHeight = opened ? INITIAL_HEIGHT : openedHeight;
       this.setState({
         opened: !opened,
         height: newHeight,
       });
-
-      Animated.timing(this.animatedHeight, {
-        toValue: newHeight,
-      }).start();
+      opened ? this.closePlate() : this.openPlate();
     };
 
     const contentContainerStyle = [
@@ -71,9 +83,12 @@ class PlateWithContenetContainer extends Component {
           onTogglePress={handleToggle}
           headerContainerStyle={themedStyle.headerContainerStyle}
         />
-        <View style={contentContainerStyle} onLayout={this.handleContentLayout}>
+        <Animated.View
+          style={[contentContainerStyle, { opacity: this.animatedOpacity }]}
+          onLayout={this.handleContentLayout}
+        >
           {children}
-        </View>
+        </Animated.View>
       </Animated.View>
     );
   }
@@ -89,7 +104,6 @@ const PlateWithContenet = withStyles(PlateWithContenetContainer, () => ({
     borderWidth: 2,
     borderRadius: 20,
     backgroundColor: COLORS.mainBackgroundColor,
-    overflow: 'hidden',
   },
   containerClosed: {
     backgroundColor: '#fff',
