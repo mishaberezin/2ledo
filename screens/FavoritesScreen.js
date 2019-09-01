@@ -98,6 +98,7 @@ function FavoritesScreen() {
 
         <PlateWithContenet title="Что-то там">
           <Text>Привет мир!</Text>
+          <Text>Еще немного текста тут</Text>
         </PlateWithContenet>
       </ScrollView>
     </Layout>
