@@ -1,10 +1,16 @@
 import React, { useCallback, useState } from 'react';
-import { withStyles, Text } from 'react-native-ui-kitten';
-import { View, TouchableWithoutFeedback } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import COLORS from '../constants/colors';
+import { withStyles } from 'react-native-ui-kitten';
+import { View } from 'react-native';
 
-const PlateWithContenetContainer = ({ themedStyle, opened, children }) => {
+import COLORS from '../constants/colors';
+import PlateHeader from './PlateHeader';
+
+const PlateWithContenetContainer = ({
+  opened,
+  title,
+  children,
+  themedStyle,
+}) => {
   const [isOpened, setOpened] = useState(opened);
 
   const handleToggle = useCallback(() => setOpened(!isOpened), [isOpened]);
@@ -18,37 +24,12 @@ const PlateWithContenetContainer = ({ themedStyle, opened, children }) => {
     <View
       style={[themedStyle.container, !isOpened && themedStyle.containerClosed]}
     >
-      <View style={themedStyle.contentHeaderStyle}>
-        <View style={themedStyle.headerText}>
-          <Text category="h6">Привет</Text>
-        </View>
-        <View style={themedStyle.headerControls}>
-          <View style={themedStyle.controlWrapper}>
-            <Ionicons
-              style={themedStyle.iconMore}
-              name="md-more"
-              size={32}
-              color="gray"
-            />
-          </View>
-          <TouchableWithoutFeedback activeOpacity={1} onPress={handleToggle}>
-            <View
-              style={[
-                themedStyle.controlWrapper,
-                isOpened && themedStyle.controlWrapperOpened,
-              ]}
-            >
-              {
-                <Ionicons
-                  name={isOpened ? 'ios-arrow-up' : 'ios-arrow-down'}
-                  size={22}
-                  color="black"
-                />
-              }
-            </View>
-          </TouchableWithoutFeedback>
-        </View>
-      </View>
+      <PlateHeader
+        opened={isOpened}
+        title={title}
+        onTogglePress={handleToggle}
+        headerContainerStyle={themedStyle.headerContainerStyle}
+      />
       <View style={contentContainerStyle}>{children}</View>
     </View>
   );
@@ -61,14 +42,10 @@ const PlateWithContenet = withStyles(PlateWithContenetContainer, () => ({
     justifyContent: 'flex-start',
     allignItems: 'center',
     marginVertical: 10,
+    marginHorizontal: LIST_MARGIN,
     borderColor: COLORS.mainBackgroundColor,
     borderWidth: 2,
-    borderBottomLeftRadius: 20,
-    borderBottomRightRadius: 20,
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    marginLeft: LIST_MARGIN,
-    marginRight: LIST_MARGIN,
+    borderRadius: 20,
     backgroundColor: COLORS.mainBackgroundColor,
   },
   containerClosed: {
@@ -81,37 +58,17 @@ const PlateWithContenet = withStyles(PlateWithContenetContainer, () => ({
   },
   contentContainer: {
     height: 0,
-    padding: 20,
+    paddingVertical: 20,
+    paddingHorizontal: 25,
   },
   contentContainerOpened: {
     height: 'auto',
     borderTopWidth: 1,
     borderColor: '#DADAF0',
   },
-  contentHeaderStyle: {
-    flexDirection: 'row',
-  },
-  headerText: {
-    paddingLeft: 20,
-    justifyContent: 'center',
-    flex: 4,
-  },
-  headerControls: {
-    flex: 2,
-    flexDirection: 'row',
-    paddingRight: 20,
-    alignItems: 'flex-end',
-    justifyContent: 'space-between',
-  },
-  controlWrapper: {
-    width: 50,
-    paddingBottom: 10,
-    paddingTop: 10,
-    paddingHorizontal: 10,
-    alignItems: 'center',
-  },
-  controlWrapperOpened: {
-    paddingBottom: 15,
+  headerContainerStyle: {
+    paddingHorizontal: 6,
+    paddingVertical: 5,
   },
 }));
 

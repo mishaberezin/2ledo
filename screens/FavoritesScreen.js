@@ -96,7 +96,7 @@ function FavoritesScreen() {
       <ScrollView>
         <FavoritesGroupsList groups={groups} />
 
-        <PlateWithContenet>
+        <PlateWithContenet title="Что-то там">
           <Text>Привет мир!</Text>
         </PlateWithContenet>
       </ScrollView>
