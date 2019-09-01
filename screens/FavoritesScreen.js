@@ -4,6 +4,7 @@ import { Layout, Text } from 'react-native-ui-kitten';
 import COLORS from '../constants/colors';
 
 import FavoritesGroupsList from '../components/FavoritesGroupsList';
+import FavoritesList from '../components/FavoritesList';
 import PlateWithContenet from '../components/PlateWithContenet';
 
 const DATA = [
@@ -98,6 +99,13 @@ function FavoritesScreen() {
 
         <PlateWithContenet title="Что-то там">
           <Text>Привет мир!</Text>
+          <Text>Еще немного текста тут</Text>
+        </PlateWithContenet>
+
+        <FavoritesList title={groups[0].title} items={groups[0].items} />
+
+        <PlateWithContenet title="Что-то тут">
+          <Text>Привет теперь!</Text>
           <Text>Еще немного текста тут</Text>
         </PlateWithContenet>
       </ScrollView>

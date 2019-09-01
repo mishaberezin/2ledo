@@ -6,6 +6,8 @@ import PlateWithList from './PlateWithList';
 import FavoritesListItem from './FavoritesListItem';
 import FavoritesListHeader from './FavoritesListHeader';
 
+const ITEM_HEIGHT = 170;
+
 const FavoritesListContainer = ({ title, items, themedStyle }) => {
   const [opened, setOpened] = useState(false);
 
@@ -31,6 +33,11 @@ const FavoritesListContainer = ({ title, items, themedStyle }) => {
         />
       }
       headerComponentStyle={themedStyle.headerContainer}
+      getItemLayout={(data, index) => ({
+        length: ITEM_HEIGHT,
+        offset: ITEM_HEIGHT * index,
+        index,
+      })}
     />
   );
 };
