@@ -25,12 +25,7 @@ const PlateHeaderContainer = ({
           </View>
         ))}
         <TouchableWithoutFeedback activeOpacity={1} onPress={handleToggle}>
-          <View
-            style={[
-              themedStyle.controlWrapper,
-              opened && themedStyle.controlWrapperOpened,
-            ]}
-          >
+          <View style={themedStyle.controlWrapper}>
             {
               <Ionicons
                 name={`ios-arrow-${opened ? 'up' : 'down'}`}
@@ -67,9 +62,6 @@ const PlateHeader = withStyles(PlateHeaderContainer, () => ({
     paddingTop: 10,
     paddingHorizontal: 10,
     alignItems: 'center',
-  },
-  controlWrapperOpened: {
-    paddingBottom: 15,
   },
 }));
 

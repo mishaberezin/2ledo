@@ -6,7 +6,6 @@ import COLORS from '../constants/colors';
 import PlateHeader from './PlateHeader';
 
 const INITIAL_HEIGHT = 55;
-const CONTENET_CONTAINER_PADDING = 20; // костыль
 
 class PlateWithContenetContainer extends Component {
   constructor(props) {
@@ -21,19 +20,18 @@ class PlateWithContenetContainer extends Component {
 
   handleContentLayout = ({
     nativeEvent: {
-      layout: { height: contentHeight },
+      layout: { height },
     },
   }) => {
     if (!this.state.openedHeight) {
       this.setState({
-        openedHeight:
-          INITIAL_HEIGHT + contentHeight + CONTENET_CONTAINER_PADDING + 5,
+        openedHeight: INITIAL_HEIGHT + height + 40,
       });
     }
   };
 
   render() {
-    const { title, children, themedStyle } = this.props;
+    const { title, children, themedStyle, contentStyle } = this.props;
 
     const { opened } = this.state;
 
@@ -48,13 +46,14 @@ class PlateWithContenetContainer extends Component {
         height: newHeight,
       });
 
-      Animated.spring(this.animatedHeight, {
+      Animated.timing(this.animatedHeight, {
         toValue: newHeight,
       }).start();
     };
 
     const contentContainerStyle = [
       themedStyle.contentContainer,
+      contentStyle,
       opened && themedStyle.contentContainerOpened,
     ];
 
@@ -84,9 +83,7 @@ const LIST_MARGIN = 10;
 
 const PlateWithContenet = withStyles(PlateWithContenetContainer, () => ({
   container: {
-    justifyContent: 'flex-start',
-    allignItems: 'center',
-    marginVertical: 10,
+    marginTop: 10,
     marginHorizontal: LIST_MARGIN,
     borderColor: COLORS.mainBackgroundColor,
     borderWidth: 2,
@@ -95,23 +92,25 @@ const PlateWithContenet = withStyles(PlateWithContenetContainer, () => ({
     overflow: 'hidden',
   },
   containerClosed: {
+    backgroundColor: '#fff',
     shadowColor: 'black',
     shadowOpacity: 0.15,
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 5,
-    backgroundColor: '#fff',
   },
   contentContainer: {
-    paddingVertical: CONTENET_CONTAINER_PADDING,
+    paddingVertical: 20,
     paddingHorizontal: 25,
   },
   contentContainerOpened: {
     borderTopWidth: 1,
     borderColor: '#DADAF0',
   },
+  // выравниваем заголовок в контейнере
   headerContainerStyle: {
+    position: 'relative',
+    top: 4,
     paddingHorizontal: 6,
-    paddingVertical: 5,
   },
 }));
 
