@@ -8,9 +8,8 @@ import FavoritesListHeader from './FavoritesListHeader';
 
 const ITEM_HEIGHT = 170;
 
-const FavoritesListContainer = ({ title, items, themedStyle }) => {
+const FavoritesListContainer = ({ title, items, withCat, themedStyle }) => {
   const [opened, setOpened] = useState(false);
-
   const handleToggle = () => setOpened(!opened);
 
   const renderItem = useCallback(
@@ -30,6 +29,7 @@ const FavoritesListContainer = ({ title, items, themedStyle }) => {
           title={title}
           opened={opened}
           onTogglePress={handleToggle}
+          withCat={withCat}
         />
       }
       headerComponentStyle={themedStyle.headerContainer}

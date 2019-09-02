@@ -5,7 +5,7 @@ import COLORS from '../constants/colors';
 
 import FavoritesGroupsList from '../components/FavoritesGroupsList';
 import FavoritesList from '../components/FavoritesList';
-import PlateWithContenet from '../components/PlateWithContenet';
+import PlateWithContent from '../components/PlateWithContent';
 
 const DATA = [
   {
@@ -97,17 +97,21 @@ function FavoritesScreen() {
       <ScrollView>
         <FavoritesGroupsList groups={groups} />
 
-        <PlateWithContenet title="Что-то там">
+        <PlateWithContent title="Что-то там" withCat>
           <Text>Привет мир!</Text>
           <Text>Еще немного текста тут</Text>
-        </PlateWithContenet>
+        </PlateWithContent>
 
-        <FavoritesList title={groups[0].title} items={groups[0].items} />
+        <FavoritesList
+          title={groups[0].title}
+          items={groups[0].items}
+          withCat
+        />
 
-        <PlateWithContenet title="Что-то тут">
+        <PlateWithContent title="Что-то тут">
           <Text>Привет теперь!</Text>
           <Text>Еще немного текста тут</Text>
-        </PlateWithContenet>
+        </PlateWithContent>
       </ScrollView>
     </Layout>
   );

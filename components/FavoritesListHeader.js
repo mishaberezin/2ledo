@@ -8,11 +8,17 @@ const FavoritesListHeaderContainer = ({
   opened,
   onTogglePress,
   themedStyle,
+  withCat,
 }) => {
   const handleToggle = useCallback(onTogglePress, [opened]);
 
   return (
-    <PlateHeader opened={opened} title={title} onTogglePress={handleToggle}>
+    <PlateHeader
+      opened={opened}
+      title={title}
+      onTogglePress={handleToggle}
+      withCat={withCat}
+    >
       <Ionicons
         style={themedStyle.iconMore}
         name="md-more"

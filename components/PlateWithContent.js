@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { withStyles } from 'react-native-ui-kitten';
-import { Animated } from 'react-native';
+import { Animated, View } from 'react-native';
 
 import COLORS from '../constants/colors';
 import PlateHeader from './PlateHeader';
 
 const INITIAL_HEIGHT = 55;
 
-class PlateWithContenetContainer extends Component {
+class PlateWithContentContainer extends Component {
   constructor(props) {
     super(props);
     this.animatedHeight = new Animated.Value(INITIAL_HEIGHT);
@@ -26,7 +26,7 @@ class PlateWithContenetContainer extends Component {
   }) => {
     if (!this.state.openedHeight) {
       this.setState({
-        openedHeight: INITIAL_HEIGHT + height + 40,
+        openedHeight: INITIAL_HEIGHT + height + 30,
       });
     }
   };
@@ -49,7 +49,7 @@ class PlateWithContenetContainer extends Component {
   };
 
   render() {
-    const { title, children, themedStyle, contentStyle } = this.props;
+    const { title, children, themedStyle, contentStyle, withCat } = this.props;
 
     const { opened } = this.state;
 
@@ -81,14 +81,21 @@ class PlateWithContenetContainer extends Component {
           opened={opened}
           title={title}
           onTogglePress={handleToggle}
+          withCat={withCat}
           headerContainerStyle={themedStyle.headerContainerStyle}
+          headerContainerOpenedStyle={themedStyle.headerContainerOpenedStyle}
+          catContainerStyle={themedStyle.catContainerStyle}
         />
-        <Animated.View
-          style={[contentContainerStyle, { opacity: this.animatedOpacity }]}
+        <View
+          style={contentContainerStyle}
           onLayout={this.handleContentLayout}
         >
-          {children}
-        </Animated.View>
+          <Animated.View
+            style={{ opacity: this.animatedOpacity }}
+          >
+            {children}
+          </Animated.View>
+        </View>
       </Animated.View>
     );
   }
@@ -96,9 +103,9 @@ class PlateWithContenetContainer extends Component {
 
 const LIST_MARGIN = 10;
 
-const PlateWithContenet = withStyles(PlateWithContenetContainer, () => ({
+const PlateWithContent = withStyles(PlateWithContentContainer, () => ({
   container: {
-    marginTop: 10,
+    marginVertical: 10,
     marginHorizontal: LIST_MARGIN,
     borderColor: COLORS.mainBackgroundColor,
     borderWidth: 2,
@@ -126,6 +133,13 @@ const PlateWithContenet = withStyles(PlateWithContenetContainer, () => ({
     top: 4,
     paddingHorizontal: 6,
   },
+  headerContainerOpenedStyle: {
+    paddingBottom: 7,
+  },
+  catContainerStyle: {
+    top: 23,
+    left: 16,
+  }
 }));
 
-export default PlateWithContenet;
+export default PlateWithContent;

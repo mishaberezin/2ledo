@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, ScrollView, Image, Dimensions } from 'react-native';
+import { View, ScrollView, Dimensions, Image } from 'react-native';
 import { withStyles, Text } from 'react-native-ui-kitten';
 
 import { Ionicons } from '@expo/vector-icons';
@@ -14,7 +14,7 @@ const FavoritesListItemContainer = ({ item, style, themedStyle }) => {
       >
         <View style={themedStyle.listItemInfoBlock}>
           <Image
-            source={{ uri: item.uri }}
+            source={{ uri: `${item.uri}?b=${Math.random()}` }}
             style={{ width: 100, height: 100 }}
           />
         </View>
