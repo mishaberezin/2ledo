@@ -1,9 +1,6 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, ScrollView, Dimensions } from 'react-native';
-import { Card, Button } from 'react-native-elements';
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
 import Deck from '../components/Deck';
-
-const SCREEN_HEIGHT = Dimensions.get('window').height;
 
 const DATA = [
   {
@@ -55,59 +52,9 @@ const DATA = [
 ];
 
 function SerpScreen() {
-  const [cardOpened, setCardOpened] = useState(false);
-  const openCard = () => setCardOpened(true);
-  const closeCard = () => setCardOpened(false);
-
-  const onDetailsButtonPress = () => {
-    cardOpened ? closeCard() : openCard();
-  };
-
-  const renderCard = ({ text, title = 'no title', desc, uri }) => {
-    return (
-      <ScrollView style={{ backgroundColor: 'white' }}>
-        <Card
-          title={text}
-          image={{ uri }}
-          imageStyle={styles.image}
-          resizeMode="cover"
-        >
-          <Text style={styles.cardTitle}>{title}</Text>
-          <Button
-            backgroundColor="#03A9F4"
-            title={cardOpened ? 'Свернуть' : 'Подробнее'}
-            onPress={onDetailsButtonPress}
-          />
-          {cardOpened ? (
-            <View style={styles.cardDescriptionWrap}>
-              <Text style={styles.cardDescriptionText}>{desc}</Text>
-            </View>
-          ) : null}
-        </Card>
-      </ScrollView>
-    );
-  };
-
-  const toNextCard = () => {};
-
-  const renderNoMoreCards = () => {
-    return (
-      <Card title={'All done!'}>
-        <Text style={{ marginBottom: 20 }}>No more cards</Text>
-      </Card>
-    );
-  };
-
   return (
     <View style={styles.container}>
-      <Deck
-        swipeDisabled={cardOpened}
-        data={DATA}
-        renderCard={renderCard}
-        renderNoMoreCards={renderNoMoreCards}
-        onSwipeLeft={toNextCard}
-        onSwipeRight={toNextCard}
-      />
+      <Deck data={DATA} />
     </View>
   );
 }
@@ -119,20 +66,7 @@ SerpScreen.navigationOptions = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     marginTop: 30,
-  },
-  image: {
-    height: SCREEN_HEIGHT * 0.5,
-  },
-  cardTitle: {
-    marginBottom: 20,
-  },
-  cardDescriptionWrap: {
-    marginTop: 20,
-  },
-  cardDescriptionText: {
-    fontSize: 20,
   },
 });
 
