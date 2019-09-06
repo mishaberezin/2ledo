@@ -6,7 +6,7 @@ import { View, SectionList } from 'react-native';
 import { Text } from 'react-native-ui-kitten';
 import ToledoHeader5 from '../components/ToledoHeader5';
 import { SettingsRoomsCount } from '../components/Settings/SettingsRoomsCount';
-import { SettingsPriceRange } from '../components/Settings/SettingsRoomsCount';
+import { SettingsPriceRange } from '../components/Settings/SettingsPriceRange';
 import COLORS from '../constants/colors';
 
 const uiSchema = {
