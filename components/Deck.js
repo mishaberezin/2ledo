@@ -3,9 +3,13 @@ import {
   View,
   Animated,
   PanResponder,
-  Dimensions,
   StyleSheet,
+  Text,
+  Dimensions,
 } from 'react-native';
+import DeckCard from '../components/DeckCard';
+
+import { Card } from 'react-native-elements';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SWIPE_THRESHOLD = 0.4 * SCREEN_WIDTH;
@@ -13,8 +17,8 @@ const SWIPE_THRESHOLD = 0.4 * SCREEN_WIDTH;
 class Deck extends Component {
   state = {
     index: 0,
-    opacity: 0,
-    status: null,
+    cardOpened: false,
+    cardHeight: null,
   };
 
   constructor(props) {
@@ -24,7 +28,12 @@ class Deck extends Component {
     this.panResponder = PanResponder.create({
       onStartShouldSetPanResponder: () => true,
       onPanResponderMove: (evt, gesture) => {
-        this.position.setValue({ x: gesture.dx, y: gesture.dy });
+        const lowerCardPosition = this.state.cardHeight / 5;
+
+        this.position.setValue({
+          x: gesture.dx,
+          y: gesture.dy > lowerCardPosition ? lowerCardPosition : gesture.dy,
+        });
       },
       onPanResponderRelease: (evt, gesture) => {
         if (gesture.dx > SWIPE_THRESHOLD) {
@@ -48,10 +57,10 @@ class Deck extends Component {
     });
   };
 
-  onSwipeComplete = direction => {
-    const { onSwipeLeft, onSwipeRight } = this.props;
-    const item = this.props.data[this.state.index];
-    direction === 'right' ? onSwipeRight(item) : onSwipeLeft(item);
+  onSwipeComplete = (/*direction*/) => {
+    //const { onSwipeLeft, onSwipeRight } = this.props;
+    //const item = this.props.data[this.state.index];
+    //direction === 'right' ? onSwipeRight(item) : onSwipeLeft(item);
     this.setState({
       index: this.state.index + 1,
     });
@@ -67,7 +76,7 @@ class Deck extends Component {
   };
 
   getCardStyle = () => {
-    if (this.props.swipeDisabled) {
+    if (this.state.cardOpened) {
       return;
     }
     const { position } = this;
@@ -82,16 +91,50 @@ class Deck extends Component {
     };
   };
 
+  renderCard = props => {
+    return (
+      <DeckCard
+        {...props}
+        opened={this.state.cardOpened}
+        onOpen={this.openCard}
+        onClose={this.closeCard}
+        onLayoutHeight={cardHeight => {
+          if (!this.state.cardHeight) {
+            this.setState({ cardHeight });
+          }
+        }}
+      />
+    );
+  };
+
+  renderNoMoreCards = () => {
+    return (
+      <Card title={'All done!'}>
+        <Text style={{ marginBottom: 20 }}>No more cards</Text>
+      </Card>
+    );
+  };
+
+  openCard = () => {
+    this.setState({ cardOpened: true });
+  };
+
+  closeCard = () => {
+    this.position.setValue({ x: 0, y: 0 });
+    this.setState({ cardOpened: false });
+  };
+
   render() {
-    const { data, renderCard, renderNoMoreCards, swipeDisabled } = this.props;
+    const { data } = this.props;
+    const { cardOpened } = this.state;
 
     if (this.state.index >= data.length) {
-      return renderNoMoreCards();
+      return this.renderNoMoreCards();
     }
 
     const cardStyles = [this.getCardStyle(), styles.cardStyle];
 
-    if (swipeDisabled) {
+    if (cardOpened) {
       cardStyles.push(styles.cardStyleStatic);
     }
 
@@ -107,15 +150,15 @@ class Deck extends Component {
                 <Animated.View
                   key={card.id}
                   style={cardStyles}
-                  {...(swipeDisabled ? {} : this.panResponder.panHandlers)}
+                  {...(cardOpened ? {} : this.panResponder.panHandlers)}
                 >
-                  {renderCard(card)}
+                  {this.renderCard(card)}
                 </Animated.View>
               );
             }
             return (
               <Animated.View style={styles.cardStyle} key={card.id}>
-                {renderCard(card)}
+                {this.renderCard(card)}
               </Animated.View>
             );
           })
@@ -133,13 +176,6 @@ const styles = StyleSheet.create({
   },
   cardStyleStatic: {
     position: 'relative',
-  },
-  cardStatus: {
-    position: 'absolute',
-    width: 200,
-    height: 200,
-    alignSelf: 'center',
-    opacity: 0,
   },
 });
 

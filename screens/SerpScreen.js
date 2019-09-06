@@ -1,113 +1,76 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, ScrollView, Dimensions } from 'react-native';
-import { Card, Button } from 'react-native-elements';
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
 import Deck from '../components/Deck';
-
-const SCREEN_HEIGHT = Dimensions.get('window').height;
 
 const DATA = [
   {
     id: 1,
-    text: 'Card #1',
-    title: 'Видовая двушка в Котельниках',
-    uri: 'http://imgs.abduzeedo.com/files/paul0v2/unsplash/unsplash-04.jpg',
+    title: 'Двушка в Котельниках',
+    uri:
+      'https://www.gd-home.com/wp-content/uploads/2018/07/skandinavskaya-odnokomnatnaya-kvartira-s-malenkoj-kuxnej-1.jpg',
+    owner: {
+      name: 'Виктор',
+      avatarUri:
+        'https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ2MTEyNjMzMV5BMl5BanBnXkFtZTYwODE0MzQ2._V1_UX172_CR0,0,172,256_AL_.jpg',
+    },
     desc:
-      'Уютная стандартная отделка. Апартаменты полностью укомплектованы мебелью и всей необходимой техникой бытовой и кухонной техникой. Функциональная планировка: Кухня-студия, совмещенная с просторной гостиной, спальня с собственной ванной и сан.узлом (сан.узлы так же полностью укомплектованы (См. фото)), просторный холл, постирочная и сушильная зона. Панорамное остекление по всему периметру апартаментов. Видовые характеристики: футуристический вид на город. В ночное время огни небоскребов никого не оставят равнодушными. Москва Сити - это Москва будущего, строящийся международный деловой квартал из ультрасовременных небоскрёбов.',
+      'Уютная стандартная отделка. Апартаменты полностью укомплектованы мебелью и всей необходимой техникой бытовой и кухонной техникой.\n\n Функциональная планировка: Кухня-студия, совмещенная с просторной гостиной, спальня с собственной ванной и сан.узлом (сан.узлы так же полностью укомплектованы (См. фото)),\nпросторный холл, постирочная и сушильная зона.\n Панорамное остекление по всему периметру апартаментов. Видовые характеристики: футуристический вид на город.\n В ночное время огни небоскребов никого не оставят равнодушными. Москва Сити - это Москва будущего, строящийся международный деловой квартал из ультрасовременных небоскрёбов.',
   },
   {
     id: 2,
-    text: 'Card #2',
-    uri: 'http://www.fluxdigital.co/wp-content/uploads/2015/04/Unsplash.jpg',
+    title: 'Двушка в Котельниках',
+    uri:
+      'https://md-eksperiment.org/images/posts/a70ccf57-d401-4c48-9c6b-13affbcc9c8e.jpeg',
+    owner: {
+      name: 'Татьяна',
+      avatarUri:
+        'https://images-na.ssl-images-amazon.com/images/M/MV5BYTIyMzExODgtNzllNy00OWQwLTlhM2QtMWU1ZTI2MjgwMTQxXkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_UY256_CR5,0,172,256_AL_.jpg',
+    },
     desc:
-      'Уютная стандартная отделка. Апартаменты полностью укомплектованы мебелью и всей необходимой техникой бытовой и кухонной техникой. Функциональная планировка: Кухня-студия, совмещенная с просторной гостиной, спальня с собственной ванной и сан.узлом (сан.узлы так же полностью укомплектованы (См. фото)), просторный холл, постирочная и сушильная зона. Панорамное остекление по всему периметру апартаментов. Видовые характеристики: футуристический вид на город. В ночное время огни небоскребов никого не оставят равнодушными. Москва Сити - это Москва будущего, строящийся международный деловой квартал из ультрасовременных небоскрёбов.',
+      'Уютная стандартная отделка. Апартаменты полностью укомплектованы мебелью и всей необходимой техникой бытовой и кухонной техникой.\n Функциональная планировка: Кухня-студия, совмещенная с просторной гостиной, спальня с собственной ванной и сан.узлом (сан.узлы так же полностью укомплектованы (См. фото)), просторный холл, постирочная и сушильная зона.\nПанорамное остекление по всему периметру апартаментов. Видовые характеристики: футуристический вид на город.\nВ ночное время огни небоскребов никого не оставят равнодушными. Москва Сити - это Москва будущего, строящийся международный деловой квартал из ультрасовременных небоскрёбов.',
   },
   {
     id: 3,
-    text: 'Card #3',
-    uri: 'http://imgs.abduzeedo.com/files/paul0v2/unsplash/unsplash-09.jpg',
+    title: 'Двушка в Котельниках',
+    uri:
+      'https://srbu.ru/images/stroitelnye-raboty/studiya-ili-odnokomnatnaya-kvartira-chto-luchshe/studiya-ili-odnokomnatnaya-kvartira-chto-luchshe.jpg',
+    desc:
+      'Уютная стандартная отделка. Апартаменты полностью укомплектованы мебелью и всей необходимой техникой бытовой и кухонной техникой.\n Функциональная планировка: Кухня-студия, совмещенная с просторной гостиной, спальня с собственной ванной и сан.узлом (сан.узлы так же полностью укомплектованы (См. фото)), просторный холл, постирочная и сушильная зона.\nПанорамное остекление по всему периметру апартаментов. Видовые характеристики: футуристический вид на город.\nВ ночное время огни небоскребов никого не оставят равнодушными. Москва Сити - это Москва будущего, строящийся международный деловой квартал из ультрасовременных небоскрёбов.',
   },
   {
     id: 4,
-    text: 'Card #4',
-    uri: 'http://imgs.abduzeedo.com/files/paul0v2/unsplash/unsplash-01.jpg',
+    title: 'Двушка в Котельниках',
+    uri:
+      'https://n1s1.elle.ru/29/3c/08/293c089064a46d58a6ca46c1915eb2d7/1500x999_0xac120002_13263901001544189597.jpeg',
+    desc:
+      'Уютная стандартная отделка. Апартаменты полностью укомплектованы мебелью и всей необходимой техникой бытовой и кухонной техникой.\n Функциональная планировка: Кухня-студия, совмещенная с просторной гостиной, спальня с собственной ванной и сан.узлом (сан.узлы так же полностью укомплектованы (См. фото)), просторный холл, постирочная и сушильная зона.\nПанорамное остекление по всему периметру апартаментов. Видовые характеристики: футуристический вид на город.\nВ ночное время огни небоскребов никого не оставят равнодушными. Москва Сити - это Москва будущего, строящийся международный деловой квартал из ультрасовременных небоскрёбов.',
   },
   {
     id: 5,
-    text: 'Card #5',
-    uri: 'http://imgs.abduzeedo.com/files/paul0v2/unsplash/unsplash-04.jpg',
+    title: 'Двушка в Котельниках',
+    uri: 'https://ask-yug.com/local/templates/new/images/ready-plan-1.png',
+    desc:
+      'Уютная стандартная отделка. Апартаменты полностью укомплектованы мебелью и всей необходимой техникой бытовой и кухонной техникой.\n Функциональная планировка: Кухня-студия, совмещенная с просторной гостиной, спальня с собственной ванной и сан.узлом (сан.узлы так же полностью укомплектованы (См. фото)), просторный холл, постирочная и сушильная зона.\nПанорамное остекление по всему периметру апартаментов. Видовые характеристики: футуристический вид на город.\nВ ночное время огни небоскребов никого не оставят равнодушными. Москва Сити - это Москва будущего, строящийся международный деловой квартал из ультрасовременных небоскрёбов.',
   },
   {
     id: 6,
-    text: 'Card #6',
-    uri: 'http://www.fluxdigital.co/wp-content/uploads/2015/04/Unsplash.jpg',
-  },
-  {
-    id: 7,
-    text: 'Card #7',
-    uri: 'http://imgs.abduzeedo.com/files/paul0v2/unsplash/unsplash-09.jpg',
-  },
-  {
-    id: 8,
-    text: 'Card #8',
-    title: 'Видовая двушка в Котельниках',
-    uri: 'http://imgs.abduzeedo.com/files/paul0v2/unsplash/unsplash-01.jpg',
+    title: 'Двушка в Сходне',
+    uri:
+      'https://ik.gipernn.ru/k29g01hao2kva_dag5z_h-600_w-800_zc-1/2-komnatnaya-kvartira-ulica-geroya-chugunova-dom-6-0.jpeg',
+    owner: {
+      name: 'Зухра',
+      avatarUri:
+        'https://static.life.ru/posts/2016/03/400379/gr/north/e63375a3462f3a56d41f7022a5b9f2d0__1440x.jpg',
+    },
+    desc:
+      'Уютная стандартная отделка. Апартаменты полностью укомплектованы мебелью и всей необходимой техникой бытовой и кухонной техникой.\n Функциональная планировка: Кухня-студия, совмещенная с просторной гостиной, спальня с собственной ванной и сан.узлом (сан.узлы так же полностью укомплектованы (См. фото)), просторный холл, постирочная и сушильная зона.\nПанорамное остекление по всему периметру апартаментов. Видовые характеристики: футуристический вид на город.\nВ ночное время огни небоскребов никого не оставят равнодушными. Москва Сити - это Москва будущего, строящийся международный деловой квартал из ультрасовременных небоскрёбов.',
   },
 ];
 
 function SerpScreen() {
-  const [cardOpened, setCardOpened] = useState(false);
-  const openCard = () => setCardOpened(true);
-  const closeCard = () => setCardOpened(false);
-
-  const onDetailsButtonPress = () => {
-    cardOpened ? closeCard() : openCard();
-  };
-
-  const renderCard = ({ text, title = 'no title', desc, uri }) => {
-    return (
-      <ScrollView style={{ backgroundColor: 'white' }}>
-        <Card
-          title={text}
-          image={{ uri }}
-          imageStyle={styles.image}
-          resizeMode="cover"
-        >
-          <Text style={styles.cardTitle}>{title}</Text>
-          <Button
-            backgroundColor="#03A9F4"
-            title={cardOpened ? 'Свернуть' : 'Подробнее'}
-            onPress={onDetailsButtonPress}
-          />
-          {cardOpened ? (
-            <View style={styles.cardDescriptionWrap}>
-              <Text style={styles.cardDescriptionText}>{desc}</Text>
-            </View>
-          ) : null}
-        </Card>
-      </ScrollView>
-    );
-  };
-
-  const toNextCard = () => {};
-
-  const renderNoMoreCards = () => {
-    return (
-      <Card title={'All done!'}>
-        <Text style={{ marginBottom: 20 }}>No more cards</Text>
-      </Card>
-    );
-  };
-
   return (
     <View style={styles.container}>
-      <Deck
-        swipeDisabled={cardOpened}
-        data={DATA}
-        renderCard={renderCard}
-        renderNoMoreCards={renderNoMoreCards}
-        onSwipeLeft={toNextCard}
-        onSwipeRight={toNextCard}
-      />
+      <Deck data={DATA} />
     </View>
   );
 }
@@ -119,20 +82,7 @@ SerpScreen.navigationOptions = {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     marginTop: 30,
-  },
-  image: {
-    height: SCREEN_HEIGHT * 0.5,
-  },
-  cardTitle: {
-    marginBottom: 20,
-  },
-  cardDescriptionWrap: {
-    marginTop: 20,
-  },
-  cardDescriptionText: {
-    fontSize: 20,
   },
 });
 

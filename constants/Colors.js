@@ -18,4 +18,5 @@ export default {
   noticeText: '#fff',
 
   mainBackgroundColor: '#EAE2FC',
+  darkVioletColor: '#7540EE',
 };
