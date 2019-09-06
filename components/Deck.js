@@ -12,7 +12,6 @@ import DeckCard from '../components/DeckCard';
 import { Card } from 'react-native-elements';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
-//const SCREEN_HEIGHT = Dimensions.get('window').height;
 const SWIPE_THRESHOLD = 0.4 * SCREEN_WIDTH;
 
 class Deck extends Component {
@@ -29,25 +28,11 @@ class Deck extends Component {
     this.panResponder = PanResponder.create({
       onStartShouldSetPanResponder: () => true,
       onPanResponderMove: (evt, gesture) => {
-        // const draggedToBottom = ((gesture.dy + this.state.cardHeight) / SCREEN_HEIGHT) > .9;
-        // const draggedByX = Math.abs(gesture.dx) > 10;
-        //
-        // if (draggedToBottom && !draggedByX) {
-        //   this.setState({ cardOpened: true })
-        // }
-
-        // const dy = gesture.dy > 80 ? (gesture.dy) : gesture.dy;
-
-        // console.log(dy)
-
-        // this.position.setValue({
-        //   x: draggedByX ? gesture.dx : 0,
-        //   y: dy
-        // });
+        const lowerCardPosition = this.state.cardHeight / 5;
 
         this.position.setValue({
           x: gesture.dx,
-          y: gesture.dy,
+          y: gesture.dy > lowerCardPosition ? lowerCardPosition : gesture.dy,
         });
       },
       onPanResponderRelease: (evt, gesture) => {

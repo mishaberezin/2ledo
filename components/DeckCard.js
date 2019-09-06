@@ -1,16 +1,22 @@
 import React from 'react';
-import { View, ScrollView, Dimensions, LayoutAnimation } from 'react-native';
+import {
+  View,
+  ScrollView,
+  Dimensions,
+  LayoutAnimation,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import { Card } from 'react-native-elements';
-import { Button, Text, withStyles } from 'react-native-ui-kitten';
+import { Text, Avatar, withStyles } from 'react-native-ui-kitten';
+import { Ionicons } from '@expo/vector-icons';
 import Colors from '../constants/colors';
 
 const SCREEN_HEIGHT = Dimensions.get('window').height;
-const SCREEN_WIDTH = Dimensions.get('window').width;
 
 const DeckCardContainer = ({
-  text,
   title,
   desc,
+  owner,
   uri,
   opened,
   onOpen,
@@ -20,7 +26,7 @@ const DeckCardContainer = ({
 }) => {
   const onDetailsButtonPress = () => {
     opened ? onClose() : onOpen();
-    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.timing);
   };
 
   const onLayout = ({
@@ -35,22 +41,47 @@ const DeckCardContainer = ({
     <ScrollView style={{ backgroundColor: 'white' }} onLayout={onLayout}>
       <Card
         containerStyle={[themedStyle.cardContainer, themedStyle.shadowStyles]}
-        title={text}
         image={{ uri }}
         imageStyle={themedStyle.image}
         resizeMode="cover"
       >
         <View>
-          <Text style={themedStyle.cardTitle}>{title}</Text>
-          <Button
-            style={[themedStyle.cardButton, themedStyle.shadowStyles]}
-            onPress={onDetailsButtonPress}
-          >
-            {opened ? 'Свернуть' : 'Подробнее'}
-          </Button>
+          <View style={themedStyle.cardShortInfo}>
+            <Text category="s1">{title}</Text>
+            <View style={themedStyle.cardShortInfoDesc}>
+              <Text category="p1">30 + жкх, 2м от метро</Text>
+            </View>
+            <View style={themedStyle.avatarBlock}>
+              {owner && (
+                <React.Fragment>
+                  <Avatar source={{ uri: owner.avatarUri }} size="small" />
+                  <Text style={themedStyle.avatarBlockName} category="s1">
+                    {owner.name}
+                  </Text>
+                </React.Fragment>
+              )}
+            </View>
+          </View>
+          <TouchableWithoutFeedback onPress={onDetailsButtonPress}>
+            <View
+              style={[
+                themedStyle.cardButton,
+                themedStyle.shadowStyles,
+                opened && themedStyle.cardButtonOpened,
+              ]}
+            >
+              <Ionicons
+                name={`ios-arrow-${opened ? 'up' : 'down'}`}
+                size={22}
+                style={!opened && { position: 'relative', top: 2 }}
+                color="#fff"
+              />
+            </View>
+          </TouchableWithoutFeedback>
+
           {opened && (
             <View style={themedStyle.cardDescriptionWrap}>
-              <Text style={themedStyle.cardDescriptionText}>{desc}</Text>
+              <Text category="p1">{desc}</Text>
             </View>
           )}
         </View>
@@ -61,7 +92,7 @@ const DeckCardContainer = ({
 
 export default withStyles(DeckCardContainer, () => ({
   cardContainer: {
-    marginBottom: 20,
+    marginBottom: 25,
   },
   shadowStyles: {
     shadowColor: 'black',
@@ -72,20 +103,38 @@ export default withStyles(DeckCardContainer, () => ({
   image: {
     height: SCREEN_HEIGHT * 0.5,
   },
-  cardTitle: {
-    marginBottom: 20,
+  cardShortInfo: {
+    marginHorizontal: 10,
+  },
+  cardShortInfoDesc: {
+    marginTop: 10,
   },
   cardDescriptionWrap: {
-    marginTop: 20,
+    marginTop: 10,
   },
-  cardDescriptionText: {
-    fontSize: 20,
+  avatarBlock: {
+    marginTop: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    minHeight: 20,
+  },
+  avatarBlockName: {
+    marginLeft: 10,
   },
   cardButton: {
     backgroundColor: Colors.darkVioletColor,
     borderColor: Colors.darkVioletColor,
-    borderRadius: 20,
-    width: SCREEN_WIDTH / 2,
-    alignSelf: 'center',
+    borderRadius: 10,
+    width: 50,
+    height: 50,
+    alignSelf: 'flex-end',
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'absolute',
+    top: 70,
+  },
+  cardButtonOpened: {
+    top: 45,
   },
 }));
