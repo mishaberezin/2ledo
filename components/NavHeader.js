@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, ScrollView } from 'react-native';
 import { Text } from 'react-native-ui-kitten';
+import ToledoHeader4 from './ToledoHeader4';
 import COLORS from '../constants/colors';
 
 function HeaderText(props) {
@@ -19,21 +20,6 @@ function HeaderText(props) {
     </Text>
   );
 }
-function HeaderTitleText(props) {
-  return (
-    <Text
-      style={{
-        fontFamily: 'ceracy-desktop-bold',
-        fontSize: 28,
-        lineHeight: 30,
-        color: COLORS.textColor,
-        ...props.style,
-      }}
-    >
-      {props.children}
-    </Text>
-  );
-}
 
 function NavHeader(props) {
   const { title, menuItems } = props;
@@ -42,7 +28,7 @@ function NavHeader(props) {
     <View style={styles.container}>
       <View style={styles.topLine}></View>
       <View style={styles.titleLine}>
-        <HeaderTitleText>{title}</HeaderTitleText>
+        <ToledoHeader4>{title}</ToledoHeader4>
       </View>
       {menuItems && (
         <ScrollView

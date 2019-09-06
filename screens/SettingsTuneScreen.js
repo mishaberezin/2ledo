@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { setUserName, setUserPhoto } from '../redux/actions/userActions.js';
 import { View, SectionList } from 'react-native';
 import { Text } from 'react-native-ui-kitten';
+import ToledoHeader5 from '../components/ToledoHeader5';
 import COLORS from '../constants/colors';
 
 function SettingsTuneScreen(props) {
@@ -33,7 +34,7 @@ function SettingsTuneScreen(props) {
           )}
           renderItem={({ item, index }) => <Text key={index}>{item}</Text>}
           renderSectionHeader={({ section: { title } }) => (
-            <Text style={{ fontWeight: 'bold' }}>{title}</Text>
+            <ToledoHeader5>{title}</ToledoHeader5>
           )}
           sections={[
             { title: 'Title1', data: ['item1', 'item2'] },

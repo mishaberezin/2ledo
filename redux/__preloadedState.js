@@ -11,17 +11,13 @@ export default {
   },
   profile: {
     type: 'landlord', // tenant
-    data: {
-      photos: [],
-      numberOfPeople: '2 человека',
-      description: 'Неторопливо ищу комнату на продолжительный срок. Спасибо.',
-    },
-    tune: {
-      price: '30-45К',
-      numberOfRooms: 'Одно ушко, студия',
-      floor: 'Только 1й',
-      metro: 'Строгино',
-    },
+    photos: [],
+    numberOfPeople: '2 человека',
+    description: 'Неторопливо ищу комнату на продолжительный срок. Спасибо.',
+    price: '30-45К',
+    numberOfRooms: 1,
+    floor: 'Только 1й',
+    metro: 'Строгино',
   },
   deck: [{}],
 };
