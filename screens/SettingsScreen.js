@@ -3,23 +3,16 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { setUserName, setUserPhoto } from '../redux/actions/userActions.js';
 import { View, SectionList } from 'react-native';
-import { Text, Select } from 'react-native-ui-kitten';
+import { Text } from 'react-native-ui-kitten';
 import ToledoHeader5 from '../components/ToledoHeader5';
-// import SettingsNumberOfRoomsSelect from '../components/SettingsNumberOfRoomsSelect';
+import { SettingsRoomsCount } from '../components/Settings/SettingsRoomsCount';
+import { SettingsPriceRange } from '../components/Settings/SettingsRoomsCount';
 import COLORS from '../constants/colors';
 
-// Похоже на https://github.com/mozilla-services/react-jsonschema-form/blob/master/docs/form-customization.md
 const uiSchema = {
   // anchors: [], // навигация в шапке, можно промотать к любой секции
   sections: [{ title: 'Ищу квартиру!', data: [] }],
 };
-
-// {
-//   price: {
-//     type: 'number',
-//     component: 'Range',
-//   },
-// };
 
 function SettingsScreen() {
   return (
@@ -35,19 +28,8 @@ function SettingsScreen() {
           flex: 1,
         }}
       >
-        <Select
-          data={[
-            { text: 'Option 1' },
-            { text: 'Option 2' },
-            { text: 'Option 3' },
-            { text: 'Option 4' },
-            { text: 'Option 5' },
-            { text: 'Option 6' },
-            { text: 'Option 8' },
-          ]}
-          selectedOption={null}
-          onSelect={() => {}}
-        />
+        <SettingsRoomsCount />
+        <SettingsPriceRange />
         <SectionList
           ItemSeparatorComponent={() => (
             <Text appearance="hint">Separator</Text>
