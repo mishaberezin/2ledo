@@ -22,6 +22,7 @@ async function loadResourcesAsync() {
       require('../assets/images/robot-prod.png'),
       require('../assets/images/search-for-flat.jpg'),
       require('../assets/images/ready_to_road.gif'),
+      require('../assets/images/card-tenant.png'),
     ]),
     Font.loadAsync({
       'space-mono': require('../assets/fonts/SpaceMono-Regular.ttf'),

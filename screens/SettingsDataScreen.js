@@ -1,13 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { setUserName, setUserPhoto } from '../redux/actions/userActions.js';
-import { View } from 'react-native';
+import { setCardDataDescription } from '../redux/actions/cardsActions';
+import { View, Image } from 'react-native';
 import { Text } from 'react-native-ui-kitten';
 
-function SettingsTuneScreen(props) {
-  const { profile } = props;
-  const { data } = profile;
+function SettingsDataScreen(props) {
+  const { card } = props;
+  const { data } = card;
 
   return (
     <View
@@ -22,6 +22,13 @@ function SettingsTuneScreen(props) {
           flex: 1,
         }}
       >
+        <View style={{ alignItems: 'flex-start' }}>
+          <Text category="h2">Предлагаю</Text>
+          <Image
+            source={require('../assets/images/card-tenant.png')}
+            style={{ width: 250, height: 300 }}
+          />
+        </View>
         <Text>numberOfPeople: {data.numberOfPeople}</Text>
         <Text>Description: {data.description}</Text>
       </View>
@@ -30,17 +37,18 @@ function SettingsTuneScreen(props) {
 }
 
 const mapStateToProps = state => {
+  const { localState } = state;
+
   return {
     user: state.user,
-    profile: state.profile,
+    card: state.cards[localState.currentCard],
   };
 };
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      setUserName,
-      setUserPhoto,
+      setCardDataDescription,
     },
     dispatch
   );
@@ -48,4 +56,4 @@ const mapDispatchToProps = dispatch =>
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(SettingsTuneScreen);
+)(SettingsDataScreen);
