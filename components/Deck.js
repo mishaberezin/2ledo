@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
-import {
-  View,
-  Animated,
-  PanResponder,
-  StyleSheet,
-  Text,
-  Dimensions,
-} from 'react-native';
+import { View, Animated, PanResponder, Dimensions } from 'react-native';
+import { withStyles, Text } from 'react-native-ui-kitten';
+
 import DeckCard from '../components/DeckCard';
 
 import { Card } from 'react-native-elements';
@@ -14,7 +9,7 @@ import { Card } from 'react-native-elements';
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SWIPE_THRESHOLD = 0.4 * SCREEN_WIDTH;
 
-class Deck extends Component {
+class DeckContainer extends Component {
   state = {
     index: 0,
     cardOpened: false,
@@ -23,16 +18,17 @@ class Deck extends Component {
 
   constructor(props) {
     super(props);
+    if (props.currentIndex) {
+      this.state.index = props.currentIndex;
+    }
     this.position = new Animated.ValueXY(0, 0);
 
     this.panResponder = PanResponder.create({
       onStartShouldSetPanResponder: () => true,
       onPanResponderMove: (evt, gesture) => {
-        const lowerCardPosition = this.state.cardHeight / 5;
-
         this.position.setValue({
           x: gesture.dx,
-          y: gesture.dy > lowerCardPosition ? lowerCardPosition : gesture.dy,
+          y: gesture.dy,
         });
       },
       onPanResponderRelease: (evt, gesture) => {
@@ -47,6 +43,12 @@ class Deck extends Component {
     });
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.currentIndex !== this.props.currentIndex) {
+      this.forceSwipe();
+    }
+  }
+
   forceSwipe = direction => {
     const x = (direction === 'right' ? SCREEN_WIDTH : -SCREEN_WIDTH) * 2;
     Animated.timing(this.position, {
@@ -59,7 +61,7 @@ class Deck extends Component {
 
   onSwipeComplete = (/*direction*/) => {
     //const { onSwipeLeft, onSwipeRight } = this.props;
-    //const item = this.props.data[this.state.index];
+    //const item = this.props.items[this.state.index];
     //direction === 'right' ? onSwipeRight(item) : onSwipeLeft(item);
     this.setState({
       index: this.state.index + 1,
@@ -109,38 +111,40 @@ class Deck extends Component {
 
   renderNoMoreCards = () => {
     return (
-      <Card title={'All done!'}>
-        <Text style={{ marginBottom: 20 }}>No more cards</Text>
+      <Card title={'Упс!'}>
+        <Text style={{ marginBottom: 20 }}>Больше нет карточек</Text>
       </Card>
     );
   };
 
   openCard = () => {
     this.setState({ cardOpened: true });
+    this.props.onCardDetailClick(true);
   };
 
   closeCard = () => {
     this.position.setValue({ x: 0, y: 0 });
     this.setState({ cardOpened: false });
+    this.props.onCardDetailClick(false);
   };
 
   render() {
-    const { data } = this.props;
+    const { items, themedStyle } = this.props;
     const { cardOpened } = this.state;
 
-    if (this.state.index >= data.length) {
+    if (this.state.index >= items.length) {
       return this.renderNoMoreCards();
     }
 
-    const cardStyles = [this.getCardStyle(), styles.cardStyle];
+    const cardStyles = [this.getCardStyle(), themedStyle.cardStyle];
 
     if (cardOpened) {
-      cardStyles.push(styles.cardStyleStatic);
+      cardStyles.push(themedStyle.cardStyleStatic);
     }
 
     return (
       <View>
-        {data
+        {items
           .map((card, i) => {
             if (i < this.state.index) {
               return null;
@@ -157,7 +161,7 @@ class Deck extends Component {
               );
             }
             return (
-              <Animated.View style={styles.cardStyle} key={card.id}>
+              <Animated.View style={themedStyle.cardStyle} key={card.id}>
                 {this.renderCard(card)}
               </Animated.View>
             );
@@ -168,7 +172,7 @@ class Deck extends Component {
   }
 }
 
-const styles = StyleSheet.create({
+const Deck = withStyles(DeckContainer, () => ({
   cardStyle: {
     width: SCREEN_WIDTH,
     justifyContent: 'center',
@@ -177,6 +181,6 @@ const styles = StyleSheet.create({
   cardStyleStatic: {
     position: 'relative',
   },
-});
+}));
 
 export default Deck;

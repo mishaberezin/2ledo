@@ -37,55 +37,59 @@ const DeckCardContainer = ({
     onLayoutHeight && onLayoutHeight(height);
   };
 
-  return (
-    <ScrollView style={{ backgroundColor: 'white' }} onLayout={onLayout}>
-      <Card
-        containerStyle={[themedStyle.cardContainer, themedStyle.shadowStyles]}
-        image={{ uri }}
-        imageStyle={themedStyle.image}
-        resizeMode="cover"
-      >
-        <View>
-          <View style={themedStyle.cardShortInfo}>
-            <Text category="s1">{title}</Text>
-            <View style={themedStyle.cardShortInfoDesc}>
-              <Text category="p1">30 + жкх, 2м от метро</Text>
-            </View>
-            <View style={themedStyle.avatarBlock}>
-              {owner && (
-                <React.Fragment>
-                  <Avatar source={{ uri: owner.avatarUri }} size="small" />
-                  <Text style={themedStyle.avatarBlockName} category="s1">
-                    {owner.name}
-                  </Text>
-                </React.Fragment>
-              )}
-            </View>
+  const card = (
+    <Card
+      containerStyle={[themedStyle.cardContainer, themedStyle.shadowStyles]}
+      image={{ uri }}
+      imageStyle={themedStyle.image}
+      resizeMode="cover"
+    >
+      <View>
+        <View style={themedStyle.cardShortInfo}>
+          <Text category="s1">{title}</Text>
+          <View style={themedStyle.cardShortInfoDesc}>
+            <Text category="p1">30 + жкх, 2м от метро</Text>
           </View>
-          <TouchableWithoutFeedback onPress={onDetailsButtonPress}>
-            <View
-              style={[
-                themedStyle.cardButton,
-                themedStyle.shadowStyles,
-                opened && themedStyle.cardButtonOpened,
-              ]}
-            >
-              <Ionicons
-                name={`ios-arrow-${opened ? 'up' : 'down'}`}
-                size={22}
-                style={!opened && { position: 'relative', top: 2 }}
-                color="#fff"
-              />
-            </View>
-          </TouchableWithoutFeedback>
-
-          {opened && (
-            <View style={themedStyle.cardDescriptionWrap}>
-              <Text category="p1">{desc}</Text>
-            </View>
-          )}
+          <View style={themedStyle.avatarBlock}>
+            {owner && (
+              <React.Fragment>
+                <Avatar source={{ uri: owner.avatarUri }} size="small" />
+                <Text style={themedStyle.avatarBlockName} category="s1">
+                  {owner.name}
+                </Text>
+              </React.Fragment>
+            )}
+          </View>
         </View>
-      </Card>
+        <TouchableWithoutFeedback onPress={onDetailsButtonPress}>
+          <View
+            style={[
+              themedStyle.cardButton,
+              themedStyle.shadowStyles,
+              opened && themedStyle.cardButtonOpened,
+            ]}
+          >
+            <Ionicons
+              name={`ios-arrow-${opened ? 'up' : 'down'}`}
+              size={22}
+              style={!opened && { position: 'relative', top: 2 }}
+              color="#fff"
+            />
+          </View>
+        </TouchableWithoutFeedback>
+
+        {opened && (
+          <View style={themedStyle.cardDescriptionWrap}>
+            <Text category="p1">{desc}</Text>
+          </View>
+        )}
+      </View>
+    </Card>
+  );
+
+  return (
+    <ScrollView style={themedStyle.openedCardContainer} onLayout={onLayout}>
+      {card}
     </ScrollView>
   );
 };
@@ -94,6 +98,7 @@ export default withStyles(DeckCardContainer, () => ({
   cardContainer: {
     marginBottom: 25,
   },
+  openedCardContainer: { backgroundColor: 'white' },
   shadowStyles: {
     shadowColor: 'black',
     shadowOpacity: 0.15,
@@ -117,7 +122,7 @@ export default withStyles(DeckCardContainer, () => ({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    minHeight: 20,
+    minHeight: 30,
   },
   avatarBlockName: {
     marginLeft: 10,
