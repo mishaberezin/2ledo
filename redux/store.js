@@ -4,11 +4,11 @@ import { persistMiddleware } from './persist';
 import rootReducer from './reducer.js';
 import api from '../api';
 
-import preloadedState from './__preloadedState';
+import sampleState from './__sampleState';
 
 const store = createStore(
   rootReducer,
-  preloadedState,
+  sampleState,
   applyMiddleware(thunk.withExtraArgument(api), persistMiddleware)
 );
 

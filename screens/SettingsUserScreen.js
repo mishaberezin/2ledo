@@ -1,12 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { setUserName, setUserPhoto } from '../redux/actions/userActions.js';
+import { setUserName, setUserPhoto } from '../redux/actions/userActions';
 import { View } from 'react-native';
 import { Text } from 'react-native-ui-kitten';
 
-function SettingsTuneScreen(props) {
-  const { profile } = props;
+function SettingsUserScreen(props) {
+  const { card } = props;
 
   return (
     <View
@@ -22,7 +22,7 @@ function SettingsTuneScreen(props) {
         }}
       >
         <Text category="h2">Ищу</Text>
-        <Text>{profile.type === 'tenant' ? 'Квартиру' : 'Жильца'}</Text>
+        <Text>{card.type === 'tenant' ? 'Квартиру' : 'Жильца'}</Text>
       </View>
     </View>
   );
@@ -31,7 +31,7 @@ function SettingsTuneScreen(props) {
 const mapStateToProps = state => {
   return {
     user: state.user,
-    profile: state.profile,
+    card: state.cards[state.localState.currentCard],
   };
 };
 
@@ -47,4 +47,4 @@ const mapDispatchToProps = dispatch =>
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(SettingsTuneScreen);
+)(SettingsUserScreen);
