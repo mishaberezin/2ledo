@@ -4,7 +4,7 @@ import { TouchableOpacity, Dimensions, Animated } from 'react-native';
 import { withStyles } from 'react-native-ui-kitten';
 import { Ionicons, FontAwesome } from '@expo/vector-icons';
 
-import colors from '../constants/colors';
+import { darkVioletColor } from '../constants/colors';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 
@@ -54,7 +54,7 @@ const SerpControllsContainer = ({ themedStyle, onPress, visible }) => {
 
 const SerpControlls = withStyles(SerpControllsContainer, () => ({
   controlsContainer: {
-    backgroundColor: colors.darkVioletColor,
+    backgroundColor: darkVioletColor,
     opacity: 0.8,
     height: 100,
     width: SCREEN_WIDTH,

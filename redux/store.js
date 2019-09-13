@@ -4,7 +4,7 @@ import { persistMiddleware } from './persist';
 import rootReducer from './reducer.js';
 import api from '../api';
 
-import sampleState from './__sampleTenantState';
+import sampleState from './__sampleState';
 
 const store = createStore(
   rootReducer,

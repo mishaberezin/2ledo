@@ -22,7 +22,7 @@ const MainStack = createBottomTabNavigator(
     Favorites: FavoritesStack,
   },
   {
-    initialRouteName: 'Serp',
+    initialRouteName: 'Settings',
   }
 );
 

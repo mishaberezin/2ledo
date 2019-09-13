@@ -1,27 +1,27 @@
 import React from 'react';
 import NavHeader from '../components/NavHeader';
 import { createStackNavigator } from 'react-navigation';
-import SettingsTuneScreen from '../screens/SettingsTuneScreen';
-import SettingsDataScreen from '../screens/SettingsDataScreen';
+import SettingsCardScreen from '../screens/SettingsCardScreen';
+// import SettingsDataScreen from '../screens/SettingsDataScreen';
 import SettingsUserScreen from '../screens/SettingsUserScreen';
 
 const SettingsStack = createStackNavigator(
   {
-    Tune: SettingsTuneScreen,
-    Data: SettingsDataScreen,
+    Card: SettingsCardScreen,
     User: SettingsUserScreen,
+    // Misc: SettingsMiscScreen,
   },
   {
-    initialRouteName: 'Tune',
+    initialRouteName: 'Card',
     defaultNavigationOptions: ({ navigation }) => {
       return {
         header: (
           <NavHeader
             title="Настройки"
             menuItems={[
-              { text: 'Ищу', onPress: () => navigation.navigate('Tune') },
-              { text: 'Предлагаю', onPress: () => navigation.navigate('Data') },
+              { text: 'Карточка', onPress: () => navigation.navigate('Card') },
               { text: 'О себе', onPress: () => navigation.navigate('User') },
+              // { text: 'Прочее', onPress: () => navigation.navigate('Misc') },
             ]}
           />
         ),
