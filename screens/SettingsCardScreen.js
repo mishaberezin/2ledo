@@ -1,13 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { setCardDataDescription } from '../redux/actions/cardsActions';
+import {
+  setCardNumberOfPeople,
+  setCardDescription,
+} from '../redux/actions/cardsActions';
 import { View, Image } from 'react-native';
 import { Text } from 'react-native-ui-kitten';
+import { SettingsNumberOfPeople } from '../components/Settings/SettingsNumberOfPeople';
+import { SettingsDescription } from '../components/Settings/SettingsDescription';
 
 function SettingsDataScreen(props) {
-  const { card } = props;
+  const { card, setCardNumberOfPeople, setCardDescription } = props;
   const { type, data } = card;
+  const cardId = card.id;
 
   return (
     <View
@@ -33,9 +39,18 @@ function SettingsDataScreen(props) {
             style={{ width: 250, height: 300 }}
           />
         </View>
+        <SettingsNumberOfPeople
+          value={data.numberOfPeople}
+          onChange={value => setCardNumberOfPeople({ id: cardId, value })}
+        ></SettingsNumberOfPeople>
+
+        <SettingsDescription
+          value={data.description}
+          onChange={value => setCardDescription({ id: cardId, value })}
+        ></SettingsDescription>
+
         <Text>Photos: {data.photos.length}</Text>
-        <Text>numberOfPeople: {data.numberOfPeople}</Text>
-        <Text>Description: {data.description}</Text>
+
         <Text>Price: {data.price}</Text>
         <Text>Минимальное число комнат: {data.minNumberOfRooms}</Text>
         <Text>RentalPeriod: {data.rentalPeriod}</Text>
@@ -57,7 +72,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      setCardDataDescription,
+      setCardNumberOfPeople,
+      setCardDescription,
     },
     dispatch
   );

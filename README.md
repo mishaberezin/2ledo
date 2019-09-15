@@ -18,3 +18,6 @@ git clean -xdf
 npm install
 expo start --ios --clear
 ```
+
+Дебаг:
+https://medium.com/@tetsuyahasegawa/how-to-integrate-react-native-debugger-to-your-expo-react-native-project-db1d631fad02

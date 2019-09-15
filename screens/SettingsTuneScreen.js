@@ -1,17 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { setCardTunePrice } from '../redux/actions/cardsActions';
+import { setCurrentCard } from '../redux/actions/localStateActions';
 import { View } from 'react-native';
-import { SettingsRoomsCount } from '../components/Settings/SettingsRoomsCount';
-import { SettingsPriceRange } from '../components/Settings/SettingsPriceRange';
-import { SettingsFirstFloorIsOk } from '../components/Settings/SettingsFirstFloorIsOk';
-import { SettingsMetro } from '../components/Settings/SettingsMetro';
+import { Select } from 'react-native-ui-kitten';
 import COLORS from '../constants/colors';
 
 function SettingsTuneScreen(props) {
-  const { card } = props;
-  const { tune } = card;
+  const { cards, currentCard, setCurrentCard } = props;
+
+  const onSelectCard = selectedOption => {
+    setCurrentCard(selectedOption.text);
+  };
 
   return (
     <View
@@ -26,10 +26,15 @@ function SettingsTuneScreen(props) {
           flex: 1,
         }}
       >
-        <SettingsRoomsCount />
+        <Select
+          data={Object.keys(cards).map(key => ({ text: key }))}
+          selectedOption={{ text: currentCard }}
+          onSelect={onSelectCard}
+        />
+
+        {/* <SettingsRoomsCount />
         <SettingsPriceRange />
-        <SettingsFirstFloorIsOk value={tune.firstFloorIsOk} />
-        <SettingsMetro />
+        <SettingsMetro /> */}
       </View>
     </View>
   );
@@ -37,15 +42,15 @@ function SettingsTuneScreen(props) {
 
 const mapStateToProps = state => {
   return {
-    user: state.user,
-    card: state.cards[state.localState.currentCard],
+    cards: state.cards,
+    currentCard: state.localState.currentCard,
   };
 };
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      setCardTunePrice,
+      setCurrentCard,
     },
     dispatch
   );

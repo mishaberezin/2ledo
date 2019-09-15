@@ -7,4 +7,9 @@ export const SET_USER_PHONE_NUMBER = 'SET_USER_PHONE_NUMBER';
 
 // cards
 export const ADD_CARD = 'ADD_CARD';
-export const SET_CARD_TUNE_PRICE = 'SET_CARD_TUNE_PRICE';
+export const SET_CARD_PRICE = 'SET_CARD_PRICE';
+export const SET_CARD_NUMBER_OF_PEOPLE = 'SET_CARD_NUMBER_OF_PEOPLE';
+export const SET_CARD_DESCRIPTION = 'SET_CARD_DESCRIPTION';
+
+// local state
+export const SET_CURRENT_CARD = 'SET_CURRENT_CARD';
