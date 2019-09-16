@@ -7,8 +7,8 @@ import {
   TouchableWithoutFeedback,
 } from 'react-native';
 import { Card } from 'react-native-elements';
-import { Text, Avatar, withStyles } from 'react-native-ui-kitten';
 import { Ionicons } from '@expo/vector-icons';
+import { Text, Avatar, withStyles } from 'react-native-ui-kitten';
 import Colors from '../constants/colors';
 
 const SCREEN_HEIGHT = Dimensions.get('window').height;
@@ -21,20 +21,11 @@ const DeckCardContainer = ({
   opened,
   onOpen,
   onClose,
-  onLayoutHeight,
   themedStyle,
 }) => {
   const onDetailsButtonPress = () => {
     opened ? onClose() : onOpen();
     LayoutAnimation.configureNext(LayoutAnimation.Presets.timing);
-  };
-
-  const onLayout = ({
-    nativeEvent: {
-      layout: { height },
-    },
-  }) => {
-    onLayoutHeight && onLayoutHeight(height);
   };
 
   const card = (
@@ -88,9 +79,7 @@ const DeckCardContainer = ({
   );
 
   return (
-    <ScrollView style={themedStyle.openedCardContainer} onLayout={onLayout}>
-      {card}
-    </ScrollView>
+    <ScrollView style={themedStyle.openedCardContainer}>{card}</ScrollView>
   );
 };
 

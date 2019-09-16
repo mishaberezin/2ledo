@@ -1,26 +1,23 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Button } from 'react-native';
 
-function ChatScreen(props) {
+import ItemDetailCard from '../components/ItemDetailCard';
+import serverData from '../server';
+
+function CardScreen(props) {
   const { navigation } = props;
+  const { id: itemId } = navigation.getParam('item');
 
-  const onMatchButtonPress = () => {
-    navigation.navigate('Match');
-  };
+  const item = serverData.serpData.find(({ id }) => id === itemId);
 
   return (
     <View style={styles.container}>
       <View style={styles.main}>
-        <Button type="outline" title="Связаться" onPress={onMatchButtonPress} />
+        <ItemDetailCard {...item} />
       </View>
     </View>
   );
 }
-
-ChatScreen.navigationOptions = {
-  title: '🎴',
-};
 
 const styles = StyleSheet.create({
   container: {
@@ -33,4 +30,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ChatScreen;
+export default CardScreen;

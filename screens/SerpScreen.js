@@ -1,11 +1,11 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import SwipeDeckWithControlls from '../components/SwipeDeckWithControlls';
+import DeckWithControllsContainer from '../components/DeckWithControllsContainer';
 
 function SerpScreen() {
   return (
     <View style={styles.container}>
-      <SwipeDeckWithControlls />
+      <DeckWithControllsContainer />
     </View>
   );
 }

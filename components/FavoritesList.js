@@ -6,17 +6,25 @@ import PlateWithList from './PlateWithList';
 import FavoritesListItem from './FavoritesListItem';
 import FavoritesListHeader from './FavoritesListHeader';
 
-const ITEM_HEIGHT = 170;
-
-const FavoritesListContainer = ({ title, items, withCat, themedStyle }) => {
+const FavoritesListContainer = ({
+  title,
+  items,
+  onItemPress,
+  withCat,
+  themedStyle,
+}) => {
   const [opened, setOpened] = useState(false);
   const handleToggle = () => setOpened(!opened);
 
   const renderItem = useCallback(
     ({ item }) => (
-      <FavoritesListItem style={themedStyle.listItemStyle} item={item} />
+      <FavoritesListItem
+        style={themedStyle.listItemStyle}
+        item={item}
+        onPress={onItemPress}
+      />
     ),
-    [themedStyle.listItemStyle]
+    [onItemPress, themedStyle.listItemStyle]
   );
 
   return (
@@ -33,11 +41,6 @@ const FavoritesListContainer = ({ title, items, withCat, themedStyle }) => {
         />
       }
       headerComponentStyle={themedStyle.headerContainer}
-      getItemLayout={(data, index) => ({
-        length: ITEM_HEIGHT,
-        offset: ITEM_HEIGHT * index,
-        index,
-      })}
     />
   );
 };
