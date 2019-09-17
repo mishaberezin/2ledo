@@ -1,19 +1,14 @@
 import React from 'react';
-import { View, ScrollView, Dimensions } from 'react-native';
-import { Card } from 'react-native-elements';
-import { Text, Avatar, withStyles } from 'react-native-ui-kitten';
+import { View, ScrollView, Dimensions, Image } from 'react-native';
+import { Text, Avatar, withStyles, Button } from 'react-native-ui-kitten';
 
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 
 const DeckCardContainer = ({ title, desc, owner, uri, themedStyle }) => {
   return (
     <ScrollView style={themedStyle.openedCardContainer}>
-      <Card
-        containerStyle={[themedStyle.cardContainer, themedStyle.shadowStyles]}
-        image={{ uri }}
-        imageStyle={themedStyle.image}
-        resizeMode="cover"
-      >
+      <View style={themedStyle.cardContainer}>
+        <Image source={{ uri }} style={themedStyle.image} />
         <View>
           <View style={themedStyle.cardShortInfo}>
             <Text category="s1">{title}</Text>
@@ -34,8 +29,11 @@ const DeckCardContainer = ({ title, desc, owner, uri, themedStyle }) => {
           <View style={themedStyle.cardDescriptionWrap}>
             <Text category="p1">{desc}</Text>
           </View>
+          <View style={themedStyle.cardActions}>
+            <Button>Связаться</Button>
+          </View>
         </View>
-      </Card>
+      </View>
     </ScrollView>
   );
 };
@@ -43,14 +41,9 @@ const DeckCardContainer = ({ title, desc, owner, uri, themedStyle }) => {
 export default withStyles(DeckCardContainer, () => ({
   cardContainer: {
     marginBottom: 25,
+    paddingHorizontal: 10,
   },
   openedCardContainer: { backgroundColor: 'white' },
-  shadowStyles: {
-    shadowColor: 'black',
-    shadowOpacity: 0.15,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 5,
-  },
   image: {
     height: SCREEN_HEIGHT * 0.5,
   },

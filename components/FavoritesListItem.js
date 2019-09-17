@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import {
   View,
   ScrollView,
@@ -7,10 +7,28 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { withStyles, Text } from 'react-native-ui-kitten';
+import OverflowMenu from './OverflowMenu';
 
 import { Ionicons } from '@expo/vector-icons';
 
 const FavoritesListItemContainer = ({ item, style, onPress, themedStyle }) => {
+  const menuItems = [
+    { type: 'view', title: 'Просмотр' },
+    { type: 'delete', title: 'Удалить' },
+  ];
+  const handleItemPress = useCallback(() => {
+    onPress(item);
+  }, [item, onPress]);
+
+  const handleMenuItemPress = useCallback(
+    ({ type }) => {
+      if (type === 'view') {
+        onPress(item);
+      }
+    },
+    [item, onPress]
+  );
+
   return (
     <View style={[style, themedStyle.listItemContainer]}>
       <ScrollView
@@ -19,7 +37,7 @@ const FavoritesListItemContainer = ({ item, style, onPress, themedStyle }) => {
         horizontal
       >
         <View style={themedStyle.listItemInfoBlock}>
-          <TouchableOpacity onPress={() => onPress(item)}>
+          <TouchableOpacity onPress={handleItemPress}>
             <Image
               source={{ uri: `${item.uri}?b=${Math.random()}` }}
               style={{ width: 100, height: 100 }}
@@ -47,7 +65,13 @@ const FavoritesListItemContainer = ({ item, style, onPress, themedStyle }) => {
           <Text category="p2">Бежевые стены, красный диван</Text>
         </View>
         <View style={themedStyle.listItemActions}>
-          <Ionicons name="md-more" size={26} color="gray" />
+          <OverflowMenu
+            items={menuItems}
+            menuContainerStyle={themedStyle.menuStyle}
+            onItemPress={handleMenuItemPress}
+          >
+            <Ionicons name="md-more" size={26} color="gray" />
+          </OverflowMenu>
         </View>
       </View>
     </View>
@@ -87,6 +111,10 @@ const FavoritesListItem = withStyles(FavoritesListItemContainer, () => ({
     marginLeft: 10,
     minWidth: 20,
     paddingVertical: 5,
+  },
+  menuStyle: {
+    position: 'relative',
+    right: 50,
   },
 }));
 

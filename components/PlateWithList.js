@@ -26,7 +26,7 @@ const PlateWithListContainer = ({
         ListHeaderComponent={headerComponent}
         ListHeaderComponentStyle={headerComponentStyle}
         contentContainerStyle={contentContainerStyle}
-        data={opened ? items : []}
+        data={items}
         renderItem={renderItem}
       />
     </View>
@@ -57,10 +57,12 @@ const PlateWithList = withStyles(PlateWithListContainer, () => ({
     borderTopRightRadius: 20,
     marginLeft: LIST_MARGIN,
     marginRight: LIST_MARGIN,
+    height: 52,
   },
   listContainerOpened: {
     paddingBottom: 20,
     backgroundColor: COLORS.mainBackgroundColor,
+    height: 'auto',
   },
 }));
 

@@ -6,7 +6,7 @@ import {
   LayoutAnimation,
   TouchableWithoutFeedback,
 } from 'react-native';
-import { Card } from 'react-native-elements';
+import { Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Text, Avatar, withStyles } from 'react-native-ui-kitten';
 import Colors from '../constants/colors';
@@ -29,12 +29,8 @@ const DeckCardContainer = ({
   };
 
   const card = (
-    <Card
-      containerStyle={[themedStyle.cardContainer, themedStyle.shadowStyles]}
-      image={{ uri }}
-      imageStyle={themedStyle.image}
-      resizeMode="cover"
-    >
+    <View style={themedStyle.card}>
+      <Image source={{ uri }} style={themedStyle.image} />
       <View>
         <View style={themedStyle.cardShortInfo}>
           <Text category="s1">{title}</Text>
@@ -75,22 +71,26 @@ const DeckCardContainer = ({
           </View>
         )}
       </View>
-    </Card>
+    </View>
   );
 
-  return (
-    <ScrollView style={themedStyle.openedCardContainer}>{card}</ScrollView>
-  );
+  return <ScrollView style={themedStyle.cardContainer}>{card}</ScrollView>;
 };
 
 export default withStyles(DeckCardContainer, () => ({
   cardContainer: {
-    marginBottom: 25,
+    borderColor: '#f0f0ff',
+    borderWidth: 1,
+    backgroundColor: 'white',
+    margin: 20,
   },
-  openedCardContainer: { backgroundColor: 'white' },
+  card: {
+    marginBottom: 30,
+    padding: 5,
+  },
   shadowStyles: {
     shadowColor: 'black',
-    shadowOpacity: 0.15,
+    shadowOpacity: 0.2,
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 5,
   },

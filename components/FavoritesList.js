@@ -48,11 +48,6 @@ const FavoritesListContainer = ({
 const LIST_MARGIN = 10;
 
 const FavoritesList = withStyles(FavoritesListContainer, () => ({
-  container: {
-    justifyContent: 'center',
-    allignItems: 'center',
-    marginVertical: 10,
-  },
   headerContainer: {
     height: 50,
     marginHorizontal: LIST_MARGIN,
