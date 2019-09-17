@@ -4,7 +4,7 @@ import { Text } from 'ui-kitten';
 import ToledoHeader5 from '../components/ToledoHeader5';
 import COLORS from '../constants/colors';
 
-function SettingsScreen() {
+export function SettingsScreen() {
   return (
     <View
       style={{
@@ -18,5 +18,3 @@ function SettingsScreen() {
     </View>
   );
 }
-
-export default SettingsScreen;

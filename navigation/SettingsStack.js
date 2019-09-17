@@ -1,9 +1,9 @@
 import React from 'react';
 import NavHeader from '../components/NavHeader';
 import { createStackNavigator } from 'react-navigation';
-import SettingsCardScreen from '../screens/SettingsCardScreen';
-import SettingsTuneScreen from '../screens/SettingsTuneScreen';
-import SettingsUserScreen from '../screens/SettingsUserScreen';
+import { SettingsCardScreen } from '../screens/SettingsCardScreen';
+import { SettingsTuneScreen } from '../screens/SettingsTuneScreen';
+import { SettingsUserScreen } from '../screens/SettingsUserScreen';
 
 const SettingsStack = createStackNavigator(
   {

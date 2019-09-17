@@ -25,3 +25,7 @@ export const setCardDescription = ({ id, value }) => ({
     value,
   },
 });
+
+export const setCardProp = ({ id, name, value }) => {
+  console.log({ id, name, value });
+};
