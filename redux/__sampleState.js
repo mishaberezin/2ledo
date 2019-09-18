@@ -107,7 +107,7 @@ export default {
         },
 
         NumberOfPeopleRange: {
-          minimum: 1,
+          minimum: 0,
           maximum: 2,
         },
 

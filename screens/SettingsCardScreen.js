@@ -1,14 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { setCardProp } from '../redux/actions/cardActions';
 import { View } from 'react-native';
-import { Button, Text } from 'react-native';
 
 import { SchemaTenantCardSettings } from '../components/Schemas/SchemaTenantCardSettings';
 import { SchemaHostCardSettings } from '../components/Schemas/SchemaHostCardSettings';
-
-import Collapsible from 'react-native-collapsible';
 
 function SettingsCardScreenUnconnected(props) {
   const { card, setCardProp } = props;
@@ -26,8 +23,6 @@ function SettingsCardScreenUnconnected(props) {
     setCardProp({ id: cardId, name, value });
   };
 
-  const [collapsed, setCollapsed] = useState(true);
-
   return (
     <View
       style={{
@@ -36,13 +31,6 @@ function SettingsCardScreenUnconnected(props) {
         paddingTop: 10,
       }}
     >
-      <Button
-        title={collapsed ? 'Раскрыть' : 'Закрыть'}
-        onPress={() => setCollapsed(!collapsed)}
-      />
-      <Collapsible collapsed={collapsed}>
-        <Text>HELLLLLLOOOOO</Text>
-      </Collapsible>
       <SchemaComponent data={data} onChange={onChange} />
     </View>
   );

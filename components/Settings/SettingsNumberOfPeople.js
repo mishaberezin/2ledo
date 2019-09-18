@@ -1,9 +1,10 @@
 import React from 'react';
-import { View, Text } from 'react-native';
 import { ButtonGroup } from 'react-native-elements';
+import { CollapsibleRow } from '../CollapsibleRow';
 
 export function SettingsNumberOfPeople(props) {
   const { value, onChange } = props;
+
   const values = [
     {
       value: 1,
@@ -20,14 +21,13 @@ export function SettingsNumberOfPeople(props) {
   ];
 
   return (
-    <View>
-      <Text>Number of people: {value}</Text>
+    <CollapsibleRow title="Количество проживающих">
       <ButtonGroup
         onPress={index => onChange(values[index].value)}
         selectedIndex={value - 1}
         buttons={values.map(item => item.label)}
-        containerStyle={{ height: 50 }}
+        containerStyle={{ height: 30 }}
       />
-    </View>
+    </CollapsibleRow>
   );
 }

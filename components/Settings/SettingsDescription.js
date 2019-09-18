@@ -1,12 +1,12 @@
 import React from 'react';
-import { View, Text, TextInput } from 'react-native';
+import { TextInput } from 'react-native';
+import { CollapsibleRow } from '../CollapsibleRow';
 
 export function SettingsDescription(props) {
   const { value, onChange } = props;
 
   return (
-    <View>
-      <Text>Description:</Text>
+    <CollapsibleRow title="Описание">
       <TextInput
         multiline={true}
         numberOfLines={4}
@@ -14,6 +14,6 @@ export function SettingsDescription(props) {
         onChangeText={onChange}
         value={value}
       />
-    </View>
+    </CollapsibleRow>
   );
 }

@@ -9,6 +9,8 @@ import { SettingsNumberOfRoomsRange } from '../Settings/SettingsNumberOfRoomsRan
 import { SettingsRentalPeriod } from '../Settings/SettingsRentalPeriod';
 import { SettingsLandmarks } from '../Settings/SettingsLandmarks';
 
+import { CollapsibleRow } from '../CollapsibleRow';
+
 export function SchemaTenantCardSettings(props) {
   const { data, onChange } = props;
   const {
@@ -47,26 +49,28 @@ export function SchemaTenantCardSettings(props) {
           onChange={value => onChange({ name: 'NumberOfPeople', value })}
         ></SettingsNumberOfPeople>
       )}
+      {PriceRange && <SettingsPriceRange {...PriceRange} />}
       {Description && (
         <SettingsDescription
           {...Description}
           onChange={value => onChange({ name: 'Description', value })}
         ></SettingsDescription>
       )}
-      {Photos && <SettingsPhotos {...Photos}></SettingsPhotos>}
-      {PriceRange && <SettingsPriceRange {...PriceRange} />}
-      {RentalPeriod && (
-        <SettingsRentalPeriod
-          {...RentalPeriod}
-          onChange={() => console.log(123)}
-        ></SettingsRentalPeriod>
-      )}
-      {Landmarks && (
-        <SettingsLandmarks
-          {...Landmarks}
-          onChange={() => console.log(123)}
-        ></SettingsLandmarks>
-      )}
+      <CollapsibleRow title="Остальное">
+        {Photos && <SettingsPhotos {...Photos}></SettingsPhotos>}
+        {RentalPeriod && (
+          <SettingsRentalPeriod
+            {...RentalPeriod}
+            onChange={() => console.log(123)}
+          ></SettingsRentalPeriod>
+        )}
+        {Landmarks && (
+          <SettingsLandmarks
+            {...Landmarks}
+            onChange={() => console.log(123)}
+          ></SettingsLandmarks>
+        )}
+      </CollapsibleRow>
     </ScrollView>
   );
 }
