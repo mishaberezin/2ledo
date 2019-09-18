@@ -1,5 +1,7 @@
 // Клиент ходит в API через этот модуль.
+import httpRequestStub from './httpRequestStub';
+import data from '../server';
 
 export default {
-  fetchHello: () => Promise.resolve('hello'),
+  fetchCards: () => httpRequestStub(data.serpData),
 };
