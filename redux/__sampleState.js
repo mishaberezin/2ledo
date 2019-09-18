@@ -51,6 +51,10 @@ export default {
           value: [55.756459, 37.64482],
         },
 
+        Name: {
+          value: 'Уютная двушка',
+        },
+
         // Адрес текстом
         // Type: String
         Address: {

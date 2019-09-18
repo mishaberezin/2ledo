@@ -3,5 +3,5 @@ import httpRequestStub from './httpRequestStub';
 import data from '../server';
 
 export default {
-  fetchCards: () => httpRequestStub(data.serpData),
+  fetchCards: () => httpRequestStub(data.deckCards),
 };

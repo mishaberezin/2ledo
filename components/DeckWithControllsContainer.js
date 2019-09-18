@@ -10,7 +10,7 @@ const DeckWithControllsContainer = ({ themedStyle }) => {
   const [cards, setCards] = useState(null);
 
   useEffect(() => {
-    api.fetchCards().then(setCards);
+    api.fetchCards().then(cards => setCards(Object.values(cards)));
   }, []);
 
   if (!cards) {

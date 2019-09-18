@@ -91,10 +91,10 @@ class DeckWithControllsContainer extends Component {
     };
   };
 
-  renderCard = props => {
+  renderCard = card => {
     return (
       <DeckCard
-        {...props}
+        card={card}
         opened={this.state.cardOpened}
         onOpen={this.openCard}
         onClose={this.closeCard}

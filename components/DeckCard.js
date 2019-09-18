@@ -13,68 +13,65 @@ import Colors from '../constants/colors';
 
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 
-const DeckCardContainer = ({
-  title,
-  desc,
-  owner,
-  uri,
-  opened,
-  onOpen,
-  onClose,
-  themedStyle,
-}) => {
+const DeckCardContainer = ({ card, opened, onOpen, onClose, themedStyle }) => {
   const onDetailsButtonPress = () => {
     opened ? onClose() : onOpen();
     LayoutAnimation.configureNext(LayoutAnimation.Presets.timing);
   };
+  const { data } = card;
+  const users = card.users && Object.values(card.users);
 
-  const card = (
-    <View style={themedStyle.card}>
-      <Image source={{ uri }} style={themedStyle.image} />
-      <View>
-        <View style={themedStyle.cardShortInfo}>
-          <Text category="s1">{title}</Text>
-          <View style={themedStyle.cardShortInfoDesc}>
-            <Text category="p1">30 + жкх, 2м от метро</Text>
+  return (
+    <ScrollView style={themedStyle.cardContainer}>
+      <View style={themedStyle.card}>
+        <Image
+          source={{ uri: data.Photos.items[0].ulr }}
+          style={themedStyle.image}
+        />
+        <View>
+          <View style={themedStyle.cardShortInfo}>
+            <Text category="s1">{data.Name.value}</Text>
+            <View style={themedStyle.cardShortInfoDesc}>
+              <Text category="p1">{data.Address.value}</Text>
+            </View>
+            <View style={themedStyle.avatarBlock}>
+              {users &&
+                users.map(user => (
+                  <React.Fragment key={user.id}>
+                    <Avatar source={{ uri: user.Avatar.uri }} size="small" />
+                    <Text style={themedStyle.avatarBlockName} category="s1">
+                      {user.Name.value}
+                    </Text>
+                  </React.Fragment>
+                ))}
+            </View>
           </View>
-          <View style={themedStyle.avatarBlock}>
-            {owner && (
-              <React.Fragment>
-                <Avatar source={{ uri: owner.avatarUri }} size="small" />
-                <Text style={themedStyle.avatarBlockName} category="s1">
-                  {owner.name}
-                </Text>
-              </React.Fragment>
-            )}
-          </View>
+          <TouchableWithoutFeedback onPress={onDetailsButtonPress}>
+            <View
+              style={[
+                themedStyle.cardButton,
+                themedStyle.shadowStyles,
+                opened && themedStyle.cardButtonOpened,
+              ]}
+            >
+              <Ionicons
+                name={`ios-arrow-${opened ? 'up' : 'down'}`}
+                size={22}
+                style={!opened && { position: 'relative', top: 2 }}
+                color="#fff"
+              />
+            </View>
+          </TouchableWithoutFeedback>
+
+          {opened && (
+            <View style={themedStyle.cardDescriptionWrap}>
+              <Text category="p1">{data.Description.value}</Text>
+            </View>
+          )}
         </View>
-        <TouchableWithoutFeedback onPress={onDetailsButtonPress}>
-          <View
-            style={[
-              themedStyle.cardButton,
-              themedStyle.shadowStyles,
-              opened && themedStyle.cardButtonOpened,
-            ]}
-          >
-            <Ionicons
-              name={`ios-arrow-${opened ? 'up' : 'down'}`}
-              size={22}
-              style={!opened && { position: 'relative', top: 2 }}
-              color="#fff"
-            />
-          </View>
-        </TouchableWithoutFeedback>
-
-        {opened && (
-          <View style={themedStyle.cardDescriptionWrap}>
-            <Text category="p1">{desc}</Text>
-          </View>
-        )}
       </View>
-    </View>
+    </ScrollView>
   );
-
-  return <ScrollView style={themedStyle.cardContainer}>{card}</ScrollView>;
 };
 
 export default withStyles(DeckCardContainer, () => ({
