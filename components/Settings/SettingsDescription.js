@@ -4,8 +4,6 @@ import { View, Text, TextInput } from 'react-native';
 export function SettingsDescription(props) {
   const { value, onChange } = props;
 
-  console.log(value);
-
   return (
     <View>
       <Text>Description:</Text>

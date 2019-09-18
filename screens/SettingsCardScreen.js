@@ -1,19 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {
-  setCardNumberOfPeople,
-  setCardDescription,
-} from '../redux/actions/cardsActions';
-import { View, Image } from 'react-native';
-import { Text } from 'react-native-ui-kitten';
-import { SettingsNumberOfPeople } from '../components/Settings/SettingsNumberOfPeople';
-import { SettingsDescription } from '../components/Settings/SettingsDescription';
+import { setCardProp } from '../redux/actions/cardActions';
+import { View } from 'react-native';
+import { Button, Text } from 'react-native';
 
-function SettingsDataScreen(props) {
-  const { card, setCardNumberOfPeople, setCardDescription } = props;
+import { SchemaTenantCardSettings } from '../components/Schemas/SchemaTenantCardSettings';
+import { SchemaHostCardSettings } from '../components/Schemas/SchemaHostCardSettings';
+
+import Collapsible from 'react-native-collapsible';
+
+function SettingsCardScreenUnconnected(props) {
+  const { card, setCardProp } = props;
   const { type, data } = card;
   const cardId = card.id;
+
+  let SchemaComponent;
+  if (type === 'tenant') {
+    SchemaComponent = SchemaTenantCardSettings;
+  } else {
+    SchemaComponent = SchemaHostCardSettings;
+  }
+
+  const onChange = ({ name, value }) => {
+    setCardProp({ id: cardId, name, value });
+  };
+
+  const [collapsed, setCollapsed] = useState(true);
 
   return (
     <View
@@ -23,39 +36,14 @@ function SettingsDataScreen(props) {
         paddingTop: 10,
       }}
     >
-      <View
-        style={{
-          flex: 1,
-        }}
-      >
-        <View style={{ paddingLeft: 20 }}>
-          <Text category="h2">
-            {type === 'tenant' ? 'Ищу квартиру' : 'Ищу жильца'}
-          </Text>
-        </View>
-        <View style={{ paddingLeft: 20 }}>
-          <Image
-            source={require('../assets/images/card-tenant.png')}
-            style={{ width: 250, height: 300 }}
-          />
-        </View>
-        <SettingsNumberOfPeople
-          value={data.numberOfPeople}
-          onChange={value => setCardNumberOfPeople({ id: cardId, value })}
-        ></SettingsNumberOfPeople>
-
-        <SettingsDescription
-          value={data.description}
-          onChange={value => setCardDescription({ id: cardId, value })}
-        ></SettingsDescription>
-
-        <Text>Photos: {data.photos.length}</Text>
-
-        <Text>Price: {data.price}</Text>
-        <Text>Минимальное число комнат: {data.minNumberOfRooms}</Text>
-        <Text>RentalPeriod: {data.rentalPeriod}</Text>
-        <Text>Geopoints: {data.geopoints}</Text>
-      </View>
+      <Button
+        title={collapsed ? 'Раскрыть' : 'Закрыть'}
+        onPress={() => setCollapsed(!collapsed)}
+      />
+      <Collapsible collapsed={collapsed}>
+        <Text>HELLLLLLOOOOO</Text>
+      </Collapsible>
+      <SchemaComponent data={data} onChange={onChange} />
     </View>
   );
 }
@@ -72,13 +60,12 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      setCardNumberOfPeople,
-      setCardDescription,
+      setCardProp,
     },
     dispatch
   );
 
-export default connect(
+export const SettingsCardScreen = connect(
   mapStateToProps,
   mapDispatchToProps
-)(SettingsDataScreen);
+)(SettingsCardScreenUnconnected);

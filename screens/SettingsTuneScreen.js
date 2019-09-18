@@ -6,7 +6,7 @@ import { View } from 'react-native';
 import { Select } from 'react-native-ui-kitten';
 import COLORS from '../constants/colors';
 
-function SettingsTuneScreen(props) {
+function SettingsTuneScreenUnconnected(props) {
   const { cards, currentCard, setCurrentCard } = props;
 
   const onSelectCard = selectedOption => {
@@ -55,7 +55,7 @@ const mapDispatchToProps = dispatch =>
     dispatch
   );
 
-export default connect(
+export const SettingsTuneScreen = connect(
   mapStateToProps,
   mapDispatchToProps
-)(SettingsTuneScreen);
+)(SettingsTuneScreenUnconnected);

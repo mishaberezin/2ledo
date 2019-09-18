@@ -1,35 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, Text } from 'react-native';
-import { Input } from 'react-native-ui-kitten';
+import { Input } from 'react-native-elements';
 
-export function SettingsPriceRange() {
-  const [lowLimitValue, setLowLimitValue] = useState('');
-  const [topLimitValue, setTopLimitValue] = useState('');
-
-  const onChangeStartRange = val => {
-    setLowLimitValue(val);
-  };
-  const onChangeFinishRange = val => {
-    setTopLimitValue(val);
-  };
+export function SettingsPriceRange(props) {
+  const { optimal, onChange } = props;
 
   return (
     <View>
+      <Text>Price:</Text>
       <Input
-        value={lowLimitValue}
-        onChangeText={onChangeStartRange}
-        label="цена от"
+        value={optimal}
+        onChangeText={onChange}
+        label="Оптимальная цена"
+        keyboardType="number-pad"
       />
-      <Input
-        value={topLimitValue}
-        onChangeText={onChangeFinishRange}
-        label="цена до"
-      />
-      <View>
-        <Text>
-          Цена от {lowLimitValue} ₽ до {topLimitValue} ₽
-        </Text>
-      </View>
     </View>
   );
 }

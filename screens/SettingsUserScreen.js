@@ -3,10 +3,12 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { setUserName, setUserPhoto } from '../redux/actions/userActions';
 import { View } from 'react-native';
-import { Text } from 'react-native-ui-kitten';
 
-function SettingsUserScreen(props) {
-  const { card } = props;
+import { SchemaUserSettings } from '../components/Schemas/SchemaUserSettings';
+
+function SettingsUserScreenUnconnected(props) {
+  const { user } = props;
+  const { data } = user;
 
   return (
     <View
@@ -16,14 +18,7 @@ function SettingsUserScreen(props) {
         paddingTop: 10,
       }}
     >
-      <View
-        style={{
-          flex: 1,
-        }}
-      >
-        <Text category="h2">Ищу</Text>
-        <Text>{card.type === 'tenant' ? 'Квартиру' : 'Жильца'}</Text>
-      </View>
+      <SchemaUserSettings data={data} />
     </View>
   );
 }
@@ -44,7 +39,7 @@ const mapDispatchToProps = dispatch =>
     dispatch
   );
 
-export default connect(
+export const SettingsUserScreen = connect(
   mapStateToProps,
   mapDispatchToProps
-)(SettingsUserScreen);
+)(SettingsUserScreenUnconnected);
