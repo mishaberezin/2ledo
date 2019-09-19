@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, ScrollView, Image } from 'react-native';
 import { Text } from 'react-native-ui-kitten';
 import { SettingsNumberOfPeople } from '../Settings/SettingsNumberOfPeople';
@@ -10,6 +10,8 @@ import { SettingsRentalPeriod } from '../Settings/SettingsRentalPeriod';
 import { SettingsLandmarks } from '../Settings/SettingsLandmarks';
 
 import { CollapsibleRow } from '../CollapsibleRow';
+
+import Accordion from 'react-native-collapsible/Accordion';
 
 export function SchemaTenantCardSettings(props) {
   const { data, onChange } = props;
@@ -23,21 +25,56 @@ export function SchemaTenantCardSettings(props) {
     Landmarks,
   } = data;
 
+  const [activeSections, setActiveSections] = useState([]);
+
+  const SECTIONS = [
+    {
+      title: 'Ищу квартиру',
+      content: (
+        <Image
+          source={require('../../assets/images/card-tenant.png')}
+          style={{ width: 250, height: 300 }}
+        />
+      ),
+    },
+    {
+      title: 'Предлагаю',
+      content: 'Lorem ipsum Second',
+    },
+  ];
+
+  const renderHeader = section => {
+    return (
+      <View style={{ paddingLeft: 20 }}>
+        <Text category="h2">{section.title}</Text>
+      </View>
+    );
+  };
+
+  const renderContent = section => {
+    return (
+      <View style={{}}>
+        <Text>{section.content}</Text>
+      </View>
+    );
+  };
+
   return (
     <ScrollView
       style={{
         flex: 1,
       }}
     >
-      <View style={{ paddingLeft: 20 }}>
-        <Text category="h2">Ищу квартиру</Text>
-      </View>
-      <View style={{ paddingLeft: 20 }}>
-        <Image
-          source={require('../../assets/images/card-tenant.png')}
-          style={{ width: 250, height: 300 }}
-        />
-      </View>
+      <Accordion
+        expandMultiple={true}
+        activeSections={activeSections}
+        sections={SECTIONS}
+        renderHeader={renderHeader}
+        renderContent={renderContent}
+        onChange={activeSections => {
+          setActiveSections(activeSections);
+        }}
+      />
       {NumberOfRoomsRange && (
         <SettingsNumberOfRoomsRange
           {...NumberOfRoomsRange}
