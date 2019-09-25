@@ -4,7 +4,7 @@ import { View, FlatList } from 'react-native';
 import Collapsible from 'react-native-collapsible';
 import FavoritesListHeader from './FavoritesListHeader';
 import FavoritesListItem from './FavoritesListItem';
-import COLORS from '../constants/appColors';
+import COLORS from '../constants/colors';
 
 const FavoritesListContainer = ({
   themedStyle,

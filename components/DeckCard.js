@@ -9,7 +9,7 @@ import {
 import { Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Text, Avatar, withStyles } from 'react-native-ui-kitten';
-import Colors from '../constants/appColors';
+import Colors from '../constants/colors';
 
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 

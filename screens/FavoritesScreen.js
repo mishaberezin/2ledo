@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { StyleSheet, ScrollView } from 'react-native';
 import { Layout, Text } from 'react-native-ui-kitten';
-import COLORS from '../constants/appColors';
+import COLORS from '../constants/colors';
 
 // import FavoritesGroupsList from '../components/FavoritesGroupsList';
 import FavoritesList from '../components/FavoritesList';

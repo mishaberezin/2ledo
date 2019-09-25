@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View, ScrollView } from 'react-native';
 import { Text } from 'react-native-ui-kitten';
 import ToledoHeader4 from './ToledoHeader4';
-import COLORS from '../constants/appColors';
+import COLORS from '../constants/colors';
 
 function HeaderText(props) {
   return (
