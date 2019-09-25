@@ -9,7 +9,7 @@ import {
 import { withStyles, Text } from 'react-native-ui-kitten';
 import { Ionicons, FontAwesome } from '@expo/vector-icons';
 
-import colors from '../constants/colors';
+import colors from '../constants/appColors';
 
 import DeckCard from './DeckCard';
 

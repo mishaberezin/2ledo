@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import { Text } from 'ui-kitten';
 import ToledoHeader5 from '../components/ToledoHeader5';
-import COLORS from '../constants/colors';
+import COLORS from '../constants/appColors';
 
 export function SettingsScreen() {
   return (

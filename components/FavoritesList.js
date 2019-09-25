@@ -1,20 +1,19 @@
-import React, { useCallback, useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { withStyles } from 'react-native-ui-kitten';
-
-import PlateWithList from './PlateWithList';
-
-import FavoritesListItem from './FavoritesListItem';
+import { View, FlatList } from 'react-native';
+import Collapsible from 'react-native-collapsible';
 import FavoritesListHeader from './FavoritesListHeader';
+import FavoritesListItem from './FavoritesListItem';
+import COLORS from '../constants/appColors';
 
 const FavoritesListContainer = ({
+  themedStyle,
   title,
   items,
-  onItemPress,
   withCat,
-  themedStyle,
+  onItemPress,
 }) => {
   const [opened, setOpened] = useState(false);
-  const handleToggle = () => setOpened(!opened);
 
   const renderItem = useCallback(
     ({ item }) => (
@@ -28,30 +27,52 @@ const FavoritesListContainer = ({
   );
 
   return (
-    <PlateWithList
-      items={items}
-      renderItem={renderItem}
-      opened={opened}
-      headerComponent={
-        <FavoritesListHeader
-          title={title}
-          opened={opened}
-          onTogglePress={handleToggle}
-          withCat={withCat}
+    <View
+      style={[themedStyle.container, opened && themedStyle.containerOpened]}
+    >
+      <FavoritesListHeader
+        title={title}
+        opened={opened}
+        withCat={withCat}
+        onTogglePress={() => setOpened(!opened)}
+      />
+      <Collapsible collapsed={!opened} style={themedStyle.listContainer}>
+        <FlatList
+          keyExtractor={item => '' + item.id}
+          showsVerticalScrollIndicator={false}
+          data={items}
+          renderItem={renderItem}
         />
-      }
-      headerComponentStyle={themedStyle.headerContainer}
-    />
+      </Collapsible>
+    </View>
   );
 };
 
 const LIST_MARGIN = 10;
 
 const FavoritesList = withStyles(FavoritesListContainer, () => ({
-  headerContainer: {
-    height: 50,
+  container: {
+    justifyContent: 'center',
+    allignItems: 'center',
+    marginVertical: 10,
+
+    shadowColor: 'black',
+    shadowOpacity: 0.15,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 5,
+
+    backgroundColor: '#fff',
+    borderColor: COLORS.mainBackgroundColor,
+    borderWidth: 2,
+    borderRadius: 20,
     marginHorizontal: LIST_MARGIN,
   },
+  containerOpened: {
+    paddingBottom: 20,
+    backgroundColor: COLORS.mainBackgroundColor,
+    height: 'auto',
+  },
+  listContainer: {},
   listItemStyle: {
     transform: [{ translateX: -LIST_MARGIN }],
   },

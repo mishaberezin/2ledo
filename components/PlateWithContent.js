@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withStyles } from 'react-native-ui-kitten';
 import { Animated, View } from 'react-native';
 
-import COLORS from '../constants/colors';
+import COLORS from '../constants/appColors';
 import PlateHeader from './PlateHeader';
 
 const INITIAL_HEIGHT = 55;
@@ -86,13 +86,8 @@ class PlateWithContentContainer extends Component {
           headerContainerOpenedStyle={themedStyle.headerContainerOpenedStyle}
           catContainerStyle={themedStyle.catContainerStyle}
         />
-        <View
-          style={contentContainerStyle}
-          onLayout={this.handleContentLayout}
-        >
-          <Animated.View
-            style={{ opacity: this.animatedOpacity }}
-          >
+        <View style={contentContainerStyle} onLayout={this.handleContentLayout}>
+          <Animated.View style={{ opacity: this.animatedOpacity }}>
             {children}
           </Animated.View>
         </View>
@@ -139,7 +134,7 @@ const PlateWithContent = withStyles(PlateWithContentContainer, () => ({
   catContainerStyle: {
     top: 23,
     left: 16,
-  }
+  },
 }));
 
 export default PlateWithContent;
