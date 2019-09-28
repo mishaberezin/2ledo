@@ -8,6 +8,7 @@ import InitScreen from '../screens/InitScreen';
 import SerpScreen from '../screens/SerpScreen';
 import ChatScreen from '../screens/ChatScreen';
 import MatchScreen from '../screens/MatchScreen';
+import LoginScreen from '../screens/LoginScreen';
 import SettingsStack from './SettingsStack';
 import FavoritesStack from './FavoritesStack';
 
@@ -29,6 +30,7 @@ const RootStack = createAppContainer(
     {
       Init: InitScreen,
       Main: MainStack,
+      Login: LoginScreen,
     },
     {
       initialRouteName: 'Init',

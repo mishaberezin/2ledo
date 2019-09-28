@@ -1,5 +1,5 @@
-export default function createRequest(result) {
+export default function createRequest(result, timeout = 200) {
   return new Promise(resolve => {
-    setTimeout(() => resolve(result), 200);
+    setTimeout(() => resolve(result), timeout);
   });
 }

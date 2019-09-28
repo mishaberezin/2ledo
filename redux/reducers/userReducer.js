@@ -13,6 +13,7 @@ const INITIAL_STATE = {
   gender: null,
   age: null,
   links: null,
+  token: null,
 };
 
 const userReducer = (state = INITIAL_STATE, action) => {

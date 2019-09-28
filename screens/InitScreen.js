@@ -2,15 +2,26 @@ import React from 'react';
 import { AppLoading } from 'expo';
 import { Asset } from 'expo-asset';
 import * as Font from 'expo-font';
+import { AsyncStorage } from 'react-native';
 
 function InitScreen(props) {
   const { navigation } = props;
+
+  const onAppLoading = async () => {
+    const userToken = await AsyncStorage.getItem('token');
+
+    if (userToken) {
+      navigation.navigate('Main');
+    } else {
+      navigation.navigate('Login');
+    }
+  };
 
   return (
     <AppLoading
       startAsync={loadResourcesAsync}
       onError={handleLoadingError}
-      onFinish={() => navigation.navigate('Main')}
+      onFinish={() => onAppLoading()}
     />
   );
 }

@@ -1,5 +1,7 @@
 export default {
-  app: {},
+  app: {
+    token: null,
+  },
   localState: {
     currentCard: 'nc84n821ncz7hb',
   },
