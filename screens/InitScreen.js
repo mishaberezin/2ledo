@@ -1,17 +1,22 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { AppLoading } from 'expo';
 import { Asset } from 'expo-asset';
 import * as Font from 'expo-font';
-import { AsyncStorage } from 'react-native';
+//import { AsyncStorage } from 'react-native';
+import { checkUserToken, setUserToken } from '../redux/actions/loginActions';
+import { bindActionCreators } from 'redux';
 
 function InitScreen(props) {
-  const { navigation } = props;
+  const { navigation, checkUserToken, setUserToken } = props;
 
   const onAppLoading = async () => {
-    const userToken = await AsyncStorage.getItem('token');
-
+    //await AsyncStorage.removeItem('token');
+    const userToken = await checkUserToken();
     if (userToken) {
-      navigation.navigate('Main');
+      setUserToken(userToken).then(() => {
+        navigation.navigate('Main');
+      });
     } else {
       navigation.navigate('Login');
     }
@@ -47,4 +52,16 @@ function handleLoadingError(error) {
   console.warn(error);
 }
 
-export default InitScreen;
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      checkUserToken,
+      setUserToken,
+    },
+    dispatch
+  );
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(InitScreen);

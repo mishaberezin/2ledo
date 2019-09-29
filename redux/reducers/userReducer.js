@@ -1,8 +1,4 @@
-import {
-  SET_USER_NAME,
-  SET_USER_PHOTO,
-  SET_USER_PHONE_NUMBER,
-} from '../types.js';
+import { SET_USER_NAME, SET_USER_PHOTO, SET_USER_PHONE_NUMBER } from '../types';
 
 const INITIAL_STATE = {
   name: null,

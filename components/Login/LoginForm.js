@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { View } from 'react-native';
+import { View, KeyboardAvoidingView } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {
@@ -21,39 +21,45 @@ const LoginFormContainer = ({
   onSuccess,
 }) => {
   const [loading, setLoading] = useState(false);
+  const [buttonDisabled, setButtonDisabled] = useState(true);
   const [step, setStep] = useState('phone');
   const [phone, setPhone] = useState('');
   const [codeHash, setHash] = useState(null);
   const [code, setCode] = useState('');
 
   const handlePhoneInput = useCallback(value => {
-    if (/^[0-9]{1,10}$/.test(value)) {
+    if (/^[0-9]{0,10}$/.test(value)) {
       setPhone(value);
     }
-  }, []);
-
-  const handleCodeInput = useCallback(value => {
-    if (/^[0-9]{1,6}$/.test(value)) {
-      setCode(value);
+    if (value.length === 10) {
+      setButtonDisabled(false);
     }
   }, []);
+
+  const handleCodeInput = useCallback(
+    value => {
+      if (/^[0-9]{1,4}$/.test(value)) {
+        setCode(value);
+      }
+      if (value.length >= 4) {
+        setLoading(true);
+        sendCode(code, codeHash).then(({ token }) => {
+          onSuccess(token);
+        });
+      }
+    },
+    [code, codeHash, onSuccess, sendCode]
+  );
 
   const handleButtonPress = useCallback(() => {
-    if (step === 'phone') {
-      setLoading(true);
-      sendPhone(phone).then(hash => {
-        setHash(hash);
-        setStep('code');
-        setLoading(false);
-      });
-    }
-    if (step === 'code') {
-      setLoading(true);
-      sendCode(code, codeHash).then(({ token }) => {
-        onSuccess(token);
-      });
-    }
-  }, [step, sendPhone, phone, sendCode, code, codeHash, onSuccess]);
+    setLoading(true);
+    sendPhone(phone).then(hash => {
+      setHash(hash);
+      setStep('code');
+      setButtonDisabled(true);
+      setLoading(false);
+    });
+  }, [sendPhone, phone]);
 
   if (loading) {
     return (
@@ -64,40 +70,44 @@ const LoginFormContainer = ({
   }
 
   return (
-    <View style={themedStyle.container}>
+    <KeyboardAvoidingView style={themedStyle.container}>
       <Text category="h3">Регистрация</Text>
       {step === 'phone' && (
-        <View style={themedStyle.inputRow}>
-          <Text style={themedStyle.phoneInputLabel}>+7</Text>
-          <Input
-            style={themedStyle.phoneInput}
-            textStyle={themedStyle.inputText}
-            value={phone}
-            onChangeText={handlePhoneInput}
-          />
-        </View>
+        <React.Fragment>
+          <View style={themedStyle.inputRow}>
+            <Text style={themedStyle.phoneInputLabel}>+7</Text>
+            <Input
+              style={[themedStyle.input, themedStyle.phoneInput]}
+              textStyle={themedStyle.phoneInputText}
+              value={phone}
+              autoFocus
+              onChangeText={handlePhoneInput}
+            />
+          </View>
+          <View style={themedStyle.submitButtonRow}>
+            <Button
+              style={themedStyle.submitButton}
+              disabled={buttonDisabled}
+              onPress={handleButtonPress}
+            >
+              Отправить
+            </Button>
+          </View>
+        </React.Fragment>
       )}
       {step === 'code' && (
         <View style={themedStyle.inputRow}>
           <Text style={themedStyle.codeInputLabel}>Код:</Text>
           <Input
-            style={themedStyle.codeInput}
+            style={[themedStyle.input, themedStyle.codeInput]}
             textStyle={themedStyle.codeInputText}
             value={code}
+            autoFocus
             onChangeText={handleCodeInput}
           />
         </View>
       )}
-      <View style={themedStyle.submitButtonRow}>
-        <Button
-          style={themedStyle.submitButton}
-          disabled={false}
-          onPress={handleButtonPress}
-        >
-          Отправить
-        </Button>
-      </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -109,6 +119,7 @@ const LoginForm = withStyles(LoginFormContainer, () => ({
     paddingVertical: 30,
     borderColor: colors.mainBackgroundColor,
     borderWidth: 1,
+    borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -121,11 +132,15 @@ const LoginForm = withStyles(LoginFormContainer, () => ({
   },
   phoneInputLabel: {
     paddingRight: 10,
-    fontSize: 20,
+    fontSize: 22,
   },
   codeInputLabel: {
     paddingRight: 10,
-    fontSize: 20,
+    fontSize: 22,
+  },
+  input: {
+    backgroundColor: '#fff0',
+    borderColor: '#fff0',
   },
   phoneInput: {
     flex: 3,
@@ -133,8 +148,12 @@ const LoginForm = withStyles(LoginFormContainer, () => ({
   codeInput: {
     flex: 2,
   },
-  inputText: {
-    fontSize: 20,
+  phoneInputText: {
+    fontSize: 22,
+  },
+  codeInputText: {
+    fontSize: 30,
+    letterSpacing: 8,
   },
   submitButtonRow: {
     flexDirection: 'row',

@@ -11,10 +11,14 @@ export const sendCode = (code, hash) => () => {
 };
 
 export const setUserToken = token => dispatch => {
-  AsyncStorage.setItem('token', token).then(() => {
+  return AsyncStorage.setItem('token', token).then(() => {
     dispatch({
       type: SET_USER_TOKEN,
       payload: { token },
     });
   });
+};
+
+export const checkUserToken = () => async () => {
+  return await AsyncStorage.getItem('token');
 };
