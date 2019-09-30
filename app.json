@@ -4,7 +4,7 @@
     "description": "Renting App for Better World",
     "slug": "flitch",
     "privacy": "public",
-    "sdkVersion": "33.0.0",
+    "sdkVersion": "35.0.0",
     "platforms": ["ios"],
     "version": "0.1.0",
     "orientation": "portrait",

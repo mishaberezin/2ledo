@@ -1,6 +1,6 @@
 import React from 'react';
 import NavHeader from '../components/NavHeader';
-import { createStackNavigator } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 import { SettingsCardScreen } from '../screens/SettingsCardScreen';
 import { SettingsTuneScreen } from '../screens/SettingsTuneScreen';
 import { SettingsUserScreen } from '../screens/SettingsUserScreen';

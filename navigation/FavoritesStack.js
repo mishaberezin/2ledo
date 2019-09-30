@@ -1,6 +1,6 @@
 import React from 'react';
 import NavHeader from '../components/NavHeader';
-import { createStackNavigator } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 import FavoritesScreen from '../screens/FavoritesScreen';
 import CardScreen from '../screens/CardScreen';
 
