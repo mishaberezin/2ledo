@@ -4,6 +4,8 @@ import { bindActionCreators } from 'redux';
 import { setCardProp } from '../redux/actions/cardActions';
 import { View } from 'react-native';
 
+import colors from '../constants/colors';
+
 import { SchemaTenantCardSettings } from '../components/Schemas/SchemaTenantCardSettings';
 import { SchemaHostCardSettings } from '../components/Schemas/SchemaHostCardSettings';
 
@@ -27,7 +29,7 @@ function SettingsCardScreenUnconnected(props) {
     <View
       style={{
         flex: 1,
-        backgroundColor: '#FCFBFF',
+        backgroundColor: colors.mainBright,
         paddingTop: 10,
       }}
     >

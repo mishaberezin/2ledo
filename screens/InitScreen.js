@@ -41,6 +41,9 @@ async function loadResourcesAsync() {
       require('../assets/images/card-tenant.png'),
     ]),
     Font.loadAsync({
+      FontAwesome: require('../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf'), // Костыль. После обновления на Expo 35.
+      'Material Icons': require('../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf'), // Костыль. После обновления на Expo 35.
+      Ionicons: require('../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf'), // Костыль. После обновления на Expo 35.
       'space-mono': require('../assets/fonts/SpaceMono-Regular.ttf'),
       'ceracy-desktop-medium': require('../assets/fonts/CeraCY-Desktop-Medium.otf'),
       'ceracy-desktop-bold': require('../assets/fonts/CeraCY-Desktop-Bold.otf'),

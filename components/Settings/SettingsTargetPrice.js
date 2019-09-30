@@ -1,18 +1,18 @@
 import React from 'react';
 import { Input } from 'react-native-elements';
-// import { CollapsibleRow } from '../CollapsibleRow';
+import { CollapsibleListItem } from '../CollapsibleListItem';
 
 export function SettingsTargetPrice(props) {
   const { value, onChange } = props;
 
-  return null;
-
-  // (
-  //   // <Input
-  //   //   defaultValue={value}
-  //   //   onChangeText={onChange}
-  //   //   label="Оптимальная цена"
-  //   //   keyboardType="number-pad"
-  //   // />
-  // );
+  return (
+    <CollapsibleListItem>
+      <Input
+        defaultValue={String(value)}
+        onChangeText={onChange}
+        label="Оптимальная цена"
+        keyboardType="number-pad"
+      />
+    </CollapsibleListItem>
+  );
 }

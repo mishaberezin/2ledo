@@ -3,15 +3,17 @@ import isPlainObject from 'lodash/isPlainObject';
 import { View, ScrollView, Image, Text } from 'react-native';
 // import { Text } from 'react-native-ui-kitten';
 import { ToledoHeader5 } from '../ToledoHeader5';
-import { SettingsNumberOfPeople } from '../Settings/SettingsNumberOfPeople';
-import { SettingsDescription } from '../Settings/SettingsDescription';
-import { SettingsPhotos } from '../Settings/SettingsPhotos';
+import { SettingsTextLabel } from '../Settings/SettingsTextLabel';
+// import { SettingsNumberOfPeople } from '../Settings/SettingsNumberOfPeople';
+// import { SettingsDescription } from '../Settings/SettingsDescription';
+// import { SettingsPhotos } from '../Settings/SettingsPhotos';
 import { SettingsTargetPrice } from '../Settings/SettingsTargetPrice';
-import { SettingsNumberOfRoomsRange } from '../Settings/SettingsNumberOfRoomsRange';
-import { SettingsRentalPeriod } from '../Settings/SettingsRentalPeriod';
-import { SettingsLandmarks } from '../Settings/SettingsLandmarks';
+// import { SettingsNumberOfRoomsRange } from '../Settings/SettingsNumberOfRoomsRange';
+// import { SettingsRentalPeriod } from '../Settings/SettingsRentalPeriod';
+// import { SettingsLandmarks } from '../Settings/SettingsLandmarks';
+import { SettingsCheckbox } from '../Settings/SettingsCheckbox';
 
-import { CollapsibleRow } from '../CollapsibleRow';
+// import { CollapsibleRow } from '../CollapsibleRow';
 
 import Accordion from 'react-native-collapsible/Accordion';
 
@@ -31,7 +33,8 @@ const applyData = (Component, data, props) => {
 };
 
 export function SchemaTenantCardSettings(props) {
-  const { data, onChange } = props;
+  // const { data, onChange } = props;
+  const { data } = props;
   const {
     // NumberOfPeople,
     TargetPrice,
@@ -93,7 +96,10 @@ export function SchemaTenantCardSettings(props) {
         }}
       />
 
-      {/* {applyData(SettingsTargetPrice, TargetPrice)} */}
+      <SettingsTextLabel label="Будем искать по этим параметрам" />
+      {applyData(SettingsTargetPrice, TargetPrice)}
+
+      <SettingsCheckbox checked={true} label="Первый этаж не нужно" />
 
       {/* {NumberOfRoomsRange && (
         <SettingsNumberOfRoomsRange
