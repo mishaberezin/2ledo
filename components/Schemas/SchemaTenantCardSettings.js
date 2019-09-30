@@ -93,7 +93,7 @@ export function SchemaTenantCardSettings(props) {
         }}
       />
 
-      {applyData(SettingsTargetPrice, TargetPrice)}
+      {/* {applyData(SettingsTargetPrice, TargetPrice)} */}
 
       {/* {NumberOfRoomsRange && (
         <SettingsNumberOfRoomsRange

@@ -5,12 +5,14 @@ import { Input } from 'react-native-elements';
 export function SettingsTargetPrice(props) {
   const { value, onChange } = props;
 
-  return (
-    <Input
-      defaultValue={value}
-      onChangeText={onChange}
-      label="Оптимальная цена"
-      keyboardType="number-pad"
-    />
-  );
+  return null;
+
+  // (
+  //   // <Input
+  //   //   defaultValue={value}
+  //   //   onChangeText={onChange}
+  //   //   label="Оптимальная цена"
+  //   //   keyboardType="number-pad"
+  //   // />
+  // );
 }
