@@ -9,24 +9,12 @@ export default {
     id: 'hekdjnv84ns8c',
     cards: ['nc889secjcz7hh'], // Карточки, связанные с учеткой
     data: {
-      UserName: {
-        value: 'Misha',
-      },
-      UserPhones: {
-        items: ['+79262558011'],
-      },
-      UserGender: {
-        value: 'male', // ['male', 'female']
-      },
-      UserBirthYear: {
-        value: 1988,
-      },
-      UserPhotos: {
-        items: [{ id: 'sgtv5765ig7ubhj' }],
-      },
-      UserLinks: {
-        items: [{ value: 'https://www.instagram.com/kimkardashian' }],
-      },
+      UserName: 'Misha',
+      UserPhones: ['+79262558011'],
+      UserGender: 'male', // ['male', 'female']
+      UserBirthYear: 1988,
+      UserPhotos: [{ id: 'sgtv5765ig7ubhj' }],
+      UserLinks: [{ value: 'https://www.instagram.com/kimkardashian' }],
     },
   },
   cards: {
@@ -40,7 +28,8 @@ export default {
 
       // Тип карточки.
       // От типа зависит содержимое поля data.
-      // Пока арендатор и арендодатель, но в будущем добавим агентские типы.
+      // Пока два типа: арендатор и арендодатель.
+      // В будущем появятся агентские типы.
       type: 'host',
 
       // Описание карточки типа "host" (ищу жильца).
@@ -49,74 +38,49 @@ export default {
       data: {
         // Координаты: широта, долгота
         // Type: [Number, Number]
-        Coords: {
-          value: [55.756459, 37.64482],
-        },
-
-        Name: {
-          value: 'Уютная двушка',
-        },
+        Coords: [55.756459, 37.64482],
 
         // Адрес текстом
         // Type: String
-        Address: {
-          value: 'Москва, Большой Златоустинский переулок, 6с1',
-        },
+        Address: 'Москва, Большой Златоустинский переулок, 6с1',
 
         // Этаж
         // Type: Number
-        Floor: {
-          value: 4,
-        },
+        Floor: 4,
 
         // Количество изолированных комнат
         // 5 означает 5+.
         // Type: [0, 1, 2, 3, 4, 5]
-        NumberOfRooms: {
-          value: 2,
-        },
+        NumberOfRooms: 2,
 
         // Фотографии. Порядок имеет значение.
-        Photos: {
-          items: [
-            {
-              id: 'fnu48t89jscj74', // ID в хранилище картинок.
-              caption: null,
-            },
-          ],
-        },
+        Photos: [
+          {
+            id: 'fnu48t89jscj74', // ID в хранилище картинок.
+            caption: null,
+          },
+        ],
 
         // Срок сдачи. Больше года, меньше года.
-        RentalPeriod: {
-          value: 'long', // ['short', 'long']
-        },
+        RentalPeriod: 'long', // ['short', 'long']
 
         // Структура затрат арендатора.
         // Состоит из очень разных кусков.
         Price: {
-          rent: {
-            value: 60000,
-          },
-          utilities: {
-            value: true,
-          },
-          commission: {
-            value: 20000,
-          },
-          deposit: {
-            value: 50000,
-          },
+          rent: 60000,
+          utilities: true,
+          commission: 20000,
+          deposit: 50000,
         },
 
         NumberOfPeopleRange: {
-          minimum: 0,
-          maximum: 2,
+          min: 0,
+          max: 2,
         },
 
         // Описание
-        Description: {
-          value: 'Неторопливо ищу комнату на продолжительный срок. Спасибо.',
-        },
+        Description:
+          'Неторопливо ищу комнату на продолжительный срок. Спасибо.',
       },
     },
     nc84n821ncz7hb: {
@@ -142,59 +106,46 @@ export default {
         // ID фотографий в хранилище картинок.
         // Порядок имеет значение, первая заглавная.
         // Тип: [String]
-        Photos: {
-          items: [
-            {
-              id: 'fnu48t89jscj74', // ID в хранилище картинок.
-              caption: null,
-            },
-          ],
-        },
+        Photos: [
+          {
+            id: 'fnu48t89jscj74', // ID в хранилище картинок.
+            caption: null,
+          },
+        ],
 
         // Сколько человек будет проживать в квартире.
         // Type: Number
-        NumberOfPeople: {
-          value: 2,
-        },
+        NumberOfPeople: 2,
 
         // Описание
         // Type: String
-        Description: {
-          value: 'Неторопливо ищу комнату на продолжительный срок. Спасибо.',
-        },
+        Description:
+          'Неторопливо ищу комнату на продолжительный срок. Спасибо.',
 
         // Оптимальная цена в рублях. При поиске мы не будем
         // ее использовать в точности,
         // но будем показывать максимально близкие по цене предложения.
         // Type: Number
-        PriceRange: {
-          minimum: null,
-          optimal: 50000,
-          maximum: null,
-        },
+        TargetPrice: 50000,
 
         // Минимальное количество изолированных комнат.
         // Нужно подумать про кейс со студиями.
         // Type: Number
         NumberOfRoomsRange: {
-          minimum: 1,
-          maximum: Infinity,
+          min: 1,
+          max: Infinity,
         },
 
         // Срок аренды. Больше года, меньше года.
         // value: ['short', 'long']
-        RentalPeriod: {
-          value: 'long',
-        },
+        RentalPeriod: 'long',
 
         // ID геоточек, в окрестностях которых ищем квартиру.
         // На старте это метро, но идейно можно использовать что угодно.
         // В городах без метро свои ориентиры,
         // в города с метро ориентиры не только метро.
         // Type: [String]
-        Landmarks: {
-          items: [{ id: 'msk-12348' }],
-        },
+        Landmarks: [{ id: 'msk-12348' }],
       },
     },
   },

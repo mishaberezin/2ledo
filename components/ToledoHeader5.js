@@ -2,7 +2,7 @@ import React from 'react';
 import { Text } from 'react-native';
 import COLORS from '../constants/colors';
 
-function ToledoHeader4(props) {
+export function ToledoHeader5(props) {
   return (
     <Text
       {...props}
@@ -18,5 +18,3 @@ function ToledoHeader4(props) {
     />
   );
 }
-
-export default ToledoHeader4;

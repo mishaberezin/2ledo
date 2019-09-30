@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { View, ScrollView, Image } from 'react-native';
-import { Text } from 'react-native-ui-kitten';
+import isPlainObject from 'lodash/isPlainObject';
+import { View, ScrollView, Image, Text } from 'react-native';
+// import { Text } from 'react-native-ui-kitten';
+import { ToledoHeader5 } from '../ToledoHeader5';
 import { SettingsNumberOfPeople } from '../Settings/SettingsNumberOfPeople';
 import { SettingsDescription } from '../Settings/SettingsDescription';
 import { SettingsPhotos } from '../Settings/SettingsPhotos';
-import { SettingsPriceRange } from '../Settings/SettingsPriceRange';
+import { SettingsTargetPrice } from '../Settings/SettingsTargetPrice';
 import { SettingsNumberOfRoomsRange } from '../Settings/SettingsNumberOfRoomsRange';
 import { SettingsRentalPeriod } from '../Settings/SettingsRentalPeriod';
 import { SettingsLandmarks } from '../Settings/SettingsLandmarks';
@@ -13,16 +15,31 @@ import { CollapsibleRow } from '../CollapsibleRow';
 
 import Accordion from 'react-native-collapsible/Accordion';
 
+const applyData = (Component, data, props) => {
+  if (!data) {
+    return null;
+  }
+
+  const value = data.value || data;
+  const dataProps = isPlainObject(value) ? value : { value };
+  const allProps = {
+    ...dataProps,
+    ...props,
+  };
+
+  return <Component {...allProps} />;
+};
+
 export function SchemaTenantCardSettings(props) {
   const { data, onChange } = props;
   const {
-    NumberOfPeople,
-    Description,
-    Photos,
-    PriceRange,
-    NumberOfRoomsRange,
-    RentalPeriod,
-    Landmarks,
+    // NumberOfPeople,
+    TargetPrice,
+    // Description,
+    // Photos,
+    // NumberOfRoomsRange,
+    // RentalPeriod,
+    // Landmarks,
   } = data;
 
   const [activeSections, setActiveSections] = useState([]);
@@ -37,16 +54,16 @@ export function SchemaTenantCardSettings(props) {
         />
       ),
     },
-    {
-      title: 'Предлагаю',
-      content: 'Lorem ipsum Second',
-    },
+    // {
+    //   title: 'Предлагаю',
+    //   content: 'Lorem ipsum Second',
+    // },
   ];
 
   const renderHeader = section => {
     return (
       <View style={{ paddingLeft: 20 }}>
-        <Text category="h2">{section.title}</Text>
+        <ToledoHeader5>{section.title}</ToledoHeader5>
       </View>
     );
   };
@@ -75,7 +92,10 @@ export function SchemaTenantCardSettings(props) {
           setActiveSections(activeSections);
         }}
       />
-      {NumberOfRoomsRange && (
+
+      {applyData(SettingsTargetPrice, TargetPrice)}
+
+      {/* {NumberOfRoomsRange && (
         <SettingsNumberOfRoomsRange
           {...NumberOfRoomsRange}
         ></SettingsNumberOfRoomsRange>
@@ -86,7 +106,7 @@ export function SchemaTenantCardSettings(props) {
           onChange={value => onChange({ name: 'NumberOfPeople', value })}
         ></SettingsNumberOfPeople>
       )}
-      {PriceRange && <SettingsPriceRange {...PriceRange} />}
+      {PriceRange && <SettingsTargetPrice {...PriceRange} />}
       {Description && (
         <SettingsDescription
           {...Description}
@@ -107,7 +127,7 @@ export function SchemaTenantCardSettings(props) {
             onChange={() => console.log(123)}
           ></SettingsLandmarks>
         )}
-      </CollapsibleRow>
+      </CollapsibleRow> */}
     </ScrollView>
   );
 }
