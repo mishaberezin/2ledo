@@ -1,23 +1,22 @@
-import React from 'react';
-// import React, { useState } from 'react';
+import React, { useState } from 'react';
 import { ListItem } from 'react-native-elements';
 import { View } from 'react-native';
 import Collapsible from 'react-native-collapsible';
 import grid from '../constants/grid';
-// import colors from '../constants/grid';
+import colors from '../constants/colors';
 
 export const CollapsibleListItem = props => {
   const { listItemProps, collapsibleProps, children } = props;
-  // const { labelTextColor } = colors;
+  const { settingsDividerColor, darkTextColor } = colors;
   const { defaultSideMargin } = grid;
 
-  // const [collapsed, setCollapsed] = useState(true);
+  const [collapsed, setCollapsed] = useState(true);
 
   return (
     <View
       style={{
         backgroundColor: '#fff',
-        borderColor: '#979797',
+        borderColor: settingsDividerColor,
         borderStyle: 'solid',
         borderTopWidth: 1,
         borderBottomWidth: 1,
@@ -31,14 +30,29 @@ export const CollapsibleListItem = props => {
           backgroundColor: 'transparent',
         }}
         titleStyle={{
-          color: 'black',
+          color: darkTextColor,
           fontFamily: 'ceracy-desktop-medium',
-          fontSize: 13,
+          fontSize: 15,
           lineHeight: 18,
         }}
+        chevron={{
+          name: collapsed ? 'chevron-down' : 'chevron-up',
+          type: 'feather',
+          color: 'black',
+        }}
+        onPress={() => setCollapsed(!collapsed)}
         {...listItemProps}
       />
-      <Collapsible {...collapsibleProps}>{children}</Collapsible>
+      <Collapsible
+        style={{
+          paddingLeft: defaultSideMargin,
+          paddingRight: defaultSideMargin,
+        }}
+        {...collapsibleProps}
+        collapsed={collapsed}
+      >
+        {children}
+      </Collapsible>
     </View>
   );
 };

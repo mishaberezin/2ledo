@@ -1,21 +1,23 @@
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
+import React from 'react';
 import isPlainObject from 'lodash/isPlainObject';
-import { View, ScrollView, Image, Text } from 'react-native';
+import { View, ScrollView, Image } from 'react-native';
+import { Divider } from 'react-native-elements';
 // import { Text } from 'react-native-ui-kitten';
 import { ToledoHeader5 } from '../ToledoHeader5';
 import { SettingsTextLabel } from '../Settings/SettingsTextLabel';
 // import { SettingsNumberOfPeople } from '../Settings/SettingsNumberOfPeople';
 // import { SettingsDescription } from '../Settings/SettingsDescription';
-// import { SettingsPhotos } from '../Settings/SettingsPhotos';
+import { SettingsPhotos } from '../Settings/SettingsPhotos';
 import { SettingsTargetPrice } from '../Settings/SettingsTargetPrice';
 // import { SettingsNumberOfRoomsRange } from '../Settings/SettingsNumberOfRoomsRange';
 // import { SettingsRentalPeriod } from '../Settings/SettingsRentalPeriod';
-// import { SettingsLandmarks } from '../Settings/SettingsLandmarks';
+import { SettingsLandmarks } from '../Settings/SettingsLandmarks';
 import { SettingsCheckbox } from '../Settings/SettingsCheckbox';
 
 // import { CollapsibleRow } from '../CollapsibleRow';
 
-import Accordion from 'react-native-collapsible/Accordion';
+import grid from '../../constants/grid';
 
 const applyData = (Component, data, props) => {
   if (!data) {
@@ -39,45 +41,12 @@ export function SchemaTenantCardSettings(props) {
     // NumberOfPeople,
     TargetPrice,
     // Description,
-    // Photos,
+    Photos,
     // NumberOfRoomsRange,
     // RentalPeriod,
-    // Landmarks,
+    Landmarks,
   } = data;
-
-  const [activeSections, setActiveSections] = useState([]);
-
-  const SECTIONS = [
-    {
-      title: 'Ищу квартиру',
-      content: (
-        <Image
-          source={require('../../assets/images/card-tenant.png')}
-          style={{ width: 250, height: 300 }}
-        />
-      ),
-    },
-    // {
-    //   title: 'Предлагаю',
-    //   content: 'Lorem ipsum Second',
-    // },
-  ];
-
-  const renderHeader = section => {
-    return (
-      <View style={{ paddingLeft: 20 }}>
-        <ToledoHeader5>{section.title}</ToledoHeader5>
-      </View>
-    );
-  };
-
-  const renderContent = section => {
-    return (
-      <View style={{}}>
-        <Text>{section.content}</Text>
-      </View>
-    );
-  };
+  const { defaultSideMargin } = grid;
 
   return (
     <ScrollView
@@ -85,22 +54,33 @@ export function SchemaTenantCardSettings(props) {
         flex: 1,
       }}
     >
-      <Accordion
-        expandMultiple={true}
-        activeSections={activeSections}
-        sections={SECTIONS}
-        renderHeader={renderHeader}
-        renderContent={renderContent}
-        onChange={activeSections => {
-          setActiveSections(activeSections);
+      <View style={{ paddingLeft: 20 }}>
+        <ToledoHeader5>Ищу квартиру</ToledoHeader5>
+      </View>
+      <View
+        style={{
+          flex: 1,
+          flexDirection: 'row',
+          justifyContent: 'center',
+          paddingLeft: defaultSideMargin,
+          paddingRight: defaultSideMargin,
         }}
-      />
-
+      >
+        <Image
+          source={require('../../assets/images/card-tenant.png')}
+          style={{ flex: 1, height: 400, ImageResizeMode: 'cover' }}
+        />
+      </View>
       <SettingsTextLabel label="Будем искать по этим параметрам" />
       {applyData(SettingsTargetPrice, TargetPrice)}
-
       <SettingsCheckbox checked={true} label="Первый этаж не нужно" />
+      <SettingsTextLabel label="Район, округ и метро. Укажите все" />
+      {applyData(SettingsLandmarks, Landmarks, {
+        onChange: () => console.log(123),
+      })}
+      <Divider style={{ height: 20, backgroundColor: 'transparent' }} />
 
+      {applyData(SettingsPhotos, Photos)}
       {/* {NumberOfRoomsRange && (
         <SettingsNumberOfRoomsRange
           {...NumberOfRoomsRange}
@@ -120,19 +100,13 @@ export function SchemaTenantCardSettings(props) {
         ></SettingsDescription>
       )}
       <CollapsibleRow title="Остальное">
-        {Photos && <SettingsPhotos {...Photos}></SettingsPhotos>}
         {RentalPeriod && (
           <SettingsRentalPeriod
             {...RentalPeriod}
             onChange={() => console.log(123)}
           ></SettingsRentalPeriod>
         )}
-        {Landmarks && (
-          <SettingsLandmarks
-            {...Landmarks}
-            onChange={() => console.log(123)}
-          ></SettingsLandmarks>
-        )}
+
       </CollapsibleRow> */}
     </ScrollView>
   );

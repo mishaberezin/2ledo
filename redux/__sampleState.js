@@ -111,6 +111,10 @@ export default {
             id: 'fnu48t89jscj74', // ID в хранилище картинок.
             caption: null,
           },
+          {
+            id: 'xru48t89eecj74',
+            caption: null,
+          },
         ],
 
         // Сколько человек будет проживать в квартире.
@@ -145,7 +149,10 @@ export default {
         // В городах без метро свои ориентиры,
         // в города с метро ориентиры не только метро.
         // Type: [String]
-        Landmarks: [{ id: 'msk-12348' }],
+        Landmarks: [
+          { id: 'msk-12348', name: 'Белорусская', color: 'green' },
+          { id: 'msk-12348', name: 'Новослободская', color: 'gray' },
+        ],
       },
     },
   },

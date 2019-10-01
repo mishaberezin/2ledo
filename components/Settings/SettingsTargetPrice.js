@@ -6,12 +6,21 @@ export function SettingsTargetPrice(props) {
   const { value, onChange } = props;
 
   return (
-    <CollapsibleListItem>
+    <CollapsibleListItem
+      listItemProps={{
+        title: 'Оптимальная цена',
+      }}
+    >
       <Input
         defaultValue={String(value)}
         onChangeText={onChange}
-        label="Оптимальная цена"
+        placeholder="₽₽₽"
         keyboardType="number-pad"
+        underlineColorAndroid="transparent"
+        inputContainerStyle={{
+          borderBottomWidth: 0,
+          paddingLeft: 0,
+        }}
       />
     </CollapsibleListItem>
   );
