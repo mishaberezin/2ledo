@@ -1,24 +1,22 @@
 import React from 'react';
 import { ListItem } from 'react-native-elements';
-import grid from '../../constants/grid';
-import colors from '../../constants/colors';
+import { DEFAULT_SIDE_MARGIN } from '@toledo/constants/layout';
+import { LABEL_TEXT_COLOR } from '@toledo/constants/colors';
 
 export function SettingsTextLabel(props) {
   const { label } = props;
-  const { defaultSideMargin } = grid;
-  const { labelTextColor } = colors;
 
   return (
     <ListItem
       containerStyle={{
         height: 56,
-        paddingLeft: defaultSideMargin,
-        paddingRight: defaultSideMargin,
+        paddingLeft: DEFAULT_SIDE_MARGIN,
+        paddingRight: DEFAULT_SIDE_MARGIN,
         backgroundColor: 'transparent',
       }}
       title={label}
       titleStyle={{
-        color: labelTextColor,
+        color: LABEL_TEXT_COLOR,
         fontFamily: 'ceracy-desktop-medium',
         fontSize: 13,
         lineHeight: 18,

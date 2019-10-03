@@ -1,16 +1,11 @@
 import React, { useState } from 'react';
-import {
-  View,
-  FlatList,
-  Image,
-  Button,
-  StyleSheet,
-  Dimensions,
-} from 'react-native';
+import { View, FlatList, Image, StyleSheet, Dimensions } from 'react-native';
+import { Button } from 'react-native-elements';
 // import ImagePicker from 'react-native-image-picker';
 import * as ImagePicker from 'expo-image-picker';
 import * as Permissions from 'expo-permissions';
 import Constants from 'expo-constants';
+import { TEXT_COLOR, SETTINGS_DIVIDER_COLOR } from '@toledo/constants/colors';
 
 import { getImageById } from '../../server/s3';
 
@@ -31,8 +26,6 @@ export function SettingsPhotos(props) {
       }
     }
   };
-
-  console.log(imageUri);
 
   const handleChoosePhoto = async () => {
     await getPermissionAsync();
@@ -64,11 +57,21 @@ export function SettingsPhotos(props) {
             </View>
           );
         }}
+        ListFooterComponent={() => {
+          return (
+            <View style={styles.addPhotoButtonWrapper}>
+              <Button
+                containerStyle={styles.addPhotoButtonContainer}
+                buttonStyle={styles.addPhotoButton}
+                titleStyle={styles.addPhotoButtonTitle}
+                title="Добавь больше фоток"
+                onPress={handleChoosePhoto}
+                icon={{ type: 'feather', name: 'plus-square' }}
+              />
+            </View>
+          );
+        }}
       />
-
-      <View style={{}}>
-        <Button title="Choose Photo" onPress={handleChoosePhoto} />
-      </View>
     </View>
   );
 }
@@ -79,6 +82,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FFF',
+    borderColor: SETTINGS_DIVIDER_COLOR,
+    borderStyle: 'solid',
+    borderBottomWidth: 1,
   },
   image: {
     width: width,
@@ -87,5 +93,23 @@ const styles = StyleSheet.create({
   },
   flatListStyle: {
     flex: 1,
+  },
+  addPhotoButtonWrapper: {
+    flex: 1,
+    alignItems: 'stretch',
+  },
+  addPhotoButtonContainer: {
+    flexGrow: 1,
+    backgroundColor: 'white',
+    borderStyle: 'dashed',
+    borderWidth: 2,
+    margin: 10,
+  },
+  addPhotoButton: {
+    backgroundColor: 'transparent',
+    height: 80,
+  },
+  addPhotoButtonTitle: {
+    color: TEXT_COLOR,
   },
 });

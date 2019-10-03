@@ -6,8 +6,8 @@ import { Divider } from 'react-native-elements';
 // import { Text } from 'react-native-ui-kitten';
 import { ToledoHeader5 } from '../ToledoHeader5';
 import { SettingsTextLabel } from '../Settings/SettingsTextLabel';
-// import { SettingsNumberOfPeople } from '../Settings/SettingsNumberOfPeople';
-// import { SettingsDescription } from '../Settings/SettingsDescription';
+import { SettingsNumberOfPeople } from '../Settings/SettingsNumberOfPeople';
+import { SettingsDescription } from '../Settings/SettingsDescription';
 import { SettingsPhotos } from '../Settings/SettingsPhotos';
 import { SettingsTargetPrice } from '../Settings/SettingsTargetPrice';
 // import { SettingsNumberOfRoomsRange } from '../Settings/SettingsNumberOfRoomsRange';
@@ -17,7 +17,7 @@ import { SettingsCheckbox } from '../Settings/SettingsCheckbox';
 
 // import { CollapsibleRow } from '../CollapsibleRow';
 
-import grid from '../../constants/grid';
+import { DEFAULT_SIDE_MARGIN } from '@toledo/constants/layout';
 
 const applyData = (Component, data, props) => {
   if (!data) {
@@ -38,15 +38,14 @@ export function SchemaTenantCardSettings(props) {
   // const { data, onChange } = props;
   const { data } = props;
   const {
-    // NumberOfPeople,
+    NumberOfPeople,
     TargetPrice,
-    // Description,
+    Description,
     Photos,
     // NumberOfRoomsRange,
     // RentalPeriod,
     Landmarks,
   } = data;
-  const { defaultSideMargin } = grid;
 
   return (
     <ScrollView
@@ -62,8 +61,8 @@ export function SchemaTenantCardSettings(props) {
           flex: 1,
           flexDirection: 'row',
           justifyContent: 'center',
-          paddingLeft: defaultSideMargin,
-          paddingRight: defaultSideMargin,
+          paddingLeft: DEFAULT_SIDE_MARGIN,
+          paddingRight: DEFAULT_SIDE_MARGIN,
         }}
       >
         <Image
@@ -78,9 +77,12 @@ export function SchemaTenantCardSettings(props) {
       {applyData(SettingsLandmarks, Landmarks, {
         onChange: () => console.log(123),
       })}
+
       <Divider style={{ height: 20, backgroundColor: 'transparent' }} />
 
+      {applyData(SettingsNumberOfPeople, NumberOfPeople)}
       {applyData(SettingsPhotos, Photos)}
+      {applyData(SettingsDescription, Description)}
       {/* {NumberOfRoomsRange && (
         <SettingsNumberOfRoomsRange
           {...NumberOfRoomsRange}

@@ -2,13 +2,15 @@ import React, { useState } from 'react';
 import { ListItem } from 'react-native-elements';
 import { View } from 'react-native';
 import Collapsible from 'react-native-collapsible';
-import grid from '../constants/grid';
-import colors from '../constants/colors';
+import { DEFAULT_SIDE_MARGIN } from '@toledo/constants/layout';
+import {
+  SETTINGS_DIVIDER_COLOR,
+  TEXT_COLOR,
+  SUBTITLE_COLOR,
+} from '@toledo/constants/colors';
 
 export const CollapsibleListItem = props => {
   const { listItemProps, collapsibleProps, children } = props;
-  const { settingsDividerColor, darkTextColor } = colors;
-  const { defaultSideMargin } = grid;
 
   const [collapsed, setCollapsed] = useState(true);
 
@@ -16,7 +18,7 @@ export const CollapsibleListItem = props => {
     <View
       style={{
         backgroundColor: '#fff',
-        borderColor: settingsDividerColor,
+        borderColor: SETTINGS_DIVIDER_COLOR,
         borderStyle: 'solid',
         borderTopWidth: 1,
         borderBottomWidth: 1,
@@ -24,16 +26,25 @@ export const CollapsibleListItem = props => {
     >
       <ListItem
         containerStyle={{
-          height: 56,
-          paddingLeft: defaultSideMargin,
-          paddingRight: defaultSideMargin,
+          height: listItemProps.subtitle ? 76 : 56,
+          paddingLeft: DEFAULT_SIDE_MARGIN,
+          paddingRight: DEFAULT_SIDE_MARGIN,
           backgroundColor: 'transparent',
         }}
         titleStyle={{
-          color: darkTextColor,
+          color: TEXT_COLOR,
           fontFamily: 'ceracy-desktop-medium',
           fontSize: 15,
           lineHeight: 18,
+        }}
+        subtitleStyle={{
+          color: SUBTITLE_COLOR,
+          fontFamily: 'ceracy-desktop-medium',
+          fontSize: 13,
+          lineHeight: 18,
+        }}
+        contentContainerStyle={{
+          flexDirection: 'column-reverse',
         }}
         chevron={{
           name: collapsed ? 'chevron-down' : 'chevron-up',
@@ -45,8 +56,8 @@ export const CollapsibleListItem = props => {
       />
       <Collapsible
         style={{
-          paddingLeft: defaultSideMargin,
-          paddingRight: defaultSideMargin,
+          paddingLeft: DEFAULT_SIDE_MARGIN,
+          paddingRight: DEFAULT_SIDE_MARGIN,
         }}
         {...collapsibleProps}
         collapsed={collapsed}

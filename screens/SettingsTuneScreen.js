@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { setCurrentCard } from '../redux/actions/localStateActions';
 import { View } from 'react-native';
 import { Select } from 'react-native-ui-kitten';
-import COLORS from '../constants/colors';
+import { SCREEN_BACKGROUND } from '../constants/colors';
 
 function SettingsTuneScreenUnconnected(props) {
   const { cards, currentCard, setCurrentCard } = props;
@@ -17,7 +17,7 @@ function SettingsTuneScreenUnconnected(props) {
     <View
       style={{
         flex: 1,
-        backgroundColor: COLORS.screenBackground,
+        backgroundColor: SCREEN_BACKGROUND,
         paddingTop: 10,
       }}
     >

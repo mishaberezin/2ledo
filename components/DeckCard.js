@@ -9,7 +9,7 @@ import {
 import { Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { Text, Avatar, withStyles } from 'react-native-ui-kitten';
-import Colors from '../constants/colors';
+import { DARK_VIOLET_COLOR } from '@toledo/constants/colors';
 
 const SCREEN_HEIGHT = Dimensions.get('window').height;
 
@@ -114,8 +114,8 @@ export default withStyles(DeckCardContainer, () => ({
     marginLeft: 10,
   },
   cardButton: {
-    backgroundColor: Colors.darkVioletColor,
-    borderColor: Colors.darkVioletColor,
+    backgroundColor: DARK_VIOLET_COLOR,
+    borderColor: DARK_VIOLET_COLOR,
     borderRadius: 10,
     width: 50,
     height: 50,

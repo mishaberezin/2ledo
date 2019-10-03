@@ -4,7 +4,7 @@ import { View, FlatList } from 'react-native';
 import Collapsible from 'react-native-collapsible';
 import FavoritesListHeader from './FavoritesListHeader';
 import FavoritesListItem from './FavoritesListItem';
-import COLORS from '../constants/colors';
+import { MAIN_BACKGROUND_COLOR } from '../constants/colors';
 
 const FavoritesListContainer = ({
   themedStyle,
@@ -62,14 +62,14 @@ const FavoritesList = withStyles(FavoritesListContainer, () => ({
     shadowRadius: 5,
 
     backgroundColor: '#fff',
-    borderColor: COLORS.mainBackgroundColor,
+    borderColor: MAIN_BACKGROUND_COLOR,
     borderWidth: 2,
     borderRadius: 20,
     marginHorizontal: LIST_MARGIN,
   },
   containerOpened: {
     paddingBottom: 20,
-    backgroundColor: COLORS.mainBackgroundColor,
+    backgroundColor: MAIN_BACKGROUND_COLOR,
     height: 'auto',
   },
   listContainer: {},

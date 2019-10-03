@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text } from 'react-native';
-import COLORS from '../constants/colors';
+import { TEXT_COLOR } from '@toledo/constants/colors';
 
 export function ToledoHeader5(props) {
   return (
@@ -12,7 +12,7 @@ export function ToledoHeader5(props) {
           fontFamily: 'ceracy-desktop-bold',
           fontSize: 22,
           lineHeight: 32,
-          color: COLORS.textColor,
+          color: TEXT_COLOR,
         },
       ]}
     />

@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View, ScrollView } from 'react-native';
 import { Text } from 'react-native-ui-kitten';
 import { ToledoHeader4 } from './ToledoHeader4';
-import COLORS from '../constants/colors';
+import { TEXT_COLOR } from '@toledo/constants/colors';
 
 function HeaderText(props) {
   return (
@@ -10,7 +10,7 @@ function HeaderText(props) {
       style={{
         fontSize: 15,
         lineHeight: 18,
-        color: COLORS.textColor,
+        color: TEXT_COLOR,
         fontFamily: 'ceracy-desktop-medium',
         ...props.style,
       }}

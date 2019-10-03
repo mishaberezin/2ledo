@@ -10,7 +10,10 @@ import {
   Spinner,
 } from 'react-native-ui-kitten';
 
-import colors from '../../constants/colors';
+import {
+  MAIN_BACKGROUND_COLOR,
+  DARK_VIOLET_COLOR,
+} from '@toledo/constants/colors';
 import { SCREEN_WIDTH } from '../../constants/device';
 import { sendPhone, sendCode } from '../../redux/actions/loginActions';
 
@@ -117,7 +120,7 @@ const LoginForm = withStyles(LoginFormContainer, () => ({
     width: SCREEN_WIDTH * 0.8,
     padding: 20,
     paddingVertical: 30,
-    borderColor: colors.mainBackgroundColor,
+    borderColor: MAIN_BACKGROUND_COLOR,
     borderWidth: 1,
     borderRadius: 10,
     alignItems: 'center',
@@ -161,8 +164,8 @@ const LoginForm = withStyles(LoginFormContainer, () => ({
   },
   submitButton: {
     flex: 1,
-    backgroundColor: colors.darkVioletColor,
-    borderColor: colors.darkVioletColor,
+    backgroundColor: DARK_VIOLET_COLOR,
+    borderColor: DARK_VIOLET_COLOR,
   },
 }));
 

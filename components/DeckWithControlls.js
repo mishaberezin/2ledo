@@ -9,7 +9,7 @@ import {
 import { withStyles, Text } from 'react-native-ui-kitten';
 import { Ionicons, FontAwesome } from '@expo/vector-icons';
 
-import colors from '../constants/colors';
+import { DARK_VIOLET_COLOR } from '@toledo/constants/colors';
 
 import DeckCard from './DeckCard';
 
@@ -225,7 +225,7 @@ const DeckWithControlls = withStyles(DeckWithControllsContainer, () => ({
   controlsContainer: {
     position: 'absolute',
     bottom: 0,
-    backgroundColor: colors.darkVioletColor,
+    backgroundColor: DARK_VIOLET_COLOR,
     opacity: 0.6,
     height: 60,
     width: SCREEN_WIDTH,

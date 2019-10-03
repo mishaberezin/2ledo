@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withStyles } from 'react-native-ui-kitten';
 import { Animated, View } from 'react-native';
 
-import COLORS from '../constants/colors';
+import { MAIN_BACKGROUND_COLOR } from '@toledo/constants/colors';
 import PlateHeader from './PlateHeader';
 
 const INITIAL_HEIGHT = 55;
@@ -102,10 +102,10 @@ const PlateWithContent = withStyles(PlateWithContentContainer, () => ({
   container: {
     marginVertical: 10,
     marginHorizontal: LIST_MARGIN,
-    borderColor: COLORS.mainBackgroundColor,
+    borderColor: MAIN_BACKGROUND_COLOR,
     borderWidth: 2,
     borderRadius: 20,
-    backgroundColor: COLORS.mainBackgroundColor,
+    backgroundColor: MAIN_BACKGROUND_COLOR,
   },
   containerClosed: {
     backgroundColor: '#fff',

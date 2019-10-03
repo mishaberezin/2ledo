@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { StyleSheet, ScrollView } from 'react-native';
 import { Layout, Text } from 'react-native-ui-kitten';
-import COLORS from '../constants/colors';
+import { SCREEN_BACKGROUND } from '../constants/colors';
 
 // import FavoritesGroupsList from '../components/FavoritesGroupsList';
 import FavoritesList from '../components/FavoritesList';
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 30,
-    backgroundColor: COLORS.screenBackground,
+    backgroundColor: SCREEN_BACKGROUND,
   },
 });
 

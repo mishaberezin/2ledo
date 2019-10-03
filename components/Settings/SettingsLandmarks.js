@@ -1,15 +1,10 @@
 import React from 'react';
 // import { View, Text, Button } from 'react-native';
 import { View, Text } from 'react-native';
-import grid from '../../constants/grid';
+import { DEFAULT_SIDE_MARGIN } from '@toledo/constants/layout';
 
 export function SettingsLandmarks(props) {
   const { value } = props;
-  const { defaultSideMargin } = grid;
-
-  // const handleAddLandmark = () => {};
-
-  console.log(props);
 
   return (
     <View
@@ -17,8 +12,8 @@ export function SettingsLandmarks(props) {
         backgroundColor: '#fff',
         paddingTop: 20,
         paddingBottom: 20,
-        paddingLeft: defaultSideMargin,
-        paddingRight: defaultSideMargin,
+        paddingLeft: DEFAULT_SIDE_MARGIN,
+        paddingRight: DEFAULT_SIDE_MARGIN,
       }}
     >
       <View style={{}}>
