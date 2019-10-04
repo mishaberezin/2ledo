@@ -1,9 +1,10 @@
 import React from 'react';
-import { View, Text } from 'react-native';
 import { ButtonGroup } from 'react-native-elements';
+import { CollapsibleListItem } from '../CollapsibleListItem';
 
 export function SettingsRentalPeriod(props) {
   const { value, onChange } = props;
+
   const values = [
     {
       value: 'long',
@@ -15,17 +16,19 @@ export function SettingsRentalPeriod(props) {
     },
   ];
 
-  const selectedIndex = values.findIndex(item => item.value === value);
-
   return (
-    <View>
-      <Text>Срок аренды: {value}</Text>
+    <CollapsibleListItem
+      listItemProps={{
+        title: value,
+        subtitle: 'Срок аренды',
+      }}
+    >
       <ButtonGroup
         onPress={index => onChange(values[index].value)}
-        selectedIndex={selectedIndex}
+        selectedIndex={value - 1}
         buttons={values.map(item => item.label)}
-        containerStyle={{ height: 50 }}
+        containerStyle={{ height: 30 }}
       />
-    </View>
+    </CollapsibleListItem>
   );
 }

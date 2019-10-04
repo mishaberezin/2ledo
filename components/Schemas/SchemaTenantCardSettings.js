@@ -11,11 +11,14 @@ import { SettingsDescription } from '../Settings/SettingsDescription';
 import { SettingsPhotos } from '../Settings/SettingsPhotos';
 import { SettingsTargetPrice } from '../Settings/SettingsTargetPrice';
 // import { SettingsNumberOfRoomsRange } from '../Settings/SettingsNumberOfRoomsRange';
-// import { SettingsRentalPeriod } from '../Settings/SettingsRentalPeriod';
+import { SettingsRentalPeriod } from '../Settings/SettingsRentalPeriod';
+import { SettingsChildren } from '../Settings/SettingsChildren';
+import { SettingsPets } from '../Settings/SettingsPets';
 import { SettingsLandmarks } from '../Settings/SettingsLandmarks';
 import { SettingsCheckbox } from '../Settings/SettingsCheckbox';
 
 // import { CollapsibleRow } from '../CollapsibleRow';
+import { CollapsibleHeader } from '../CollapsibleHeader';
 
 import { DEFAULT_SIDE_MARGIN } from '@toledo/constants/layout';
 
@@ -35,15 +38,13 @@ const applyData = (Component, data, props) => {
 };
 
 export function SchemaTenantCardSettings(props) {
-  // const { data, onChange } = props;
   const { data } = props;
   const {
     NumberOfPeople,
     TargetPrice,
     Description,
     Photos,
-    // NumberOfRoomsRange,
-    // RentalPeriod,
+    RentalPeriod,
     Landmarks,
   } = data;
 
@@ -67,7 +68,7 @@ export function SchemaTenantCardSettings(props) {
       >
         <Image
           source={require('../../assets/images/card-tenant.png')}
-          style={{ flex: 1, height: 400, ImageResizeMode: 'cover' }}
+          style={{ flex: 1, height: 400 }}
         />
       </View>
       <SettingsTextLabel label="Будем искать по этим параметрам" />
@@ -83,33 +84,37 @@ export function SchemaTenantCardSettings(props) {
       {applyData(SettingsNumberOfPeople, NumberOfPeople)}
       {applyData(SettingsPhotos, Photos)}
       {applyData(SettingsDescription, Description)}
-      {/* {NumberOfRoomsRange && (
-        <SettingsNumberOfRoomsRange
-          {...NumberOfRoomsRange}
-        ></SettingsNumberOfRoomsRange>
-      )}
-      {NumberOfPeople && (
-        <SettingsNumberOfPeople
-          {...NumberOfPeople}
-          onChange={value => onChange({ name: 'NumberOfPeople', value })}
-        ></SettingsNumberOfPeople>
-      )}
-      {PriceRange && <SettingsTargetPrice {...PriceRange} />}
-      {Description && (
-        <SettingsDescription
-          {...Description}
-          onChange={value => onChange({ name: 'Description', value })}
-        ></SettingsDescription>
-      )}
-      <CollapsibleRow title="Остальное">
-        {RentalPeriod && (
-          <SettingsRentalPeriod
-            {...RentalPeriod}
-            onChange={() => console.log(123)}
-          ></SettingsRentalPeriod>
-        )}
 
-      </CollapsibleRow> */}
+      <Divider style={{ height: 20, backgroundColor: 'transparent' }} />
+
+      {applyData(SettingsRentalPeriod, RentalPeriod)}
+
+      {/* Времянка */}
+      <Divider style={{ height: 20, backgroundColor: 'transparent' }} />
+      {applyData(SettingsChildren, {
+        checked: true,
+        description: 'Младшему 35, готовится покинуть гнёздышко.',
+      })}
+      <Divider style={{ height: 20, backgroundColor: 'transparent' }} />
+      {applyData(SettingsPets, {
+        checked: true,
+        description: 'Щенок сенбернар, совсем крошка.',
+      })}
+
+      <Divider style={{ height: 20, backgroundColor: 'transparent' }} />
+      <View
+        style={{
+          opacity: 0.5,
+        }}
+      >
+        <CollapsibleHeader title="Уровни доверия" checked={true}>
+          <SettingsCheckbox label="Соцсети"></SettingsCheckbox>
+          <SettingsCheckbox label="ЕГРН" checked={true}></SettingsCheckbox>
+          <SettingsCheckbox label="Паспорт"></SettingsCheckbox>
+        </CollapsibleHeader>
+      </View>
+
+      <Divider style={{ height: 158, backgroundColor: 'transparent' }} />
     </ScrollView>
   );
 }
