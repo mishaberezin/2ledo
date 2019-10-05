@@ -22,7 +22,10 @@ const DeckCardContainer = ({ card, opened, onOpen, onClose, themedStyle }) => {
   const users = card.users && Object.values(card.users);
 
   return (
-    <ScrollView style={themedStyle.cardContainer}>
+    <ScrollView
+      style={themedStyle.cardContainer}
+      showsVerticalScrollIndicator={false}
+    >
       <View style={themedStyle.card}>
         <Image
           source={{ uri: data.Photos.items[0].ulr }}

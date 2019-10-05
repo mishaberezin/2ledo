@@ -14,9 +14,8 @@ function InitScreen(props) {
     //await AsyncStorage.removeItem('token');
     const userToken = await checkUserToken();
     if (userToken) {
-      setUserToken(userToken).then(() => {
-        navigation.navigate('Main');
-      });
+      await setUserToken(userToken);
+      navigation.navigate('Main');
     } else {
       navigation.navigate('Login');
     }

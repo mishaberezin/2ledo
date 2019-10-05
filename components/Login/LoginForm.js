@@ -2,20 +2,12 @@ import React, { useState, useCallback } from 'react';
 import { View, KeyboardAvoidingView } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {
-  Text,
-  withStyles,
-  Input,
-  Button,
-  Spinner,
-} from 'react-native-ui-kitten';
+import { Text, withStyles, Input, Spinner } from 'react-native-ui-kitten';
 
-import {
-  MAIN_BACKGROUND_COLOR,
-  DARK_VIOLET_COLOR,
-} from '@toledo/constants/colors';
+import { MAIN_BACKGROUND_COLOR } from '@toledo/constants/colors';
 import { SCREEN_WIDTH } from '../../constants/device';
 import { sendPhone, sendCode } from '../../redux/actions/loginActions';
+import ToledoButton from '../../components/ToledoButton';
 
 const LoginFormContainer = ({
   themedStyle,
@@ -88,13 +80,9 @@ const LoginFormContainer = ({
             />
           </View>
           <View style={themedStyle.submitButtonRow}>
-            <Button
-              style={themedStyle.submitButton}
-              disabled={buttonDisabled}
-              onPress={handleButtonPress}
-            >
+            <ToledoButton disabled={buttonDisabled} onPress={handleButtonPress}>
               Отправить
-            </Button>
+            </ToledoButton>
           </View>
         </React.Fragment>
       )}
@@ -160,12 +148,7 @@ const LoginForm = withStyles(LoginFormContainer, () => ({
   },
   submitButtonRow: {
     flexDirection: 'row',
-    paddingHorizontal: 10,
-  },
-  submitButton: {
-    flex: 1,
-    backgroundColor: DARK_VIOLET_COLOR,
-    borderColor: DARK_VIOLET_COLOR,
+    paddingHorizontal: 20,
   },
 }));
 

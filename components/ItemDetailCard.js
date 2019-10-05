@@ -1,12 +1,17 @@
 import React from 'react';
-import { View, ScrollView, Dimensions, Image } from 'react-native';
-import { Text, Avatar, withStyles, Button } from 'react-native-ui-kitten';
+import { View, ScrollView, Image } from 'react-native';
+import { Text, Avatar, withStyles } from 'react-native-ui-kitten';
 
-const SCREEN_HEIGHT = Dimensions.get('window').height;
+import ToledoButton from './ToledoButton';
+
+import { SCREEN_HEIGHT } from '../constants/device';
 
 const DeckCardContainer = ({ title, desc, owner, uri, themedStyle }) => {
   return (
-    <ScrollView style={themedStyle.openedCardContainer}>
+    <ScrollView
+      style={themedStyle.openedCardContainer}
+      showsVerticalScrollIndicator={false}
+    >
       <View style={themedStyle.cardContainer}>
         <Image source={{ uri }} style={themedStyle.image} />
         <View>
@@ -30,7 +35,7 @@ const DeckCardContainer = ({ title, desc, owner, uri, themedStyle }) => {
             <Text category="p1">{desc}</Text>
           </View>
           <View style={themedStyle.cardActions}>
-            <Button>Связаться</Button>
+            <ToledoButton>Связаться</ToledoButton>
           </View>
         </View>
       </View>
