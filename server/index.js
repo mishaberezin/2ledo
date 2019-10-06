@@ -1,8 +1,6 @@
 // Фейковый сервер для нужд программной композиции.
-import deckCards from './data/deckCards';
 
 export default {
-  deckCards,
   serpData: [
     {
       id: 1,

@@ -3,7 +3,7 @@ import httpRequestStub from './httpRequestStub';
 import data from '../server';
 
 export default {
-  fetchCards: () => httpRequestStub(data.deckCards),
+  fetchCards: () => httpRequestStub(data.serpData),
   sendPhone: phone =>
     httpRequestStub({
       hash: 'sg234fsgd34fsd',

@@ -1,36 +1,21 @@
 import React from 'react';
-import { View, ScrollView, Image } from 'react-native';
-import { Text, Avatar, withStyles } from 'react-native-ui-kitten';
+import { View, ScrollView } from 'react-native';
+import { Text, withStyles } from 'react-native-ui-kitten';
 
 import ToledoButton from './ToledoButton';
+import CardShortInfo from '../components/Card/CardShortInfo';
+import CardImages from '../components/Card/CardImages';
 
-import { SCREEN_HEIGHT } from '../constants/device';
-
-const DeckCardContainer = ({ title, desc, owner, uri, themedStyle }) => {
+const DeckCardContainer = ({ desc, owner, uri, themedStyle }) => {
   return (
     <ScrollView
-      style={themedStyle.openedCardContainer}
+      style={themedStyle.container}
       showsVerticalScrollIndicator={false}
     >
       <View style={themedStyle.cardContainer}>
-        <Image source={{ uri }} style={themedStyle.image} />
+        <CardImages images={[uri]} />
         <View>
-          <View style={themedStyle.cardShortInfo}>
-            <Text category="s1">{title}</Text>
-            <View style={themedStyle.cardShortInfoDesc}>
-              <Text category="p1">30 + жкх, 2м от метро</Text>
-            </View>
-            <View style={themedStyle.avatarBlock}>
-              {owner && (
-                <React.Fragment>
-                  <Avatar source={{ uri: owner.avatarUri }} size="small" />
-                  <Text style={themedStyle.avatarBlockName} category="s1">
-                    {owner.name}
-                  </Text>
-                </React.Fragment>
-              )}
-            </View>
-          </View>
+          <CardShortInfo owner={owner} />
           <View style={themedStyle.cardDescriptionWrap}>
             <Text category="p1">{desc}</Text>
           </View>
@@ -44,19 +29,12 @@ const DeckCardContainer = ({ title, desc, owner, uri, themedStyle }) => {
 };
 
 export default withStyles(DeckCardContainer, () => ({
+  container: {
+    backgroundColor: 'white',
+  },
   cardContainer: {
     marginBottom: 25,
     paddingHorizontal: 10,
-  },
-  openedCardContainer: { backgroundColor: 'white' },
-  image: {
-    height: SCREEN_HEIGHT * 0.5,
-  },
-  cardShortInfo: {
-    marginHorizontal: 10,
-  },
-  cardShortInfoDesc: {
-    marginTop: 10,
   },
   cardDescriptionWrap: {
     marginTop: 10,
