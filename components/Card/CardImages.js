@@ -89,6 +89,18 @@ class CardImagesContainer extends Component {
             </View>
           </View>
         </View>
+        <View style={themedStyle.imagesCountContainer}>
+          {images.map((_, index) => (
+            <Ionicons
+              key={index}
+              name="ios-radio-button-on"
+              size={12}
+              color={
+                this.state.imageIndex === index ? DARK_VIOLET_COLOR : '#fff'
+              }
+            />
+          ))}
+        </View>
       </View>
     );
   }
@@ -123,6 +135,15 @@ const CardImages = withStyles(CardImagesContainer, () => ({
   image: {
     flex: 1,
     height: SCREEN_HEIGHT / 2,
+    width: '100%',
+  },
+  imagesCountContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'absolute',
+    bottom: 10,
     width: '100%',
   },
 }));
