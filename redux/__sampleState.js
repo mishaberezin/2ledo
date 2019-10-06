@@ -3,11 +3,11 @@ export default {
     token: null,
   },
   localState: {
-    currentCard: 'nc84n821ncz7hb',
+    currentCard: 'nc84n897ncz7hh',
   },
   user: {
     id: 'hekdjnv84ns8c',
-    cards: ['nc889secjcz7hh'], // Карточки, связанные с учеткой
+    cards: ['nc84n821ncz7hb', 'nc84n897ncz7hh'], // Карточки, связанные с учеткой
     data: {
       UserName: 'Misha',
       UserPhones: ['+79262558011'],
@@ -22,7 +22,7 @@ export default {
       // ID карточки
       id: 'nc84n897ncz7hh',
 
-      // ID учеток, владеющих карточкой.
+      // ID учетных записей, владеющих карточкой.
       // Пока всегда одна, но в будущем может быть несколько.
       users: ['hekdjnv84ns8c'],
 
@@ -69,18 +69,15 @@ export default {
         Price: {
           rent: 60000,
           utilities: true,
-          commission: 20000,
+          commission: 0,
           deposit: 50000,
         },
 
-        NumberOfPeopleRange: {
-          min: 0,
-          max: 2,
-        },
+        MaxNumberOfPeople: 2,
 
         // Описание
         Description:
-          'Неторопливо ищу комнату на продолжительный срок. Спасибо.',
+          'Сдаю только дагестанцам. Славянам просьба не беспокоить. Спасибо.',
       },
     },
     nc84n821ncz7hb: {
@@ -131,18 +128,15 @@ export default {
         TargetPrice: 50000,
 
         // Минимальное количество изолированных комнат.
-        // Нужно подумать про кейс со студиями.
+        // Студия это 0 комнат.
         // Type: Number
-        NumberOfRoomsRange: {
-          min: 1,
-          max: Infinity,
-        },
+        MinNumberOfRooms: 1,
 
         // Срок аренды. Больше года, меньше года.
         // value: ['short', 'long']
         RentalPeriod: 'long',
 
-        // ID геоточек, в окрестностях которых ищем квартиру.
+        // ID локаций, в окрестностях которых ищем квартиру.
         // На старте это метро, но идейно можно использовать что угодно.
         // В городах без метро свои ориентиры,
         // в города с метро ориентиры не только метро.
