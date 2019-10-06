@@ -2,7 +2,7 @@ import React from 'react';
 import { ButtonGroup } from 'react-native-elements';
 import { CollapsibleRow } from '../CollapsibleRow';
 
-export function SettingsNumberOfRoomsRange(props) {
+export function SettingsMinNumberOfRooms(props) {
   const { minimum, onChange } = props;
   const values = [
     {

@@ -2,20 +2,24 @@ import React from 'react';
 import { ButtonGroup } from 'react-native-elements';
 import { CollapsibleListItem } from '../CollapsibleListItem';
 
-export function SettingsNumberOfPeople(props) {
+export function SettingsMaxNumberOfPeople(props) {
   const { value, onChange } = props;
 
   const values = [
     {
       value: 1,
-      label: '1',
+      label: 'Не важно',
     },
     {
       value: 2,
-      label: '2',
+      label: '1',
     },
     {
       value: 3,
+      label: '2',
+    },
+    {
+      value: 4,
       label: '3',
     },
   ];
@@ -23,7 +27,7 @@ export function SettingsNumberOfPeople(props) {
   return (
     <CollapsibleListItem
       listItemProps={{
-        title: `${value}`,
+        title: `до ${value}`,
         subtitle: 'Количество проживающих',
       }}
     >

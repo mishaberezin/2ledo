@@ -1,23 +1,19 @@
-// import React, { useState } from 'react';
 import React from 'react';
 import isPlainObject from 'lodash/isPlainObject';
 import { View, ScrollView, Image } from 'react-native';
 import { Divider } from 'react-native-elements';
-// import { Text } from 'react-native-ui-kitten';
 import { ToledoHeader5 } from '../ToledoHeader5';
 import { SettingsTextLabel } from '../Settings/SettingsTextLabel';
 import { SettingsNumberOfPeople } from '../Settings/SettingsNumberOfPeople';
 import { SettingsDescription } from '../Settings/SettingsDescription';
 import { SettingsPhotos } from '../Settings/SettingsPhotos';
 import { SettingsTargetPrice } from '../Settings/SettingsTargetPrice';
-// import { SettingsNumberOfRoomsRange } from '../Settings/SettingsNumberOfRoomsRange';
 import { SettingsRentalPeriod } from '../Settings/SettingsRentalPeriod';
 import { SettingsChildren } from '../Settings/SettingsChildren';
 import { SettingsPets } from '../Settings/SettingsPets';
 import { SettingsLandmarks } from '../Settings/SettingsLandmarks';
 import { SettingsCheckbox } from '../Settings/SettingsCheckbox';
 
-// import { CollapsibleRow } from '../CollapsibleRow';
 import { CollapsibleHeader } from '../CollapsibleHeader';
 
 import { DEFAULT_SIDE_MARGIN } from '@toledo/constants/layout';

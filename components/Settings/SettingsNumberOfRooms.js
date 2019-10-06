@@ -1,12 +1,32 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { ButtonGroup } from 'react-native-elements';
+import { CollapsibleRow } from '../CollapsibleRow';
 
 export function SettingsNumberOfRooms(props) {
-  const { value } = props;
+  const { minimum, onChange } = props;
+  const values = [
+    {
+      value: 1,
+      label: '1',
+    },
+    {
+      value: 2,
+      label: '2',
+    },
+    {
+      value: 3,
+      label: '3',
+    },
+  ];
 
   return (
-    <View>
-      <Text>NumberOfRooms: {value}</Text>
-    </View>
+    <CollapsibleRow title="Минимальное количество комнат">
+      <ButtonGroup
+        onPress={index => onChange(values[index].value)}
+        selectedIndex={minimum - 1}
+        buttons={values.map(item => item.label)}
+        containerStyle={{ height: 30 }}
+      />
+    </CollapsibleRow>
   );
 }
