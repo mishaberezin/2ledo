@@ -15,7 +15,7 @@ const DeckCardContainer = ({ card, opened, onOpen, onClose, themedStyle }) => {
     opened ? onClose() : onOpen();
     LayoutAnimation.configureNext(LayoutAnimation.Presets.timing);
   };
-  const { desc, owner, uri } = card;
+  const { desc, owner, images } = card;
 
   return (
     <ScrollView
@@ -23,7 +23,7 @@ const DeckCardContainer = ({ card, opened, onOpen, onClose, themedStyle }) => {
       showsVerticalScrollIndicator={false}
     >
       <View style={themedStyle.cardContainer}>
-        <CardImages images={[uri]} />
+        <CardImages images={images} />
         <View>
           <CardShortInfo owner={owner} />
           <TouchableWithoutFeedback onPress={onDetailsButtonPress}>

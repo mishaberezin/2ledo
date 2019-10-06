@@ -5,14 +5,14 @@ import { Text, withStyles } from 'react-native-ui-kitten';
 import ToledoButton from '../ToledoButton';
 import { CardImages, CardShortInfo } from './index';
 
-const ItemDetailCardContainer = ({ desc, owner, uri, themedStyle }) => {
+const ItemDetailCardContainer = ({ desc, owner, images, themedStyle }) => {
   return (
     <ScrollView
       style={themedStyle.container}
       showsVerticalScrollIndicator={false}
     >
       <View style={themedStyle.cardContainer}>
-        <CardImages images={[uri]} />
+        <CardImages images={images} />
         <View>
           <CardShortInfo owner={owner} />
           <View style={themedStyle.cardDescriptionWrap}>
