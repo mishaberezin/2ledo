@@ -8,12 +8,11 @@ import {
 } from 'react-native';
 import { withStyles, Text } from 'react-native-ui-kitten';
 import { Ionicons, FontAwesome } from '@expo/vector-icons';
+import { Card } from 'react-native-elements';
 
 import { DARK_VIOLET_COLOR } from '@toledo/constants/colors';
 
-import DeckCard from './DeckCard';
-
-import { Card } from 'react-native-elements';
+import { DeckCard } from './Card';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 

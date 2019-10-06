@@ -9,8 +9,8 @@ const FavoritesListHeaderContainer = ({
   title,
   opened,
   onTogglePress,
-  themedStyle,
   withCat,
+  themedStyle,
 }) => {
   const handleToggle = useCallback(onTogglePress, [opened]);
 
@@ -44,6 +44,12 @@ const FavoritesListHeader = withStyles(FavoritesListHeaderContainer, () => ({
     display: 'flex',
     alignItems: 'center',
     width: 40,
+  },
+  overflowMenu: {
+    position: 'relative',
+    top: 10,
+    borderColor: 'red',
+    borderWidth: 2,
   },
 }));
 

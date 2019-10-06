@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { View } from 'react-native';
 import { OverflowMenu, withStyles } from 'react-native-ui-kitten';
 import { TouchableOpacity } from 'react-native';
 
@@ -24,21 +25,25 @@ const OverflowMenuContainer = ({
   };
 
   return (
-    <OverflowMenu
-      data={items}
-      style={menuContainerStyle}
-      visible={menuVisible}
-      selectedIndex={selectedIndex}
-      onSelect={onItemSelect}
-      onBackdropPress={toggleMenu}
-    >
-      <TouchableOpacity onPress={toggleMenu} style={themedStyle.toggler}>
-        {children}
-      </TouchableOpacity>
-    </OverflowMenu>
+    <View style={[themedStyle.container, menuContainerStyle]}>
+      <OverflowMenu
+        data={items}
+        visible={menuVisible}
+        selectedIndex={selectedIndex}
+        onSelect={onItemSelect}
+        onBackdropPress={toggleMenu}
+      >
+        <TouchableOpacity onPress={toggleMenu} style={themedStyle.toggler}>
+          {children}
+        </TouchableOpacity>
+      </OverflowMenu>
+    </View>
   );
 };
 
 export default withStyles(OverflowMenuContainer, () => ({
-  toggler: {},
+  container: {
+    display: 'flex',
+    flexDirection: 'row',
+  },
 }));

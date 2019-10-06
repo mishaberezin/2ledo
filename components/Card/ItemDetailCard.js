@@ -2,11 +2,10 @@ import React from 'react';
 import { View, ScrollView } from 'react-native';
 import { Text, withStyles } from 'react-native-ui-kitten';
 
-import ToledoButton from './ToledoButton';
-import CardShortInfo from '../components/Card/CardShortInfo';
-import CardImages from '../components/Card/CardImages';
+import ToledoButton from '../ToledoButton';
+import { CardImages, CardShortInfo } from './index';
 
-const DeckCardContainer = ({ desc, owner, uri, themedStyle }) => {
+const ItemDetailCardContainer = ({ desc, owner, uri, themedStyle }) => {
   return (
     <ScrollView
       style={themedStyle.container}
@@ -28,7 +27,7 @@ const DeckCardContainer = ({ desc, owner, uri, themedStyle }) => {
   );
 };
 
-export default withStyles(DeckCardContainer, () => ({
+export default withStyles(ItemDetailCardContainer, () => ({
   container: {
     backgroundColor: 'white',
   },

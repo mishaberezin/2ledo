@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
-import ItemDetailCard from '../components/ItemDetailCard';
+import { ItemDetailCard } from '../components/Card';
 import serverData from '../server';
 
 function CardScreen(props) {
