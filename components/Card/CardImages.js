@@ -91,14 +91,15 @@ class CardImagesContainer extends Component {
         </View>
         <View style={themedStyle.imagesCountContainer}>
           {images.map((_, index) => (
-            <Ionicons
-              key={index}
-              name="ios-radio-button-on"
-              size={12}
-              color={
-                this.state.imageIndex === index ? DARK_VIOLET_COLOR : '#fff'
-              }
-            />
+            <View key={index} style={themedStyle.imagesCountDot}>
+              <Ionicons
+                name="ios-radio-button-on"
+                size={12}
+                color={
+                  this.state.imageIndex === index ? DARK_VIOLET_COLOR : '#fff'
+                }
+              />
+            </View>
           ))}
         </View>
       </View>
@@ -145,6 +146,9 @@ const CardImages = withStyles(CardImagesContainer, () => ({
     position: 'absolute',
     bottom: 10,
     width: '100%',
+  },
+  imagesCountDot: {
+    marginHorizontal: 2,
   },
 }));
 
