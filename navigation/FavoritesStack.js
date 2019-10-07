@@ -44,4 +44,8 @@ const FavoritesStack = createStackNavigator(
   }
 );
 
+FavoritesStack.navigationOptions = {
+  title: '💌',
+};
+
 export default FavoritesStack;

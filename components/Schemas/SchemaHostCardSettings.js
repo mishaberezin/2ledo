@@ -3,14 +3,13 @@ import isPlainObject from 'lodash/isPlainObject';
 import { View, ScrollView, Image } from 'react-native';
 import { Divider } from 'react-native-elements';
 import { ToledoHeader5 } from '../ToledoHeader5';
-// import { SettingsCoords } from '../Settings/SettingsCoords';
 import { SettingsDescription } from '../Settings/SettingsDescription';
 import { SettingsPhotos } from '../Settings/SettingsPhotos';
-import { SettingsPrice } from '../Settings/SettingsPrice';
+import { SettingsRentalPrice } from '../Settings/SettingsRentalPrice';
 import { SettingsNumberOfRooms } from '../Settings/SettingsNumberOfRooms';
 import { SettingsRentalPeriod } from '../Settings/SettingsRentalPeriod';
-// import { SettingsAddress } from '../Settings/SettingsAddress';
-// import { SettingsFloor } from '../Settings/SettingsFloor';
+import { SettingsAddress } from '../Settings/SettingsAddress';
+import { SettingsFloor } from '../Settings/SettingsFloor';
 import { SettingsTextLabel } from '../Settings/SettingsTextLabel';
 import { SettingsMaxNumberOfPeople } from '../Settings/SettingsMaxNumberOfPeople';
 // import { SettingsCheckbox } from '../Settings/SettingsCheckbox';
@@ -35,14 +34,13 @@ const applyData = (Component, data, props) => {
 export function SchemaHostCardSettings(props) {
   const { data } = props;
   const {
-    // Coords,
+    Address,
     Description,
     Photos,
-    Price,
+    RentalPrice,
     NumberOfRooms,
     RentalPeriod,
-    // Address,
-    // Floor,
+    Floor,
     MaxNumberOfPeople,
   } = data;
 
@@ -72,7 +70,8 @@ export function SchemaHostCardSettings(props) {
       </View>
       <SettingsTextLabel label="Будем искать по этим параметрам" />
 
-      {applyData(SettingsPrice, Price)}
+      {applyData(SettingsRentalPrice, RentalPrice)}
+      {applyData(SettingsAddress, Address)}
       {applyData(SettingsMaxNumberOfPeople, MaxNumberOfPeople)}
 
       <Divider style={{ height: 20, backgroundColor: 'transparent' }} />
@@ -86,6 +85,7 @@ export function SchemaHostCardSettings(props) {
 
       <CollapsibleHeader title="Параметры" checked={true}>
         {applyData(SettingsNumberOfRooms, NumberOfRooms)}
+        {applyData(SettingsFloor, Floor)}
       </CollapsibleHeader>
       {/* {Coords && (
         <SettingsCoords
@@ -100,7 +100,7 @@ export function SchemaHostCardSettings(props) {
         ></SettingsDescription>
       )}
       {Photos && <SettingsPhotos {...Photos}></SettingsPhotos>}
-      {Price && <SettingsPrice {...Price} />}
+      {Price && <SettingsRentalPrice {...Price} />}
       {NumberOfRooms && (
         <SettingsNumberOfRooms {...NumberOfRooms}></SettingsNumberOfRooms>
       )}
@@ -109,18 +109,6 @@ export function SchemaHostCardSettings(props) {
           {...RentalPeriod}
           onChange={() => console.log(123)}
         ></SettingsRentalPeriod>
-      )}
-      {Address && (
-        <SettingsAddress
-          {...Address}
-          onChange={() => console.log(123)}
-        ></SettingsAddress>
-      )}
-      {Floor && (
-        <SettingsFloor
-          {...Floor}
-          onChange={() => console.log(123)}
-        ></SettingsFloor>
       )}
       {NumberOfPeopleRange && (
         <SettingsNumberOfPeopleRange

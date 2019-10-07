@@ -36,13 +36,12 @@ export default {
       // Каждое поле описывает кусочек карточки.
       // Имя поля это ID интерфейса (data shape).
       data: {
-        // Координаты: широта, долгота
-        // Type: [Number, Number]
-        Coords: [55.756459, 37.64482],
-
         // Адрес текстом
         // Type: String
-        Address: 'Москва, Большой Златоустинский переулок, 6с1',
+        Address: {
+          coords: [55.756459, 37.64482],
+          postal: 'Москва, Большой Златоустинский переулок, 6с1',
+        },
 
         // Этаж
         // Type: Number
@@ -66,10 +65,9 @@ export default {
 
         // Структура затрат арендатора.
         // Состоит из очень разных кусков.
-        Price: {
+        RentalPrice: {
           rent: 60000,
-          utilities: true,
-          commission: 0,
+          utilities: 'usage', // usage, all, nothing
           deposit: 50000,
         },
 

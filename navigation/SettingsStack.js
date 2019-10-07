@@ -13,6 +13,7 @@ const SettingsStack = createStackNavigator(
   },
   {
     initialRouteName: 'Card',
+
     defaultNavigationOptions: ({ navigation }) => {
       return {
         header: (
@@ -29,5 +30,9 @@ const SettingsStack = createStackNavigator(
     },
   }
 );
+
+SettingsStack.navigationOptions = {
+  title: '⚙️',
+};
 
 export default SettingsStack;
