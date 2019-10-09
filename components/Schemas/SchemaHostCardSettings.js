@@ -12,7 +12,6 @@ import { SettingsAddress } from '../Settings/SettingsAddress';
 import { SettingsFloor } from '../Settings/SettingsFloor';
 import { SettingsTextLabel } from '../Settings/SettingsTextLabel';
 import { SettingsMaxNumberOfPeople } from '../Settings/SettingsMaxNumberOfPeople';
-// import { SettingsCheckbox } from '../Settings/SettingsCheckbox';
 import { CollapsibleHeader } from '../CollapsibleHeader';
 import { DEFAULT_SIDE_MARGIN } from '@toledo/constants/layout';
 

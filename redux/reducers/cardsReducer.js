@@ -1,5 +1,6 @@
 import {
   ADD_CARD,
+  SET_CARD_PROP,
   SET_CARD_PRICE,
   SET_CARD_NUMBER_OF_PEOPLE,
   SET_CARD_DESCRIPTION,
@@ -11,6 +12,18 @@ const cardsReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case ADD_CARD: {
       return { ...state, [action.payload.id]: action.payload.value };
+    }
+    case SET_CARD_PROP: {
+      const { id, name, value } = action.payload;
+      const card = state[id];
+
+      return {
+        ...state,
+        [id]: {
+          ...card,
+          data: { ...card.data, [name]: value },
+        },
+      };
     }
     case SET_CARD_PRICE: {
       const card = state[action.payload.id];

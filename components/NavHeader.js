@@ -21,7 +21,7 @@ function HeaderText(props) {
   );
 }
 
-function NavHeader(props) {
+export function NavHeader(props) {
   const { title, menuItems } = props;
 
   return (
@@ -72,5 +72,3 @@ const styles = StyleSheet.create({
     flexGrow: 0,
   },
 });
-
-export default NavHeader;
