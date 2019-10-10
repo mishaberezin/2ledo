@@ -53,6 +53,7 @@ export const CollapsibleListItem = props => {
         }}
         onPress={() => setCollapsed(!collapsed)}
         {...listItemProps}
+        title={collapsed ? listItemProps.title : null}
       />
       <Collapsible
         style={{

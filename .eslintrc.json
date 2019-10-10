@@ -11,6 +11,7 @@
     }
   },
   "globals": {
+    "Intl": "readonly",
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
   },

@@ -2,6 +2,7 @@ import React from 'react';
 import isPlainObject from 'lodash/isPlainObject';
 import { View, ScrollView, Image } from 'react-native';
 import { Divider } from 'react-native-elements';
+import { Mute } from '../Mute';
 import { ToledoHeader5 } from '../ToledoHeader5';
 import { SettingsTextLabel } from '../Settings/SettingsTextLabel';
 import { SettingsNumberOfPeople } from '../Settings/SettingsNumberOfPeople';
@@ -11,7 +12,7 @@ import { SettingsTargetPrice } from '../Settings/SettingsTargetPrice';
 import { SettingsRentalPeriod } from '../Settings/SettingsRentalPeriod';
 import { SettingsChildren } from '../Settings/SettingsChildren';
 import { SettingsPets } from '../Settings/SettingsPets';
-import { SettingsLandmarks } from '../Settings/SettingsLandmarks';
+import { SettingsLandmark } from '../Settings/SettingsLandmark';
 import { SettingsCheckbox } from '../Settings/SettingsCheckbox';
 
 import { CollapsibleHeader } from '../CollapsibleHeader';
@@ -34,14 +35,14 @@ const applyData = (Component, data, props) => {
 };
 
 export function SchemaTenantCardSettings(props) {
-  const { data } = props;
+  const { data, onChange } = props;
   const {
     NumberOfPeople,
     TargetPrice,
     Description,
     Photos,
     RentalPeriod,
-    Landmarks,
+    Landmark,
   } = data;
 
   return (
@@ -68,47 +69,59 @@ export function SchemaTenantCardSettings(props) {
         />
       </View>
       <SettingsTextLabel label="Будем искать по этим параметрам" />
-      {applyData(SettingsTargetPrice, TargetPrice)}
-      <SettingsCheckbox checked={true} label="Первый этаж не нужно" />
-      <SettingsTextLabel label="Район, округ и метро. Укажите все" />
-      {applyData(SettingsLandmarks, Landmarks, {
-        onChange: () => console.log(123),
+      {applyData(SettingsTargetPrice, TargetPrice, {
+        onChange: ({ value }) => onChange({ name: 'TargetPrice', value }),
+      })}
+      <Divider style={{ height: 20, backgroundColor: 'transparent' }} />
+      <Mute>
+        <SettingsCheckbox checked={true} label="Первый этаж не нужно" />
+      </Mute>
+      <Divider style={{ height: 20, backgroundColor: 'transparent' }} />
+      {applyData(SettingsLandmark, Landmark, {
+        onChange: ({ value }) => onChange({ name: 'Landmark', value }),
       })}
 
       <Divider style={{ height: 20, backgroundColor: 'transparent' }} />
 
-      {applyData(SettingsNumberOfPeople, NumberOfPeople)}
-      {applyData(SettingsPhotos, Photos)}
-      {applyData(SettingsDescription, Description)}
-
-      <Divider style={{ height: 20, backgroundColor: 'transparent' }} />
-
-      {applyData(SettingsRentalPeriod, RentalPeriod)}
-
-      {/* Времянка */}
-      <Divider style={{ height: 20, backgroundColor: 'transparent' }} />
-      {applyData(SettingsChildren, {
-        checked: true,
-        description: 'Младшему 35, готовится покинуть гнёздышко.',
+      {applyData(SettingsNumberOfPeople, NumberOfPeople, {
+        onChange: ({ value }) => onChange({ name: 'NumberOfPeople', value }),
       })}
-      <Divider style={{ height: 20, backgroundColor: 'transparent' }} />
-      {applyData(SettingsPets, {
-        checked: true,
-        description: 'Щенок сенбернар, совсем крошка.',
+      {applyData(SettingsPhotos, Photos, {
+        onChange: ({ value }) => onChange({ name: 'Photos', value }),
+      })}
+      {applyData(SettingsDescription, Description, {
+        onChange: ({ value }) => onChange({ name: 'Description', value }),
       })}
 
       <Divider style={{ height: 20, backgroundColor: 'transparent' }} />
-      <View
-        style={{
-          opacity: 0.5,
-        }}
-      >
+
+      {applyData(SettingsRentalPeriod, RentalPeriod, {
+        onChange: ({ value }) => onChange({ name: 'RentalPeriod', value }),
+      })}
+
+      <Divider style={{ height: 20, backgroundColor: 'transparent' }} />
+      <Mute>
+        {applyData(SettingsChildren, {
+          checked: true,
+          description: 'Младшему 35, готовится покинуть гнёздышко.',
+        })}
+      </Mute>
+      <Divider style={{ height: 20, backgroundColor: 'transparent' }} />
+      <Mute>
+        {applyData(SettingsPets, {
+          checked: true,
+          description: 'Щенок сенбернар, совсем крошка.',
+        })}
+      </Mute>
+
+      <Divider style={{ height: 20, backgroundColor: 'transparent' }} />
+      <Mute>
         <CollapsibleHeader title="Уровни доверия" checked={true}>
           <SettingsCheckbox label="Соцсети"></SettingsCheckbox>
           <SettingsCheckbox label="ЕГРН" checked={true}></SettingsCheckbox>
           <SettingsCheckbox label="Паспорт"></SettingsCheckbox>
         </CollapsibleHeader>
-      </View>
+      </Mute>
 
       <Divider style={{ height: 158, backgroundColor: 'transparent' }} />
     </ScrollView>

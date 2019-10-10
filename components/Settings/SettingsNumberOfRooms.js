@@ -20,7 +20,7 @@ export function SettingsNumberOfRooms(props) {
   ];
 
   return (
-    <CollapsibleRow title="Минимальное количество комнат">
+    <CollapsibleRow title="Количество комнат">
       <ButtonGroup
         onPress={index => onChange(values[index].value)}
         selectedIndex={minimum - 1}

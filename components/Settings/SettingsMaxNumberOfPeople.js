@@ -28,7 +28,7 @@ export function SettingsMaxNumberOfPeople(props) {
     <CollapsibleListItem
       listItemProps={{
         title: `до ${value}`,
-        subtitle: 'Количество проживающих',
+        subtitle: 'Максимум проживающих',
       }}
     >
       <ButtonGroup
