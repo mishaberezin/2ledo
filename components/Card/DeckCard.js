@@ -9,13 +9,16 @@ import { Ionicons } from '@expo/vector-icons';
 import { Text, withStyles } from 'react-native-ui-kitten';
 import { DARK_VIOLET_COLOR } from '@toledo/constants/colors';
 import { CardShortInfo, CardImages } from './index';
+import FreshCardIcon from './FreshCardIcon';
 
 const DeckCardContainer = ({ card, opened, onOpen, onClose, themedStyle }) => {
+  const { desc, isFresh, images } = card;
   const onDetailsButtonPress = () => {
     opened ? onClose() : onOpen();
     LayoutAnimation.configureNext(LayoutAnimation.Presets.timing);
   };
-  const { desc, owner, images } = card;
+
+  console.log('isFresh', isFresh);
 
   return (
     <ScrollView
@@ -23,9 +26,10 @@ const DeckCardContainer = ({ card, opened, onOpen, onClose, themedStyle }) => {
       showsVerticalScrollIndicator={false}
     >
       <View style={themedStyle.cardContainer}>
+        {isFresh && <FreshCardIcon />}
         <CardImages images={images} />
         <View>
-          <CardShortInfo owner={owner} />
+          <CardShortInfo {...card} />
           <TouchableWithoutFeedback onPress={onDetailsButtonPress}>
             <View
               style={[
@@ -74,16 +78,6 @@ export default withStyles(DeckCardContainer, () => ({
   cardDescriptionWrap: {
     marginTop: 10,
   },
-  avatarBlock: {
-    marginTop: 10,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    minHeight: 30,
-  },
-  avatarBlockName: {
-    marginLeft: 10,
-  },
   cardButton: {
     backgroundColor: DARK_VIOLET_COLOR,
     borderColor: DARK_VIOLET_COLOR,
@@ -97,6 +91,6 @@ export default withStyles(DeckCardContainer, () => ({
     top: 70,
   },
   cardButtonOpened: {
-    top: 45,
+    top: 55,
   },
 }));

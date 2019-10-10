@@ -9,10 +9,8 @@ import {
 import { withStyles, Text } from 'react-native-ui-kitten';
 import { Ionicons, FontAwesome } from '@expo/vector-icons';
 import { Card } from 'react-native-elements';
-
-import { DARK_VIOLET_COLOR } from '@toledo/constants/colors';
-
 import { DeckCard } from './Card';
+import { DARK_VIOLET_COLOR } from '@toledo/constants/colors';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 
@@ -90,11 +88,11 @@ class DeckWithControllsContainer extends Component {
     };
   };
 
-  renderCard = card => {
+  renderCard = (card, isCurrent) => {
     return (
       <DeckCard
         card={card}
-        opened={this.state.cardOpened}
+        opened={isCurrent && this.state.cardOpened}
         onOpen={this.openCard}
         onClose={this.closeCard}
       />
@@ -168,10 +166,10 @@ class DeckWithControllsContainer extends Component {
       return this.renderNoMoreCards();
     }
 
-    const cardStyles = [this.getCardStyle(), themedStyle.cardStyle];
+    const cards = [this.getCardStyle(), themedStyle.card];
 
     if (cardOpened) {
-      cardStyles.push(themedStyle.cardStyleStatic);
+      cards.push(themedStyle.cardStatic);
     }
 
     return (
@@ -186,15 +184,15 @@ class DeckWithControllsContainer extends Component {
                 return (
                   <Animated.View
                     key={card.id}
-                    style={cardStyles}
+                    style={[cards]}
                     {...(cardOpened ? {} : this.panResponder.panHandlers)}
                   >
-                    {this.renderCard(card)}
+                    {this.renderCard(card, true)}
                   </Animated.View>
                 );
               }
               return (
-                <Animated.View style={themedStyle.cardStyle} key={card.id}>
+                <Animated.View style={themedStyle.card} key={card.id}>
                   {this.renderCard(card)}
                 </Animated.View>
               );
@@ -213,12 +211,12 @@ const DeckWithControlls = withStyles(DeckWithControllsContainer, () => ({
     flexDirection: 'row',
     flex: 1,
   },
-  cardStyle: {
+  card: {
     width: SCREEN_WIDTH,
     justifyContent: 'center',
     position: 'absolute',
   },
-  cardStyleStatic: {
+  cardStatic: {
     position: 'relative',
   },
   controlsContainer: {

@@ -38,14 +38,4 @@ export default withStyles(ItemDetailCardContainer, () => ({
   cardDescriptionWrap: {
     marginTop: 10,
   },
-  avatarBlock: {
-    marginTop: 10,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    minHeight: 30,
-  },
-  avatarBlockName: {
-    marginLeft: 10,
-  },
 }));

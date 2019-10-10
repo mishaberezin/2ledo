@@ -49,6 +49,37 @@ class CardImagesContainer extends Component {
     }
   };
 
+  renderImagesNavigation = () => {
+    const { images, themedStyle } = this.props;
+    if (!images || images.length <= 1) {
+      return null;
+    }
+    return (
+      <View style={themedStyle.navContainer}>
+        <View style={themedStyle.imagesNavigation}>
+          <View style={themedStyle.navElement}>
+            <TouchableOpacity onPress={this.handlePrevItemPress}>
+              <Ionicons
+                name="ios-arrow-back"
+                size={50}
+                color={DARK_VIOLET_COLOR}
+              />
+            </TouchableOpacity>
+          </View>
+          <View style={themedStyle.navElement}>
+            <TouchableOpacity onPress={this.handleNextItemPress}>
+              <Ionicons
+                name="ios-arrow-forward"
+                size={50}
+                color={DARK_VIOLET_COLOR}
+              />
+            </TouchableOpacity>
+          </View>
+        </View>
+      </View>
+    );
+  };
+
   render() {
     const { images, themedStyle } = this.props;
 
@@ -67,40 +98,21 @@ class CardImagesContainer extends Component {
             </View>
           ))}
         </Animated.View>
-        <View style={themedStyle.navContainer}>
-          <View style={themedStyle.imagesNavigation}>
-            <View style={themedStyle.navElement}>
-              <TouchableOpacity onPress={this.handlePrevItemPress}>
-                <Ionicons
-                  name="ios-arrow-back"
-                  size={50}
-                  color={DARK_VIOLET_COLOR}
-                />
-              </TouchableOpacity>
-            </View>
-            <View style={themedStyle.navElement}>
-              <TouchableOpacity onPress={this.handleNextItemPress}>
-                <Ionicons
-                  name="ios-arrow-forward"
-                  size={50}
-                  color={DARK_VIOLET_COLOR}
-                />
-              </TouchableOpacity>
-            </View>
-          </View>
-        </View>
+        {this.renderImagesNavigation()}
         <View style={themedStyle.imagesCountContainer}>
-          {images.map((_, index) => (
-            <View key={index} style={themedStyle.imagesCountDot}>
-              <Ionicons
-                name="ios-radio-button-on"
-                size={12}
-                color={
-                  this.state.imageIndex === index ? DARK_VIOLET_COLOR : '#fff'
-                }
-              />
-            </View>
-          ))}
+          {images &&
+            images.lenght > 1 &&
+            images.map((_, index) => (
+              <View key={index} style={themedStyle.imagesCountDot}>
+                <Ionicons
+                  name="ios-radio-button-on"
+                  size={12}
+                  color={
+                    this.state.imageIndex === index ? DARK_VIOLET_COLOR : '#fff'
+                  }
+                />
+              </View>
+            ))}
         </View>
       </View>
     );

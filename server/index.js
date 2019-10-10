@@ -5,6 +5,8 @@ export default {
     {
       id: 1,
       title: 'Двушка в Царицино 0',
+      rooms: 2,
+      isFresh: true,
       images: [
         'https://www.gd-home.com/wp-content/uploads/2018/07/skandinavskaya-odnokomnatnaya-kvartira-s-malenkoj-kuxnej-1.jpg',
         'https://md-eksperiment.org/images/posts/a70ccf57-d401-4c48-9c6b-13affbcc9c8e.jpeg',
@@ -24,6 +26,7 @@ export default {
     {
       id: 2,
       title: 'Двушка в Котельниках 1',
+      rooms: 2,
       images: [
         'https://md-eksperiment.org/images/posts/a70ccf57-d401-4c48-9c6b-13affbcc9c8e.jpeg',
       ],
@@ -40,6 +43,7 @@ export default {
     },
     {
       id: 3,
+      rooms: 2,
       title: 'Двушка в Котельниках 2',
       images: [
         'https://srbu.ru/images/stroitelnye-raboty/studiya-ili-odnokomnatnaya-kvartira-chto-luchshe/studiya-ili-odnokomnatnaya-kvartira-chto-luchshe.jpg',
@@ -53,6 +57,7 @@ export default {
     {
       id: 4,
       title: 'Двушка в Котельниках 3',
+      rooms: 2,
       metro: 'Войковская',
       metroDistance: 300,
       price: '30 000',
@@ -66,6 +71,7 @@ export default {
       id: 5,
       title: 'Двушка в Котельниках 4',
       metro: 'Войковская',
+      rooms: 2,
       metroDistance: 300,
       price: '30 000',
       images: [
@@ -78,6 +84,7 @@ export default {
       id: 6,
       title: 'Двушка в Сходне 5',
       metro: 'Войковская',
+      rooms: 2,
       metroDistance: 300,
       price: '30 000',
       images: [

@@ -2,10 +2,22 @@ import React from 'react';
 import { View } from 'react-native';
 import { Text, Avatar, withStyles } from 'react-native-ui-kitten';
 
-const CardShortInfoContainer = ({ owner, themedStyle }) => (
-  <View style={themedStyle.cardShortInfo}>
-    <View style={themedStyle.cardShortInfoDesc}>
-      <Text category="p1">30 + жкх, 2м от метро</Text>
+import { ToledoHeader4 } from '../ToledoHeader4';
+
+const CardShortInfoContainer = ({
+  owner,
+  price,
+  rooms,
+  metro,
+  themedStyle,
+}) => (
+  <View style={themedStyle.container}>
+    <View style={themedStyle.infoBlock}>
+      <ToledoHeader4>{price} руб</ToledoHeader4>
+      <View style={themedStyle.infoBlockCol}>
+        <Text category="s2">{rooms} комн.</Text>
+        <Text category="s2">Метро {metro}</Text>
+      </View>
     </View>
     <View style={themedStyle.avatarBlock}>
       {owner && (
@@ -21,11 +33,31 @@ const CardShortInfoContainer = ({ owner, themedStyle }) => (
 );
 
 const CardShortInfo = withStyles(CardShortInfoContainer, () => ({
-  cardShortInfo: {
+  container: {
     marginHorizontal: 10,
   },
-  cardShortInfoDesc: {
+  infoBlock: {
+    marginVertical: 10,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    flexWrap: 'nowrap',
+  },
+  infoBlockCol: {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+  },
+  avatarBlock: {
     marginTop: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    minHeight: 30,
+  },
+  avatarBlockName: {
+    marginLeft: 10,
   },
 }));
 
