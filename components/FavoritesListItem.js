@@ -70,7 +70,9 @@ const FavoritesListItemContainer = ({ item, style, onPress, themedStyle }) => {
             menuContainerStyle={themedStyle.menuStyle}
             onItemPress={handleMenuItemPress}
           >
-            <Ionicons name="md-more" size={26} color="gray" />
+            <View style={themedStyle.iconMore}>
+              <Ionicons name="md-more" size={32} color="gray" />
+            </View>
           </OverflowMenu>
         </View>
       </View>
@@ -115,6 +117,11 @@ const FavoritesListItem = withStyles(FavoritesListItemContainer, () => ({
   menuStyle: {
     position: 'relative',
     right: 50,
+  },
+  iconMore: {
+    display: 'flex',
+    alignItems: 'center',
+    width: 40,
   },
 }));
 

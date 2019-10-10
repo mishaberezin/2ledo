@@ -14,15 +14,6 @@ const FavoritesListHeaderContainer = ({
 }) => {
   const handleToggle = useCallback(onTogglePress, [opened]);
 
-  const menuItems = [
-    { type: 'view', title: 'Просмотр' },
-    { type: 'delete', title: 'Удалить' },
-  ];
-
-  const handleItemPress = useCallback((/*item*/) => {
-    //console.log('item');
-  }, []);
-
   return (
     <PlateHeader
       opened={opened}
@@ -30,7 +21,7 @@ const FavoritesListHeaderContainer = ({
       onTogglePress={handleToggle}
       withCat={withCat}
     >
-      <OverflowMenu items={menuItems} onItemPress={handleItemPress}>
+      <OverflowMenu>
         <View style={themedStyle.iconMore}>
           <Ionicons name="md-more" size={32} color="gray" />
         </View>

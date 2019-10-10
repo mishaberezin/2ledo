@@ -100,8 +100,7 @@ class CardImagesContainer extends Component {
         </Animated.View>
         {this.renderImagesNavigation()}
         <View style={themedStyle.imagesCountContainer}>
-          {images &&
-            images.lenght > 1 &&
+          {images.length > 1 &&
             images.map((_, index) => (
               <View key={index} style={themedStyle.imagesCountDot}>
                 <Ionicons

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { View } from 'react-native';
 import { OverflowMenu, withStyles } from 'react-native-ui-kitten';
 import { TouchableOpacity } from 'react-native';
@@ -17,12 +17,14 @@ const OverflowMenuContainer = ({
   const onItemSelect = index => {
     //setSelectedIndex(index);
     setMenuVisible(false);
-    onItemPress(items[index]);
+    onItemPress && onItemPress(items[index]);
   };
 
-  const toggleMenu = () => {
-    setMenuVisible(!menuVisible);
-  };
+  const toggleMenu = useCallback(() => {
+    if (items.length) {
+      setMenuVisible(!menuVisible);
+    }
+  }, [items.length, menuVisible]);
 
   return (
     <View style={[themedStyle.container, menuContainerStyle]}>
