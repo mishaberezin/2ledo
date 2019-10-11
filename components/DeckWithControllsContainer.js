@@ -1,14 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import DeckWithControlls from './DeckWithControlls';
 import { Spinner, withStyles } from 'react-native-ui-kitten';
 import { View } from 'react-native';
-
-import { requestCards } from '../redux/actions/deckActions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-const DeckWithControllsContainer = ({ cards, requestCards, themedStyle }) => {
+import { requestCards } from '../redux/actions/cardActions';
+import { likeCard } from '../redux/actions/shelfActions';
+
+const DeckWithControllsContainer = ({
+  cards,
+  requestCards,
+  likeCard,
+  themedStyle,
+}) => {
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     (async () => {
@@ -23,6 +29,10 @@ const DeckWithControllsContainer = ({ cards, requestCards, themedStyle }) => {
     setIsLoading(false);
   };
 
+  const onLike = useCallback(cardId => {
+    likeCard(cardId);
+  }, [likeCard]);
+
   return (
     <React.Fragment>
       {isLoading && (
@@ -30,7 +40,11 @@ const DeckWithControllsContainer = ({ cards, requestCards, themedStyle }) => {
           <Spinner size="giant" status="info" />
         </View>
       )}
-      <DeckWithControlls items={cards} onLastCard={onLastCard} />
+      <DeckWithControlls
+        items={cards}
+        onLastCard={onLastCard}
+        onLike={onLike}
+      />
     </React.Fragment>
   );
 };
@@ -60,7 +74,7 @@ const mapStateToProps = state => {
   };
 };
 const mapDispatchToProps = dispath =>
-  bindActionCreators({ requestCards }, dispath);
+  bindActionCreators({ requestCards, likeCard }, dispath);
 
 export default connect(
   mapStateToProps,

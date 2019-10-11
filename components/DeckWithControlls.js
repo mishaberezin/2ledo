@@ -57,7 +57,11 @@ class DeckWithControllsContainer extends Component {
     });
   };
 
-  onSwipeComplete = (/*direction*/) => {
+  onSwipeComplete = direction => {
+    const card = this.props.items[this.state.index] || null;
+    if (card && direction === 'right') {
+      this.props.onLike(card.id);
+    }
     this.setState({
       index: this.state.index + 1,
     });
