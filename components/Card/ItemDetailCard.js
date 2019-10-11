@@ -10,14 +10,13 @@ import {
 } from './index';
 
 const ItemDetailCardContainer = ({ card, themedStyle }) => {
-  const { Photos } = card;
   return (
     <ScrollView
       style={themedStyle.container}
       showsVerticalScrollIndicator={false}
     >
       <View style={themedStyle.cardContainer}>
-        <CardImages photos={Photos} />
+        <CardImages photos={card.Photos} />
         <View>
           <CardHostShortInfo {...card} />
           <CardHostDescriptionInfo {...card} />

@@ -16,10 +16,10 @@ const FavoritesListContainer = ({
   const [opened, setOpened] = useState(false);
 
   const renderItem = useCallback(
-    ({ item }) => (
+    ({ item: { data, id } }) => (
       <FavoritesListItem
         style={themedStyle.listItemStyle}
-        item={item}
+        item={{ ...data, id }}
         onPress={onItemPress}
       />
     ),

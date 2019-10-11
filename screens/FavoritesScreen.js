@@ -7,10 +7,10 @@ import FavoritesGroupsList from '../components/FavoritesGroupsList';
 
 const FavoritesScreen = ({ navigation }) => {
   const onItemPress = useCallback(
-    item => {
+    id => {
       navigation.navigate({
         routeName: 'CardDetail',
-        params: { item },
+        params: { id },
       });
     },
     [navigation]

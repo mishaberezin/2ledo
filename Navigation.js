@@ -57,7 +57,7 @@ const FavoritesStack = createStackNavigator(
         return {
           header: (
             <NavHeader
-              title={navigation.state.params.item.title}
+              title={'Просмотр'}
               menuItems={[
                 {
                   text: 'Назад',

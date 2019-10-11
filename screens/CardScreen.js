@@ -1,19 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, StyleSheet } from 'react-native';
+import { getShelfCard } from '../redux/actions/shelfActions';
+
+import { Spinner } from 'react-native-ui-kitten';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
 import { ItemDetailCard } from '../components/Card';
-import serverData from '../redux/__sampleState';
 
 function CardScreen(props) {
-  const { navigation } = props;
-  const { id: itemId } = navigation.getParam('item');
+  const { navigation, getShelfCard } = props;
+  const itemId = navigation.getParam('id');
 
-  const item = serverData.deck.find(({ id }) => id === itemId);
+  const [card, setCard] = useState();
+
+  useEffect(() => {
+    (async () => {
+      const card = await getShelfCard(itemId);
+      setCard(card);
+    })();
+  }, [getShelfCard, itemId]);
 
   return (
     <View style={styles.container}>
       <View style={styles.main}>
-        <ItemDetailCard card={item.data} />
+        {card ? <ItemDetailCard card={card.data} /> : <Spinner size="giant" />}
       </View>
     </View>
   );
@@ -30,4 +41,15 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CardScreen;
+const mapStateToProps = dispatch =>
+  bindActionCreators(
+    {
+      getShelfCard,
+    },
+    dispatch
+  );
+
+export default connect(
+  null,
+  mapStateToProps
+)(CardScreen);

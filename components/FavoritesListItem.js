@@ -11,22 +11,32 @@ import OverflowMenu from './OverflowMenu';
 
 import { Ionicons } from '@expo/vector-icons';
 
-const FavoritesListItemContainer = ({ item, style, onPress, themedStyle }) => {
+const FavoritesListItemContainer = ({
+  item: {
+    id,
+    Photos: [firstPhoto],
+    RentalPrice,
+    // NumberOfRooms,
+  },
+  style,
+  onPress,
+  themedStyle,
+}) => {
   const menuItems = [
     { type: 'view', title: 'Просмотр' },
     { type: 'delete', title: 'Удалить' },
   ];
   const handleItemPress = useCallback(() => {
-    onPress(item);
-  }, [item, onPress]);
+    onPress(id);
+  }, [id, onPress]);
 
   const handleMenuItemPress = useCallback(
     ({ type }) => {
       if (type === 'view') {
-        onPress(item);
+        onPress(id);
       }
     },
-    [item, onPress]
+    [id, onPress]
   );
 
   return (
@@ -39,19 +49,19 @@ const FavoritesListItemContainer = ({ item, style, onPress, themedStyle }) => {
         <View style={themedStyle.listItemInfoBlock}>
           <TouchableOpacity onPress={handleItemPress}>
             <Image
-              source={{ uri: `${item.uri}?b=${Math.random()}` }}
+              source={{ uri: firstPhoto.url }}
               style={{ width: 100, height: 100 }}
             />
           </TouchableOpacity>
         </View>
 
         <View style={themedStyle.listItemInfoBlock}>
-          <Text category="s1">{item.metro}</Text>
-          <Text category="s1">{item.metroDistance} м</Text>
+          <Text category="s1">метро</Text>
+          <Text category="s1">5009 м</Text>
         </View>
 
         <View style={themedStyle.listItemInfoBlock}>
-          <Text category="s1">{item.price} Р</Text>
+          <Text category="s1">{RentalPrice} Р</Text>
           <Text category="p1">Жкх включены</Text>
         </View>
 
