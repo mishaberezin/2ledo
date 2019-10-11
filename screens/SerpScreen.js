@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import DeckWithControllsContainer from '../components/DeckWithControllsContainer';
+import DeckWithControllsContainer from '@toledo/components/DeckWithControllsContainer';
 
 function SerpScreen() {
   return (
@@ -9,10 +9,6 @@ function SerpScreen() {
     </View>
   );
 }
-
-SerpScreen.navigationOptions = {
-  title: '🗂',
-};
 
 const styles = StyleSheet.create({
   container: {

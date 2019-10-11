@@ -12,8 +12,7 @@ import { Card } from 'react-native-elements';
 import { DeckHostCard } from './Card';
 import { DARK_VIOLET_COLOR } from '@toledo/constants/colors';
 
-const { width: SCREEN_WIDTH } = Dimensions.get('window');
-
+const SCREEN_WIDTH = Dimensions.get('window').width;
 const SWIPE_THRESHOLD = 0.4 * SCREEN_WIDTH;
 
 class DeckWithControllsContainer extends Component {

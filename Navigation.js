@@ -43,10 +43,6 @@ const SettingsStack = createStackNavigator(
   }
 );
 
-SettingsStack.navigationOptions = {
-  title: '⚙️',
-};
-
 const FavoritesStack = createStackNavigator(
   {
     FavoritesMain: FavoritesScreen,
@@ -87,10 +83,6 @@ const FavoritesStack = createStackNavigator(
   }
 );
 
-FavoritesStack.navigationOptions = {
-  title: '💌',
-};
-
 const MainStack = createBottomTabNavigator(
   {
     Chat: ChatScreen,
@@ -102,6 +94,19 @@ const MainStack = createBottomTabNavigator(
     initialRouteName: 'Settings',
   }
 );
+
+ChatScreen.navigationOptions = {
+  title: '🤖',
+};
+SerpScreen.navigationOptions = {
+  title: '🗂',
+};
+SettingsStack.navigationOptions = {
+  title: '⚙️',
+};
+FavoritesStack.navigationOptions = {
+  title: '💌',
+};
 
 export const Navigation = createAppContainer(
   createSwitchNavigator(
