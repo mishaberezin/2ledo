@@ -1,12 +1,21 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { CollapsibleListItemInput } from '../CollapsibleListItemInput';
 
 export function SettingsFloor(props) {
-  const { value } = props;
+  const { value, onChange } = props;
 
   return (
-    <View>
-      <Text>SettingsFloor: {value}</Text>
-    </View>
+    <CollapsibleListItemInput
+      value={value}
+      inputProps={{
+        onEndEditing: e => {
+          onChange({ value: Number(e.nativeEvent.text) });
+        },
+      }}
+      listItemProps={{
+        subtitle: 'Этаж',
+        title: String(value),
+      }}
+    />
   );
 }

@@ -1,9 +1,4 @@
-import {
-  SET_CARD_PRICE,
-  SET_CARD_NUMBER_OF_PEOPLE,
-  SET_CARD_DESCRIPTION,
-  SET_CARD_PROP,
-} from '../types';
+import { SET_CARD_PRICE, SET_CARD_PROP, ADD_CARD_PHOTO } from '../types';
 
 export const setCardPrice = ({ id, value }) => ({
   type: SET_CARD_PRICE,
@@ -13,19 +8,11 @@ export const setCardPrice = ({ id, value }) => ({
   },
 });
 
-export const setCardNumberOfPeople = ({ id, value }) => ({
-  type: SET_CARD_NUMBER_OF_PEOPLE,
+export const addCardPhoto = ({ id, photo }) => ({
+  type: ADD_CARD_PHOTO,
   payload: {
     id,
-    value,
-  },
-});
-
-export const setCardDescription = ({ id, value }) => ({
-  type: SET_CARD_DESCRIPTION,
-  payload: {
-    id,
-    value,
+    photo,
   },
 });
 

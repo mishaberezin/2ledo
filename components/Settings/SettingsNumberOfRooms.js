@@ -1,32 +1,43 @@
 import React from 'react';
 import { ButtonGroup } from 'react-native-elements';
-import { CollapsibleRow } from '../CollapsibleRow';
+import { CollapsibleListItem } from '../CollapsibleListItem';
 
 export function SettingsNumberOfRooms(props) {
-  const { minimum, onChange } = props;
+  const { value, onChange } = props;
   const values = [
     {
+      value: 0,
+      label: 'студия',
+    },
+    {
       value: 1,
-      label: '1',
+      label: 'одна',
     },
     {
       value: 2,
-      label: '2',
+      label: 'две',
     },
     {
       value: 3,
-      label: '3',
+      label: 'три',
     },
   ];
 
+  const selectedIndex = values.findIndex(item => item.value === value);
+
   return (
-    <CollapsibleRow title="Количество комнат">
+    <CollapsibleListItem
+      listItemProps={{
+        title: values[selectedIndex].label,
+        subtitle: 'Количество комнат',
+      }}
+    >
       <ButtonGroup
-        onPress={index => onChange(values[index].value)}
-        selectedIndex={minimum - 1}
-        buttons={values.map(item => item.label)}
-        containerStyle={{ height: 30 }}
+        onPress={index => onChange({ value: values[index].value })}
+        selectedIndex={selectedIndex}
+        buttons={values.map(item => item.value)}
+        containerStyle={{ height: 40, marginLeft: 0, marginRight: 0 }}
       />
-    </CollapsibleRow>
+    </CollapsibleListItem>
   );
 }

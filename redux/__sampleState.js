@@ -1,3 +1,4 @@
+import { images } from '@toledo/assets';
 import { landmarks } from '../server/db';
 
 export default {
@@ -21,63 +22,31 @@ export default {
   },
   cards: {
     nc84n897ncz7hh: {
-      id: 1,
-      Type: 'host',
-      IsFresh: true,
+      id: 'nc84n897ncz7hh',
+      // ID учетных записей, владеющих карточкой.
+      // Пока всегда одна, но в будущем может быть несколько.
+      users: ['hekdjnv84ns8c'],
+      type: 'host',
       data: {
         HostUser: {
           name: 'Виктор',
           avatarUri:
             'https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ2MTEyNjMzMV5BMl5BanBnXkFtZTYwODE0MzQ2._V1_UX172_CR0,0,172,256_AL_.jpg',
         },
-        NumberOfRooms: 2,
-        IsFresh: true,
-        Photos: [
-          {
-            url:
-              'https://www.gd-home.com/wp-content/uploads/2018/07/skandinavskaya-odnokomnatnaya-kvartira-s-malenkoj-kuxnej-1.jpg',
-          },
-          {
-            url:
-              'https://md-eksperiment.org/images/posts/a70ccf57-d401-4c48-9c6b-13affbcc9c8e.jpeg',
-          },
-          {
-            url:
-              'https://www.gd-home.com/wp-content/uploads/2018/07/skandinavskaya-odnokomnatnaya-kvartira-s-malenkoj-kuxnej-1.jpg',
-          },
-        ],
-        Landmarks: [
-          {
-            id: 'mendeley',
-            Type: 'metro',
-            data: {
-              name: 'Менделеевская',
-              color: 'gray',
-            },
-          },
-          {
-            id: 'dinamo',
-            Type: 'metro',
-            data: {
-              name: 'Динамо',
-              color: 'green',
-            },
-          },
-        ],
         Address: {
           coords: [55.756459, 37.64482],
           postal: 'Москва, Большой Златоустинский переулок, 6с1',
         },
-        RentalPrice: 30000,
-        MaxNumberOfPeople: 2,
+        NumberOfRooms: 2,
+        Floor: 4,
+        Photos: [images.flatInterior, images.flatExterior, images.flatToilet],
         RentalPeriod: 'long',
-        Description:
-          'Уютная стандартная отделка. Апартаменты полностью укомплектованы мебелью и всей необходимой техникой бытовой и кухонной техникой.\n\n Функциональная планировка: Кухня-студия, совмещенная с просторной гостиной, спальня с собственной ванной и сан.узлом (сан.узлы так же полностью укомплектованы (См. фото)),\nпросторный холл, постирочная и сушильная зона.\n Панорамное остекление по всему периметру апартаментов. Видовые характеристики: футуристический вид на город.\n В ночное время огни небоскребов никого не оставят равнодушными. Москва Сити - это Москва будущего, строящийся международный деловой квартал из ультрасовременных небоскрёбов.',
+        RentalPrice: 60000,
+        MaxNumberOfPeople: 2,
+        Description: 'Сдаю только не беспокоить славянам просьба спасибо.',
       },
     },
     nc84n821ncz7hb: {
-      // ID карточки
-      // Тип: String
       id: 'nc84n821ncz7hb',
 
       // ID учеток, владеющих карточкой.
@@ -98,33 +67,14 @@ export default {
         // ID фотографий в хранилище картинок.
         // Порядок имеет значение, первая заглавная.
         // Тип: [String]
-        Photos: [
-          {
-            id: 'fnu48t89jscj74',
-          },
-          {
-            id: 'xru48t89eecj74',
-          },
-        ],
+        Photos: [images.faceImage, images.runningManImage],
 
         // Сколько человек будет проживать в квартире.
         NumberOfPeople: 2,
-
-        // Описание
         Description: 'Неторопливо ищу квартиру на продолжительный срок.',
-
-        // Оптимальная цена в рублях.
         TargetPrice: 50000,
-
-        // Минимальное количество изолированных комнат.
-        // Студия это 0 комнат.
         MinNumberOfRooms: 1,
-
-        // Срок аренды. Больше года, меньше года, любой.
         RentalPeriod: 'long',
-
-        // Локация, в окрестностях которой ищем квартиру.
-        // На старте это метро, но идейно может быть что угодно.
         Landmark: landmarks[0],
       },
     },

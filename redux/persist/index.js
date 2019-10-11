@@ -8,13 +8,6 @@ export const getInitialState = async () => {
   return await AsyncStorage.getItem('store');
 };
 
-export const persistMiddleware = ({ getState }) => next => action => {
-  console.log('HELLO PERSISTED: ', getState());
-
+export const persistMiddleware = () => next => action => {
   return next(action);
 };
-
-// const checkAuth = async props => {
-//   const userToken = await AsyncStorage.getItem('userToken');
-//   props.navigation.navigate(userToken ? 'Main' : 'Auth');
-// };
