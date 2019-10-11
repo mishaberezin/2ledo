@@ -1,7 +1,9 @@
-import { SET_CARD_PRICE } from '../types.js';
-import { SET_CARD_NUMBER_OF_PEOPLE } from '../types.js';
-import { SET_CARD_DESCRIPTION } from '../types.js';
-import { SET_CARD_PROP } from '../types.js';
+import {
+  SET_CARD_PRICE,
+  SET_CARD_NUMBER_OF_PEOPLE,
+  SET_CARD_DESCRIPTION,
+  SET_CARD_PROP,
+} from '../types';
 
 export const setCardPrice = ({ id, value }) => ({
   type: SET_CARD_PRICE,

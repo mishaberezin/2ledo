@@ -9,17 +9,20 @@ import PlateWithContent from '../components/PlateWithContent';
 import serverData from '../redux/__sampleState';
 
 const groups = [
-  { title: 'Да', items: serverData.deck.slice(0, 2) },
-  { title: 'Думаем', items: serverData.deck.slice(2) },
+  { title: 'Да', items: serverData.shelf },
+  { title: 'Нет', items: serverData.shelf },
 ];
 
 const FavoritesScreen = ({ navigation }) => {
-  const onItemPress = useCallback(item => {
-    navigation.navigate({
-      routeName: 'CardDetail',
-      params: { item },
-    });
-  });
+  const onItemPress = useCallback(
+    item => {
+      navigation.navigate({
+        routeName: 'CardDetail',
+        params: { item },
+      });
+    },
+    [navigation]
+  );
 
   return (
     <Layout style={styles.container}>

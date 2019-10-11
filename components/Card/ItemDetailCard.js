@@ -31,11 +31,8 @@ const ItemDetailCard = withStyles(ItemDetailCardContainer, () => ({
     backgroundColor: 'white',
   },
   cardContainer: {
-    marginBottom: 25,
+    marginVertical: 25,
     paddingHorizontal: 10,
-  },
-  cardDescriptionWrap: {
-    marginTop: 10,
   },
 }));
 

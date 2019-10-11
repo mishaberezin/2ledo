@@ -3,7 +3,7 @@ import httpRequestStub from './httpRequestStub';
 import data from '../redux/__sampleState';
 
 export default {
-  fetchCards: () => httpRequestStub(data.deck),
+  fetchCards: (/*offset, limit*/) => httpRequestStub(data.deck, 500),
   sendPhone: phone =>
     httpRequestStub({
       hash: 'sg234fsgd34fsd',

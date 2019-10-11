@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { withStyles, Text } from 'react-native-ui-kitten';
-import { Ionicons, FontAwesome } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import { Card } from 'react-native-elements';
 import { DeckCard } from './Card';
 import { DARK_VIOLET_COLOR } from '@toledo/constants/colors';
@@ -142,12 +142,12 @@ class DeckWithControllsContainer extends Component {
             style={{ position: 'relative', top: 5 }}
           />
         </TouchableOpacity>
-        <TouchableOpacity
+        {/*<TouchableOpacity
           style={themedStyle.controlContainer}
           onPress={this.hadleControlPress}
         >
           <FontAwesome name="coffee" size={28} color="#fff" />
-        </TouchableOpacity>
+        </TouchableOpacity>*/}
         <TouchableOpacity
           style={themedStyle.controlContainer}
           onPress={this.hadleControlPress}
@@ -158,11 +158,17 @@ class DeckWithControllsContainer extends Component {
     );
   };
 
+  componentDidUpdate() {
+    if (this.state.index + 1 === this.props.items.length) {
+      this.props.onLastCard(this.props.items.length);
+    }
+  }
+
   render() {
     const { items, themedStyle } = this.props;
     const { cardOpened, index } = this.state;
 
-    if (index >= items.length) {
+    if (index > items.length) {
       return this.renderNoMoreCards();
     }
 
@@ -183,7 +189,7 @@ class DeckWithControllsContainer extends Component {
               if (i === index) {
                 return (
                   <Animated.View
-                    key={card.id}
+                    key={i}
                     style={[cards]}
                     {...(cardOpened ? {} : this.panResponder.panHandlers)}
                   >
@@ -192,7 +198,7 @@ class DeckWithControllsContainer extends Component {
                 );
               }
               return (
-                <Animated.View style={themedStyle.card} key={card.id}>
+                <Animated.View style={themedStyle.card} key={i}>
                   {this.renderCard(card)}
                 </Animated.View>
               );
