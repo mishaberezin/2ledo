@@ -1,20 +1,40 @@
 import React from 'react';
-import { View, Image, Text } from 'react-native';
+import { Image } from 'react-native';
+// import MapView from 'react-native-maps';
+import { CollapsibleListItem } from '../CollapsibleListItem';
 
 export function SettingsAddress(props) {
   const { coords } = props;
 
   return (
-    <View
+    <CollapsibleListItem
       style={{
         flex: 1,
         alignItems: 'center',
       }}
+      listItemProps={{
+        title: coords.join(),
+        subtitle: 'Адрес',
+      }}
+      collapsibleProps={{
+        style: {
+          paddingBottom: 10,
+        },
+      }}
+      holdTitle={true}
     >
-      <Text>{coords.join()}</Text>
+      {/* <MapView style={{ height: 400 }} /> */}
       <Image
-        source={require('@toledo/assets/images/host-settings-map.png')}
+        style={{
+          flex: 1,
+          flexDirection: 'row',
+          justifyContent: 'stretch',
+          height: 400,
+          width: 300,
+          // resizeMode: 'contain',
+        }}
+        source={require('@toledo/assets/images/map.png')}
       ></Image>
-    </View>
+    </CollapsibleListItem>
   );
 }

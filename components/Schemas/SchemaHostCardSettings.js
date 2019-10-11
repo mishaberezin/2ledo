@@ -31,7 +31,7 @@ const applyData = (Component, data, props) => {
 };
 
 export function SchemaHostCardSettings(props) {
-  const { data } = props;
+  const { data, onChange } = props;
   const {
     Address,
     Description,
@@ -69,9 +69,13 @@ export function SchemaHostCardSettings(props) {
       </View>
       <SettingsTextLabel label="Будем искать по этим параметрам" />
 
-      {applyData(SettingsRentalPrice, RentalPrice)}
+      {applyData(SettingsRentalPrice, RentalPrice, {
+        onChange: ({ value }) => onChange({ name: 'RentalPrice', value }),
+      })}
       {applyData(SettingsAddress, Address)}
-      {applyData(SettingsMaxNumberOfPeople, MaxNumberOfPeople)}
+      {applyData(SettingsMaxNumberOfPeople, MaxNumberOfPeople, {
+        onChange: ({ value }) => onChange({ name: 'MaxNumberOfPeople', value }),
+      })}
 
       <Divider style={{ height: 20, backgroundColor: 'transparent' }} />
       {applyData(SettingsPhotos, Photos)}

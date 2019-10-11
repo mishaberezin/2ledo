@@ -10,9 +10,10 @@ import {
 } from '@toledo/constants/colors';
 
 export const CollapsibleListItem = props => {
-  const { listItemProps, collapsibleProps, children } = props;
+  const { listItemProps, collapsibleProps = {}, children, holdTitle } = props;
 
   const [collapsed, setCollapsed] = useState(true);
+  // const [showTitle, setShowTitle] = useState(true);
 
   return (
     <View
@@ -53,14 +54,17 @@ export const CollapsibleListItem = props => {
         }}
         onPress={() => setCollapsed(!collapsed)}
         {...listItemProps}
-        title={collapsed ? listItemProps.title : null}
+        title={holdTitle || collapsed ? listItemProps.title : null}
       />
       <Collapsible
-        style={{
-          paddingLeft: DEFAULT_SIDE_MARGIN,
-          paddingRight: DEFAULT_SIDE_MARGIN,
-        }}
         {...collapsibleProps}
+        style={[
+          {
+            paddingLeft: DEFAULT_SIDE_MARGIN,
+            paddingRight: DEFAULT_SIDE_MARGIN,
+          },
+          collapsibleProps.style,
+        ]}
         collapsed={collapsed}
       >
         {children}
