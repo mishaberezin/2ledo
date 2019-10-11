@@ -16,4 +16,7 @@ export const SET_CARD_DESCRIPTION = 'SET_CARD_DESCRIPTION';
 // local state
 export const SET_CURRENT_CARD = 'SET_CURRENT_CARD';
 export const SET_DECK_CARDS = 'SET_DECK_CARDS';
+
+export const SET_SHELF_CARDS = 'SET_SHELF_CARDS';
 export const ADD_CARD_TO_LIKED = 'ADD_CARD_TO_LIKED';
+export const ADD_CARD_TO_DISLIKED = 'ADD_CARD_TO_DISLIKED';

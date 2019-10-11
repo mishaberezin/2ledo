@@ -7,12 +7,13 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { requestCards } from '../redux/actions/cardActions';
-import { likeCard } from '../redux/actions/shelfActions';
+import { likeCard, dislikeCard } from '../redux/actions/shelfActions';
 
 const DeckWithControllsContainer = ({
   cards,
   requestCards,
   likeCard,
+  dislikeCard,
   themedStyle,
 }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -29,9 +30,16 @@ const DeckWithControllsContainer = ({
     setIsLoading(false);
   };
 
-  const onLike = useCallback(cardId => {
-    likeCard(cardId);
-  }, [likeCard]);
+  const onSwipe = useCallback(
+    (cardId, direction) => {
+      if (direction === 'right') {
+        likeCard(cardId);
+      } else {
+        dislikeCard(cardId);
+      }
+    },
+    [dislikeCard, likeCard]
+  );
 
   return (
     <React.Fragment>
@@ -43,7 +51,7 @@ const DeckWithControllsContainer = ({
       <DeckWithControlls
         items={cards}
         onLastCard={onLastCard}
-        onLike={onLike}
+        onSwipe={onSwipe}
       />
     </React.Fragment>
   );
@@ -74,7 +82,7 @@ const mapStateToProps = state => {
   };
 };
 const mapDispatchToProps = dispath =>
-  bindActionCreators({ requestCards, likeCard }, dispath);
+  bindActionCreators({ requestCards, likeCard, dislikeCard }, dispath);
 
 export default connect(
   mapStateToProps,

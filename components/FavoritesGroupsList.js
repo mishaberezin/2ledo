@@ -15,12 +15,6 @@ const FavoritesGroupsList = ({ groups, onItemPress }) => {
         withCat
       />
       <FavoritesList
-        title="Подумаю"
-        items={groups.think}
-        onItemPress={onItemPress}
-        withCat
-      />
-      <FavoritesList
         title="Нет"
         items={groups.disliked}
         onItemPress={onItemPress}
