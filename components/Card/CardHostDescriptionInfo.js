@@ -4,7 +4,7 @@ import { Text, withStyles } from 'react-native-ui-kitten';
 import CardItemRentalPeriod from './CardItemRentalPeriod';
 import CardItemMaxNumberOfPeople from './CardItemMaxNumberOfPeople';
 
-const CardDescriptionInfoContainer = ({
+const CardHostDescriptionInfoContainer = ({
   Description,
   Address,
   RentalPeriod,
@@ -28,19 +28,22 @@ const CardDescriptionInfoContainer = ({
   </View>
 );
 
-const CardDescriptionInfo = withStyles(CardDescriptionInfoContainer, () => ({
-  container: {
-    marginTop: 10,
-    paddingHorizontal: 5,
-  },
-  block: {
-    marginVertical: 5,
-    paddingVertical: 5,
-  },
-  blockWithLine: {
-    borderColor: 'lightgray',
-    borderBottomWidth: 1,
-  },
-}));
+const CardHostDescriptionInfo = withStyles(
+  CardHostDescriptionInfoContainer,
+  () => ({
+    container: {
+      marginTop: 10,
+      paddingHorizontal: 5,
+    },
+    block: {
+      marginVertical: 5,
+      paddingVertical: 5,
+    },
+    blockWithLine: {
+      borderColor: 'lightgray',
+      borderBottomWidth: 1,
+    },
+  })
+);
 
-export default CardDescriptionInfo;
+export default CardHostDescriptionInfo;
