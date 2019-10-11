@@ -1,12 +1,17 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { CollapsibleListItemInput } from '../CollapsibleListItemInput';
 
 export function SettingsUserBirthYear(props) {
-  const { value } = props;
+  const { value, onChange } = props;
 
   return (
-    <View>
-      <Text>SettingsUserBirthYear: {value}</Text>
-    </View>
+    <CollapsibleListItemInput
+      value={value}
+      onChange={value => onChange({ value: Number(value) })}
+      listItemProps={{
+        subtitle: 'Год рождения',
+        title: String(value),
+      }}
+    />
   );
 }

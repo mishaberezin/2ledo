@@ -22,10 +22,9 @@ export const addCardPhoto = ({ id, photo }) => ({
   },
 });
 
-export const setCardProp = ({ id, name, value }) => ({
+export const setCardProp = ({ name, value }) => ({
   type: SET_CARD_PROP,
   payload: {
-    id,
     name,
     value,
   },

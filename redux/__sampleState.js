@@ -12,12 +12,15 @@ export default {
     id: 'hekdjnv84ns8c',
     cards: ['nc84n821ncz7hb', 'nc84n897ncz7hh'], // Карточки, связанные с учеткой
     data: {
-      UserName: 'Misha',
+      UserName: 'Misha Berezin',
       UserPhones: ['+79262558011'],
       UserGender: 'male', // ['male', 'female']
       UserBirthYear: 1988,
-      UserPhotos: [{ id: 'sgtv5765ig7ubhj' }],
-      UserLinks: [{ value: 'https://www.instagram.com/kimkardashian' }],
+      UserPhotos: [
+        images.userFaceImage,
+        images.userAdditionalImage,
+        images.userAdditionalImage2,
+      ],
     },
   },
   cards: {

@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, FlatList, Image, StyleSheet, Dimensions } from 'react-native';
 import { Button } from 'react-native-elements';
-// import ImagePicker from 'react-native-image-picker';
 import * as ImagePicker from 'expo-image-picker';
 import * as Permissions from 'expo-permissions';
 import Constants from 'expo-constants';

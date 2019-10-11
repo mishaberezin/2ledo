@@ -33,8 +33,6 @@ function InitScreen(props) {
 async function loadResourcesAsync() {
   await Promise.all([
     Asset.loadAsync([
-      require('../assets/images/robot-dev.png'),
-      require('../assets/images/robot-prod.png'),
       require('../assets/images/search-for-flat.jpg'),
       require('../assets/images/ready_to_road.gif'),
       require('../assets/images/card-tenant.png'),

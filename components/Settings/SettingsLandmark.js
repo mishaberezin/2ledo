@@ -17,8 +17,6 @@ export function SettingsLandmark(props) {
     <View
       style={{
         backgroundColor: '#fff',
-        // paddingLeft: DEFAULT_SIDE_MARGIN,
-        // paddingRight: DEFAULT_SIDE_MARGIN,
       }}
     >
       <ModalSelector
@@ -38,15 +36,6 @@ export function SettingsLandmark(props) {
             color: data.color,
           }}
         />
-        {/* <ListItem
-          title={data.name}
-          subtitle="Метро"
-          rightIcon={{
-            type: 'font-awesome',
-            name: 'circle',
-            color: data.color,
-          }}
-        /> */}
       </ModalSelector>
     </View>
   );

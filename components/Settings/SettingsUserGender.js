@@ -1,12 +1,36 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { ButtonGroup } from 'react-native-elements';
+import { CollapsibleListItem } from '../CollapsibleListItem';
 
 export function SettingsUserGender(props) {
-  const { value } = props;
+  const { value, onChange } = props;
+
+  const values = [
+    {
+      value: 'male',
+      label: 'Мужчина',
+    },
+    {
+      value: 'female',
+      label: 'Женщина',
+    },
+  ];
+
+  const selectedIndex = values.findIndex(item => item.value === value);
 
   return (
-    <View>
-      <Text>SettingsUserGender: {value}</Text>
-    </View>
+    <CollapsibleListItem
+      listItemProps={{
+        title: values[selectedIndex].label,
+        subtitle: 'Пол',
+      }}
+    >
+      <ButtonGroup
+        onPress={index => onChange({ value: values[index].value })}
+        selectedIndex={selectedIndex}
+        buttons={values.map(item => item.value)}
+        containerStyle={{ height: 40, marginLeft: 0, marginRight: 0 }}
+      />
+    </CollapsibleListItem>
   );
 }

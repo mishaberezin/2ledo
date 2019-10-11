@@ -62,7 +62,7 @@ export function SchemaHostCardSettings(props) {
         }}
       >
         <Image
-          source={require('../../assets/images/host-card.png')}
+          source={require('../../assets/images/card-host.png')}
           style={{ flex: 1, height: 400 }}
         />
       </View>

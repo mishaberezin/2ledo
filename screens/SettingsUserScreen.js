@@ -1,13 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { setUserName, setUserPhoto } from '../redux/actions/userActions';
+import { setUserProp } from '../redux/actions/userActions';
 import { View } from 'react-native';
-
 import { SchemaUserSettings } from '../components/Schemas/SchemaUserSettings';
 
 function SettingsUserScreenUnconnected(props) {
-  const { user } = props;
+  const { user, setUserProp } = props;
   const { data } = user;
 
   return (
@@ -18,7 +17,7 @@ function SettingsUserScreenUnconnected(props) {
         paddingTop: 10,
       }}
     >
-      <SchemaUserSettings data={data} />
+      <SchemaUserSettings data={data} onChange={setUserProp} />
     </View>
   );
 }
@@ -33,8 +32,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      setUserName,
-      setUserPhoto,
+      setUserProp,
     },
     dispatch
   );

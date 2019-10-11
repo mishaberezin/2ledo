@@ -1,6 +1,12 @@
 export const images = {
-  faceImage: {
-    source: require('../assets/s3/fnu48t89jscj74.jpg'),
+  userFaceImage: {
+    source: require('../assets/images/user-portrait.png'),
+  },
+  userAdditionalImage: {
+    source: require('../assets/images/user-additional.png'),
+  },
+  userAdditionalImage2: {
+    source: require('../assets/images/user-additional2.png'),
   },
   runningManImage: {
     source: require('../assets/s3/xru48t89eecj74.png'),
