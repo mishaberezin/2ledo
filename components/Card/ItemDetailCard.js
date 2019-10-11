@@ -3,7 +3,11 @@ import { View, ScrollView } from 'react-native';
 import { withStyles } from 'react-native-ui-kitten';
 
 import ToledoButton from '../ToledoButton';
-import { CardImages, CardShortInfo, CardHostDescriptionInfo } from './index';
+import {
+  CardImages,
+  CardHostShortInfo,
+  CardHostDescriptionInfo,
+} from './index';
 
 const ItemDetailCardContainer = ({ card, themedStyle }) => {
   const { Photos } = card;
@@ -15,7 +19,7 @@ const ItemDetailCardContainer = ({ card, themedStyle }) => {
       <View style={themedStyle.cardContainer}>
         <CardImages photos={Photos} />
         <View>
-          <CardShortInfo {...card} />
+          <CardHostShortInfo {...card} />
           <CardHostDescriptionInfo {...card} />
           <View style={themedStyle.cardActions}>
             <ToledoButton>Связаться</ToledoButton>

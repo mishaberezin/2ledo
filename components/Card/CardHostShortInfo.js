@@ -6,7 +6,7 @@ import { ToledoHeader4 } from '../ToledoHeader4';
 import CardItemLandmarks from './CardItemLandmarks';
 import CardItemNumberOfRooms from './CardItemNumberOfRooms';
 
-const CardShortInfoContainer = ({
+const CardHostShortInfoContainer = ({
   HostUser,
   RentalPrice,
   Landmarks,
@@ -30,7 +30,7 @@ const CardShortInfoContainer = ({
   </View>
 );
 
-const CardShortInfo = withStyles(CardShortInfoContainer, () => ({
+const CardHostShortInfo = withStyles(CardHostShortInfoContainer, () => ({
   container: {
     marginHorizontal: 10,
   },
@@ -59,4 +59,4 @@ const CardShortInfo = withStyles(CardShortInfoContainer, () => ({
   },
 }));
 
-export default CardShortInfo;
+export default CardHostShortInfo;

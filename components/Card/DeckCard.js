@@ -8,7 +8,11 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import { withStyles } from 'react-native-ui-kitten';
 import { DARK_VIOLET_COLOR } from '@toledo/constants/colors';
-import { CardShortInfo, CardHostDescriptionInfo, CardImages } from './index';
+import {
+  CardHostShortInfo,
+  CardHostDescriptionInfo,
+  CardImages,
+} from './index';
 import FreshCardIcon from './FreshCardIcon';
 
 const DeckCardContainer = ({ card, opened, onOpen, onClose, themedStyle }) => {
@@ -32,7 +36,7 @@ const DeckCardContainer = ({ card, opened, onOpen, onClose, themedStyle }) => {
         )}
         <CardImages photos={Photos} />
         <View>
-          <CardShortInfo {...card} />
+          <CardHostShortInfo {...card} />
           <TouchableWithoutFeedback onPress={onDetailsButtonPress}>
             <View
               style={[
