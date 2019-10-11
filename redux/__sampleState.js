@@ -6,7 +6,7 @@ export default {
     token: null,
   },
   localState: {
-    currentCard: 'nc84n897ncz7hh',
+    currentCardId: 'nc84n897ncz7hh',
   },
   user: {
     id: 'hekdjnv84ns8c',
@@ -60,7 +60,7 @@ export default {
       // От типа зависит набор остальных полей.
       // Пока арендатор и арендодатель, но в будущем добавим агента.
       // Тип: ['tenant', 'host']
-      Type: 'tenant',
+      type: 'tenant',
 
       // Описание карточки (что предлагаю) типа "tenant"
       data: {

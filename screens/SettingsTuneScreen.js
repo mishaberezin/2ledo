@@ -1,17 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { setCurrentCard } from '../redux/actions/localStateActions';
+import { setCurrentCardId } from '../redux/actions/localStateActions';
 import { View } from 'react-native';
-import { Select } from 'react-native-ui-kitten';
 import { SCREEN_BACKGROUND } from '../constants/colors';
+import { ButtonGroup } from 'react-native-elements';
 
 function SettingsTuneScreenUnconnected(props) {
-  const { cards, currentCard, setCurrentCard } = props;
+  const { cards, currentCardId, setCurrentCardId } = props;
 
-  const onSelectCard = selectedOption => {
-    setCurrentCard(selectedOption.text);
-  };
+  const items = Object.keys(cards).map(id => ({ type: cards[id].type, id }));
+
+  console.log(items);
+  console.log(currentCardId);
+  console.log(items.findIndex(item => item.id === currentCardId));
 
   return (
     <View
@@ -21,21 +23,12 @@ function SettingsTuneScreenUnconnected(props) {
         paddingTop: 10,
       }}
     >
-      <View
-        style={{
-          flex: 1,
-        }}
-      >
-        <Select
-          data={Object.keys(cards).map(key => ({ text: key }))}
-          selectedOption={{ text: currentCard }}
-          onSelect={onSelectCard}
-        />
-
-        {/* <SettingsRoomsCount />
-        <SettingsPriceRange />
-        <SettingsMetro /> */}
-      </View>
+      <ButtonGroup
+        onPress={index => setCurrentCardId(items[index].id)}
+        selectedIndex={items.findIndex(item => item.id === currentCardId)}
+        buttons={items.map(item => item.type)}
+        containerStyle={{ height: 30 }}
+      />
     </View>
   );
 }
@@ -43,14 +36,14 @@ function SettingsTuneScreenUnconnected(props) {
 const mapStateToProps = state => {
   return {
     cards: state.cards,
-    currentCard: state.localState.currentCard,
+    currentCardId: state.localState.currentCardId,
   };
 };
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      setCurrentCard,
+      setCurrentCardId,
     },
     dispatch
   );
