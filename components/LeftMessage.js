@@ -5,7 +5,9 @@ import {
   View
 } from 'react-native';
 import { withStyles, Text } from 'react-native-ui-kitten';
-// import { MessageContent } from './messageContent.component';
+import {
+  TEXT_COLOR,
+} from '@toledo/constants/colors';
 
 const LeftMessageComponent = ({ themedStyle, style, message }) => {
   const { text } = message;
@@ -13,9 +15,6 @@ const LeftMessageComponent = ({ themedStyle, style, message }) => {
   return ( 
     <View style={[themedStyle.cloudContainer, style]}> 
       <View style={[themedStyle.cloud, themedStyle.cloudLeft]}>
-      {/* <MessageContent message={message}>
-          {children}
-        </MessageContent> */}
         <Text style={themedStyle.text}>{text}</Text>
       </View>
     </View>
@@ -32,13 +31,15 @@ const LeftMessage = withStyles(LeftMessageComponent, () => ({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 16,
-    borderRadius: 10,
+    borderRadius: 24,
     borderWidth: 1,
     borderColor: '#E3E3E8',
     maxWidth: Dimensions.get('window').width - 120,
   },
   text: {
-    color: '#25265E'
+    fontFamily: 'ceracy-desktop-medium',
+    fontSize: 16,
+    color: TEXT_COLOR
   },
   cloudLeft: {
     left: -3,

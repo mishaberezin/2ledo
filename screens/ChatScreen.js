@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, StyleSheet } from 'react-native';
+import { connect } from 'react-redux';
+import { initChatbotAction } from '../redux/actions/chatbotActions';
 import Conversation from '../components/Conversation';
 
-function ChatScreen() {
+function ChatScreen({ initChatbotAction }) {
+  useEffect(() => {
+    initChatbotAction();
+  }, [initChatbotAction]);
+
   return (
     <View style={styles.container}>
       <View style={styles.main}>
@@ -26,4 +32,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ChatScreen;
+export default connect(
+  null,
+  { initChatbotAction }
+)(ChatScreen);
