@@ -21,38 +21,48 @@ export default {
   },
   cards: {
     nc84n897ncz7hh: {
-      // ID карточки
-      id: 'nc84n897ncz7hh',
-
-      // ID учетных записей, владеющих карточкой.
-      // Пока всегда одна, но в будущем может быть несколько.
-      users: ['hekdjnv84ns8c'],
-
-      // Тип карточки.
-      // От типа зависит содержимое поля data.
-      // Пока два типа: арендатор и арендодатель.
-      // В будущем появятся агентские типы.
+      id: 1,
       type: 'host',
-
-      // Описание карточки типа "host" (ищу жильца).
-      // Каждое поле описывает кусочек карточки.
-      // Имя поля это ID интерфейса (data shape).
+      user: {
+        name: 'Виктор',
+        avatarUri:
+          'https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ2MTEyNjMzMV5BMl5BanBnXkFtZTYwODE0MzQ2._V1_UX172_CR0,0,172,256_AL_.jpg',
+      },
       data: {
-        Address: {
+        numberOfRooms: 2,
+        isFresh: true,
+        photos: [
+          'https://www.gd-home.com/wp-content/uploads/2018/07/skandinavskaya-odnokomnatnaya-kvartira-s-malenkoj-kuxnej-1.jpg',
+          'https://md-eksperiment.org/images/posts/a70ccf57-d401-4c48-9c6b-13affbcc9c8e.jpeg',
+          'https://www.gd-home.com/wp-content/uploads/2018/07/skandinavskaya-odnokomnatnaya-kvartira-s-malenkoj-kuxnej-1.jpg',
+        ],
+        landmarks: [
+          {
+            id: 'mendeley',
+            type: 'metro',
+            data: {
+              name: 'Менделеевская',
+              color: 'gray',
+            },
+          },
+          {
+            id: 'dinamo',
+            type: 'metro',
+            data: {
+              name: 'Динамо',
+              color: 'green',
+            },
+          },
+        ],
+        address: {
           coords: [55.756459, 37.64482],
           postal: 'Москва, Большой Златоустинский переулок, 6с1',
         },
-        NumberOfRooms: 2,
-        Floor: 4,
-        Photos: [
-          {
-            id: 'fnu48t89jscj74', // ID в хранилище картинок
-          },
-        ],
-        RentalPeriod: 'long',
-        RentalPrice: 60000,
-        MaxNumberOfPeople: 2,
-        Description: 'Сдаю только не беспокоить славянам просьба спасибо.',
+        rentalPrice: 30000,
+        maxNumberOfPeople: 2,
+        rentalPeriod: 'long',
+        description:
+          'Уютная стандартная отделка. Апартаменты полностью укомплектованы мебелью и всей необходимой техникой бытовой и кухонной техникой.\n\n Функциональная планировка: Кухня-студия, совмещенная с просторной гостиной, спальня с собственной ванной и сан.узлом (сан.узлы так же полностью укомплектованы (См. фото)),\nпросторный холл, постирочная и сушильная зона.\n Панорамное остекление по всему периметру апартаментов. Видовые характеристики: футуристический вид на город.\n В ночное время огни небоскребов никого не оставят равнодушными. Москва Сити - это Москва будущего, строящийся международный деловой квартал из ультрасовременных небоскрёбов.',
       },
     },
     nc84n821ncz7hb: {
