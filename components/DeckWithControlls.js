@@ -9,7 +9,7 @@ import {
 import { withStyles, Text } from 'react-native-ui-kitten';
 import { Ionicons } from '@expo/vector-icons';
 import { Card } from 'react-native-elements';
-import { DeckCard } from './Card';
+import { DeckHostCard } from './Card';
 import { DARK_VIOLET_COLOR } from '@toledo/constants/colors';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
@@ -90,7 +90,7 @@ class DeckWithControllsContainer extends Component {
 
   renderCard = ({ data: card }, isCurrent) => {
     return (
-      <DeckCard
+      <DeckHostCard
         card={card}
         opened={isCurrent && this.state.cardOpened}
         onOpen={this.openCard}

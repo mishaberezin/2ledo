@@ -15,7 +15,13 @@ import {
 } from './index';
 import FreshCardIcon from './FreshCardIcon';
 
-const DeckCardContainer = ({ card, opened, onOpen, onClose, themedStyle }) => {
+const DeckHostCardContainer = ({
+  card,
+  opened,
+  onOpen,
+  onClose,
+  themedStyle,
+}) => {
   const { IsFresh, Photos } = card;
 
   const onDetailsButtonPress = () => {
@@ -61,7 +67,7 @@ const DeckCardContainer = ({ card, opened, onOpen, onClose, themedStyle }) => {
   );
 };
 
-export default withStyles(DeckCardContainer, () => ({
+export default withStyles(DeckHostCardContainer, () => ({
   container: {
     borderColor: '#f0f0ff',
     borderWidth: 1,
