@@ -23,6 +23,7 @@ export default {
     nc84n897ncz7hh: {
       id: 1,
       type: 'host',
+      isFresh: true,
       user: {
         name: 'Виктор',
         avatarUri:
