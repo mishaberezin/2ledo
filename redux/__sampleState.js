@@ -5,7 +5,7 @@ export default {
     token: null,
   },
   localState: {
-    currentCard: 'nc84n821ncz7hb',
+    currentCard: 'nc84n897ncz7hh',
   },
   user: {
     id: 'hekdjnv84ns8c',

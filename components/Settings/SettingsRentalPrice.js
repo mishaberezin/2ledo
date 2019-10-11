@@ -1,38 +1,25 @@
 import React from 'react';
-import { Input } from 'react-native-elements';
-import { CollapsibleListItem } from '../CollapsibleListItem';
+// import { Input } from 'react-native-elements';
+// import { CollapsibleListItem } from '../CollapsibleListItem';
+import { CollapsibleListItemInput } from '../CollapsibleListItemInput';
+
+const formatPrice = new Intl.NumberFormat('ru-RU', {
+  style: 'currency',
+  currency: 'RUB',
+  minimumFractionDigits: 0,
+});
 
 export function SettingsRentalPrice(props) {
-  const { rent, deposit, onChange } = props;
+  const { value, onChange } = props;
 
   return (
-    <CollapsibleListItem
+    <CollapsibleListItemInput
+      value={value}
+      onChange={value => onChange({ value: Number(value) })}
       listItemProps={{
-        title: 'Арендная плата',
+        subtitle: 'Арендная плата',
+        title: formatPrice.format(value),
       }}
-    >
-      <Input
-        defaultValue={String(rent)}
-        onChangeText={onChange}
-        label="Рента"
-        keyboardType="number-pad"
-        underlineColorAndroid="transparent"
-        inputContainerStyle={{
-          borderBottomWidth: 0,
-          paddingLeft: 0,
-        }}
-      />
-      <Input
-        defaultValue={String(deposit)}
-        onChangeText={onChange}
-        label="Депозит"
-        keyboardType="number-pad"
-        underlineColorAndroid="transparent"
-        inputContainerStyle={{
-          borderBottomWidth: 0,
-          paddingLeft: 0,
-        }}
-      />
-    </CollapsibleListItem>
+    />
   );
 }
