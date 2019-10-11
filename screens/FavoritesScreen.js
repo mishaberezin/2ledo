@@ -6,11 +6,11 @@ import { SCREEN_BACKGROUND } from '../constants/colors';
 // import FavoritesGroupsList from '../components/FavoritesGroupsList';
 import FavoritesList from '../components/FavoritesList';
 import PlateWithContent from '../components/PlateWithContent';
-import serverData from '../server';
+import serverData from '../redux/__sampleState';
 
 const groups = [
-  { title: 'Да', items: serverData.serpData.slice(0, 2) },
-  { title: 'Думаем', items: serverData.serpData.slice(2) },
+  { title: 'Да', items: serverData.deck.slice(0, 2) },
+  { title: 'Думаем', items: serverData.deck.slice(2) },
 ];
 
 const FavoritesScreen = ({ navigation }) => {

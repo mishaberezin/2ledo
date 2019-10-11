@@ -3,31 +3,29 @@ import { View } from 'react-native';
 import { Text, Avatar, withStyles } from 'react-native-ui-kitten';
 
 import { ToledoHeader4 } from '../ToledoHeader4';
+import CardItemLandmarks from './CardItemLandmarks';
+import CardItemNumberOfRooms from './CardItemNumberOfRooms';
 
 const CardShortInfoContainer = ({
-  owner,
-  price,
-  rooms,
-  metro,
+  HostUser,
+  RentalPrice,
+  Landmarks,
+  NumberOfRooms,
   themedStyle,
 }) => (
   <View style={themedStyle.container}>
     <View style={themedStyle.infoBlock}>
-      <ToledoHeader4>{price} руб</ToledoHeader4>
+      <ToledoHeader4>{RentalPrice} руб</ToledoHeader4>
       <View style={themedStyle.infoBlockCol}>
-        <Text category="s2">{rooms} комн.</Text>
-        <Text category="s2">Метро {metro}</Text>
+        <CardItemNumberOfRooms count={NumberOfRooms} />
+        <CardItemLandmarks landmarks={Landmarks} />
       </View>
     </View>
     <View style={themedStyle.avatarBlock}>
-      {owner && (
-        <React.Fragment>
-          <Avatar source={{ uri: owner.avatarUri }} size="small" />
-          <Text style={themedStyle.avatarBlockName} category="s1">
-            {owner.name}
-          </Text>
-        </React.Fragment>
-      )}
+      <Avatar source={{ uri: HostUser.avatarUri }} size="small" />
+      <Text style={themedStyle.avatarBlockName} category="s1">
+        {HostUser.name}
+      </Text>
     </View>
   </View>
 );

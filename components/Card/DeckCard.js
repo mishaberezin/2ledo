@@ -6,19 +6,18 @@ import {
   TouchableWithoutFeedback,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { Text, withStyles } from 'react-native-ui-kitten';
+import { withStyles } from 'react-native-ui-kitten';
 import { DARK_VIOLET_COLOR } from '@toledo/constants/colors';
-import { CardShortInfo, CardImages } from './index';
+import { CardShortInfo, CardDescriptionInfo, CardImages } from './index';
 import FreshCardIcon from './FreshCardIcon';
 
 const DeckCardContainer = ({ card, opened, onOpen, onClose, themedStyle }) => {
-  const { desc, isFresh, images } = card;
+  const { IsFresh, Photos } = card;
+
   const onDetailsButtonPress = () => {
     opened ? onClose() : onOpen();
     LayoutAnimation.configureNext(LayoutAnimation.Presets.timing);
   };
-
-  console.log('isFresh', isFresh);
 
   return (
     <ScrollView
@@ -26,8 +25,12 @@ const DeckCardContainer = ({ card, opened, onOpen, onClose, themedStyle }) => {
       showsVerticalScrollIndicator={false}
     >
       <View style={themedStyle.cardContainer}>
-        {isFresh && <FreshCardIcon />}
-        <CardImages images={images} />
+        {IsFresh && (
+          <View style={themedStyle.freshIconConteiner}>
+            <FreshCardIcon />
+          </View>
+        )}
+        <CardImages photos={Photos} />
         <View>
           <CardShortInfo {...card} />
           <TouchableWithoutFeedback onPress={onDetailsButtonPress}>
@@ -47,11 +50,7 @@ const DeckCardContainer = ({ card, opened, onOpen, onClose, themedStyle }) => {
             </View>
           </TouchableWithoutFeedback>
 
-          {opened && (
-            <View style={themedStyle.cardDescriptionWrap}>
-              <Text category="p1">{desc}</Text>
-            </View>
-          )}
+          {opened && <CardDescriptionInfo {...card} />}
         </View>
       </View>
     </ScrollView>
@@ -75,9 +74,6 @@ export default withStyles(DeckCardContainer, () => ({
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 5,
   },
-  cardDescriptionWrap: {
-    marginTop: 10,
-  },
   cardButton: {
     backgroundColor: DARK_VIOLET_COLOR,
     borderColor: DARK_VIOLET_COLOR,
@@ -92,5 +88,11 @@ export default withStyles(DeckCardContainer, () => ({
   },
   cardButtonOpened: {
     top: 55,
+  },
+  freshIconConteiner: {
+    position: 'absolute',
+    top: 5,
+    right: 5,
+    zIndex: 9,
   },
 }));

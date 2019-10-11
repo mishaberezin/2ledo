@@ -1,5 +1,9 @@
 import React, { useCallback } from 'react';
-import { StyleSheet, View, Image } from 'react-native';
+import {
+  StyleSheet,
+  ImageBackground,
+  KeyboardAvoidingView,
+} from 'react-native';
 import { SCREEN_WIDTH } from '../constants/device';
 import LoginForm from '../components/Login/LoginForm';
 
@@ -19,15 +23,14 @@ const LoginScreen = ({ setUserToken, navigation }) => {
   );
 
   return (
-    <View style={styles.container}>
-      <Image
-        source={require('../assets/images/splash.png')}
-        style={styles.image}
-      />
-      <View style={styles.formContainer}>
+    <ImageBackground
+      style={styles.container}
+      source={require('../assets/images/splash.png')}
+    >
+      <KeyboardAvoidingView style={styles.container} behavior="padding">
         <LoginForm onSuccess={handleSuccess} />
-      </View>
-    </View>
+      </KeyboardAvoidingView>
+    </ImageBackground>
   );
 };
 
@@ -36,12 +39,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  formContainer: {
-    position: 'absolute',
-  },
-  image: {
-    flex: 1,
     width: SCREEN_WIDTH,
   },
 });

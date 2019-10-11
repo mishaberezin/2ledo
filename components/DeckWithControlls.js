@@ -88,7 +88,7 @@ class DeckWithControllsContainer extends Component {
     };
   };
 
-  renderCard = (card, isCurrent) => {
+  renderCard = ({ data: card }, isCurrent) => {
     return (
       <DeckCard
         card={card}

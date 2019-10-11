@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { View, KeyboardAvoidingView } from 'react-native';
+import { View } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Text, withStyles, Input, Spinner } from 'react-native-ui-kitten';
@@ -65,7 +65,7 @@ const LoginFormContainer = ({
   }
 
   return (
-    <KeyboardAvoidingView style={themedStyle.container}>
+    <View style={themedStyle.container}>
       <Text category="h3">Регистрация</Text>
       {step === 'phone' && (
         <React.Fragment>
@@ -98,7 +98,7 @@ const LoginFormContainer = ({
           />
         </View>
       )}
-    </KeyboardAvoidingView>
+    </View>
   );
 };
 
@@ -141,10 +141,12 @@ const LoginForm = withStyles(LoginFormContainer, () => ({
   },
   phoneInputText: {
     fontSize: 22,
+    color: '#fff',
   },
   codeInputText: {
     fontSize: 30,
     letterSpacing: 8,
+    color: '#fff',
   },
   submitButtonRow: {
     flexDirection: 'row',

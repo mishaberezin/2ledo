@@ -1,23 +1,22 @@
 import React from 'react';
 import { View, ScrollView } from 'react-native';
-import { Text, withStyles } from 'react-native-ui-kitten';
+import { withStyles } from 'react-native-ui-kitten';
 
 import ToledoButton from '../ToledoButton';
-import { CardImages, CardShortInfo } from './index';
+import { CardImages, CardShortInfo, CardDescriptionInfo } from './index';
 
-const ItemDetailCardContainer = ({ desc, owner, images, themedStyle }) => {
+const ItemDetailCardContainer = ({ card, themedStyle }) => {
+  const { Photos } = card;
   return (
     <ScrollView
       style={themedStyle.container}
       showsVerticalScrollIndicator={false}
     >
       <View style={themedStyle.cardContainer}>
-        <CardImages images={images} />
+        <CardImages photos={Photos} />
         <View>
-          <CardShortInfo owner={owner} />
-          <View style={themedStyle.cardDescriptionWrap}>
-            <Text category="p1">{desc}</Text>
-          </View>
+          <CardShortInfo {...card} />
+          <CardDescriptionInfo {...card} />
           <View style={themedStyle.cardActions}>
             <ToledoButton>Связаться</ToledoButton>
           </View>
@@ -27,7 +26,7 @@ const ItemDetailCardContainer = ({ desc, owner, images, themedStyle }) => {
   );
 };
 
-export default withStyles(ItemDetailCardContainer, () => ({
+const ItemDetailCard = withStyles(ItemDetailCardContainer, () => ({
   container: {
     backgroundColor: 'white',
   },
@@ -39,3 +38,5 @@ export default withStyles(ItemDetailCardContainer, () => ({
     marginTop: 10,
   },
 }));
+
+export default ItemDetailCard;

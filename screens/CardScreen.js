@@ -2,18 +2,18 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 
 import { ItemDetailCard } from '../components/Card';
-import serverData from '../server';
+import serverData from '../redux/__sampleState';
 
 function CardScreen(props) {
   const { navigation } = props;
   const { id: itemId } = navigation.getParam('item');
 
-  const item = serverData.serpData.find(({ id }) => id === itemId);
+  const item = serverData.deck.find(({ id }) => id === itemId);
 
   return (
     <View style={styles.container}>
       <View style={styles.main}>
-        <ItemDetailCard {...item} />
+        <ItemDetailCard card={item.data} />
       </View>
     </View>
   );

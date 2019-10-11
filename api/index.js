@@ -1,9 +1,9 @@
 // Клиент ходит в API через этот модуль.
 import httpRequestStub from './httpRequestStub';
-import data from '../server';
+import data from '../redux/__sampleState';
 
 export default {
-  fetchCards: () => httpRequestStub(data.serpData),
+  fetchCards: () => httpRequestStub(data.deck),
   sendPhone: phone =>
     httpRequestStub({
       hash: 'sg234fsgd34fsd',

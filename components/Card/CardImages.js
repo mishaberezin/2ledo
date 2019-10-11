@@ -28,7 +28,7 @@ class CardImagesContainer extends Component {
   };
 
   handleNextItemPress = () => {
-    if (this.state.imageIndex < this.props.images.length - 1) {
+    if (this.state.imageIndex < this.props.photos.length - 1) {
       const translateValue =
         (this.state.imageIndex + 1) * this.state.imageWidth;
       Animated.spring(this.translate, {
@@ -50,13 +50,13 @@ class CardImagesContainer extends Component {
   };
 
   renderImagesNavigation = () => {
-    const { images, themedStyle } = this.props;
-    if (!images || images.length <= 1) {
+    const { photos, themedStyle } = this.props;
+    if (!photos || photos.length <= 1) {
       return null;
     }
     return (
       <View style={themedStyle.navContainer}>
-        <View style={themedStyle.imagesNavigation}>
+        <View style={themedStyle.photosNavigation}>
           <View style={themedStyle.navElement}>
             <TouchableOpacity onPress={this.handlePrevItemPress}>
               <Ionicons
@@ -81,28 +81,28 @@ class CardImagesContainer extends Component {
   };
 
   render() {
-    const { images, themedStyle } = this.props;
+    const { photos, themedStyle } = this.props;
 
     return (
       <View style={themedStyle.container}>
         <Animated.View
           style={[
-            themedStyle.imagesContainer,
+            themedStyle.photosContainer,
             { transform: [{ translateX: this.translate }] },
           ]}
           onLayout={this.handleLayout}
         >
-          {images.map((uri, index) => (
+          {photos.map((image, index) => (
             <View key={index} style={themedStyle.imageContainer}>
-              <Image source={{ uri }} style={themedStyle.image} />
+              <Image source={{ uri: image.url }} style={themedStyle.image} />
             </View>
           ))}
         </Animated.View>
         {this.renderImagesNavigation()}
-        <View style={themedStyle.imagesCountContainer}>
-          {images.length > 1 &&
-            images.map((_, index) => (
-              <View key={index} style={themedStyle.imagesCountDot}>
+        <View style={themedStyle.photosCountContainer}>
+          {photos.length > 1 &&
+            photos.map((_, index) => (
+              <View key={index} style={themedStyle.photosCountDot}>
                 <Ionicons
                   name="ios-radio-button-on"
                   size={12}
@@ -120,7 +120,7 @@ class CardImagesContainer extends Component {
 
 const CardImages = withStyles(CardImagesContainer, () => ({
   container: {},
-  imagesContainer: {
+  photosContainer: {
     display: 'flex',
     flex: 1,
     flexDirection: 'row',
@@ -134,7 +134,7 @@ const CardImages = withStyles(CardImagesContainer, () => ({
     width: '100%',
     flex: 1,
   },
-  imagesNavigation: {
+  photosNavigation: {
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -149,7 +149,7 @@ const CardImages = withStyles(CardImagesContainer, () => ({
     height: SCREEN_HEIGHT / 2,
     width: '100%',
   },
-  imagesCountContainer: {
+  photosCountContainer: {
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
@@ -158,7 +158,7 @@ const CardImages = withStyles(CardImagesContainer, () => ({
     bottom: 10,
     width: '100%',
   },
-  imagesCountDot: {
+  photosCountDot: {
     marginHorizontal: 2,
   },
 }));
