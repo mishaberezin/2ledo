@@ -12,7 +12,6 @@ import { SettingsAddress } from '../Settings/SettingsAddress';
 import { SettingsFloor } from '../Settings/SettingsFloor';
 import { SettingsTextLabel } from '../Settings/SettingsTextLabel';
 import { SettingsMaxNumberOfPeople } from '../Settings/SettingsMaxNumberOfPeople';
-import { CollapsibleHeader } from '../CollapsibleHeader';
 import { DEFAULT_SIDE_MARGIN } from '@toledo/constants/layout';
 
 const applyData = (Component, data, props) => {
@@ -78,47 +77,23 @@ export function SchemaHostCardSettings(props) {
       })}
 
       <Divider style={{ height: 20, backgroundColor: 'transparent' }} />
-      {applyData(SettingsPhotos, Photos)}
+      {applyData(SettingsPhotos, Photos, {
+        onChange: ({ value }) => onChange({ name: 'Photos', value }),
+      })}
       <Divider style={{ height: 20, backgroundColor: 'transparent' }} />
-      {applyData(SettingsDescription, Description)}
-
-      <CollapsibleHeader title="Аренда" checked={true}>
-        {applyData(SettingsRentalPeriod, RentalPeriod)}
-      </CollapsibleHeader>
-
-      <CollapsibleHeader title="Параметры" checked={true}>
-        {applyData(SettingsNumberOfRooms, NumberOfRooms)}
-        {applyData(SettingsFloor, Floor)}
-      </CollapsibleHeader>
-      {/* {Coords && (
-        <SettingsCoords
-          {...Coords}
-          onChange={value => onChange({ name: 'Coords', value })}
-        ></SettingsCoords>
-      )}
-      {Description && (
-        <SettingsDescription
-          {...Description}
-          onChange={value => onChange({ name: 'Description', value })}
-        ></SettingsDescription>
-      )}
-      {Photos && <SettingsPhotos {...Photos}></SettingsPhotos>}
-      {Price && <SettingsRentalPrice {...Price} />}
-      {NumberOfRooms && (
-        <SettingsNumberOfRooms {...NumberOfRooms}></SettingsNumberOfRooms>
-      )}
-      {RentalPeriod && (
-        <SettingsRentalPeriod
-          {...RentalPeriod}
-          onChange={() => console.log(123)}
-        ></SettingsRentalPeriod>
-      )}
-      {NumberOfPeopleRange && (
-        <SettingsNumberOfPeopleRange
-          {...NumberOfPeopleRange}
-          onChange={() => console.log(123)}
-        ></SettingsNumberOfPeopleRange>
-      )} */}
+      {applyData(SettingsDescription, Description, {
+        onChange: ({ value }) => onChange({ name: 'Description', value }),
+      })}
+      {applyData(SettingsRentalPeriod, RentalPeriod, {
+        onChange: ({ value }) => onChange({ name: 'RentalPeriod', value }),
+      })}
+      <Divider style={{ height: 20, backgroundColor: 'transparent' }} />
+      {applyData(SettingsNumberOfRooms, NumberOfRooms, {
+        onChange: ({ value }) => onChange({ name: 'NumberOfRooms', value }),
+      })}
+      {applyData(SettingsFloor, Floor, {
+        onChange: ({ value }) => onChange({ name: 'Floor', value }),
+      })}
 
       <Divider style={{ height: 158, backgroundColor: 'transparent' }} />
     </ScrollView>

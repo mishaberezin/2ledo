@@ -16,7 +16,13 @@ export function SettingsDescription(props) {
         paddingBottom: 18,
       }}
     >
-      <ToledoTextarea label="Описание" onChange={onChange} value={value} />
+      <ToledoTextarea
+        label="Описание"
+        onChange={value => {
+          onChange({ value });
+        }}
+        value={value}
+      />
     </View>
   );
 }

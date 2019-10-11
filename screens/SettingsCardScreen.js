@@ -43,7 +43,7 @@ const mapStateToProps = state => {
 
   return {
     user: state.user,
-    card: state.cards[localState.currentCard],
+    card: state.cards[localState.currentCardId],
   };
 };
 

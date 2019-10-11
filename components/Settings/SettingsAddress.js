@@ -28,7 +28,6 @@ export function SettingsAddress(props) {
         style={{
           flex: 1,
           flexDirection: 'row',
-          justifyContent: 'stretch',
           height: 400,
           width: 300,
           // resizeMode: 'contain',

@@ -26,7 +26,7 @@ function SettingsUserScreenUnconnected(props) {
 const mapStateToProps = state => {
   return {
     user: state.user,
-    card: state.cards[state.localState.currentCard],
+    card: state.cards[state.localState.currentCardId],
   };
 };
 

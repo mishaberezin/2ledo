@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, FlatList, Image, StyleSheet, Dimensions } from 'react-native';
 import { Button } from 'react-native-elements';
 // import ImagePicker from 'react-native-image-picker';
@@ -7,19 +7,16 @@ import * as Permissions from 'expo-permissions';
 import Constants from 'expo-constants';
 import { TEXT_COLOR, SETTINGS_DIVIDER_COLOR } from '@toledo/constants/colors';
 
-import { getImageById } from '../../server/s3';
-
 export function SettingsPhotos(props) {
-  const { value } = props;
-  const [imageUri, setImageUri] = useState(null);
+  const { value, onChange } = props;
 
-  const flatListData = [...value, imageUri];
+  const flatListData = [...value];
 
   const getPermissionAsync = async () => {
     if (Constants.platform.ios) {
       const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
       if (status !== 'granted') {
-        alert('Sorry, we need camera roll permissions to make this work!');
+        alert('Нужен доступ!');
         throw new Error(
           'Sorry, we need camera roll permissions to make this work!'
         );
@@ -37,7 +34,7 @@ export function SettingsPhotos(props) {
     });
 
     if (!result.cancelled) {
-      setImageUri(result.uri);
+      onChange({ value: [...value, result] });
     }
   };
 
@@ -50,10 +47,7 @@ export function SettingsPhotos(props) {
         renderItem={({ item }) => {
           return (
             <View>
-              <Image
-                style={styles.image}
-                source={item.id ? getImageById(item.id).source : { uri: item }}
-              />
+              <Image style={styles.image} source={item.source || item} />
             </View>
           );
         }}

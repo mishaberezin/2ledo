@@ -3,7 +3,7 @@ import {
   SET_CARD_PROP,
   SET_CARD_PRICE,
   SET_CARD_NUMBER_OF_PEOPLE,
-  SET_CARD_DESCRIPTION,
+  ADD_CARD_PHOTO,
 } from '../types.js';
 
 const INITIAL_STATE = {};
@@ -47,15 +47,15 @@ const cardsReducer = (state = INITIAL_STATE, action) => {
         },
       };
     }
-    case SET_CARD_DESCRIPTION: {
-      const cardId = action.payload.id;
-      const card = state[cardId];
+    case ADD_CARD_PHOTO: {
+      const { id, photo } = action.payload;
+      const card = state[id];
 
       return {
         ...state,
-        [cardId]: {
+        [id]: {
           ...card,
-          data: { ...card.data, description: action.payload.value },
+          data: { ...card.data, Photos: [...card.data.Photos, photo] },
         },
       };
     }

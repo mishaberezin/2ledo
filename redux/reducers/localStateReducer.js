@@ -6,7 +6,7 @@ const localStateReducer = (state = INITIAL_STATE, action) => {
     case SET_CURRENT_CARD: {
       return {
         ...state,
-        currentCard: action.payload,
+        currentCardId: action.payload,
       };
     }
     default:
