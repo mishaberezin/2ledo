@@ -3,7 +3,7 @@ import { withStyles } from 'react-native-ui-kitten';
 import { View, FlatList } from 'react-native';
 import Collapsible from 'react-native-collapsible';
 import FavoritesListHeader from './FavoritesListHeader';
-import FavoritesListItem from './FavoritesListItem';
+import FavoritesListHostItem from './FavoritesListHostItem';
 import { MAIN_BACKGROUND_COLOR } from '../constants/colors';
 
 const FavoritesListContainer = ({
@@ -16,13 +16,19 @@ const FavoritesListContainer = ({
   const [opened, setOpened] = useState(false);
 
   const renderItem = useCallback(
-    ({ item: { data, id } }) => (
-      <FavoritesListItem
-        style={themedStyle.listItemStyle}
-        item={{ ...data, id }}
-        onPress={onItemPress}
-      />
-    ),
+    ({ item: { data, id, Type } }) => {
+      if (Type === 'host') {
+        return (
+          <FavoritesListHostItem
+            style={themedStyle.listItemStyle}
+            item={{ ...data, id }}
+            onPress={onItemPress}
+          />
+        );
+      } else {
+        return null;
+      }
+    },
     [onItemPress, themedStyle.listItemStyle]
   );
 

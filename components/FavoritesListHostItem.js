@@ -8,20 +8,30 @@ import {
 } from 'react-native';
 import { withStyles, Text } from 'react-native-ui-kitten';
 import OverflowMenu from './OverflowMenu';
+import {
+  CardItemLandmark,
+  CardItemNumberOfRooms,
+  CardItemHostAvatar,
+} from '../components/Card';
 
 import { Ionicons } from '@expo/vector-icons';
 
-const FavoritesListItemContainer = ({
-  item: {
-    id,
-    Photos: [firstPhoto],
-    RentalPrice,
-    // NumberOfRooms,
-  },
+const FavoritesListHostItemContainer = ({
+  item,
   style,
   onPress,
   themedStyle,
 }) => {
+  const {
+    id,
+    Photos: [firstPhoto],
+    RentalPrice,
+    Address: { postal },
+    Landmark,
+    NumberOfRooms,
+    HostUser,
+  } = item;
+
   const menuItems = [
     { type: 'view', title: 'Просмотр' },
     { type: 'delete', title: 'Удалить' },
@@ -49,31 +59,27 @@ const FavoritesListItemContainer = ({
         <View style={themedStyle.listItemInfoBlock}>
           <TouchableOpacity onPress={handleItemPress}>
             <Image
-              source={{ uri: firstPhoto.url }}
+              source={{ firstPhoto }}
               style={{ width: 100, height: 100 }}
             />
           </TouchableOpacity>
         </View>
 
         <View style={themedStyle.listItemInfoBlock}>
-          <Text category="s1">метро</Text>
-          <Text category="s1">5009 м</Text>
+          <Text category="h5">{RentalPrice} Р</Text>
+          <CardItemHostAvatar uri={HostUser.avatarUri} />
         </View>
 
         <View style={themedStyle.listItemInfoBlock}>
-          <Text category="s1">{RentalPrice} Р</Text>
-          <Text category="p1">Жкх включены</Text>
-        </View>
-
-        <View style={themedStyle.listItemInfoBlock}>
-          <Text category="s1">Что-то еще</Text>
-          <Text category="p1">Как-то вот</Text>
+          <CardItemNumberOfRooms value={NumberOfRooms} />
+          <CardItemLandmark landmark={Landmark} />
         </View>
       </ScrollView>
       <View style={themedStyle.listItemBottomBlock}>
         <View style={themedStyle.listItemBottomTextBlock}>
-          <Text category="p2">Бежевые стены, красный диван</Text>
+          <Text category="p2">{postal}</Text>
         </View>
+
         <View style={themedStyle.listItemActions}>
           <OverflowMenu
             items={menuItems}
@@ -90,49 +96,51 @@ const FavoritesListItemContainer = ({
   );
 };
 
-const FavoritesListItem = withStyles(FavoritesListItemContainer, () => ({
-  listItemContainer: {
-    flex: 1,
-    paddingHorizontal: 10,
-    paddingVertical: 10,
-    marginBottom: 10,
-    backgroundColor: '#fff',
-    minWidth: Dimensions.get('window').width,
-  },
-  listItemInfo: {
-    flex: 1,
-    flexDirection: 'row',
-    flexWrap: 'nowrap',
-  },
-  listItemInfoBlock: {
-    padding: 5,
-    flex: 1,
-    minWidth: Dimensions.get('window').width / 3,
-  },
-  listItemBottomBlock: {
-    flex: 1,
-    flexDirection: 'row',
-    flexWrap: 'nowrap',
-  },
-  listItemBottomTextBlock: {
-    flex: 3,
-    paddingHorizontal: 5,
-    paddingVertical: 10,
-  },
-  listItemActions: {
-    marginLeft: 10,
-    minWidth: 20,
-    paddingVertical: 5,
-  },
-  menuStyle: {
-    position: 'relative',
-    right: 50,
-  },
-  iconMore: {
-    display: 'flex',
-    alignItems: 'center',
-    width: 40,
-  },
-}));
+const FavoritesListHostItem = withStyles(
+  FavoritesListHostItemContainer,
+  () => ({
+    listItemContainer: {
+      flex: 1,
+      paddingHorizontal: 10,
+      paddingVertical: 10,
+      marginBottom: 10,
+      backgroundColor: '#fff',
+      minWidth: Dimensions.get('window').width,
+    },
+    listItemInfo: {
+      flex: 1,
+      flexDirection: 'row',
+      flexWrap: 'nowrap',
+    },
+    listItemInfoBlock: {
+      padding: 5,
+      flex: 1,
+      minWidth: Dimensions.get('window').width / 3,
+    },
+    listItemBottomBlock: {
+      flex: 1,
+      flexDirection: 'row',
+      flexWrap: 'nowrap',
+    },
+    listItemBottomTextBlock: {
+      flex: 3,
+      paddingHorizontal: 5,
+      paddingVertical: 10,
+    },
+    listItemActions: {
+      marginLeft: 10,
+      minWidth: 15,
+      paddingVertical: 5,
+    },
+    menuStyle: {
+      //position: 'relative',
+    },
+    iconMore: {
+      display: 'flex',
+      alignItems: 'center',
+      width: 40,
+    },
+  })
+);
 
-export default FavoritesListItem;
+export default FavoritesListHostItem;

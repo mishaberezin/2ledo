@@ -1,10 +1,11 @@
 import React from 'react';
 import { View } from 'react-native';
-import { Text, Avatar, withStyles } from 'react-native-ui-kitten';
+import { withStyles } from 'react-native-ui-kitten';
 
 import { ToledoHeader4 } from '../ToledoHeader4';
 import CardItemLandmark from './CardItemLandmark';
 import CardItemNumberOfRooms from './CardItemNumberOfRooms';
+import CardItemHostAvatar from './CardItemHostAvatar';
 
 const CardHostShortInfoContainer = ({
   HostUser,
@@ -18,15 +19,12 @@ const CardHostShortInfoContainer = ({
       <View style={themedStyle.infoBlock}>
         <ToledoHeader4>{RentalPrice} руб</ToledoHeader4>
         <View style={themedStyle.infoBlockCol}>
-          <CardItemNumberOfRooms count={NumberOfRooms} />
+          <CardItemNumberOfRooms value={NumberOfRooms} />
           <CardItemLandmark landmark={Landmark} />
         </View>
       </View>
       <View style={themedStyle.avatarBlock}>
-        <Avatar source={{ uri: HostUser.avatarUri }} size="small" />
-        <Text style={themedStyle.avatarBlockName} category="s1">
-          {HostUser.name}
-        </Text>
+        <CardItemHostAvatar uri={HostUser.avatarUri} name={HostUser.name} />
       </View>
     </View>
   );
@@ -51,13 +49,6 @@ const CardHostShortInfo = withStyles(CardHostShortInfoContainer, () => ({
   },
   avatarBlock: {
     marginTop: 10,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    minHeight: 30,
-  },
-  avatarBlockName: {
-    marginLeft: 10,
   },
 }));
 

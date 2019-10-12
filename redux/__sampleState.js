@@ -97,15 +97,15 @@ export default {
         IsFresh: true,
         Photos: [
           {
-            url:
+            uri:
               'https://www.gd-home.com/wp-content/uploads/2018/07/skandinavskaya-odnokomnatnaya-kvartira-s-malenkoj-kuxnej-1.jpg',
           },
           {
-            url:
+            uri:
               'https://md-eksperiment.org/images/posts/a70ccf57-d401-4c48-9c6b-13affbcc9c8e.jpeg',
           },
           {
-            url:
+            uri:
               'https://www.gd-home.com/wp-content/uploads/2018/07/skandinavskaya-odnokomnatnaya-kvartira-s-malenkoj-kuxnej-1.jpg',
           },
         ],
@@ -133,7 +133,7 @@ export default {
         },
         Photos: [
           {
-            url:
+            uri:
               'https://md-eksperiment.org/images/posts/a70ccf57-d401-4c48-9c6b-13affbcc9c8e.jpeg',
           },
         ],
@@ -161,7 +161,7 @@ export default {
         NumberOfRooms: 2,
         Photos: [
           {
-            url:
+            uri:
               'https://srbu.ru/images/stroitelnye-raboty/studiya-ili-odnokomnatnaya-kvartira-chto-luchshe/studiya-ili-odnokomnatnaya-kvartira-chto-luchshe.jpg',
           },
         ],
@@ -197,7 +197,7 @@ export default {
         RentalPeriod: 'long',
         Photos: [
           {
-            url:
+            uri:
               'https://n1s1.elle.ru/29/3c/08/293c089064a46d58a6ca46c1915eb2d7/1500x999_0xac120002_13263901001544189597.jpeg',
           },
         ],
@@ -225,7 +225,7 @@ export default {
         RentalPeriod: 'long',
         Photos: [
           {
-            url:
+            uri:
               'https://ik.gipernn.ru/k29g01hao2kva_dag5z_h-600_w-800_zc-1/2-komnatnaya-kvartira-ulica-geroya-chugunova-dom-6-0.jpeg',
           },
         ],
@@ -249,7 +249,7 @@ export default {
           },
           Photos: [
             {
-              url:
+              uri:
                 'https://md-eksperiment.org/images/posts/a70ccf57-d401-4c48-9c6b-13affbcc9c8e.jpeg',
             },
           ],
@@ -277,7 +277,7 @@ export default {
           NumberOfRooms: 2,
           Photos: [
             {
-              url:
+              uri:
                 'https://srbu.ru/images/stroitelnye-raboty/studiya-ili-odnokomnatnaya-kvartira-chto-luchshe/studiya-ili-odnokomnatnaya-kvartira-chto-luchshe.jpg',
             },
           ],
