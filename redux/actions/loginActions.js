@@ -18,6 +18,14 @@ export const setUserToken = token => async dispatch => {
   });
 };
 
+export const unsetUserToken = () => async dispatch => {
+  await AsyncStorage.removeItem('token');
+  dispatch({
+    type: SET_USER_TOKEN,
+    payload: { token: null },
+  });
+};
+
 export const checkUserToken = () => async () => {
   return await AsyncStorage.getItem('token');
 };

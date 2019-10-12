@@ -15,9 +15,9 @@ function InitScreen(props) {
     const userToken = await checkUserToken();
     if (userToken) {
       await setUserToken(userToken);
-      navigation.navigate('Main');
+      navigation.navigate('Serp');
     } else {
-      navigation.navigate('Login');
+      navigation.navigate('Chat');
     }
   };
 

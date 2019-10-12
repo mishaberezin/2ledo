@@ -5,12 +5,19 @@ import { List, withStyles } from 'react-native-ui-kitten';
 import ChatMessage from './ChatMessage';
 import ChatControls from './ChatControls';
 
-const ConversationContainer = ({ themedStyle, messages }) => {
-  const renderMessage = useCallback((info) => {
-    return (
-        <ChatMessage style={themedStyle.message} key={info.item.id} message={info.item} />
-    );
-  }, [themedStyle.message]);
+const ConversationContainer = ({ themedStyle, messages, navigate }) => {
+  const renderMessage = useCallback(
+    info => {
+      return (
+        <ChatMessage
+          style={themedStyle.message}
+          key={info.item.id}
+          message={info.item}
+        />
+      );
+    },
+    [themedStyle.message]
+  );
 
   const listRef = useMemo(() => React.createRef(), []);
 
@@ -25,8 +32,9 @@ const ConversationContainer = ({ themedStyle, messages }) => {
         contentContainerStyle={themedStyle.chatContainer}
         onContentSizeChange={handleListContentSizeChange}
         data={messages}
-        renderItem={renderMessage} />
-        <ChatControls />
+        renderItem={renderMessage}
+      />
+      <ChatControls navigate={navigate} />
     </View>
   );
 };
@@ -40,14 +48,12 @@ const Conversation = withStyles(ConversationContainer, () => ({
     paddingVertical: 12,
   },
   message: {
-    marginVertical: 10
-  }
+    marginVertical: 10,
+  },
 }));
 
-const mapStateToProps = (state) => ({
-  messages: state.chatbot.messages
+const mapStateToProps = state => ({
+  messages: state.chatbot.messages,
 });
 
-export default connect(
-  mapStateToProps
-)(Conversation);
+export default connect(mapStateToProps)(Conversation);

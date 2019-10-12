@@ -1,19 +1,27 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { setCurrentCardId } from '../redux/actions/localStateActions';
+import { unsetUserToken } from '../redux/actions/loginActions';
 import { View } from 'react-native';
 import { SCREEN_BACKGROUND } from '../constants/colors';
-import { ButtonGroup } from 'react-native-elements';
+import { ButtonGroup, Button } from 'react-native-elements';
 
 function SettingsTuneScreenUnconnected(props) {
-  const { cards, currentCardId, setCurrentCardId } = props;
+  const { cards, currentCardId, setCurrentCardId, unsetUserToken } = props;
 
   const items = Object.keys(cards).map(id => ({ type: cards[id].type, id }));
 
   console.log(items);
   console.log(currentCardId);
   console.log(items.findIndex(item => item.id === currentCardId));
+
+  const handleExitButtonPress = useCallback(() => {
+    (async () => {
+      await unsetUserToken();
+      props.navigation.navigate('Init');
+    })();
+  }, [props.navigation, unsetUserToken]);
 
   return (
     <View
@@ -28,6 +36,11 @@ function SettingsTuneScreenUnconnected(props) {
         selectedIndex={items.findIndex(item => item.id === currentCardId)}
         buttons={items.map(item => item.type)}
         containerStyle={{ height: 30 }}
+      />
+      <Button
+        buttonStyle={{ backgroundColor: 'gray', marginHorizontal: 10 }}
+        title="Выйти"
+        onPress={handleExitButtonPress}
       />
     </View>
   );
@@ -44,6 +57,7 @@ const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       setCurrentCardId,
+      unsetUserToken,
     },
     dispatch
   );

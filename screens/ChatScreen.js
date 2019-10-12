@@ -1,18 +1,22 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { initChatbotAction } from '../redux/actions/chatbotActions';
 import Conversation from '../components/Conversation';
 
-function ChatScreen({ initChatbotAction }) {
+function ChatScreen({ navigation, initChatbotAction }) {
   useEffect(() => {
     initChatbotAction();
   }, [initChatbotAction]);
 
+  const navigate = useCallback(screen => {
+    navigation.navigate(screen);
+  }, [navigation]);
+
   return (
     <View style={styles.container}>
       <View style={styles.main}>
-        <Conversation />
+        <Conversation navigate={navigate} />
       </View>
     </View>
   );

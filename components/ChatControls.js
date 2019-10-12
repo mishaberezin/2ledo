@@ -1,25 +1,32 @@
-
 import React from 'react';
-import {
-  View
-} from 'react-native';
+import { View } from 'react-native';
 import { connect } from 'react-redux';
 import { CHATBOT_SCENARIOS } from '../constants/chatbotScenarios';
 import { withStyles } from 'react-native-ui-kitten';
 
-const ChatControlsComponent = ({ themedStyle, style, currentScenarioId, isWriting }) => {
+const ChatControlsComponent = ({
+  themedStyle,
+  style,
+  currentScenarioId,
+  isWriting,
+  navigate,
+}) => {
   const scenario = CHATBOT_SCENARIOS.messages[currentScenarioId];
 
-  return ( 
+  return (
     <View style={[themedStyle.controlsContainer, style]}>
       <View style={[themedStyle.controls]}>
-        {scenario && scenario.controls && !isWriting &&
-          scenario.controls.map((render, index) => render({ 
-            key: index,
-            buttonStyle: [themedStyle.control],
-            titleStyle: [themedStyle.title]
-          }))
-        }
+        {scenario &&
+          scenario.controls &&
+          !isWriting &&
+          scenario.controls.map((render, index) =>
+            render({
+              key: index,
+              buttonStyle: [themedStyle.control],
+              titleStyle: [themedStyle.title],
+              navigate,
+            })
+          )}
       </View>
     </View>
   );
@@ -30,7 +37,7 @@ const ChatControls = withStyles(ChatControlsComponent, () => ({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-start',
-    backgroundColor: '#F7F9FC'
+    backgroundColor: '#F7F9FC',
   },
   control: {
     marginTop: 10,
@@ -41,22 +48,20 @@ const ChatControls = withStyles(ChatControlsComponent, () => ({
     paddingLeft: 15,
     borderRadius: 24,
     minWidth: 100,
-    backgroundColor: '#25265E'
+    backgroundColor: '#25265E',
   },
   controls: {
     paddingBottom: 10,
   },
   title: {
     fontFamily: 'ceracy-desktop-medium',
-    fontSize: 16
+    fontSize: 16,
   },
 }));
 
-const mapStateToProps = (state) => ({
-    currentScenarioId: state.chatbot.currentScenarioId,
-    isWriting: state.chatbot.isWriting
+const mapStateToProps = state => ({
+  currentScenarioId: state.chatbot.currentScenarioId,
+  isWriting: state.chatbot.isWriting,
 });
 
-export default connect(
-    mapStateToProps
-)(ChatControls);
+export default connect(mapStateToProps)(ChatControls);
