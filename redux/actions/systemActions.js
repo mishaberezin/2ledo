@@ -15,8 +15,7 @@ export const startMatchPolling = async () => {
   process.isStarted = true;
   if (process.isStarted) {
     process.requestCount += 1;
-    const metches = await requestMatch(process.requestCount);
-    console.log('metches->', metches);
+    /* const matches =  */ await requestMatch(process.requestCount);
     setTimeout(startMatchPolling, 1000);
   }
 };
