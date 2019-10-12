@@ -5,10 +5,11 @@ import { Asset } from 'expo-asset';
 import * as Font from 'expo-font';
 //import { AsyncStorage } from 'react-native';
 import { checkUserToken, setUserToken } from '../redux/actions/loginActions';
+import { startMatchPolling } from '../redux/actions/systemActions';
 import { bindActionCreators } from 'redux';
 
 function InitScreen(props) {
-  const { navigation, checkUserToken, setUserToken } = props;
+  const { navigation, checkUserToken, setUserToken, startMatchPolling } = props;
 
   const onAppLoading = async () => {
     //await AsyncStorage.removeItem('token');
@@ -16,6 +17,7 @@ function InitScreen(props) {
     if (userToken) {
       await setUserToken(userToken);
       navigation.navigate('Serp');
+      startMatchPolling();
     } else {
       navigation.navigate('Chat');
     }
@@ -57,6 +59,7 @@ const mapDispatchToProps = dispatch =>
     {
       checkUserToken,
       setUserToken,
+      startMatchPolling,
     },
     dispatch
   );

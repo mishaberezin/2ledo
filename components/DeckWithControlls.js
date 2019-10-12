@@ -145,7 +145,7 @@ class DeckWithControllsContainer extends Component {
             name={'ios-close-circle'}
             size={50}
             color="red"
-            style={{ position: 'relative', top: 5 }}
+            style={{ position: 'relative', top: 2 }}
           />
         </TouchableOpacity>
         {/*<TouchableOpacity
