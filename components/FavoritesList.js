@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { withStyles } from 'react-native-ui-kitten';
+import { withStyles, Text } from 'react-native-ui-kitten';
 import { View, FlatList } from 'react-native';
 import Collapsible from 'react-native-collapsible';
 import FavoritesListHeader from './FavoritesListHeader';
@@ -43,12 +43,18 @@ const FavoritesListContainer = ({
         onTogglePress={() => setOpened(!opened)}
       />
       <Collapsible collapsed={!opened} style={themedStyle.listContainer}>
-        <FlatList
-          keyExtractor={item => '' + item.id}
-          showsVerticalScrollIndicator={false}
-          data={items}
-          renderItem={renderItem}
-        />
+        {items.length > 0 ? (
+          <FlatList
+            keyExtractor={item => '' + item.id}
+            showsVerticalScrollIndicator={false}
+            data={items}
+            renderItem={renderItem}
+          />
+        ) : (
+          <View style={themedStyle.listIsEmptyContainer}>
+            <Text>Тут пока ничего нет</Text>
+          </View>
+        )}
       </Collapsible>
     </View>
   );
@@ -78,7 +84,9 @@ const FavoritesList = withStyles(FavoritesListContainer, () => ({
     backgroundColor: MAIN_BACKGROUND_COLOR,
     height: 'auto',
   },
-  listContainer: {},
+  listIsEmptyContainer: {
+    padding: 20,
+  },
   listItemStyle: {
     transform: [{ translateX: -LIST_MARGIN }],
   },

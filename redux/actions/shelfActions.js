@@ -18,11 +18,11 @@ export const getShelfCard = cardId => async (_, getState) => {
   const state = getState();
   // make http request here
   const {
-    shelf: { liked, dislicked },
+    shelf: { liked, disliked },
   } = state;
   let card = liked.find(({ id }) => cardId === id);
   if (!card) {
-    card = dislicked.find(({ id }) => cardId === id);
+    card = disliked.find(({ id }) => cardId === id);
   }
   return Promise.resolve(card);
 };
