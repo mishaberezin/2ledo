@@ -1,6 +1,6 @@
 import React from 'react';
 import isPlainObject from 'lodash/isPlainObject';
-import { View, ScrollView, Image } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import { Divider } from 'react-native-elements';
 import { ToledoHeader5 } from '../ToledoHeader5';
 import { SettingsDescription } from '../Settings/SettingsDescription';
@@ -10,9 +10,7 @@ import { SettingsNumberOfRooms } from '../Settings/SettingsNumberOfRooms';
 import { SettingsRentalPeriod } from '../Settings/SettingsRentalPeriod';
 import { SettingsAddress } from '../Settings/SettingsAddress';
 import { SettingsFloor } from '../Settings/SettingsFloor';
-import { SettingsTextLabel } from '../Settings/SettingsTextLabel';
 import { SettingsMaxNumberOfPeople } from '../Settings/SettingsMaxNumberOfPeople';
-import { DEFAULT_SIDE_MARGIN } from '@toledo/constants/layout';
 
 const applyData = (Component, data, props) => {
   if (!data) {
@@ -51,22 +49,6 @@ export function SchemaHostCardSettings(props) {
       <View style={{ paddingLeft: 20 }}>
         <ToledoHeader5>Ищу жильца</ToledoHeader5>
       </View>
-
-      <View
-        style={{
-          flex: 1,
-          flexDirection: 'row',
-          justifyContent: 'center',
-          paddingLeft: DEFAULT_SIDE_MARGIN,
-          paddingRight: DEFAULT_SIDE_MARGIN,
-        }}
-      >
-        <Image
-          source={require('../../assets/images/card-host.png')}
-          style={{ flex: 1, height: 400 }}
-        />
-      </View>
-      <SettingsTextLabel label="Будем искать по этим параметрам" />
 
       {applyData(SettingsRentalPrice, RentalPrice, {
         onChange: ({ value }) => onChange({ name: 'RentalPrice', value }),

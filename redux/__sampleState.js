@@ -21,6 +21,8 @@ export default {
         images.userAdditionalImage,
         images.userAdditionalImage2,
       ],
+      UserAvatar:
+        'https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ2MTEyNjMzMV5BMl5BanBnXkFtZTYwODE0MzQ2._V1_UX172_CR0,0,172,256_AL_.jpg',
     },
   },
   cards: {
@@ -40,6 +42,7 @@ export default {
           coords: [55.756459, 37.64482],
           postal: 'Москва, Большой Златоустинский переулок, 6с1',
         },
+        Landmark: landmarks[2],
         NumberOfRooms: 2,
         Floor: 4,
         Photos: [images.flatInterior, images.flatExterior, images.flatToilet],
@@ -108,24 +111,7 @@ export default {
               'https://www.gd-home.com/wp-content/uploads/2018/07/skandinavskaya-odnokomnatnaya-kvartira-s-malenkoj-kuxnej-1.jpg',
           },
         ],
-        Landmarks: [
-          {
-            id: 'mendeley',
-            type: 'metro',
-            data: {
-              name: 'Менделеевская',
-              color: 'gray',
-            },
-          },
-          {
-            id: 'dinamo',
-            type: 'metro',
-            data: {
-              name: 'Динамо',
-              color: 'green',
-            },
-          },
-        ],
+        Landmark: landmarks[1],
         Address: {
           coords: [55.756459, 37.64482],
           postal: 'Москва, Большой Златоустинский переулок, 6с1',
@@ -153,24 +139,7 @@ export default {
               'https://md-eksperiment.org/images/posts/a70ccf57-d401-4c48-9c6b-13affbcc9c8e.jpeg',
           },
         ],
-        Landmarks: [
-          {
-            id: 'mendeley',
-            type: 'metro',
-            data: {
-              name: 'Менделеевская',
-              color: 'gray',
-            },
-          },
-          {
-            id: 'dinamo',
-            type: 'metro',
-            data: {
-              name: 'Динамо',
-              color: 'green',
-            },
-          },
-        ],
+        Landmark: landmarks[2],
         Address: {
           coords: [55.756459, 37.64482],
           postal: 'Москва, Большой Златоустинский переулок, 6с1',
@@ -198,24 +167,7 @@ export default {
               'https://srbu.ru/images/stroitelnye-raboty/studiya-ili-odnokomnatnaya-kvartira-chto-luchshe/studiya-ili-odnokomnatnaya-kvartira-chto-luchshe.jpg',
           },
         ],
-        Landmarks: [
-          {
-            id: 'mendeley',
-            type: 'metro',
-            data: {
-              name: 'Менделеевская',
-              color: 'gray',
-            },
-          },
-          {
-            id: 'dinamo',
-            type: 'metro',
-            data: {
-              name: 'Динамо',
-              color: 'green',
-            },
-          },
-        ],
+        Landmark: landmarks[3],
         Address: {
           coords: [55.756459, 37.64482],
           postal: 'Москва, Большой Златоустинский переулок, 6с1',
@@ -237,24 +189,7 @@ export default {
             'https://images-na.ssl-images-amazon.com/images/M/MV5BYTIyMzExODgtNzllNy00OWQwLTlhM2QtMWU1ZTI2MjgwMTQxXkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_UY256_CR5,0,172,256_AL_.jpg',
         },
         NumberOfRooms: 2,
-        Landmarks: [
-          {
-            id: 'mendeley',
-            type: 'metro',
-            data: {
-              name: 'Менделеевская',
-              color: 'gray',
-            },
-          },
-          {
-            id: 'dinamo',
-            type: 'metro',
-            data: {
-              name: 'Динамо',
-              color: 'green',
-            },
-          },
-        ],
+        Landmark: landmarks[4],
         Address: {
           coords: [55.756459, 37.64482],
           postal: 'Москва, Большой Златоустинский переулок, 6с1',
@@ -281,16 +216,7 @@ export default {
           avatarUri:
             'https://images-na.ssl-images-amazon.com/images/M/MV5BYTIyMzExODgtNzllNy00OWQwLTlhM2QtMWU1ZTI2MjgwMTQxXkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_UY256_CR5,0,172,256_AL_.jpg',
         },
-        Landmarks: [
-          {
-            id: 'mendeley',
-            type: 'metro',
-            data: {
-              name: 'Менделеевская',
-              color: 'gray',
-            },
-          },
-        ],
+        Landmark: landmarks[2],
         Address: {
           coords: [55.756459, 37.64482],
           postal: 'Москва, Большой Златоустинский переулок, 6с1',
@@ -329,24 +255,7 @@ export default {
                 'https://md-eksperiment.org/images/posts/a70ccf57-d401-4c48-9c6b-13affbcc9c8e.jpeg',
             },
           ],
-          Landmarks: [
-            {
-              id: 'mendeley',
-              type: 'metro',
-              data: {
-                name: 'Менделеевская',
-                color: 'gray',
-              },
-            },
-            {
-              id: 'dinamo',
-              type: 'metro',
-              data: {
-                name: 'Динамо',
-                color: 'green',
-              },
-            },
-          ],
+          Landmark: landmarks[0],
           Address: {
             coords: [55.756459, 37.64482],
             postal: 'Москва, Большой Златоустинский переулок, 6с1',
@@ -374,24 +283,7 @@ export default {
                 'https://srbu.ru/images/stroitelnye-raboty/studiya-ili-odnokomnatnaya-kvartira-chto-luchshe/studiya-ili-odnokomnatnaya-kvartira-chto-luchshe.jpg',
             },
           ],
-          Landmarks: [
-            {
-              id: 'mendeley',
-              type: 'metro',
-              data: {
-                name: 'Менделеевская',
-                color: 'gray',
-              },
-            },
-            {
-              id: 'dinamo',
-              type: 'metro',
-              data: {
-                name: 'Динамо',
-                color: 'green',
-              },
-            },
-          ],
+          Landmark: landmarks[4],
           Address: {
             coords: [55.756459, 37.64482],
             postal: 'Москва, Большой Златоустинский переулок, 6с1',

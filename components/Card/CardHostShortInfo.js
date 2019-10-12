@@ -3,32 +3,34 @@ import { View } from 'react-native';
 import { Text, Avatar, withStyles } from 'react-native-ui-kitten';
 
 import { ToledoHeader4 } from '../ToledoHeader4';
-import CardItemLandmarks from './CardItemLandmarks';
+import CardItemLandmark from './CardItemLandmark';
 import CardItemNumberOfRooms from './CardItemNumberOfRooms';
 
 const CardHostShortInfoContainer = ({
   HostUser,
   RentalPrice,
-  Landmarks,
+  Landmark,
   NumberOfRooms,
   themedStyle,
-}) => (
-  <View style={themedStyle.container}>
-    <View style={themedStyle.infoBlock}>
-      <ToledoHeader4>{RentalPrice} руб</ToledoHeader4>
-      <View style={themedStyle.infoBlockCol}>
-        <CardItemNumberOfRooms count={NumberOfRooms} />
-        <CardItemLandmarks landmarks={Landmarks} />
+}) => {
+  return (
+    <View style={themedStyle.container}>
+      <View style={themedStyle.infoBlock}>
+        <ToledoHeader4>{RentalPrice} руб</ToledoHeader4>
+        <View style={themedStyle.infoBlockCol}>
+          <CardItemNumberOfRooms count={NumberOfRooms} />
+          <CardItemLandmark landmark={Landmark} />
+        </View>
+      </View>
+      <View style={themedStyle.avatarBlock}>
+        <Avatar source={{ uri: HostUser.avatarUri }} size="small" />
+        <Text style={themedStyle.avatarBlockName} category="s1">
+          {HostUser.name}
+        </Text>
       </View>
     </View>
-    <View style={themedStyle.avatarBlock}>
-      <Avatar source={{ uri: HostUser.avatarUri }} size="small" />
-      <Text style={themedStyle.avatarBlockName} category="s1">
-        {HostUser.name}
-      </Text>
-    </View>
-  </View>
-);
+  );
+};
 
 const CardHostShortInfo = withStyles(CardHostShortInfoContainer, () => ({
   container: {

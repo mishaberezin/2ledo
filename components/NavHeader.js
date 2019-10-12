@@ -7,13 +7,15 @@ import { TEXT_COLOR } from '@toledo/constants/colors';
 function HeaderText(props) {
   return (
     <Text
-      style={{
-        fontSize: 15,
-        lineHeight: 18,
-        color: TEXT_COLOR,
-        fontFamily: 'ceracy-desktop-medium',
+      style={[
+        {
+          fontSize: 15,
+          lineHeight: 18,
+          color: TEXT_COLOR,
+          fontFamily: 'ceracy-desktop-medium',
+        },
         ...props.style,
-      }}
+      ]}
       onPress={props.onPress}
     >
       {props.children}
@@ -42,7 +44,7 @@ export function NavHeader(props) {
           {menuItems.map((item, i) => (
             <HeaderText
               key={i}
-              style={{ marginRight: 15 }}
+              style={[{ marginRight: 15 }, item.style]}
               onPress={item.onPress}
             >
               {item.text}

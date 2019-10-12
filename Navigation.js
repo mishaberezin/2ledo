@@ -11,6 +11,7 @@ import LoginScreen from './screens/LoginScreen';
 import { SettingsCardScreen } from './screens/SettingsCardScreen';
 import { SettingsTuneScreen } from './screens/SettingsTuneScreen';
 import { SettingsUserScreen } from './screens/SettingsUserScreen';
+import { SettingsCardPreviewScreen } from './screens/SettingsCardPreviewScreen';
 
 import FavoritesScreen from './screens/FavoritesScreen';
 import CardScreen from './screens/CardScreen';
@@ -22,17 +23,31 @@ const SettingsStack = createStackNavigator(
     Card: SettingsCardScreen,
     User: SettingsUserScreen,
     Tune: SettingsTuneScreen,
+    CardPreview: SettingsCardPreviewScreen,
   },
   {
     initialRouteName: 'Card',
-
     defaultNavigationOptions: ({ navigation }) => {
+      let cardItem;
+      if (navigation.state.routeName === 'Card') {
+        cardItem = {
+          text: 'Превью',
+          style: { color: 'blue' },
+          onPress: () => navigation.navigate('CardPreview'),
+        };
+      } else {
+        cardItem = {
+          text: 'Карточка',
+          onPress: () => navigation.navigate('Card'),
+        };
+      }
+
       return {
         header: (
           <NavHeader
             title="Настройки"
             menuItems={[
-              { text: 'Карточка', onPress: () => navigation.navigate('Card') },
+              cardItem,
               { text: 'О себе', onPress: () => navigation.navigate('User') },
               { text: 'Прочее', onPress: () => navigation.navigate('Tune') },
             ]}
@@ -48,7 +63,6 @@ const FavoritesStack = createStackNavigator(
     FavoritesMain: FavoritesScreen,
     CardDetail: {
       screen: CardScreen,
-      //navigationOptions: ({ navigation }) => ({ title: navigation.state.params.title }),
       navigationOptions: ({ navigation }) => {
         return {
           header: (

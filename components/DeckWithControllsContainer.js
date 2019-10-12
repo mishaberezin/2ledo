@@ -4,11 +4,9 @@ import { Spinner, withStyles } from 'react-native-ui-kitten';
 import { View } from 'react-native';
 import DeckWithControlls from './DeckWithControlls';
 
-import { requestCards } from '../redux/actions/deckActions';
+import { requestCards } from '../redux/actions/cardActions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-
-import { requestCards } from '../redux/actions/cardActions';
 import { likeCard, dislikeCard } from '../redux/actions/shelfActions';
 
 const DeckWithControllsContainer = ({
