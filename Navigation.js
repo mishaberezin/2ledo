@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
-import { createBottomTabNavigator } from 'react-navigation-tabs';
+// import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createStackNavigator } from 'react-navigation-stack';
 
 import InitScreen from './screens/InitScreen';
@@ -86,18 +86,13 @@ const FavoritesStack = createStackNavigator(
     initialRouteName: 'FavoritesMain',
     defaultNavigationOptions: () => {
       return {
-        header: (
-          <NavHeader
-            title="Избранное"
-            menuItems={[{ text: 'Фото' }, { text: 'Место' }, { text: 'Цена' }]}
-          />
-        ),
+        header: <NavHeader title="Избранное" />,
       };
     },
   }
 );
 
-const MainStack = createBottomTabNavigator(
+const MainStack = createStackNavigator(
   {
     Chat: ChatScreen,
     Serp: SerpScreen,
@@ -105,16 +100,43 @@ const MainStack = createBottomTabNavigator(
     Favorites: FavoritesStack,
   },
   {
-    initialRouteName: 'Settings',
+    initialRouteName: 'Serp',
   }
 );
 
 ChatScreen.navigationOptions = {
   title: '🤖',
 };
-SerpScreen.navigationOptions = {
-  title: '🗂',
-};
+
+// import { Button } from 'react-native';
+import { Button } from 'react-native-elements';
+
+SerpScreen.navigationOptions = ({ navigation }) => ({
+  headerTitle: '🗂',
+  headerLeft: (
+    <Button
+      buttonStyle={{
+        height: 56,
+        justifyContent: 'space-between',
+      }}
+      type="clear"
+      icon={{ type: 'feather', name: 'plus-square' }}
+      onPress={() => navigation.navigate('Settings')}
+    />
+  ),
+  headerRight: (
+    <Button
+      buttonStyle={{
+        height: 56,
+        justifyContent: 'space-between',
+      }}
+      type="clear"
+      icon={{ type: 'feather', name: 'plus-square' }}
+      onPress={() => navigation.navigate('Favorites')}
+    />
+  ),
+});
+
 SettingsStack.navigationOptions = {
   title: '⚙️',
 };

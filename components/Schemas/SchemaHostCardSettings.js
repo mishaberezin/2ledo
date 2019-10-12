@@ -13,7 +13,7 @@ import { SettingsFloor } from '../Settings/SettingsFloor';
 import { SettingsMaxNumberOfPeople } from '../Settings/SettingsMaxNumberOfPeople';
 
 const applyData = (Component, data, props) => {
-  if (!data) {
+  if (data === undefined || data === null) {
     return null;
   }
 
@@ -57,7 +57,6 @@ export function SchemaHostCardSettings(props) {
       {applyData(SettingsMaxNumberOfPeople, MaxNumberOfPeople, {
         onChange: ({ value }) => onChange({ name: 'MaxNumberOfPeople', value }),
       })}
-
       <Divider style={{ height: 20, backgroundColor: 'transparent' }} />
       {applyData(SettingsPhotos, Photos, {
         onChange: ({ value }) => onChange({ name: 'Photos', value }),
@@ -71,12 +70,13 @@ export function SchemaHostCardSettings(props) {
       })}
       <Divider style={{ height: 20, backgroundColor: 'transparent' }} />
       {applyData(SettingsNumberOfRooms, NumberOfRooms, {
-        onChange: ({ value }) => onChange({ name: 'NumberOfRooms', value }),
+        onChange: ({ value }) => {
+          onChange({ name: 'NumberOfRooms', value });
+        },
       })}
       {applyData(SettingsFloor, Floor, {
         onChange: ({ value }) => onChange({ name: 'Floor', value }),
       })}
-
       <Divider style={{ height: 158, backgroundColor: 'transparent' }} />
     </ScrollView>
   );

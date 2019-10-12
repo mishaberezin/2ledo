@@ -20,7 +20,7 @@ import { CollapsibleHeader } from '../CollapsibleHeader';
 import { DEFAULT_SIDE_MARGIN } from '@toledo/constants/layout';
 
 const applyData = (Component, data, props) => {
-  if (!data) {
+  if (data === undefined || data === null) {
     return null;
   }
 

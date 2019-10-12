@@ -24,16 +24,19 @@ export function SettingsMaxNumberOfPeople(props) {
     },
   ];
 
+  const selectedIndex = values.findIndex(item => item.value === value);
+  const currentItem = values[selectedIndex];
+
   return (
     <CollapsibleListItem
       listItemProps={{
-        title: `до ${value}`,
+        title: value ? `до ${value}` : currentItem.label,
         subtitle: 'Максимум проживающих',
       }}
     >
       <ButtonGroup
-        onPress={index => onChange(values[index].value)}
-        selectedIndex={value - 1}
+        onPress={index => onChange({ value: values[index].value })}
+        selectedIndex={selectedIndex}
         buttons={values.map(item => item.label)}
         containerStyle={{ height: 30 }}
       />

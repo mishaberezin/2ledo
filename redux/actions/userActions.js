@@ -14,10 +14,9 @@ export const setUserPhoto = photo => ({
   payload: photo,
 });
 
-export const setUserProp = ({ id, name, value }) => ({
+export const setUserProp = ({ name, value }) => ({
   type: SET_USER_PROP,
   payload: {
-    id,
     name,
     value,
   },

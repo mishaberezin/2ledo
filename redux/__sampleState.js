@@ -28,8 +28,6 @@ export default {
   cards: {
     nc84n897ncz7hh: {
       id: 'nc84n897ncz7hh',
-      // ID учетных записей, владеющих карточкой.
-      // Пока всегда одна, но в будущем может быть несколько.
       users: ['hekdjnv84ns8c'],
       type: 'host',
       data: {

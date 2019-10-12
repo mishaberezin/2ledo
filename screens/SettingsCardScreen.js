@@ -11,8 +11,7 @@ import { SchemaHostCardSettings } from '../components/Schemas/SchemaHostCardSett
 
 function SettingsCardScreenUnconnected(props) {
   const { card, setCardProp } = props;
-  const { type, data } = card;
-  const cardId = card.id;
+  const { type, data, id } = card;
 
   let SchemaComponent;
   if (type === 'tenant') {
@@ -22,7 +21,7 @@ function SettingsCardScreenUnconnected(props) {
   }
 
   const onChange = ({ name, value }) => {
-    setCardProp({ id: cardId, name, value });
+    setCardProp({ id, name, value });
   };
 
   return (

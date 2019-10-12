@@ -23,7 +23,7 @@ export function SettingsNumberOfPeople(props) {
   return (
     <CollapsibleListItem
       listItemProps={{
-        title: `${value}`,
+        title: value,
         subtitle: 'Количество проживающих',
       }}
     >

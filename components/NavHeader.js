@@ -27,9 +27,14 @@ export function NavHeader(props) {
   const { title, menuItems } = props;
 
   return (
-    <View style={styles.container}>
+    <View
+      style={[
+        styles.container,
+        menuItems ? styles.containerNormal : styles.containerCompact,
+      ]}
+    >
       <View style={styles.topLine}></View>
-      <View style={styles.titleLine}>
+      <View style={[styles.titleLine]}>
         <ToledoHeader4>{title}</ToledoHeader4>
       </View>
       {menuItems && (
@@ -58,8 +63,13 @@ export function NavHeader(props) {
 
 const styles = StyleSheet.create({
   container: {
-    height: 170,
     backgroundColor: '#FFF',
+  },
+  containerNormal: {
+    height: 170,
+  },
+  containerCompact: {
+    height: 120,
   },
   topLine: {
     flex: 1,

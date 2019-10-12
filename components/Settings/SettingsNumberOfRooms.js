@@ -33,7 +33,9 @@ export function SettingsNumberOfRooms(props) {
       }}
     >
       <ButtonGroup
-        onPress={index => onChange({ value: values[index].value })}
+        onPress={index => {
+          onChange({ value: values[index].value });
+        }}
         selectedIndex={selectedIndex}
         buttons={values.map(item => item.value)}
         containerStyle={{ height: 40, marginLeft: 0, marginRight: 0 }}
