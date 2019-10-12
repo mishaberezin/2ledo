@@ -94,7 +94,6 @@ const FavoritesStack = createStackNavigator(
 
 const MainStack = createStackNavigator(
   {
-    Chat: ChatScreen,
     Serp: SerpScreen,
     Settings: SettingsStack,
     Favorites: FavoritesStack,
@@ -108,21 +107,34 @@ ChatScreen.navigationOptions = {
   title: '🤖',
 };
 
-// import { Button } from 'react-native';
 import { Button } from 'react-native-elements';
 
 SerpScreen.navigationOptions = ({ navigation }) => ({
-  headerTitle: '🗂',
   headerLeft: (
-    <Button
-      buttonStyle={{
-        height: 56,
-        justifyContent: 'space-between',
-      }}
-      type="clear"
-      icon={{ type: 'feather', name: 'plus-square' }}
-      onPress={() => navigation.navigate('Settings')}
-    />
+    <React.Fragment>
+      <Button
+        buttonStyle={{
+          height: 56,
+          justifyContent: 'space-between',
+        }}
+        type="clear"
+        icon={{ type: 'material', name: 'person' }}
+        onPress={() => navigation.navigate('Settings')}
+      />
+      <Button
+        buttonStyle={{
+          height: 56,
+          justifyContent: 'space-between',
+        }}
+        type="clear"
+        icon={{ type: 'entypo', name: 'map' }}
+        onPress={() => navigation.navigate('Settings')}
+        disabled={true}
+        disabledStyle={{
+          opacity: 0.3,
+        }}
+      />
+    </React.Fragment>
   ),
   headerRight: (
     <Button
@@ -131,18 +143,43 @@ SerpScreen.navigationOptions = ({ navigation }) => ({
         justifyContent: 'space-between',
       }}
       type="clear"
-      icon={{ type: 'feather', name: 'plus-square' }}
+      icon={{ type: 'material', name: 'favorite' }}
       onPress={() => navigation.navigate('Favorites')}
     />
   ),
 });
 
-SettingsStack.navigationOptions = {
-  title: '⚙️',
-};
-FavoritesStack.navigationOptions = {
-  title: '💌',
-};
+SettingsStack.navigationOptions = ({ navigation }) => ({
+  headerLeft: null,
+  headerRight: (
+    <Button
+      buttonStyle={{
+        height: 56,
+        justifyContent: 'space-between',
+      }}
+      type="clear"
+      // icon={{ type: '...', name: 'ios-arrow-forward' }}
+      icon={{ type: 'material', name: 'favorite' }}
+      onPress={() => navigation.navigate('Serp')}
+    />
+  ),
+});
+
+FavoritesStack.navigationOptions = ({ navigation }) => ({
+  headerLeft: (
+    <Button
+      buttonStyle={{
+        height: 56,
+        justifyContent: 'space-between',
+      }}
+      type="clear"
+      // icon={{ type: '...', name: 'ios-arrow-forward' }}
+      icon={{ type: 'material', name: 'favorite' }}
+      onPress={() => navigation.navigate('Serp')}
+    />
+  ),
+  headerRight: null,
+});
 
 export const Navigation = createAppContainer(
   createSwitchNavigator(
@@ -150,6 +187,7 @@ export const Navigation = createAppContainer(
       Init: InitScreen,
       Main: MainStack,
       Login: LoginScreen,
+      Chat: ChatScreen,
     },
     {
       initialRouteName: 'Init',

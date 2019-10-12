@@ -1,4 +1,3 @@
-import api from '../../api';
 import {
   SET_CARD_PRICE,
   SET_CARD_PROP,
@@ -31,7 +30,11 @@ export const setCardProp = ({ id, name, value }) => ({
   },
 });
 
-export const requestCards = (offset, limit = 10) => async dispatch => {
+export const requestCards = (offset, limit = 10) => async (
+  dispatch,
+  getState,
+  api
+) => {
   const cards = await api.fetchCards(offset, limit);
   dispatch({
     type: SET_DECK_CARDS,

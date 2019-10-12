@@ -1,9 +1,8 @@
-// Клиент ходит в API через этот модуль.
 import httpRequestStub from './httpRequestStub';
-import data from '../redux/__sampleState';
+import { deck } from '../server/db';
 
 export default {
-  fetchCards: (/*offset, limit*/) => httpRequestStub(data.deck, 500),
+  fetchCards: (/*offset, limit*/) => httpRequestStub(deck, 500),
   likeCard: cardId => {
     return httpRequestStub(cardId);
   },

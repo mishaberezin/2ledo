@@ -3,7 +3,6 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Spinner, withStyles } from 'react-native-ui-kitten';
 import { View } from 'react-native';
 import DeckWithControlls from './DeckWithControlls';
-
 import { requestCards } from '../redux/actions/cardActions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
