@@ -48,8 +48,7 @@ export const deck = [
     data: {
       HostUser: {
         name: 'Виктор',
-        avatarUri:
-          'https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ2MTEyNjMzMV5BMl5BanBnXkFtZTYwODE0MzQ2._V1_UX172_CR0,0,172,256_AL_.jpg',
+        avatarUri: require('@toledo/assets/in/avatars/female/1.jpg'),
       },
       NumberOfRooms: 2,
       IsFresh: true,

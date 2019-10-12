@@ -52,28 +52,10 @@ export default {
     },
     nc84n821ncz7hb: {
       id: 'nc84n821ncz7hb',
-
-      // ID учеток, владеющих карточкой.
-      // Пока может быть только одна,
-      // но в будущем может быть несколько,
-      // поэтому сразу массив.
-      // Тип: [String]
       users: ['hekdjnv84ns8c'],
-
-      // Тип карточки.
-      // От типа зависит набор остальных полей.
-      // Пока арендатор и арендодатель, но в будущем добавим агента.
-      // Тип: ['tenant', 'host']
       type: 'tenant',
-
-      // Описание карточки (что предлагаю) типа "tenant"
       data: {
-        // ID фотографий в хранилище картинок.
-        // Порядок имеет значение, первая заглавная.
-        // Тип: [String]
-        Photos: [images.faceImage, images.runningManImage],
-
-        // Сколько человек будет проживать в квартире.
+        Photos: [images.faceImage, images.runningManImage, images.sampleFemale],
         NumberOfPeople: 2,
         Description: 'Неторопливо ищу квартиру на продолжительный срок.',
         TargetPrice: 50000,

@@ -8,6 +8,9 @@ export const images = {
   userAdditionalImage2: {
     source: require('../assets/images/user-additional2.png'),
   },
+  sampleFemale: {
+    source: require('@toledo/assets/in/avatars/female/1.jpg'),
+  },
   runningManImage: {
     source: require('../assets/s3/xru48t89eecj74.png'),
   },
