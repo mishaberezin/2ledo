@@ -8,11 +8,10 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import { withStyles } from 'react-native-ui-kitten';
 import { DARK_VIOLET_COLOR } from '@toledo/constants/colors';
-import {
-  CardHostShortInfo,
-  CardHostDescriptionInfo,
-  CardImages,
-} from './index';
+
+import CardHostShortInfo from './CardHostShortInfo';
+import CardHostDescriptionInfo from './CardHostDescriptionInfo';
+import CardImages from './CardImages';
 import FreshCardIcon from './FreshCardIcon';
 
 const DeckHostCardContainer = ({

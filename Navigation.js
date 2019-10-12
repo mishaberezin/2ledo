@@ -4,6 +4,7 @@ import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 // import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createStackNavigator } from 'react-navigation-stack';
 
+import MatchIndicatorButton from './components/MatchIndicatorButton';
 import InitScreen from './screens/InitScreen';
 import SerpScreen from './screens/SerpScreen';
 import ChatScreen from './screens/ChatScreen';
@@ -15,6 +16,7 @@ import { SettingsCardPreviewScreen } from './screens/SettingsCardPreviewScreen';
 
 import FavoritesScreen from './screens/FavoritesScreen';
 import CardScreen from './screens/CardScreen';
+import { Button } from 'react-native-elements';
 
 import { NavHeader } from './components/NavHeader';
 
@@ -107,8 +109,6 @@ ChatScreen.navigationOptions = {
   title: '🤖',
 };
 
-import { Button } from 'react-native-elements';
-
 SerpScreen.navigationOptions = ({ navigation }) => ({
   headerLeft: (
     <React.Fragment>
@@ -137,14 +137,10 @@ SerpScreen.navigationOptions = ({ navigation }) => ({
     </React.Fragment>
   ),
   headerRight: (
-    <Button
-      buttonStyle={{
-        height: 56,
-        justifyContent: 'space-between',
+    <MatchIndicatorButton
+      onPress={() => {
+        navigation.navigate('Favorites');
       }}
-      type="clear"
-      icon={{ type: 'material', name: 'favorite' }}
-      onPress={() => navigation.navigate('Favorites')}
     />
   ),
 });

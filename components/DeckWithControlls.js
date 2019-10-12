@@ -1,17 +1,11 @@
 import React, { Component } from 'react';
-import {
-  View,
-  Animated,
-  PanResponder,
-  Dimensions,
-  TouchableOpacity,
-} from 'react-native';
+import { View, Animated, PanResponder, TouchableOpacity } from 'react-native';
 import { withStyles, Text } from 'react-native-ui-kitten';
 import { Ionicons } from '@expo/vector-icons';
 import { Card } from 'react-native-elements';
 import { DeckHostCard } from './Card';
+import { SCREEN_WIDTH } from '../constants/device';
 
-const SCREEN_WIDTH = Dimensions.get('window').width;
 const SWIPE_THRESHOLD = 0.4 * SCREEN_WIDTH;
 
 class DeckWithControllsContainer extends Component {

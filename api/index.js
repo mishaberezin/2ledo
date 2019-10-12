@@ -19,4 +19,5 @@ export default {
       status: true,
       token: 'dsgfd23432fsg234fsgd!34fsd',
     }),
+  checkMatch: () => httpRequestStub(false, 500),
 };

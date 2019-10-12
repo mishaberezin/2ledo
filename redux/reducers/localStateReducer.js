@@ -1,5 +1,7 @@
-import { SET_CURRENT_CARD } from '../types.js';
-const INITIAL_STATE = {};
+import { SET_CURRENT_CARD, SET_MATCH_INDICATOR } from '../types.js';
+const INITIAL_STATE = {
+  matchIndicator: false,
+};
 
 const localStateReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
@@ -7,6 +9,12 @@ const localStateReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         currentCardId: action.payload,
+      };
+    }
+    case SET_MATCH_INDICATOR: {
+      return {
+        ...state,
+        matchIndicator: action.payload,
       };
     }
     default:

@@ -3,11 +3,9 @@ import { View, ScrollView } from 'react-native';
 import { withStyles } from 'react-native-ui-kitten';
 
 import ToledoButton from '../ToledoButton';
-import {
-  CardImages,
-  CardHostShortInfo,
-  CardHostDescriptionInfo,
-} from './index';
+import CardImages from './CardImages';
+import CardHostShortInfo from './CardHostShortInfo';
+import CardHostDescriptionInfo from './CardHostDescriptionInfo';
 
 const ItemDetailCardContainer = ({ card, themedStyle }) => {
   return (

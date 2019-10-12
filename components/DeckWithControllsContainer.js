@@ -57,12 +57,6 @@ const DeckWithControllsContainer = ({
 };
 
 const StyledDeckWithControlls = withStyles(DeckWithControllsContainer, () => ({
-  loadingContainer: {
-    display: 'flex',
-    justifyContent: 'center',
-    flex: 1,
-    alignItems: 'center',
-  },
   loader: {
     display: 'flex',
     position: 'absolute',

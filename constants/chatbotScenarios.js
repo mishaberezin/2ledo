@@ -5,6 +5,7 @@ import {
   addChatbotUserMessageAction,
   changeChatbotCurrentScenarioIdAction,
 } from '../redux/actions/chatbotActions';
+
 import {
   sendPhone,
   sendCode,

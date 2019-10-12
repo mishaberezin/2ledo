@@ -5,7 +5,7 @@ import { Asset } from 'expo-asset';
 import * as Font from 'expo-font';
 //import { AsyncStorage } from 'react-native';
 import { checkUserToken, setUserToken } from '../redux/actions/loginActions';
-import { startMatchPolling } from '../redux/actions/systemActions';
+import { startMatchPolling } from '../redux/actions/localStateActions';
 import { bindActionCreators } from 'redux';
 
 function InitScreen(props) {
