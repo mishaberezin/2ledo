@@ -38,6 +38,7 @@ async function loadResourcesAsync() {
       require('../assets/images/search-for-flat.jpg'),
       require('../assets/images/ready_to_road.gif'),
       require('../assets/images/card-tenant.png'),
+      require('@toledo/assets/images/map.png'),
     ]),
     Font.loadAsync({
       FontAwesome: require('../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf'), // Костыль. После обновления на Expo 35.

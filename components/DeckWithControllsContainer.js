@@ -16,6 +16,7 @@ const DeckWithControllsContainer = ({
   themedStyle,
 }) => {
   const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     (async () => {
       await requestCards();
