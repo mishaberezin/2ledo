@@ -154,8 +154,7 @@ SettingsStack.navigationOptions = ({ navigation }) => ({
         justifyContent: 'space-between',
       }}
       type="clear"
-      // icon={{ type: '...', name: 'ios-arrow-forward' }}
-      icon={{ type: 'material', name: 'favorite' }}
+      icon={{ type: 'ionicon', name: 'ios-arrow-forward' }}
       onPress={() => navigation.navigate('Serp')}
     />
   ),
@@ -169,8 +168,7 @@ FavoritesStack.navigationOptions = ({ navigation }) => ({
         justifyContent: 'space-between',
       }}
       type="clear"
-      // icon={{ type: '...', name: 'ios-arrow-forward' }}
-      icon={{ type: 'material', name: 'favorite' }}
+      icon={{ type: 'ionicon', name: 'ios-arrow-back' }}
       onPress={() => navigation.navigate('Serp')}
     />
   ),

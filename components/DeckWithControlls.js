@@ -223,7 +223,7 @@ const DeckWithControlls = withStyles(DeckWithControllsContainer, () => ({
     display: 'flex',
     flexDirection: 'row',
     flex: 1,
-    backgroundColor: 'lightgray',
+    backgroundColor: 'green',
   },
   card: {
     width: SCREEN_WIDTH,
