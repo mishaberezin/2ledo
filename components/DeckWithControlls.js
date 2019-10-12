@@ -10,7 +10,6 @@ import { withStyles, Text } from 'react-native-ui-kitten';
 import { Ionicons } from '@expo/vector-icons';
 import { Card } from 'react-native-elements';
 import { DeckHostCard } from './Card';
-import { DARK_VIOLET_COLOR } from '@toledo/constants/colors';
 
 const SCREEN_WIDTH = Dimensions.get('window').width;
 const SWIPE_THRESHOLD = 0.4 * SCREEN_WIDTH;
@@ -90,12 +89,15 @@ class DeckWithControllsContainer extends Component {
   };
 
   renderCard = ({ data: card }, isCurrent) => {
+    const cardStyle =
+      !this.state.cardOpened && this.props.themedStyle.cardStyle;
     return (
       <DeckHostCard
         card={card}
         opened={isCurrent && this.state.cardOpened}
         onOpen={this.openCard}
         onClose={this.closeCard}
+        cardStyle={cardStyle}
       />
     );
   };
@@ -133,13 +135,16 @@ class DeckWithControllsContainer extends Component {
         ]}
       >
         <TouchableOpacity
-          style={themedStyle.controlContainer}
+          style={[
+            themedStyle.controlContainer,
+            themedStyle.controlContainerLeft,
+          ]}
           onPress={() => this.hadleControlPress(false)}
         >
           <Ionicons
-            name={'ios-thumbs-down'}
-            size={28}
-            color="#fff"
+            name={'ios-close-circle'}
+            size={50}
+            color="red"
             style={{ position: 'relative', top: 5 }}
           />
         </TouchableOpacity>
@@ -150,10 +155,17 @@ class DeckWithControllsContainer extends Component {
           <FontAwesome name="coffee" size={28} color="#fff" />
         </TouchableOpacity>*/}
         <TouchableOpacity
-          style={themedStyle.controlContainer}
+          style={[
+            themedStyle.controlContainer,
+            themedStyle.controlContainerRight,
+          ]}
           onPress={this.hadleControlPress}
         >
-          <Ionicons name={'ios-thumbs-up'} size={28} color="#fff" />
+          <Ionicons
+            name={'ios-checkmark-circle'}
+            size={50}
+            color="lightgreen"
+          />
         </TouchableOpacity>
       </Animated.View>
     );
@@ -173,10 +185,10 @@ class DeckWithControllsContainer extends Component {
       return this.renderNoMoreCards();
     }
 
-    const cards = [this.getCardStyle(), themedStyle.card];
+    const cardStyle = [this.getCardStyle(), themedStyle.card];
 
     if (cardOpened) {
-      cards.push(themedStyle.cardStatic);
+      cardStyle.push(themedStyle.cardStatic);
     }
 
     return (
@@ -191,7 +203,7 @@ class DeckWithControllsContainer extends Component {
                 return (
                   <Animated.View
                     key={i}
-                    style={[cards]}
+                    style={cardStyle}
                     {...(cardOpened ? {} : this.panResponder.panHandlers)}
                   >
                     {this.renderCard(card, true)}
@@ -217,11 +229,18 @@ const DeckWithControlls = withStyles(DeckWithControllsContainer, () => ({
     display: 'flex',
     flexDirection: 'row',
     flex: 1,
+    backgroundColor: 'lightgray',
   },
   card: {
     width: SCREEN_WIDTH,
     justifyContent: 'center',
     position: 'absolute',
+  },
+  cardStyle: {
+    borderColor: '#f0f0ff',
+    borderWidth: 1,
+    margin: 10,
+    borderRadius: 20,
   },
   cardStatic: {
     position: 'relative',
@@ -229,7 +248,6 @@ const DeckWithControlls = withStyles(DeckWithControllsContainer, () => ({
   controlsContainer: {
     position: 'absolute',
     bottom: 0,
-    backgroundColor: DARK_VIOLET_COLOR,
     opacity: 0.6,
     height: 60,
     width: SCREEN_WIDTH,
@@ -239,15 +257,21 @@ const DeckWithControlls = withStyles(DeckWithControllsContainer, () => ({
   },
   controlContainer: {
     display: 'flex',
+    backgroundColor: '#fff',
     borderWidth: 1,
     borderColor: '#fff',
-    borderRadius: 30,
-    margin: 20,
-    padding: 10,
-    height: 50,
-    width: 50,
+    height: 100,
+    width: 100,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  controlContainerLeft: {
+    borderTopRightRadius: 100,
+    paddingRight: 30,
+  },
+  controlContainerRight: {
+    borderTopLeftRadius: 100,
+    paddingLeft: 30,
   },
 }));
 

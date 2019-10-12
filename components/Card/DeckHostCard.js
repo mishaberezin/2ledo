@@ -20,6 +20,7 @@ const DeckHostCardContainer = ({
   opened,
   onOpen,
   onClose,
+  cardStyle,
   themedStyle,
 }) => {
   const { IsFresh, Photos } = card;
@@ -31,7 +32,7 @@ const DeckHostCardContainer = ({
 
   return (
     <ScrollView
-      style={themedStyle.container}
+      style={[themedStyle.container, cardStyle]}
       showsVerticalScrollIndicator={false}
     >
       <View style={themedStyle.cardContainer}>
@@ -69,10 +70,7 @@ const DeckHostCardContainer = ({
 
 export default withStyles(DeckHostCardContainer, () => ({
   container: {
-    borderColor: '#f0f0ff',
-    borderWidth: 1,
     backgroundColor: 'white',
-    margin: 20,
   },
   cardContainer: {
     marginBottom: 30,
