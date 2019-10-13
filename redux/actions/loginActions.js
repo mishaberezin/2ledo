@@ -10,12 +10,17 @@ export const sendCode = (code, hash) => () => {
   return api.sendCode(code, hash);
 };
 
-export const setUserToken = token => async dispatch => {
+export const setUserToken = token => async (dispatch, getState, api) => {
   await AsyncStorage.setItem('token', token);
   dispatch({
     type: SET_USER_TOKEN,
     payload: { token },
   });
+
+  const result = await api.fetchMe(token);
+  console.log('=result==========================');
+  console.log(result);
+  console.log('===========================');
 };
 
 export const unsetUserToken = () => async dispatch => {

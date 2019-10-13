@@ -515,6 +515,35 @@ const BUYER_SCENARIOS = {
   },
 };
 
+// Грейсфул деградейшн.
+// Сценарии регистрации еще не готовы.
+const FIRST_TIME_SORRY_SCENARIOS = {
+  'FIRST_TIME_SORRY-1': {
+    id: 'FIRST_TIME_SORRY-1',
+    text: 'Простите, мои друзья разработчики еще не сделали регистрацию.',
+    controls: [
+      props => {
+        return (
+          <Button
+            onPress={() => {
+              store.dispatch(
+                addChatbotUserMessageAction({
+                  text: 'Хорошо',
+                })
+              );
+              store.dispatch(
+                changeChatbotCurrentScenarioIdAction('ENTRANCE-4')
+              );
+            }}
+            title="Хорошо, побуду Петей"
+            {...props}
+          ></Button>
+        );
+      },
+    ],
+  },
+};
+
 const FIRST_TIME_SCENARIOS = {
   'FIRST_TIME-1': {
     id: 'FIRST_TIME-1',
@@ -719,7 +748,7 @@ const ENTRANCE_SCENARIOS = {
                 })
               );
               store.dispatch(
-                changeChatbotCurrentScenarioIdAction('FIRST_TIME-1')
+                changeChatbotCurrentScenarioIdAction('FIRST_TIME_SORRY-1')
               );
             }}
             title="Да, покажи мне тут все"
@@ -818,6 +847,7 @@ export const CHATBOT_SCENARIOS = {
   messages: {
     ...ENTRANCE_SCENARIOS,
     ...FIRST_TIME_SCENARIOS,
+    ...FIRST_TIME_SORRY_SCENARIOS,
     ...BUYER_SCENARIOS,
     ...SELLER_SCENARIOS,
     ...AUTH_SUCCESS_SCENARIOS,

@@ -2,6 +2,10 @@ import httpRequestStub from './httpRequestStub';
 import { deck } from '../server/db';
 
 export default {
+  fetchMe: userId => {
+    return `HELLO ${userId}!`;
+  },
+
   fetchCards: (/*offset, limit*/) => httpRequestStub(deck, 500),
   likeCard: cardId => {
     return httpRequestStub(cardId);
