@@ -94,7 +94,10 @@ class CardImagesContainer extends Component {
         >
           {photos.map((image, index) => (
             <View key={index} style={themedStyle.imageContainer}>
-              <Image source={image} style={themedStyle.image} />
+              <Image
+                source={image ? image.source || image : {}}
+                style={themedStyle.image}
+              />
             </View>
           ))}
         </Animated.View>

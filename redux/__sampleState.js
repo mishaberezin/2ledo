@@ -21,8 +21,7 @@ export default {
         images.userAdditionalImage,
         images.userAdditionalImage2,
       ],
-      UserAvatar:
-        'https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ2MTEyNjMzMV5BMl5BanBnXkFtZTYwODE0MzQ2._V1_UX172_CR0,0,172,256_AL_.jpg',
+      UserAvatar: images.avatarMale9,
     },
   },
   cards: {

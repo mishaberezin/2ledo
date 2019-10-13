@@ -3,9 +3,13 @@ import { View } from 'react-native';
 import { Text, Avatar, withStyles } from 'react-native-ui-kitten';
 
 const CardItemHostAvatar = ({ uri, name, themedStyle }) => {
+  console.log('===========================');
+  console.log(uri);
+  console.log('===========================');
+
   return (
     <View style={themedStyle.container}>
-      <Avatar source={{ uri }} size="small" />
+      <Avatar source={uri ? uri.source || { uri } : {}} size="small" />
       <Text style={themedStyle.avatarBlockName} category="s1">
         {name}
       </Text>

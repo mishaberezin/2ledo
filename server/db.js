@@ -41,6 +41,8 @@ export const landmarks = [
   },
 ];
 
+import { images, flats } from '@toledo/assets';
+
 export const deck = [
   {
     id: 1,
@@ -48,24 +50,11 @@ export const deck = [
     data: {
       HostUser: {
         name: 'Виктор',
-        avatarUri: require('@toledo/assets/in/avatars/female/1.jpg'),
+        avatarUri: images.avatarMale1,
       },
       NumberOfRooms: 2,
       IsFresh: true,
-      Photos: [
-        {
-          uri:
-            'https://www.gd-home.com/wp-content/uploads/2018/07/skandinavskaya-odnokomnatnaya-kvartira-s-malenkoj-kuxnej-1.jpg',
-        },
-        {
-          uri:
-            'https://md-eksperiment.org/images/posts/a70ccf57-d401-4c48-9c6b-13affbcc9c8e.jpeg',
-        },
-        {
-          uri:
-            'https://www.gd-home.com/wp-content/uploads/2018/07/skandinavskaya-odnokomnatnaya-kvartira-s-malenkoj-kuxnej-1.jpg',
-        },
-      ],
+      Photos: flats['1236920894'],
       Landmark: landmarks[1],
       Address: {
         coords: [55.756459, 37.64482],
@@ -85,15 +74,9 @@ export const deck = [
       NumberOfRooms: 2,
       HostUser: {
         name: 'Татьяна',
-        avatarUri:
-          'https://images-na.ssl-images-amazon.com/images/M/MV5BYTIyMzExODgtNzllNy00OWQwLTlhM2QtMWU1ZTI2MjgwMTQxXkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_UY256_CR5,0,172,256_AL_.jpg',
+        avatarUri: images.avatarFemale1,
       },
-      Photos: [
-        {
-          uri:
-            'https://md-eksperiment.org/images/posts/a70ccf57-d401-4c48-9c6b-13affbcc9c8e.jpeg',
-        },
-      ],
+      Photos: flats['1488213313'],
       Landmark: landmarks[2],
       Address: {
         coords: [55.756459, 37.64482],
@@ -112,16 +95,10 @@ export const deck = [
     data: {
       HostUser: {
         name: 'Ольга',
-        avatarUri:
-          'https://images-na.ssl-images-amazon.com/images/M/MV5BYTIyMzExODgtNzllNy00OWQwLTlhM2QtMWU1ZTI2MjgwMTQxXkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_UY256_CR5,0,172,256_AL_.jpg',
+        avatarUri: images.avatarFemale2,
       },
       NumberOfRooms: 2,
-      Photos: [
-        {
-          uri:
-            'https://srbu.ru/images/stroitelnye-raboty/studiya-ili-odnokomnatnaya-kvartira-chto-luchshe/studiya-ili-odnokomnatnaya-kvartira-chto-luchshe.jpg',
-        },
-      ],
+      Photos: flats['1768312876'],
       Landmark: landmarks[3],
       Address: {
         coords: [55.756459, 37.64482],
@@ -140,8 +117,7 @@ export const deck = [
     data: {
       HostUser: {
         name: 'Света',
-        avatarUri:
-          'https://images-na.ssl-images-amazon.com/images/M/MV5BYTIyMzExODgtNzllNy00OWQwLTlhM2QtMWU1ZTI2MjgwMTQxXkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_UY256_CR5,0,172,256_AL_.jpg',
+        avatarUri: images.avatarFemale3,
       },
       NumberOfRooms: 2,
       Landmark: landmarks[4],
@@ -152,12 +128,7 @@ export const deck = [
       RentalPrice: 30000,
       MaxNumberOfPeople: 2,
       RentalPeriod: 'long',
-      Photos: [
-        {
-          uri:
-            'https://n1s1.elle.ru/29/3c/08/293c089064a46d58a6ca46c1915eb2d7/1500x999_0xac120002_13263901001544189597.jpeg',
-        },
-      ],
+      Photos: flats['1785401178'],
       Description:
         'Уютная стандартная отделка. Апартаменты полностью укомплектованы мебелью и всей необходимой техникой бытовой и кухонной техникой.\n Функциональная планировка: Кухня-студия, совмещенная с просторной гостиной, спальня с собственной ванной и сан.узлом (сан.узлы так же полностью укомплектованы (См. фото)), просторный холл, постирочная и сушильная зона.\nПанорамное остекление по всему периметру апартаментов. Видовые характеристики: футуристический вид на город.\nВ ночное время огни небоскребов никого не оставят равнодушными. Москва Сити - это Москва будущего, строящийся международный деловой квартал из ультрасовременных небоскрёбов.',
     },
@@ -168,8 +139,7 @@ export const deck = [
     data: {
       HostUser: {
         name: 'Ольга',
-        avatarUri:
-          'https://images-na.ssl-images-amazon.com/images/M/MV5BYTIyMzExODgtNzllNy00OWQwLTlhM2QtMWU1ZTI2MjgwMTQxXkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_UY256_CR5,0,172,256_AL_.jpg',
+        avatarUri: images.avatarFemale4,
       },
       Landmark: landmarks[2],
       Address: {
@@ -180,12 +150,7 @@ export const deck = [
       RentalPrice: 30000,
       MaxNumberOfPeople: 2,
       RentalPeriod: 'long',
-      Photos: [
-        {
-          uri:
-            'https://ik.gipernn.ru/k29g01hao2kva_dag5z_h-600_w-800_zc-1/2-komnatnaya-kvartira-ulica-geroya-chugunova-dom-6-0.jpeg',
-        },
-      ],
+      Photos: flats['1804463066'],
       Description:
         'Уютная стандартная отделка. Апартаменты полностью укомплектованы мебелью и всей необходимой техникой бытовой и кухонной техникой.\n Функциональная планировка: Кухня-студия, совмещенная с просторной гостиной, спальня с собственной ванной и сан.узлом (сан.узлы так же полностью укомплектованы (См. фото)), просторный холл, постирочная и сушильная зона.\nПанорамное остекление по всему периметру апартаментов. Видовые характеристики: футуристический вид на город.\nВ ночное время огни небоскребов никого не оставят равнодушными. Москва Сити - это Москва будущего, строящийся международный деловой квартал из ультрасовременных небоскрёбов.',
     },
