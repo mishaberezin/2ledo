@@ -1,6 +1,14 @@
-import { SET_CURRENT_CARD, SET_MATCH_INDICATOR } from '../types.js';
+import {
+  SET_CURRENT_CARD,
+  SET_MATCH_INDICATOR,
+  SHOW_MATCH_POPUP,
+} from '../types.js';
 const INITIAL_STATE = {
   matchIndicator: false,
+  matchPopup: {
+    visible: false,
+    card: null,
+  },
 };
 
 const localStateReducer = (state = INITIAL_STATE, action) => {
@@ -15,6 +23,15 @@ const localStateReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         matchIndicator: action.payload,
+      };
+    }
+    case SHOW_MATCH_POPUP: {
+      return {
+        ...state,
+        matchPopup: {
+          visible: true,
+          card: action.payload,
+        },
       };
     }
     default:

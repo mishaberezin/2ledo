@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, View, ImageBackground } from 'react-native';
 import DeckWithControllsContainer from '@toledo/components/DeckWithControllsContainer';
 import { LinearGradient } from 'expo-linear-gradient';
+import MatchPopup from '@toledo/components/MatchPopup';
 
 function SerpScreen() {
   return (
@@ -26,6 +27,7 @@ function SerpScreen() {
         start={{ x: 0.5, y: 0 }}
         end={{ x: 0.5, y: 1 }}
       ></LinearGradient>
+      <MatchPopup />
       <DeckWithControllsContainer />
     </View>
   );
