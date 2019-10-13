@@ -12,6 +12,7 @@ const FavoritesListContainer = ({
   items,
   withCat,
   onItemPress,
+  onItemDelete,
 }) => {
   const [opened, setOpened] = useState(false);
 
@@ -23,13 +24,14 @@ const FavoritesListContainer = ({
             style={themedStyle.listItemStyle}
             item={{ ...data, id }}
             onPress={onItemPress}
+            onDelete={onItemDelete}
           />
         );
       } else {
         return null;
       }
     },
-    [onItemPress, themedStyle.listItemStyle]
+    [onItemDelete, onItemPress, themedStyle.listItemStyle]
   );
 
   return (

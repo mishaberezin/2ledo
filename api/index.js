@@ -9,6 +9,9 @@ export default {
   dislikeCard: cardId => {
     return httpRequestStub(cardId);
   },
+  archiveCard: cardId => {
+    return httpRequestStub(cardId);
+  },
   sendPhone: phone =>
     httpRequestStub({
       hash: 'sg234fsgd34fsd',

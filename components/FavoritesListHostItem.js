@@ -20,6 +20,7 @@ const FavoritesListHostItemContainer = ({
   item,
   style,
   onPress,
+  onDelete,
   themedStyle,
 }) => {
   const {
@@ -36,6 +37,7 @@ const FavoritesListHostItemContainer = ({
     { type: 'view', title: 'Просмотр' },
     { type: 'delete', title: 'Удалить' },
   ];
+
   const handleItemPress = useCallback(() => {
     onPress(id);
   }, [id, onPress]);
@@ -44,9 +46,11 @@ const FavoritesListHostItemContainer = ({
     ({ type }) => {
       if (type === 'view') {
         onPress(id);
+      } else {
+        onDelete(id);
       }
     },
-    [id, onPress]
+    [id, onPress, onDelete]
   );
 
   return (

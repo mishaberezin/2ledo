@@ -5,19 +5,20 @@ import { bindActionCreators } from 'redux';
 
 import FavoritesList from '../components/FavoritesList';
 
-const FavoritesGroupsList = ({ groups, onItemPress }) => {
+const FavoritesGroupsList = ({ groups, onItemPress, onItemDelete }) => {
   return (
     <ScrollView>
       <FavoritesList
         title="Да"
         items={groups.liked}
         onItemPress={onItemPress}
+        onItemDelete={onItemDelete}
         withCat
       />
       <FavoritesList
         title="Нет"
         items={groups.disliked}
-        onItemPress={onItemPress}
+        onItemDelete={onItemDelete}
         withCat
       />
     </ScrollView>
