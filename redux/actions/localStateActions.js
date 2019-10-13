@@ -1,4 +1,8 @@
-import { SET_CURRENT_CARD, SET_MATCH_INDICATOR } from '../types';
+import {
+  SET_CURRENT_CARD,
+  SET_MATCH_INDICATOR,
+  HIDE_MATCH_POPUP,
+} from '../types';
 
 const matchPollProcess = {
   isStarted: false,
@@ -46,4 +50,10 @@ export const hideMatchIndicator = () => {
 
 export const stopMatchPolling = () => {
   matchPollProcess.isStarted = false;
+};
+
+export const hideMatchPopup = () => {
+  return {
+    type: HIDE_MATCH_POPUP,
+  };
 };

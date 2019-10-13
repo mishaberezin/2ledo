@@ -1,27 +1,52 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { View, Animated } from 'react-native';
-import { Text, withStyles } from 'react-native-ui-kitten';
+import { Text, withStyles, Avatar } from 'react-native-ui-kitten';
 
 import { LinearGradient } from 'expo-linear-gradient';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { hideMatchPopup } from '../redux/actions/localStateActions';
+import ToledoButton from './ToledoButton';
 
-const MatchPopup = ({ visible, /* card, */ themedStyle }) => {
+import { Ionicons } from '@expo/vector-icons';
+
+const MatchPopup = ({
+  visible,
+  card,
+  currentUserPhotoUri,
+  themedStyle,
+  hideMatchPopup,
+}) => {
   const opacity = new Animated.Value(0);
 
   useEffect(() => {
-    console.log('visible', visible);
     if (visible) {
       Animated.timing(opacity, {
         toValue: 1,
-        duration: 500,
+        duration: 300,
       }).start();
     }
   }, [opacity, visible]);
+
+  const handleButtonPress = useCallback(() => {
+    hideMatchPopup();
+  }, [hideMatchPopup]);
+
+  const handleCallButtonPress = useCallback(() => {
+    // Звоним по номеру телефона
+    hideMatchPopup();
+  }, [hideMatchPopup]);
 
   if (!visible) {
     return null;
   }
 
+  const {
+    data: {
+      Photos: [firstCardPhoto],
+      Phone: phone = '+7 909 665 66 44',
+    },
+  } = card;
   return (
     <Animated.View style={[themedStyle.container, { opacity }]}>
       <LinearGradient
@@ -39,7 +64,35 @@ const MatchPopup = ({ visible, /* card, */ themedStyle }) => {
         location={[0.25, 0.4, 1]}
       >
         <View style={themedStyle.modalContainer}>
-          <Text>Its Match!</Text>
+          <Text category="h3" style={themedStyle.header}>
+            Это Матч!
+          </Text>
+          <View style={themedStyle.avatars}>
+            <Avatar
+              source={{ uri: currentUserPhotoUri }}
+              size="giant"
+              style={themedStyle.avatar}
+            />
+            <Avatar
+              source={{ uri: firstCardPhoto.uri }}
+              size="giant"
+              style={themedStyle.avatar}
+            />
+          </View>
+          <Text category="h6" style={themedStyle.desc}>
+            Теперь можно договориться о просмотре!
+          </Text>
+          <View style={themedStyle.actions}>
+            <View style={themedStyle.action}>
+              <ToledoButton onPress={handleButtonPress}>Хорошо</ToledoButton>
+            </View>
+            <View style={themedStyle.action}>
+              <ToledoButton onPress={handleCallButtonPress}>
+                <Ionicons name="ios-call" size={16} color={'#fff'} />
+                <Text style={themedStyle.phoneText}> {phone}</Text>
+              </ToledoButton>
+            </View>
+          </View>
         </View>
       </LinearGradient>
     </Animated.View>
@@ -64,14 +117,60 @@ const StyledMatchPopup = withStyles(MatchPopup, () => ({
   modalContainer: {
     width: 300,
     height: 200,
-    borderWidth: 1,
-    borderColor: 'blue',
+    flexDirection: 'column',
+    alignItems: 'center',
+    transform: [{ translateY: -100 }],
+  },
+  header: {
+    color: '#fff',
+  },
+  avatars: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    padding: 10,
+    marginBottom: 20,
+    width: 250,
+  },
+  avatar: {
+    height: 100,
+    width: 100,
+  },
+  desc: {
+    color: '#fff',
+    textAlign: 'center',
+    marginBottom: 20,
+    fontSize: 16,
+  },
+  actions: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+  },
+  action: {
+    flexDirection: 'column',
+    margin: 5,
+    height: 50,
+  },
+  phoneIcon: {
+    marginRight: 5,
+  },
+  phoneText: {
+    color: '#fff',
   },
 }));
 
-const mapStateToProps = ({ localState: { matchPopup = false } }) => ({
-  visible: matchPopup && matchPopup.visible,
-  card: matchPopup && matchPopup.card,
-});
+const mapStateToProps = ({ localState: { matchPopup = false }, user }) => {
+  return {
+    visible: matchPopup && matchPopup.visible,
+    card: matchPopup && matchPopup.card,
+    currentUserPhotoUri: user.data.UserAvatar,
+  };
+};
 
-export default connect(mapStateToProps)(StyledMatchPopup);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ hideMatchPopup }, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(StyledMatchPopup);

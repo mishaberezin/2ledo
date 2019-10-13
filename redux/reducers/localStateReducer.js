@@ -2,7 +2,8 @@ import {
   SET_CURRENT_CARD,
   SET_MATCH_INDICATOR,
   SHOW_MATCH_POPUP,
-} from '../types.js';
+  HIDE_MATCH_POPUP,
+} from '../types';
 const INITIAL_STATE = {
   matchIndicator: false,
   matchPopup: {
@@ -30,7 +31,16 @@ const localStateReducer = (state = INITIAL_STATE, action) => {
         ...state,
         matchPopup: {
           visible: true,
-          card: action.payload,
+          card: action.payload.card,
+        },
+      };
+    }
+    case HIDE_MATCH_POPUP: {
+      return {
+        ...state,
+        matchPopup: {
+          visible: false,
+          card: null,
         },
       };
     }
