@@ -1,23 +1,16 @@
 {
   "expo": {
-    "name": "flitch",
+    "name": "arenda",
+    "slug": "arenda",
     "description": "Renting App for Better World",
-    "slug": "flitch",
-    "privacy": "public",
-    "sdkVersion": "35.0.0",
     "platforms": ["ios"],
-    "version": "0.1.0",
+    "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./app/assets/icon.png",
     "splash": {
-      "image": "./assets/images/splash.png",
+      "image": "./app/assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
-    },
-    "loading": {
-      "backgroundColor": "#FFFFFF",
-      "backgroundImage": "./assets/images/splash.png",
-      "icon": "./assets/images/icon.png"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
