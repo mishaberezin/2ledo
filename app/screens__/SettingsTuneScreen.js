@@ -10,11 +10,7 @@ import { ButtonGroup, Button } from 'react-native-elements';
 function SettingsTuneScreenUnconnected(props) {
   const { cards, currentCardId, setCurrentCardId, unsetUserToken } = props;
 
-  const items = Object.keys(cards).map(id => ({ type: cards[id].type, id }));
-
-  console.log(items);
-  console.log(currentCardId);
-  console.log(items.findIndex(item => item.id === currentCardId));
+  const items = Object.keys(cards).map((id) => ({ type: cards[id].type, id }));
 
   const handleExitButtonPress = useCallback(() => {
     (async () => {
@@ -32,9 +28,9 @@ function SettingsTuneScreenUnconnected(props) {
       }}
     >
       <ButtonGroup
-        onPress={index => setCurrentCardId(items[index].id)}
-        selectedIndex={items.findIndex(item => item.id === currentCardId)}
-        buttons={items.map(item => item.type)}
+        onPress={(index) => setCurrentCardId(items[index].id)}
+        selectedIndex={items.findIndex((item) => item.id === currentCardId)}
+        buttons={items.map((item) => item.type)}
         containerStyle={{ height: 30 }}
       />
       <Button
@@ -46,23 +42,23 @@ function SettingsTuneScreenUnconnected(props) {
   );
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     cards: state.cards,
     currentCardId: state.localState.currentCardId,
   };
 };
 
-const mapDispatchToProps = dispatch =>
+const mapDispatchToProps = (dispatch) =>
   bindActionCreators(
     {
       setCurrentCardId,
       unsetUserToken,
     },
-    dispatch
+    dispatch,
   );
 
 export const SettingsTuneScreen = connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(SettingsTuneScreenUnconnected);

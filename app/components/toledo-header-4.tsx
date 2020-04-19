@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text } from 'react-native';
-import { TEXT_COLOR } from '@toledo/constants/colors';
+import { TEXT_COLOR } from '../constants/colors';
 
 export function ToledoHeader4(props) {
   return (

@@ -4,6 +4,23 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import { Serp } from './screens/serp';
 
+// import { createAppContainer, createSwitchNavigator } from 'react-navigation';
+// import { createStackNavigator } from 'react-navigation-stack';
+
+// import MatchIndicatorButton from './components/MatchIndicatorButton';
+// import SerpScreen from './screens/SerpScreen';
+// import ChatScreen from './screens/ChatScreen';
+// import LoginScreen from './screens/LoginScreen';
+// import { SettingsCardScreen } from './screens/SettingsCardScreen';
+// import { SettingsTuneScreen } from './screens/SettingsTuneScreen';
+// import { SettingsUserScreen } from './screens/SettingsUserScreen';
+// import { SettingsCardPreviewScreen } from './screens/SettingsCardPreviewScreen';
+// import FavoritesScreen from './screens/FavoritesScreen';
+// import CardScreen from './screens/CardScreen';
+// import { Button } from 'react-native-elements';
+
+// import { NavHeader } from './components/NavHeader';
+
 const SerpStack = createStackNavigator();
 const SerpStackScreen = () => {
   return (
@@ -14,30 +31,24 @@ const SerpStackScreen = () => {
   );
 };
 
+const RootStack = createStackNavigator();
+const RootStackScreen = () => {
+  return (
+    <RootStack.Navigator
+      initialRouteName="SerpStackScreen"
+      headerMode="none"
+      screenOptions={{ animationEnabled: false }}
+    >
+      <RootStack.Screen name="SerpStackScreen" component={SerpStackScreen} />
+    </RootStack.Navigator>
+  );
+};
+
 export const Navigation = () => (
   <NavigationContainer>
-    <SerpStackScreen />
+    <RootStackScreen />
   </NavigationContainer>
 );
-
-// import { createAppContainer, createSwitchNavigator } from 'react-navigation';
-// import { createStackNavigator } from 'react-navigation-stack';
-
-// import MatchIndicatorButton from './components/MatchIndicatorButton';
-// import InitScreen from './screens/InitScreen';
-// import SerpScreen from './screens/SerpScreen';
-// import ChatScreen from './screens/ChatScreen';
-// import LoginScreen from './screens/LoginScreen';
-// import { SettingsCardScreen } from './screens/SettingsCardScreen';
-// import { SettingsTuneScreen } from './screens/SettingsTuneScreen';
-// import { SettingsUserScreen } from './screens/SettingsUserScreen';
-// import { SettingsCardPreviewScreen } from './screens/SettingsCardPreviewScreen';
-
-// import FavoritesScreen from './screens/FavoritesScreen';
-// import CardScreen from './screens/CardScreen';
-// import { Button } from 'react-native-elements';
-
-// import { NavHeader } from './components/NavHeader';
 
 // const SettingsStack = createStackNavigator(
 //   {

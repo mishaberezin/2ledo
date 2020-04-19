@@ -4,13 +4,17 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { DeckWithControllsContainer } from '../components/deck-with-controlls-container';
 // import MatchPopup from '../components/MatchPopup';
 
-export const Serp = () => {
+export const Serp = ({ navigation }) => {
+  console.log('HEELLOO');
+  console.log(navigation);
+
   return (
     <View style={styles.container}>
       <ImageBackground
         style={styles.background}
         source={require('../assets/images/map.png')}
       ></ImageBackground>
+      <Text>HELLLLO</Text>
       <LinearGradient
         style={{
           display: 'flex',
@@ -31,6 +35,7 @@ export const Serp = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: 'red',
   },
   background: {
     display: 'flex',

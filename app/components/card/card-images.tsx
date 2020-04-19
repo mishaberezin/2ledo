@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { View, Image, Animated, TouchableOpacity } from 'react-native';
-import { withStyles } from 'react-native-ui-kitten';
+import { withStyles } from '@ui-kitten/components';
 import { Ionicons } from '@expo/vector-icons';
-import { DARK_VIOLET_COLOR } from '@toledo/constants/colors';
 
+import { DARK_VIOLET_COLOR } from '../../constants/colors';
 import { SCREEN_HEIGHT } from '../../constants/device';
 
 class CardImagesContainer extends Component {
@@ -50,14 +50,17 @@ class CardImagesContainer extends Component {
   };
 
   renderImagesNavigation = () => {
-    const { photos, themedStyle } = this.props;
+    const {
+      photos,
+      eva: { style },
+    } = this.props;
     if (!photos || photos.length <= 1) {
       return null;
     }
     return (
-      <View style={themedStyle.navContainer}>
-        <View style={themedStyle.photosNavigation}>
-          <View style={themedStyle.navElement}>
+      <View style={style.navContainer}>
+        <View style={style.photosNavigation}>
+          <View style={style.navElement}>
             <TouchableOpacity onPress={this.handlePrevItemPress}>
               <Ionicons
                 name="ios-arrow-back"
@@ -66,7 +69,7 @@ class CardImagesContainer extends Component {
               />
             </TouchableOpacity>
           </View>
-          <View style={themedStyle.navElement}>
+          <View style={style.navElement}>
             <TouchableOpacity onPress={this.handleNextItemPress}>
               <Ionicons
                 name="ios-arrow-forward"
@@ -81,31 +84,34 @@ class CardImagesContainer extends Component {
   };
 
   render() {
-    const { photos, themedStyle } = this.props;
+    const {
+      photos,
+      eva: { style },
+    } = this.props;
 
     return (
-      <View style={themedStyle.container}>
+      <View style={style.container}>
         <Animated.View
           style={[
-            themedStyle.photosContainer,
+            style.photosContainer,
             { transform: [{ translateX: this.translate }] },
           ]}
           onLayout={this.handleLayout}
         >
           {photos.map((image, index) => (
-            <View key={index} style={themedStyle.imageContainer}>
+            <View key={index} style={style.imageContainer}>
               <Image
                 source={image ? image.source || image : {}}
-                style={themedStyle.image}
+                style={style.image}
               />
             </View>
           ))}
         </Animated.View>
         {this.renderImagesNavigation()}
-        <View style={themedStyle.photosCountContainer}>
+        <View style={style.photosCountContainer}>
           {photos.length > 1 &&
             photos.map((_, index) => (
-              <View key={index} style={themedStyle.photosCountDot}>
+              <View key={index} style={style.photosCountDot}>
                 <Ionicons
                   name="ios-radio-button-on"
                   size={12}
@@ -121,7 +127,7 @@ class CardImagesContainer extends Component {
   }
 }
 
-const CardImages = withStyles(CardImagesContainer, () => ({
+export const CardImages = withStyles(CardImagesContainer, () => ({
   container: {},
   photosContainer: {
     display: 'flex',
@@ -165,5 +171,3 @@ const CardImages = withStyles(CardImagesContainer, () => ({
     marginHorizontal: 2,
   },
 }));
-
-export default CardImages;

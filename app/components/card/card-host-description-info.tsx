@@ -1,34 +1,35 @@
 import React from 'react';
 import { View } from 'react-native';
-import { Text, withStyles } from 'react-native-ui-kitten';
-import CardItemRentalPeriod from './CardItemRentalPeriod';
-import CardItemMaxNumberOfPeople from './CardItemMaxNumberOfPeople';
+import { Text, withStyles } from '@ui-kitten/components';
+
+import { CardItemRentalPeriod } from './card-item-rental-period';
+import { CardItemMaxNumberOfPeople } from './card-item-max-number-of-people';
 
 const CardHostDescriptionInfoContainer = ({
   Description,
   Address,
   RentalPeriod,
   MaxNumberOfPeople,
-  themedStyle,
+  eva: { style },
 }) => (
-  <View style={themedStyle.container}>
-    <View style={[themedStyle.block, themedStyle.blockWithLine]}>
+  <View style={style.container}>
+    <View style={[style.block, style.blockWithLine]}>
       <Text category="s1">Адрес:</Text>
       <Text category="p1">{Address.postal}</Text>
     </View>
-    <View style={themedStyle.block}>
+    <View style={style.block}>
       <CardItemRentalPeriod value={RentalPeriod} />
     </View>
-    <View style={themedStyle.block}>
+    <View style={style.block}>
       <CardItemMaxNumberOfPeople value={MaxNumberOfPeople} />
     </View>
-    <View style={themedStyle.block}>
+    <View style={style.block}>
       <Text category="p1">{Description}</Text>
     </View>
   </View>
 );
 
-const CardHostDescriptionInfo = withStyles(
+export const CardHostDescriptionInfo = withStyles(
   CardHostDescriptionInfoContainer,
   () => ({
     container: {
@@ -43,7 +44,5 @@ const CardHostDescriptionInfo = withStyles(
       borderColor: 'lightgray',
       borderBottomWidth: 1,
     },
-  })
+  }),
 );
-
-export default CardHostDescriptionInfo;

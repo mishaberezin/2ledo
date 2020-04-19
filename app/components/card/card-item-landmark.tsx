@@ -1,13 +1,13 @@
 import React from 'react';
 import { View } from 'react-native';
-import { Text, withStyles } from 'react-native-ui-kitten';
+import { Text, withStyles } from '@ui-kitten/components';
 import { Ionicons } from '@expo/vector-icons';
 
-const CardItemLandmark = ({ landmark, themedStyle }) => {
+const CardItemLandmarkBare = ({ landmark, eva: { style } }) => {
   return (
-    <View style={themedStyle.container}>
-      <View key={landmark.id} style={themedStyle.landmark}>
-        <View style={themedStyle.icon}>
+    <View style={style.container}>
+      <View key={landmark.id} style={style.landmark}>
+        <View style={style.icon}>
           <Ionicons name="ios-pin" size={16} color={landmark.data.color} />
         </View>
         <Text category="p2">{landmark.data.name}</Text>
@@ -16,7 +16,7 @@ const CardItemLandmark = ({ landmark, themedStyle }) => {
   );
 };
 
-export default withStyles(CardItemLandmark, () => ({
+export const CardItemLandmark = withStyles(CardItemLandmarkBare, () => ({
   container: {
     display: 'flex',
   },

@@ -3,7 +3,7 @@ import { View, Animated, PanResponder, TouchableOpacity } from 'react-native';
 import { withStyles, Text } from '@ui-kitten/components';
 import { Ionicons } from '@expo/vector-icons';
 import { Card } from 'react-native-elements';
-// import { DeckHostCard } from './Card';
+import { DeckHostCard } from './card';
 import { SCREEN_WIDTH } from '../constants/device';
 
 const SWIPE_THRESHOLD = 0.4 * SCREEN_WIDTH;
@@ -17,8 +17,8 @@ class DeckWithControllsContainer extends Component {
   constructor(props) {
     super(props);
 
-    console.log('props');
-    console.log(props);
+    // console.log('props');
+    // console.log(props);
 
     this.position = new Animated.ValueXY(0, 0);
     this.controlsOpacity = new Animated.Value(1);
@@ -87,19 +87,16 @@ class DeckWithControllsContainer extends Component {
   };
 
   renderCard = ({ data: card }, isCurrent) => {
-    // const cardStyle =
-    //   !this.state.cardOpened && this.props.eva.style.cardStyle;
+    const cardStyle = !this.state.cardOpened && this.props.eva.style.cardStyle;
 
     return (
-      <Text category="h2">DeckHostCard</Text>
-
-      // <DeckHostCard
-      //   card={card}
-      //   opened={isCurrent && this.state.cardOpened}
-      //   onOpen={this.openCard}
-      //   onClose={this.closeCard}
-      //   cardStyle={cardStyle}
-      // />
+      <DeckHostCard
+        card={card}
+        opened={isCurrent && this.state.cardOpened}
+        onOpen={this.openCard}
+        onClose={this.closeCard}
+        cardStyle={cardStyle}
+      />
     );
   };
 

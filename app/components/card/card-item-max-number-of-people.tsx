@@ -1,9 +1,9 @@
 import React from 'react';
 import { View } from 'react-native';
-import { Text, withStyles } from 'react-native-ui-kitten';
+import { Text, withStyles } from '@ui-kitten/components';
 import { Ionicons } from '@expo/vector-icons';
 
-const CardItemMaxNumberOfPeople = ({ value, themedStyle }) => {
+const CardItemMaxNumberOfPeopleBare = ({ value, eva: { style } }) => {
   let textValue = null;
   if (!value) {
     return null;
@@ -15,9 +15,9 @@ const CardItemMaxNumberOfPeople = ({ value, themedStyle }) => {
 
   return (
     value && (
-      <View style={themedStyle.container}>
-        <View style={themedStyle.rooms}>
-          <View style={themedStyle.icon}>
+      <View style={style.container}>
+        <View style={style.rooms}>
+          <View style={style.icon}>
             <Ionicons name="ios-people" size={22} color="gray" />
           </View>
           <Text category="s1">{textValue}</Text>
@@ -27,14 +27,17 @@ const CardItemMaxNumberOfPeople = ({ value, themedStyle }) => {
   );
 };
 
-export default withStyles(CardItemMaxNumberOfPeople, () => ({
-  container: {
-    display: 'flex',
-  },
-  rooms: {
-    flexDirection: 'row',
-  },
-  icon: {
-    marginRight: 4,
-  },
-}));
+export const CardItemMaxNumberOfPeople = withStyles(
+  CardItemMaxNumberOfPeopleBare,
+  () => ({
+    container: {
+      display: 'flex',
+    },
+    rooms: {
+      flexDirection: 'row',
+    },
+    icon: {
+      marginRight: 4,
+    },
+  }),
+);

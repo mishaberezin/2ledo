@@ -1,15 +1,15 @@
 import React, { useCallback } from 'react';
-import { withStyles, Button } from 'react-native-ui-kitten';
+import { withStyles, Button } from '@ui-kitten/components';
 
-import { DARK_VIOLET_COLOR } from '@toledo/constants/colors';
+import { DARK_VIOLET_COLOR } from '../constants/colors';
 
-export default withStyles(
+export const ToledoButton = withStyles(
   ({ onPress, disabled, children, themedStyle }) => {
     const handleButtonPress = useCallback(
-      e => {
+      (e) => {
         onPress && onPress(e);
       },
-      [onPress]
+      [onPress],
     );
 
     return (
@@ -30,5 +30,5 @@ export default withStyles(
       borderRadius: 30,
       borderWidth: 1,
     },
-  })
+  }),
 );

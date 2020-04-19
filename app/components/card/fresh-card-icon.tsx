@@ -2,7 +2,7 @@ import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-export default () => (
+export const FreshCardIcon = () => (
   <View style={styles.cardIsFreshIcon}>
     <Ionicons name="ios-flame" size={42} color={'orange'} />
   </View>

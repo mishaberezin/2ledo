@@ -6,13 +6,14 @@ import {
   TouchableWithoutFeedback,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { withStyles } from 'react-native-ui-kitten';
-import { DARK_VIOLET_COLOR } from '@toledo/constants/colors';
+import { withStyles } from '@ui-kitten/components';
 
-import CardHostShortInfo from './CardHostShortInfo';
-import CardHostDescriptionInfo from './CardHostDescriptionInfo';
-import CardImages from './CardImages';
-import FreshCardIcon from './FreshCardIcon';
+import { DARK_VIOLET_COLOR } from '../../constants/colors';
+
+import { CardHostShortInfo } from './card-host-short-info';
+import { CardHostDescriptionInfo } from './card-host-description-info';
+import { CardImages } from './card-images';
+import { FreshCardIcon } from './fresh-card-icon';
 
 const DeckHostCardContainer = ({
   card,
@@ -20,7 +21,7 @@ const DeckHostCardContainer = ({
   onOpen,
   onClose,
   cardStyle,
-  themedStyle,
+  eva: { style },
 }) => {
   const { IsFresh, Photos } = card;
 
@@ -31,12 +32,12 @@ const DeckHostCardContainer = ({
 
   return (
     <ScrollView
-      style={[themedStyle.container, cardStyle]}
+      style={[style.container, cardStyle]}
       showsVerticalScrollIndicator={false}
     >
-      <View style={themedStyle.cardContainer}>
+      <View style={style.cardContainer}>
         {IsFresh && (
-          <View style={themedStyle.freshIconConteiner}>
+          <View style={style.freshIconConteiner}>
             <FreshCardIcon />
           </View>
         )}
@@ -46,9 +47,9 @@ const DeckHostCardContainer = ({
           <TouchableWithoutFeedback onPress={onDetailsButtonPress}>
             <View
               style={[
-                themedStyle.cardButton,
-                themedStyle.shadowStyles,
-                opened && themedStyle.cardButtonOpened,
+                style.cardButton,
+                style.shadowStyles,
+                opened && style.cardButtonOpened,
               ]}
             >
               <Ionicons
@@ -67,7 +68,7 @@ const DeckHostCardContainer = ({
   );
 };
 
-export default withStyles(DeckHostCardContainer, () => ({
+export const DeckHostCard = withStyles(DeckHostCardContainer, () => ({
   container: {
     backgroundColor: 'white',
   },

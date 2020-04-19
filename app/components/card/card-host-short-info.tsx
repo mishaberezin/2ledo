@@ -1,36 +1,36 @@
 import React from 'react';
 import { View } from 'react-native';
-import { withStyles } from 'react-native-ui-kitten';
+import { withStyles } from '@ui-kitten/components';
 
-import { ToledoHeader4 } from '../ToledoHeader4';
-import CardItemLandmark from './CardItemLandmark';
-import CardItemNumberOfRooms from './CardItemNumberOfRooms';
-import CardItemHostAvatar from './CardItemHostAvatar';
+import { ToledoHeader4 } from '../toledo-header-4';
+import { CardItemLandmark } from './card-item-landmark';
+import { CardItemNumberOfRooms } from './card-item-number-of-rooms';
+import { CardItemHostAvatar } from './card-item-host-avatar';
 
 const CardHostShortInfoContainer = ({
   HostUser,
   RentalPrice,
   Landmark,
   NumberOfRooms,
-  themedStyle,
+  eva: { style },
 }) => {
   return (
-    <View style={themedStyle.container}>
-      <View style={themedStyle.infoBlock}>
+    <View style={style.container}>
+      <View style={style.infoBlock}>
         <ToledoHeader4>{RentalPrice} руб</ToledoHeader4>
-        <View style={themedStyle.infoBlockCol}>
+        <View style={style.infoBlockCol}>
           <CardItemNumberOfRooms value={NumberOfRooms} />
           <CardItemLandmark landmark={Landmark} />
         </View>
       </View>
-      <View style={themedStyle.avatarBlock}>
+      <View style={style.avatarBlock}>
         <CardItemHostAvatar uri={HostUser.avatarUri} name={HostUser.name} />
       </View>
     </View>
   );
 };
 
-const CardHostShortInfo = withStyles(CardHostShortInfoContainer, () => ({
+export const CardHostShortInfo = withStyles(CardHostShortInfoContainer, () => ({
   container: {
     marginHorizontal: 10,
   },
@@ -51,5 +51,3 @@ const CardHostShortInfo = withStyles(CardHostShortInfoContainer, () => ({
     marginTop: 10,
   },
 }));
-
-export default CardHostShortInfo;
