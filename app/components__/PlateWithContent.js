@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { withStyles } from 'react-native-ui-kitten';
+import { withStyles } from '@ui-kitten/components';
 import { Animated, View } from 'react-native';
 
-import { MAIN_BACKGROUND_COLOR } from '@toledo/constants/colors';
+import { MAIN_BACKGROUND_COLOR } from '@app/constants/colors';
 import PlateHeader from './PlateHeader';
 
 const INITIAL_HEIGHT = 55;

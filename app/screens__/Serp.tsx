@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, View, ImageBackground } from 'react-native';
-import DeckWithControllsContainer from '@toledo/components/DeckWithControllsContainer';
+import DeckWithControllsContainer from '@app/components/DeckWithControllsContainer';
 import { LinearGradient } from 'expo-linear-gradient';
-import MatchPopup from '@toledo/components/MatchPopup';
+import MatchPopup from '@app/components/MatchPopup';
 
 function SerpScreen() {
   return (
@@ -14,7 +14,7 @@ function SerpScreen() {
           height: '100%',
           width: '100%',
         }}
-        source={require('@toledo/assets/images/map.png')}
+        source={require('@app/assets/images/map.png')}
       ></ImageBackground>
       <LinearGradient
         style={{

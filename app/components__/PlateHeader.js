@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { withStyles, Text } from 'react-native-ui-kitten';
+import { withStyles, Text } from '@ui-kitten/components';
 import { View, TouchableWithoutFeedback } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import SvgCat from './SvgCat';

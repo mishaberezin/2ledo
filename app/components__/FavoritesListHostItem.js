@@ -6,7 +6,7 @@ import {
   Image,
   TouchableOpacity,
 } from 'react-native';
-import { withStyles, Text } from 'react-native-ui-kitten';
+import { withStyles, Text } from '@ui-kitten/components';
 import OverflowMenu from './OverflowMenu';
 import {
   CardItemLandmark,
@@ -50,7 +50,7 @@ const FavoritesListHostItemContainer = ({
         onDelete(id);
       }
     },
-    [id, onPress, onDelete]
+    [id, onPress, onDelete],
   );
 
   return (
@@ -144,7 +144,7 @@ const FavoritesListHostItem = withStyles(
       alignItems: 'center',
       width: 40,
     },
-  })
+  }),
 );
 
 export default FavoritesListHostItem;

@@ -1,13 +1,13 @@
 import React, { useCallback, useMemo } from 'react';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
-import { List, withStyles } from 'react-native-ui-kitten';
+import { List, withStyles } from '@ui-kitten/components';
 import ChatMessage from './ChatMessage';
 import ChatControls from './ChatControls';
 
 const ConversationContainer = ({ themedStyle, messages, navigate }) => {
   const renderMessage = useCallback(
-    info => {
+    (info) => {
       return (
         <ChatMessage
           style={themedStyle.message}
@@ -16,7 +16,7 @@ const ConversationContainer = ({ themedStyle, messages, navigate }) => {
         />
       );
     },
-    [themedStyle.message]
+    [themedStyle.message],
   );
 
   const listRef = useMemo(() => React.createRef(), []);
@@ -52,7 +52,7 @@ const Conversation = withStyles(ConversationContainer, () => ({
   },
 }));
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   messages: state.chatbot.messages,
 });
 

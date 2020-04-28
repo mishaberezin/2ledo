@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Layout } from 'react-native-ui-kitten';
+import { Layout } from '@ui-kitten/components';
 import { SCREEN_BACKGROUND } from '../constants/colors';
 import { archiveCard } from '../redux/actions/shelfActions';
 
@@ -10,18 +10,21 @@ import FavoritesGroupsList from '../components/FavoritesGroupsList';
 
 const FavoritesScreen = ({ navigation, archiveCard }) => {
   const onItemPress = useCallback(
-    id => {
+    (id) => {
       navigation.navigate({
         routeName: 'CardDetail',
         params: { id },
       });
     },
-    [navigation]
+    [navigation],
   );
 
-  const onItemDelete = useCallback(id => {
-    archiveCard(id);
-  }, [archiveCard]);
+  const onItemDelete = useCallback(
+    (id) => {
+      archiveCard(id);
+    },
+    [archiveCard],
+  );
 
   return (
     <Layout style={styles.container}>
@@ -41,15 +44,12 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapDispatchToProps = dispatch =>
+const mapDispatchToProps = (dispatch) =>
   bindActionCreators(
     {
       archiveCard,
     },
-    dispatch
+    dispatch,
   );
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(FavoritesScreen);
+export default connect(null, mapDispatchToProps)(FavoritesScreen);

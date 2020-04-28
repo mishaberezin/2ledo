@@ -2,9 +2,9 @@ import React, { useState, useCallback } from 'react';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Text, withStyles, Input, Spinner } from 'react-native-ui-kitten';
+import { Text, withStyles, Input, Spinner } from '@ui-kitten/components';
 
-import { MAIN_BACKGROUND_COLOR } from '@toledo/constants/colors';
+import { MAIN_BACKGROUND_COLOR } from '@app/constants/colors';
 import { SCREEN_WIDTH } from '../../constants/device';
 import { sendPhone, sendCode } from '../../redux/actions/loginActions';
 import ToledoButton from '../../components/ToledoButton';
@@ -22,7 +22,7 @@ const LoginFormContainer = ({
   const [codeHash, setHash] = useState(null);
   const [code, setCode] = useState('');
 
-  const handlePhoneInput = useCallback(value => {
+  const handlePhoneInput = useCallback((value) => {
     if (/^[0-9]{0,10}$/.test(value)) {
       setPhone(value);
     }
@@ -32,7 +32,7 @@ const LoginFormContainer = ({
   }, []);
 
   const handleCodeInput = useCallback(
-    value => {
+    (value) => {
       if (/^[0-9]{1,4}$/.test(value)) {
         setCode(value);
       }
@@ -43,12 +43,12 @@ const LoginFormContainer = ({
         });
       }
     },
-    [code, codeHash, onSuccess, sendCode]
+    [code, codeHash, onSuccess, sendCode],
   );
 
   const handleButtonPress = useCallback(() => {
     setLoading(true);
-    sendPhone(phone).then(hash => {
+    sendPhone(phone).then((hash) => {
       setHash(hash);
       setStep('code');
       setButtonDisabled(true);
@@ -154,16 +154,13 @@ const LoginForm = withStyles(LoginFormContainer, () => ({
   },
 }));
 
-const mapDispatchToProps = dispatch =>
+const mapDispatchToProps = (dispatch) =>
   bindActionCreators(
     {
       sendPhone,
       sendCode,
     },
-    dispatch
+    dispatch,
   );
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(LoginForm);
+export default connect(null, mapDispatchToProps)(LoginForm);

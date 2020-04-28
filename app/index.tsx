@@ -14,7 +14,8 @@ if (__DEV__) {
   console.disableYellowBox = true;
 }
 
-const loadResources = async () => {
+// Заранее грузим шрифты и картинки перед отрисовкой основного юая.
+const warmUp = async () => {
   await Promise.all([
     Asset.loadAsync([
       require('./assets/images/search-for-flat.jpg'),
@@ -38,7 +39,7 @@ const App = () => {
 
   return isLoading ? (
     <AppLoading
-      startAsync={loadResources}
+      startAsync={warmUp}
       onError={(err) => {
         console.warn(err);
       }}

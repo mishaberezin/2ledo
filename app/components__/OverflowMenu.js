@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { View } from 'react-native';
-import { OverflowMenu, withStyles } from 'react-native-ui-kitten';
+import { OverflowMenu, withStyles } from '@ui-kitten/components';
 import { TouchableOpacity } from 'react-native';
 
 const OverflowMenuContainer = ({
@@ -14,7 +14,7 @@ const OverflowMenuContainer = ({
   // todo подумать нужно ли это вообще
   const [selectedIndex] = useState();
 
-  const onItemSelect = index => {
+  const onItemSelect = (index) => {
     //setSelectedIndex(index);
     setMenuVisible(false);
     onItemPress && onItemPress(items[index]);

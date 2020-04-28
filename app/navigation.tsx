@@ -8,18 +8,17 @@ import { Serp } from './screens/serp';
 // import { createStackNavigator } from 'react-navigation-stack';
 
 // import MatchIndicatorButton from './components/MatchIndicatorButton';
-// import SerpScreen from './screens/SerpScreen';
 // import ChatScreen from './screens/ChatScreen';
 // import LoginScreen from './screens/LoginScreen';
-// import { SettingsCardScreen } from './screens/SettingsCardScreen';
-// import { SettingsTuneScreen } from './screens/SettingsTuneScreen';
-// import { SettingsUserScreen } from './screens/SettingsUserScreen';
+import { SettingsCard } from './screens/settings-card';
+import { SettingsTune } from './screens/settings-tune';
+import { SettingsUser } from './screens/settings-user';
 // import { SettingsCardPreviewScreen } from './screens/SettingsCardPreviewScreen';
 // import FavoritesScreen from './screens/FavoritesScreen';
 // import CardScreen from './screens/CardScreen';
 // import { Button } from 'react-native-elements';
 
-// import { NavHeader } from './components/NavHeader';
+import { NavHeader } from './components/nav-header';
 
 const SerpStack = createStackNavigator();
 const SerpStackScreen = () => {
@@ -31,24 +30,64 @@ const SerpStackScreen = () => {
   );
 };
 
-const RootStack = createStackNavigator();
-const RootStackScreen = () => {
+const SettingsStack = createStackNavigator();
+const SettingsStackScreen = () => {
   return (
-    <RootStack.Navigator
-      initialRouteName="SerpStackScreen"
-      headerMode="none"
-      screenOptions={{ animationEnabled: false }}
+    <SettingsStack.Navigator
+      initialRouteName="SettingsCard"
+      screenOptions={{
+        headerRight: () => (
+          <Button
+            buttonStyle={{
+              height: 56,
+              justifyContent: 'space-between',
+            }}
+            type="clear"
+            icon={{ type: 'ionicon', name: 'ios-arrow-forward' }}
+            onPress={() => navigation.navigate('Serp')}
+          />
+        ),
+        header: ({ scene, navigation }) => {
+          let cardItem;
+
+          if (scene.route.name === 'SettingsCard') {
+            cardItem = {
+              text: 'Превью',
+              style: { color: 'blue' },
+              onPress: () => navigation.navigate('CardPreview'),
+            };
+          } else {
+            cardItem = {
+              text: 'Карточка',
+              onPress: () => navigation.navigate('SettingsCard'),
+            };
+          }
+
+          return (
+            <NavHeader
+              title="Настройки"
+              menuItems={[
+                cardItem,
+                {
+                  text: 'О себе',
+                  onPress: () => navigation.navigate('SettingsUser'),
+                },
+                {
+                  text: 'Прочее',
+                  onPress: () => navigation.navigate('SettingsTune'),
+                },
+              ]}
+            />
+          );
+        },
+      }}
     >
-      <RootStack.Screen name="SerpStackScreen" component={SerpStackScreen} />
-    </RootStack.Navigator>
+      <SettingsStack.Screen name="SettingsCard" component={SettingsCard} />
+      <SettingsStack.Screen name="SettingsTune" component={SettingsTune} />
+      <SettingsStack.Screen name="SettingsUser" component={SettingsUser} />
+    </SettingsStack.Navigator>
   );
 };
-
-export const Navigation = () => (
-  <NavigationContainer>
-    <RootStackScreen />
-  </NavigationContainer>
-);
 
 // const SettingsStack = createStackNavigator(
 //   {
@@ -59,36 +98,35 @@ export const Navigation = () => (
 //   },
 //   {
 //     initialRouteName: 'Card',
-//     defaultNavigationOptions: ({ navigation }) => {
-//       let cardItem;
-//       if (navigation.state.routeName === 'Card') {
-//         cardItem = {
-//           text: 'Превью',
-//           style: { color: 'blue' },
-//           onPress: () => navigation.navigate('CardPreview'),
-//         };
-//       } else {
-//         cardItem = {
-//           text: 'Карточка',
-//           onPress: () => navigation.navigate('Card'),
-//         };
-//       }
-
-//       return {
-//         header: (
-//           <NavHeader
-//             title="Настройки"
-//             menuItems={[
-//               cardItem,
-//               { text: 'О себе', onPress: () => navigation.navigate('User') },
-//               { text: 'Прочее', onPress: () => navigation.navigate('Tune') },
-//             ]}
-//           />
-//         ),
-//       };
-//     },
 //   },
 // );
+
+// SettingsStack.navigationOptions = ({ navigation }) => ({
+
+// });
+
+const RootStack = createStackNavigator();
+const RootStackScreen = () => {
+  return (
+    <RootStack.Navigator
+      initialRouteName="SettingsStackScreen"
+      headerMode="none"
+      screenOptions={{ animationEnabled: false }}
+    >
+      <RootStack.Screen name="SerpStackScreen" component={SerpStackScreen} />
+      <RootStack.Screen
+        name="SettingsStackScreen"
+        component={SettingsStackScreen}
+      />
+    </RootStack.Navigator>
+  );
+};
+
+export const Navigation = () => (
+  <NavigationContainer>
+    <RootStackScreen />
+  </NavigationContainer>
+);
 
 // const FavoritesStack = createStackNavigator(
 //   {
@@ -171,21 +209,6 @@ export const Navigation = () => (
 //       onPress={() => {
 //         navigation.navigate('Favorites');
 //       }}
-//     />
-//   ),
-// });
-
-// SettingsStack.navigationOptions = ({ navigation }) => ({
-//   headerLeft: null,
-//   headerRight: (
-//     <Button
-//       buttonStyle={{
-//         height: 56,
-//         justifyContent: 'space-between',
-//       }}
-//       type="clear"
-//       icon={{ type: 'ionicon', name: 'ios-arrow-forward' }}
-//       onPress={() => navigation.navigate('Serp')}
 //     />
 //   ),
 // });

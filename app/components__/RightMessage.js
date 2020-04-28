@@ -1,18 +1,12 @@
-
 import React from 'react';
-import {
-  Dimensions,
-  View
-} from 'react-native';
-import { withStyles, Text } from 'react-native-ui-kitten';
-import {
-  TEXT_COLOR,
-} from '@toledo/constants/colors';
+import { Dimensions, View } from 'react-native';
+import { withStyles, Text } from '@ui-kitten/components';
+import { TEXT_COLOR } from '@app/constants/colors';
 
 const RightMessageComponent = ({ themedStyle, style, message }) => {
   const { text } = message;
- 
-  return ( 
+
+  return (
     <View style={[themedStyle.cloudContainer, style]}>
       <View style={[themedStyle.cloud, themedStyle.cloudRight]}>
         <Text style={themedStyle.text}>{text}</Text>
@@ -25,7 +19,7 @@ const RightMessage = withStyles(RightMessageComponent, () => ({
   cloudContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'flex-end'
+    justifyContent: 'flex-end',
   },
   cloud: {
     flexDirection: 'row',
@@ -38,7 +32,7 @@ const RightMessage = withStyles(RightMessageComponent, () => ({
   text: {
     fontFamily: 'ceracy-desktop-medium',
     fontSize: 16,
-    color: TEXT_COLOR
+    color: TEXT_COLOR,
   },
   cloudRight: {
     borderBottomRightRadius: 0,

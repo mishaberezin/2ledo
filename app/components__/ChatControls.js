@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import { connect } from 'react-redux';
 import { CHATBOT_SCENARIOS } from '../constants/chatbotScenarios';
-import { withStyles } from 'react-native-ui-kitten';
+import { withStyles } from '@ui-kitten/components';
 
 const ChatControlsComponent = ({
   themedStyle,
@@ -25,7 +25,7 @@ const ChatControlsComponent = ({
               buttonStyle: [themedStyle.control],
               titleStyle: [themedStyle.title],
               navigate,
-            })
+            }),
           )}
       </View>
     </View>
@@ -59,7 +59,7 @@ const ChatControls = withStyles(ChatControlsComponent, () => ({
   },
 }));
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   currentScenarioId: state.chatbot.currentScenarioId,
   isWriting: state.chatbot.isWriting,
 });

@@ -1,6 +1,6 @@
 import React, { useEffect, useCallback } from 'react';
 import { View, Animated } from 'react-native';
-import { Text, withStyles, Avatar } from 'react-native-ui-kitten';
+import { Text, withStyles, Avatar } from '@ui-kitten/components';
 
 import { LinearGradient } from 'expo-linear-gradient';
 import { connect } from 'react-redux';
@@ -167,10 +167,7 @@ const mapStateToProps = ({ localState: { matchPopup = false }, user }) => {
   };
 };
 
-const mapDispatchToProps = dispatch =>
+const mapDispatchToProps = (dispatch) =>
   bindActionCreators({ hideMatchPopup }, dispatch);
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(StyledMatchPopup);
+export default connect(mapStateToProps, mapDispatchToProps)(StyledMatchPopup);

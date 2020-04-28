@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { View } from 'react-native';
-import { withStyles } from 'react-native-ui-kitten';
+import { withStyles } from '@ui-kitten/components';
 import { Ionicons } from '@expo/vector-icons';
 import PlateHeader from './PlateHeader';
 import OverflowMenu from './OverflowMenu';

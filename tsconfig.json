@@ -1,5 +1,13 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@app/*": ["app/*"],
+      "@arenda/components/*": ["app/components/*"],
+      "@arenda/assets/*": ["app/assets/*"],
+      "@arenda/constants/*": ["app/constants/*"],
+      "@arenda/data/*": ["app/data/*"]
+    },
     "allowSyntheticDefaultImports": true,
     "jsx": "react-native",
     "lib": ["dom", "esnext"],

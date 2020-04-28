@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { View } from 'react-native';
 
-import { MAIN_BRIGHT } from '@toledo/constants/colors';
+import { MAIN_BRIGHT } from '@app/constants/colors';
 
 import { SchemaHostCardPreview } from '../components/Schemas/SchemaHostCardPreview';
 import { SchemaTenantCardPreview } from '../components/Schemas/SchemaTenantCardPreview';
@@ -49,7 +49,7 @@ function SettingsCardPreviewScreenUnconnected(props) {
   );
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   const { localState } = state;
 
   return {
@@ -59,5 +59,5 @@ const mapStateToProps = state => {
 };
 
 export const SettingsCardPreviewScreen = connect(mapStateToProps)(
-  SettingsCardPreviewScreenUnconnected
+  SettingsCardPreviewScreenUnconnected,
 );

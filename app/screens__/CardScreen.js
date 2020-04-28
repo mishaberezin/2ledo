@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { getShelfCard } from '../redux/actions/shelfActions';
 
-import { Spinner } from 'react-native-ui-kitten';
+import { Spinner } from '@ui-kitten/components';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
@@ -41,15 +41,12 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = dispatch =>
+const mapStateToProps = (dispatch) =>
   bindActionCreators(
     {
       getShelfCard,
     },
-    dispatch
+    dispatch,
   );
 
-export default connect(
-  null,
-  mapStateToProps
-)(CardScreen);
+export default connect(null, mapStateToProps)(CardScreen);
