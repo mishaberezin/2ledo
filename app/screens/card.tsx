@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { View, StyleSheet } from 'react-native';
-import { getShelfCard } from '../redux/actions/shelfActions';
+import { getShelfCard } from '@app/redux/actions/shelf-actions';
 
 import { Spinner } from '@ui-kitten/components';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+import { ItemDetailCard } from '@app/components/card';
 
-import { ItemDetailCard } from '../components/Card';
+export function Card(props) {
+  const { route } = props;
+  const itemId = route.params.id;
 
-function CardScreen(props) {
-  const { navigation, getShelfCard } = props;
-  const itemId = navigation.getParam('id');
+  const dispatch = useDispatch();
 
   const [card, setCard] = useState();
 
   useEffect(() => {
     (async () => {
-      const card = await getShelfCard(itemId);
+      const card = await dispatch(getShelfCard(itemId));
       setCard(card);
     })();
   }, [getShelfCard, itemId]);
@@ -40,13 +40,3 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-
-const mapStateToProps = (dispatch) =>
-  bindActionCreators(
-    {
-      getShelfCard,
-    },
-    dispatch,
-  );
-
-export default connect(null, mapStateToProps)(CardScreen);

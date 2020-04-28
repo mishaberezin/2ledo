@@ -1,8 +1,7 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
 import { Divider } from 'react-native-elements';
-
-import DeckHostCard from '@app/components/Card/DeckHostCard';
+import { DeckHostCard } from '@app/components/card/deck-host-card';
 
 export function SchemaHostCardPreview(props) {
   const { cardData, userData } = props;

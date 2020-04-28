@@ -1,17 +1,8 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
+import Svg, { Path } from 'react-native-svg';
 
-import Svg from 'react-native-svg';
-import { Path } from 'react-native-svg';
-
-const styles = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
-
-const Cat = ({ size = 'm' }) => {
+export const SvgCat = ({ size = 'm' }) => {
   const [width, height] = {
     s: [16, 16],
     m: [24, 24],
@@ -52,4 +43,9 @@ const Cat = ({ size = 'm' }) => {
   );
 };
 
-export default Cat;
+const styles = StyleSheet.create({
+  container: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});

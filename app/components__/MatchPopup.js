@@ -14,7 +14,7 @@ const MatchPopup = ({
   visible,
   card,
   currentUserPhotoUri,
-  themedStyle,
+  eva: { style: themedStyle },
   hideMatchPopup,
 }) => {
   const opacity = new Animated.Value(0);

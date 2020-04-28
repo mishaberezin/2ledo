@@ -49,7 +49,13 @@ class PlateWithContentContainer extends Component {
   };
 
   render() {
-    const { title, children, themedStyle, contentStyle, withCat } = this.props;
+    const {
+      title,
+      children,
+      eva: { style: themedStyle },
+      contentStyle,
+      withCat,
+    } = this.props;
 
     const { opened } = this.state;
 

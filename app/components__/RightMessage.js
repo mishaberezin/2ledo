@@ -3,7 +3,11 @@ import { Dimensions, View } from 'react-native';
 import { withStyles, Text } from '@ui-kitten/components';
 import { TEXT_COLOR } from '@app/constants/colors';
 
-const RightMessageComponent = ({ themedStyle, style, message }) => {
+const RightMessageComponent = ({
+  eva: { style: themedStyle },
+  style,
+  message,
+}) => {
   const { text } = message;
 
   return (

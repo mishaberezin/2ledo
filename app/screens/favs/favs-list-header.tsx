@@ -2,15 +2,15 @@ import React, { useCallback } from 'react';
 import { View } from 'react-native';
 import { withStyles } from '@ui-kitten/components';
 import { Ionicons } from '@expo/vector-icons';
-import PlateHeader from './PlateHeader';
-import OverflowMenu from './OverflowMenu';
+import { PlateHeader } from '@app/components/plate-header';
+import { OverflowMenu } from '@app/components/overflow-menu';
 
-const FavoritesListHeaderContainer = ({
+const FavsListHeaderContainer = ({
   title,
   opened,
   onTogglePress,
   withCat,
-  themedStyle,
+  eva: { style: themedStyle },
 }) => {
   const handleToggle = useCallback(onTogglePress, [opened]);
 
@@ -21,16 +21,16 @@ const FavoritesListHeaderContainer = ({
       onTogglePress={handleToggle}
       withCat={withCat}
     >
-      <OverflowMenu>
+      {/* <OverflowMenu>
         <View style={themedStyle.iconMore}>
           <Ionicons name="md-more" size={32} color="gray" />
         </View>
-      </OverflowMenu>
+      </OverflowMenu> */}
     </PlateHeader>
   );
 };
 
-const FavoritesListHeader = withStyles(FavoritesListHeaderContainer, () => ({
+export const FavsListHeader = withStyles(FavsListHeaderContainer, () => ({
   iconMore: {
     display: 'flex',
     alignItems: 'center',
@@ -43,5 +43,3 @@ const FavoritesListHeader = withStyles(FavoritesListHeaderContainer, () => ({
     borderWidth: 2,
   },
 }));
-
-export default FavoritesListHeader;

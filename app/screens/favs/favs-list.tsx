@@ -2,12 +2,13 @@ import React, { useState, useCallback } from 'react';
 import { withStyles, Text } from '@ui-kitten/components';
 import { View, FlatList } from 'react-native';
 import Collapsible from 'react-native-collapsible';
-import FavoritesListHeader from './FavoritesListHeader';
-import FavoritesListHostItem from './FavoritesListHostItem';
-import { MAIN_BACKGROUND_COLOR } from '../constants/colors';
+import { FavsListHeader } from './favs-list-header';
+import { FavsListHostItem } from './favs-list-host-item';
 
-const FavoritesListContainer = ({
-  themedStyle,
+import { MAIN_BACKGROUND_COLOR } from '@app/constants/colors';
+
+const FavsListContainer = ({
+  eva: { style: themedStyle },
   title,
   items,
   withCat,
@@ -20,7 +21,7 @@ const FavoritesListContainer = ({
     ({ item: { data, id, Type } }) => {
       if (Type === 'host') {
         return (
-          <FavoritesListHostItem
+          <FavsListHostItem
             style={themedStyle.listItemStyle}
             item={{ ...data, id }}
             onPress={onItemPress}
@@ -38,7 +39,7 @@ const FavoritesListContainer = ({
     <View
       style={[themedStyle.container, opened && themedStyle.containerOpened]}
     >
-      <FavoritesListHeader
+      <FavsListHeader
         title={title}
         opened={opened}
         withCat={withCat}
@@ -64,7 +65,7 @@ const FavoritesListContainer = ({
 
 const LIST_MARGIN = 10;
 
-const FavoritesList = withStyles(FavoritesListContainer, () => ({
+export const FavsList = withStyles(FavsListContainer, () => ({
   container: {
     justifyContent: 'center',
     allignItems: 'center',
@@ -93,5 +94,3 @@ const FavoritesList = withStyles(FavoritesListContainer, () => ({
     transform: [{ translateX: -LIST_MARGIN }],
   },
 }));
-
-export default FavoritesList;

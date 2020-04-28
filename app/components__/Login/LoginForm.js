@@ -10,7 +10,7 @@ import { sendPhone, sendCode } from '../../redux/actions/loginActions';
 import ToledoButton from '../../components/ToledoButton';
 
 const LoginFormContainer = ({
-  themedStyle,
+  eva: { style: themedStyle },
   sendPhone,
   sendCode,
   onSuccess,

@@ -5,7 +5,7 @@ import { CHATBOT_SCENARIOS } from '../constants/chatbotScenarios';
 import { withStyles } from '@ui-kitten/components';
 
 const ChatControlsComponent = ({
-  themedStyle,
+  eva: { style: themedStyle },
   style,
   currentScenarioId,
   isWriting,

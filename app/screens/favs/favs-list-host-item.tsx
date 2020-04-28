@@ -7,21 +7,21 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { withStyles, Text } from '@ui-kitten/components';
-import OverflowMenu from './OverflowMenu';
+import { OverflowMenu } from '@app/components/overflow-menu';
 import {
   CardItemLandmark,
   CardItemNumberOfRooms,
   CardItemHostAvatar,
-} from '../components/Card';
+} from '@app/components/card';
 
 import { Ionicons } from '@expo/vector-icons';
 
-const FavoritesListHostItemContainer = ({
+const FavsListHostItemContainer = ({
   item,
   style,
   onPress,
   onDelete,
-  themedStyle,
+  eva: { style: themedStyle },
 }) => {
   const {
     id,
@@ -85,7 +85,7 @@ const FavoritesListHostItemContainer = ({
         </View>
 
         <View style={themedStyle.listItemActions}>
-          <OverflowMenu
+          {/* <OverflowMenu
             items={menuItems}
             menuContainerStyle={themedStyle.menuStyle}
             onItemPress={handleMenuItemPress}
@@ -93,58 +93,53 @@ const FavoritesListHostItemContainer = ({
             <View style={themedStyle.iconMore}>
               <Ionicons name="md-more" size={32} color="gray" />
             </View>
-          </OverflowMenu>
+          </OverflowMenu> */}
         </View>
       </View>
     </View>
   );
 };
 
-const FavoritesListHostItem = withStyles(
-  FavoritesListHostItemContainer,
-  () => ({
-    listItemContainer: {
-      flex: 1,
-      paddingHorizontal: 10,
-      paddingVertical: 10,
-      marginBottom: 10,
-      backgroundColor: '#fff',
-      minWidth: Dimensions.get('window').width,
-    },
-    listItemInfo: {
-      flex: 1,
-      flexDirection: 'row',
-      flexWrap: 'nowrap',
-    },
-    listItemInfoBlock: {
-      padding: 5,
-      flex: 1,
-      minWidth: Dimensions.get('window').width / 3,
-    },
-    listItemBottomBlock: {
-      flex: 1,
-      flexDirection: 'row',
-      flexWrap: 'nowrap',
-    },
-    listItemBottomTextBlock: {
-      flex: 3,
-      paddingHorizontal: 5,
-      paddingVertical: 10,
-    },
-    listItemActions: {
-      marginLeft: 10,
-      minWidth: 15,
-      paddingVertical: 5,
-    },
-    menuStyle: {
-      //position: 'relative',
-    },
-    iconMore: {
-      display: 'flex',
-      alignItems: 'center',
-      width: 40,
-    },
-  }),
-);
-
-export default FavoritesListHostItem;
+export const FavsListHostItem = withStyles(FavsListHostItemContainer, () => ({
+  listItemContainer: {
+    flex: 1,
+    paddingHorizontal: 10,
+    paddingVertical: 10,
+    marginBottom: 10,
+    backgroundColor: '#fff',
+    minWidth: Dimensions.get('window').width,
+  },
+  listItemInfo: {
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'nowrap',
+  },
+  listItemInfoBlock: {
+    padding: 5,
+    flex: 1,
+    minWidth: Dimensions.get('window').width / 3,
+  },
+  listItemBottomBlock: {
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'nowrap',
+  },
+  listItemBottomTextBlock: {
+    flex: 3,
+    paddingHorizontal: 5,
+    paddingVertical: 10,
+  },
+  listItemActions: {
+    marginLeft: 10,
+    minWidth: 15,
+    paddingVertical: 5,
+  },
+  menuStyle: {
+    //position: 'relative',
+  },
+  iconMore: {
+    display: 'flex',
+    alignItems: 'center',
+    width: 40,
+  },
+}));

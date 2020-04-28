@@ -5,9 +5,6 @@ import { DeckWithControllsContainer } from '../components/deck-with-controlls-co
 // import MatchPopup from '../components/MatchPopup';
 
 export const Serp = ({ navigation }) => {
-  console.log('HEELLOO');
-  console.log(navigation);
-
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -35,7 +32,6 @@ export const Serp = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'red',
   },
   background: {
     display: 'flex',

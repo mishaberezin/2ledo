@@ -1,16 +1,16 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { View } from 'react-native';
+import { SchemaHostCardPreview } from './settings/schema-host-card-preview';
+import { SchemaTenantCardPreview } from './settings/schema-tenant-card-preview';
 
 import { MAIN_BRIGHT } from '@app/constants/colors';
 
-import { SchemaHostCardPreview } from '../components/Schemas/SchemaHostCardPreview';
-import { SchemaTenantCardPreview } from '../components/Schemas/SchemaTenantCardPreview';
-
-function SettingsCardPreviewScreenUnconnected(props) {
-  const { card, user } = props;
-  const { type, data: cardData } = card;
-  const { data: userData } = user;
+export function SettingsPreview(props) {
+  const { type, data: cardData } = useSelector(
+    (state) => state.cards[state.localState.currentCardId],
+  );
+  const { data: userData } = useSelector((state) => state.user);
 
   let SchemaComponent;
   if (type === 'tenant') {
@@ -48,16 +48,3 @@ function SettingsCardPreviewScreenUnconnected(props) {
     </View>
   );
 }
-
-const mapStateToProps = (state) => {
-  const { localState } = state;
-
-  return {
-    user: state.user,
-    card: state.cards[localState.currentCardId],
-  };
-};
-
-export const SettingsCardPreviewScreen = connect(mapStateToProps)(
-  SettingsCardPreviewScreenUnconnected,
-);

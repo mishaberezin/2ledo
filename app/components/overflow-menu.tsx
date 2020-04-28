@@ -1,6 +1,9 @@
 import React, { useState, useCallback } from 'react';
 import { View } from 'react-native';
-import { OverflowMenu, withStyles } from '@ui-kitten/components';
+import {
+  OverflowMenu as UIKittenOverflowMenu,
+  withStyles,
+} from '@ui-kitten/components';
 import { TouchableOpacity } from 'react-native';
 
 const OverflowMenuContainer = ({
@@ -8,7 +11,7 @@ const OverflowMenuContainer = ({
   onItemPress,
   menuContainerStyle,
   children,
-  themedStyle,
+  eva: { style: themedStyle },
 }) => {
   const [menuVisible, setMenuVisible] = useState(false);
   // todo подумать нужно ли это вообще
@@ -28,7 +31,7 @@ const OverflowMenuContainer = ({
 
   return (
     <View style={[themedStyle.container, menuContainerStyle]}>
-      <OverflowMenu
+      <UIKittenOverflowMenu
         data={items}
         visible={menuVisible}
         selectedIndex={selectedIndex}
@@ -38,12 +41,12 @@ const OverflowMenuContainer = ({
         <TouchableOpacity onPress={toggleMenu} style={themedStyle.toggler}>
           {children}
         </TouchableOpacity>
-      </OverflowMenu>
+      </UIKittenOverflowMenu>
     </View>
   );
 };
 
-export default withStyles(OverflowMenuContainer, () => ({
+export const OverflowMenu = withStyles(OverflowMenuContainer, () => ({
   container: {
     display: 'flex',
     flexDirection: 'row',

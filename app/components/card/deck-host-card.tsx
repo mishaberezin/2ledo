@@ -8,7 +8,7 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import { withStyles } from '@ui-kitten/components';
 
-import { DARK_VIOLET_COLOR } from '../../constants/colors';
+import { DARK_VIOLET_COLOR } from '@app/constants/colors';
 
 import { CardHostShortInfo } from './card-host-short-info';
 import { CardHostDescriptionInfo } from './card-host-description-info';

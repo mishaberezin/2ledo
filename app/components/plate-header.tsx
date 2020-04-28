@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { withStyles, Text } from '@ui-kitten/components';
 import { View, TouchableWithoutFeedback } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import SvgCat from './SvgCat';
+import { SvgCat } from './svg-cat';
 
 const PlateHeaderContainer = ({
   opened,
@@ -13,7 +13,7 @@ const PlateHeaderContainer = ({
   headerContainerStyle,
   headerContainerOpenedStyle,
   catContainerStyle,
-  themedStyle,
+  eva: { style: themedStyle },
 }) => {
   const handleToggle = useCallback(() => onTogglePress(), [onTogglePress]);
   const controls = Array.isArray(children) ? children : [children];
@@ -55,7 +55,7 @@ const PlateHeaderContainer = ({
   );
 };
 
-const PlateHeader = withStyles(PlateHeaderContainer, () => ({
+export const PlateHeader = withStyles(PlateHeaderContainer, () => ({
   headerContainer: {
     flexDirection: 'row',
   },
@@ -88,5 +88,3 @@ const PlateHeader = withStyles(PlateHeaderContainer, () => ({
     display: 'none',
   },
 }));
-
-export default PlateHeader;

@@ -5,7 +5,11 @@ import { List, withStyles } from '@ui-kitten/components';
 import ChatMessage from './ChatMessage';
 import ChatControls from './ChatControls';
 
-const ConversationContainer = ({ themedStyle, messages, navigate }) => {
+const ConversationContainer = ({
+  eva: { style: themedStyle },
+  messages,
+  navigate,
+}) => {
   const renderMessage = useCallback(
     (info) => {
       return (
