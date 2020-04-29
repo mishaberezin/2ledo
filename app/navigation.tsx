@@ -2,14 +2,9 @@ import React, { Fragment } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
-// import { createAppContainer, createSwitchNavigator } from 'react-navigation';
-// import { createStackNavigator } from 'react-navigation-stack';
-
 import { MatchIndicatorButton } from './components/match-indicator-button';
-// import ChatScreen from './screens/ChatScreen';
-// import { LoginScreen } from './screens/login';
 
+// import { Login } from './screens/login';
 import { Serp } from './screens/serp';
 import { SettingsCard } from './screens/settings-card';
 import { SettingsTune } from './screens/settings-tune';
@@ -177,36 +172,3 @@ export const Navigation = () => (
     <MainStackScreen />
   </NavigationContainer>
 );
-
-// ChatScreen.navigationOptions = {
-//   title: '🤖',
-// };
-
-// FavoritesStack.navigationOptions = ({ navigation }) => ({
-//   headerLeft: (
-//     <Button
-//       buttonStyle={{
-//         height: 56,
-//         justifyContent: 'space-between',
-//       }}
-//       type="clear"
-//       icon={{ type: 'ionicon', name: 'ios-arrow-back' }}
-//       onPress={() => navigation.navigate('Serp')}
-//     />
-//   ),
-//   headerRight: null,
-// });
-
-// export const Navigation = createAppContainer(
-//   createSwitchNavigator(
-//     {
-//       Init: InitScreen,
-//       Main: MainStack,
-//       Login: LoginScreen,
-//       Chat: ChatScreen,
-//     },
-//     {
-//       initialRouteName: 'Init',
-//     },
-//   ),
-// );

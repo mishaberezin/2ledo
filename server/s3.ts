@@ -1,5 +1,5 @@
 // Хранилище картинок 😂
-import { images } from '@toledo/assets';
+import { images } from '@app/assets';
 
 export const imageFiles = [
   { source: images.faceImage },
@@ -7,5 +7,5 @@ export const imageFiles = [
 ];
 
 export function getImageById(id) {
-  return imageFiles.find(item => item.id === id);
+  return imageFiles.find((item) => item.id === id);
 }

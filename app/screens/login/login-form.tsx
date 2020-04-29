@@ -1,20 +1,22 @@
 import React, { useState, useCallback } from 'react';
 import { View } from 'react-native';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { useDispatch } from 'react-redux';
 import { Text, withStyles, Input, Spinner } from '@ui-kitten/components';
 
-import { MAIN_BACKGROUND_COLOR } from '@app/constants/colors';
-import { SCREEN_WIDTH } from '../../constants/device';
-import { sendPhone, sendCode } from '../../redux/actions/loginActions';
-import ToledoButton from '../../components/ToledoButton';
+import { sendPhone, sendCode } from '@app/redux/actions/login-actions';
+import { ToledoButton } from '@app/components/toledo-button';
 
-const LoginFormContainer = ({
-  eva: { style: themedStyle },
-  sendPhone,
-  sendCode,
-  onSuccess,
-}) => {
+import { MAIN_BACKGROUND_COLOR } from '@app/constants/colors';
+import { SCREEN_WIDTH } from '@app/constants/device';
+
+const LoginFormContainer = (props) => {
+  const {
+    onSuccess,
+    eva: { style },
+  } = props;
+
+  const dispatch = useDispatch();
+
   const [loading, setLoading] = useState(false);
   const [buttonDisabled, setButtonDisabled] = useState(true);
   const [step, setStep] = useState('phone');
@@ -32,54 +34,52 @@ const LoginFormContainer = ({
   }, []);
 
   const handleCodeInput = useCallback(
-    (value) => {
+    async (value) => {
       if (/^[0-9]{1,4}$/.test(value)) {
         setCode(value);
       }
       if (value.length >= 4) {
         setLoading(true);
-        sendCode(code, codeHash).then(({ token }) => {
-          onSuccess(token);
-        });
+        const { token } = await dispatch(sendCode(code, codeHash));
+        onSuccess(token);
       }
     },
     [code, codeHash, onSuccess, sendCode],
   );
 
-  const handleButtonPress = useCallback(() => {
+  const handleButtonPress = useCallback(async () => {
     setLoading(true);
-    sendPhone(phone).then((hash) => {
-      setHash(hash);
-      setStep('code');
-      setButtonDisabled(true);
-      setLoading(false);
-    });
+    const hash = await dispatch(sendPhone(phone));
+    setHash(hash);
+    setStep('code');
+    setButtonDisabled(true);
+    setLoading(false);
   }, [sendPhone, phone]);
 
   if (loading) {
     return (
-      <View style={themedStyle.container}>
+      <View style={style.container}>
         <Spinner size="giant" />
       </View>
     );
   }
 
   return (
-    <View style={themedStyle.container}>
+    <View style={style.container}>
       <Text category="h3">Регистрация</Text>
       {step === 'phone' && (
         <React.Fragment>
-          <View style={themedStyle.inputRow}>
-            <Text style={themedStyle.phoneInputLabel}>+7</Text>
+          <View style={style.inputRow}>
+            <Text style={style.phoneInputLabel}>+7</Text>
             <Input
-              style={[themedStyle.input, themedStyle.phoneInput]}
-              textStyle={themedStyle.phoneInputText}
+              style={[style.input, style.phoneInput]}
+              textStyle={style.phoneInputText}
               value={phone}
               autoFocus
               onChangeText={handlePhoneInput}
             />
           </View>
-          <View style={themedStyle.submitButtonRow}>
+          <View style={style.submitButtonRow}>
             <ToledoButton disabled={buttonDisabled} onPress={handleButtonPress}>
               Отправить
             </ToledoButton>
@@ -87,11 +87,11 @@ const LoginFormContainer = ({
         </React.Fragment>
       )}
       {step === 'code' && (
-        <View style={themedStyle.inputRow}>
-          <Text style={themedStyle.codeInputLabel}>Код:</Text>
+        <View style={style.inputRow}>
+          <Text style={style.codeInputLabel}>Код:</Text>
           <Input
-            style={[themedStyle.input, themedStyle.codeInput]}
-            textStyle={themedStyle.codeInputText}
+            style={[style.input, style.codeInput]}
+            textStyle={style.codeInputText}
             value={code}
             autoFocus
             onChangeText={handleCodeInput}
@@ -102,7 +102,7 @@ const LoginFormContainer = ({
   );
 };
 
-const LoginForm = withStyles(LoginFormContainer, () => ({
+export const LoginForm = withStyles(LoginFormContainer, () => ({
   container: {
     minHeight: 200,
     width: SCREEN_WIDTH * 0.8,
@@ -153,14 +153,3 @@ const LoginForm = withStyles(LoginFormContainer, () => ({
     paddingHorizontal: 20,
   },
 }));
-
-const mapDispatchToProps = (dispatch) =>
-  bindActionCreators(
-    {
-      sendPhone,
-      sendCode,
-    },
-    dispatch,
-  );
-
-export default connect(null, mapDispatchToProps)(LoginForm);

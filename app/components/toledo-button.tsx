@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { withStyles, Button } from '@ui-kitten/components';
 
-import { DARK_VIOLET_COLOR } from '../constants/colors';
+import { DARK_VIOLET_COLOR } from '@app/constants/colors';
 
 export const ToledoButton = withStyles(
   ({ onPress, disabled, children, eva: { style: themedStyle } }) => {
