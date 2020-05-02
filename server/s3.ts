@@ -1,5 +1,5 @@
 // Хранилище картинок 😂
-import { images } from '@app/assets';
+import { images } from '@src/assets';
 
 export const imageFiles = [
   { source: images.faceImage },

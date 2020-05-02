@@ -7,8 +7,7 @@ module.exports = function (api) {
         'module-resolver',
         {
           alias: {
-            '@app': './app',
-            '@arenda': './app',
+            '@src': './src',
           },
         },
       ],

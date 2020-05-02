@@ -2,14 +2,14 @@
   "expo": {
     "name": "arenda",
     "slug": "arenda",
+    "version": "1.0.0",
     "description": "Renting App for Better World",
     "platforms": ["ios"],
-    "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./app/assets/icon.png",
+    "icon": "./src/assets/icon.png",
     "splash": {
-      "image": "./app/assets/splash.png",
-      "resizeMode": "contain",
+      "image": "./src/assets/splash.png",
+      "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
     "updates": {
