@@ -1,31 +1,19 @@
-type AuthReducerActionType = 'SIGN_IN' | 'SIGN_OUT' | 'RESTORE_TOKEN';
-type AuthReducerAction = {
-  type: AuthReducerActionType;
-};
+export enum AuthStatus {
+  PENDING,
+  AUTHORIZED,
+  NOT_AUTHORIZED,
+}
 
 const INITIAL_STATE = {
-  token: null,
-  isLoading: true,
-  isSignout: false,
+  isAuthorized: AuthStatus.PENDING,
 };
 
-export const authReducer = (
-  state = INITIAL_STATE,
-  action: AuthReducerAction,
-) => {
+export const authReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case 'SIGN_IN': {
+    case 'SET_AUTH_STATUS': {
       return {
         ...state,
-        isLoading: false,
-        token: action.payload.token,
-      };
-    }
-    case 'SIGN_OUT': {
-      return {
-        ...state,
-        isLoading: false,
-        token: null,
+        status: action.payload,
       };
     }
     default:

@@ -4,7 +4,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { DeckWithControllsContainer } from '../components/deck-with-controlls-container';
 // import MatchPopup from '../components/MatchPopup';
 
-export const Serp = ({ navigation }) => {
+export const SerpScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <ImageBackground

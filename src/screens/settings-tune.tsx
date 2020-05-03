@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setCurrentCardId } from '@src/redux/actions/local-state-actions';
-import { unsetUserToken } from '@src/redux/actions/login-actions';
+import { logOut } from '@src/redux/actions/auth-actions';
 import { View } from 'react-native';
 import { ButtonGroup, Button } from 'react-native-elements';
 
@@ -17,10 +17,7 @@ export function SettingsTune(props) {
   const items = Object.keys(cards).map((id) => ({ type: cards[id].type, id }));
 
   const handleExitButtonPress = useCallback(() => {
-    (async () => {
-      await dispatch(unsetUserToken());
-      navigation.navigate('Init');
-    })();
+    dispatch(logOut());
   }, [navigation]);
 
   return (

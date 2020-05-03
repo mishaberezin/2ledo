@@ -6,7 +6,7 @@ import { setUserToken } from '@src/redux/actions/login-actions';
 
 import { SCREEN_WIDTH } from '@src/constants/device';
 
-export const Login = (props) => {
+export const LoginScreen = (props) => {
   const dispatch = useDispatch();
 
   const handleSuccess = async (token) => {

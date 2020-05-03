@@ -1,22 +1,17 @@
-import { AsyncStorage } from 'react-native';
+import { isAuthorized, removeToken } from '@src/api/token-storage';
+import { AuthStatus } from '../reducers/auth-reducer';
 
 export const restoreAuth = () => async (dispatch) => {
-  try {
-    const token = await AsyncStorage.getItem('token');
+  const isTokenExists = await isAuthorized();
 
-    if (token) {
-      dispatch({
-        type: 'SIGN_IN',
-        payload: {
-          token,
-        },
-      });
-    } else {
-      dispatch({
-        type: 'SIGN_OUT',
-      });
-    }
-  } catch (e) {
-    // error reading value
+  if (isTokenExists) {
+    dispatch({ type: 'SET_AUTH_STATUS', payload: AuthStatus.AUTHORIZED });
+  } else {
+    dispatch({ type: 'SET_AUTH_STATUS', payload: AuthStatus.NOT_AUTHORIZED });
   }
+};
+
+export const logOut = () => async (dispatch) => {
+  await removeToken();
+  dispatch({ type: 'SET_AUTH_STATUS', payload: AuthStatus.NOT_AUTHORIZED });
 };

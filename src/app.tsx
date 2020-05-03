@@ -5,7 +5,9 @@ import * as eva from '@eva-design/eva';
 import { ApplicationProvider } from '@ui-kitten/components';
 import { ThemeProvider } from 'react-native-elements';
 import { reduxStore } from './redux/store';
-import { warmUp } from './redux/actions/app-actions';
+import { setAppLoading, loadPrimeAssets } from './redux/actions/app-actions';
+import { restoreAuth } from './redux/actions/auth-actions';
+import { startMatchPolling } from './redux/actions/local-state-actions';
 import { Navigation } from '@src/navigation';
 
 if (__DEV__) {
@@ -16,7 +18,13 @@ if (__DEV__) {
 
 export default registerRootComponent(() => {
   useEffect(() => {
-    reduxStore.dispatch(warmUp());
+    Promise.all([
+      reduxStore.dispatch(loadPrimeAssets()),
+      reduxStore.dispatch(restoreAuth()),
+    ]).then(() => {
+      reduxStore.dispatch(setAppLoading(false));
+      reduxStore.dispatch(startMatchPolling());
+    });
   }, []);
 
   return (
