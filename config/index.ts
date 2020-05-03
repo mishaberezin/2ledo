@@ -1,4 +1,15 @@
+// Вся-вся конфигурация приложения.
+// В будущем сюда нужно добавить внешнюю конфигурацию (.env)
+
 export const config = {
+  demoUsers: {
+    landlord: {
+      phone: '8881234567',
+    },
+    tenant: {
+      phone: '3331234567',
+    },
+  },
   primeAssets: {
     fonts: {
       'space-mono': require('@src/assets/fonts/space-mono.ttf'),

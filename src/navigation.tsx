@@ -1,25 +1,26 @@
 import React, { Fragment } from 'react';
 import { useSelector } from 'react-redux';
-
-import { AuthStatus } from './redux/reducers/auth-reducer';
-
 import { AppLoading } from 'expo';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { MatchIndicatorButton } from './components/match-indicator-button';
 
-import { LoginScreen } from './screens/login';
-import { SerpScreen } from './screens/serp';
-import { SettingsCard } from './screens/settings-card';
-import { SettingsTune } from './screens/settings-tune';
-import { SettingsUser } from './screens/settings-user';
-import { SettingsPreview } from './screens/settings-card-preview';
-import { FavsScreen } from './screens/favs';
-import { Card } from './screens/card';
+import {
+  LoginScreen,
+  SerpScreen,
+  SettingsCard,
+  SettingsTune,
+  SettingsUser,
+  SettingsPreview,
+  FavsScreen,
+  Card,
+} from '@src/features';
+
 import { Text } from 'react-native';
 import { Button } from 'react-native-elements';
-import { NavHeader } from './components/nav-header';
+import { NavHeader, MatchIndicatorButton } from './components';
+
+import { AuthStatus } from './redux/reducers/auth-reducer';
 
 const SerpStack = createStackNavigator();
 const SerpStackScreen = () => (

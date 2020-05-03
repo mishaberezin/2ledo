@@ -6,7 +6,7 @@ const getToken = async () => {
   return await AsyncStorage.getItem('token');
 };
 
-const storeToken = async (token) => {
+export const storeToken = async (token) => {
   await AsyncStorage.setItem('token', token);
 };
 

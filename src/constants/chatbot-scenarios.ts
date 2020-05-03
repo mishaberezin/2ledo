@@ -1,3 +1,9 @@
+// ЗДЕСЬ НИЧЕГО НЕ РАБОТАЕТ
+// ЗДЕСЬ НИЧЕГО НЕ РАБОТАЕТ
+// ЗДЕСЬ НИЧЕГО НЕ РАБОТАЕТ
+// ЗДЕСЬ НИЧЕГО НЕ РАБОТАЕТ
+// ЗДЕСЬ НИЧЕГО НЕ РАБОТАЕТ
+
 import React from 'react';
 import { Button } from 'react-native-elements';
 import store from '../redux/store';
@@ -10,7 +16,7 @@ import {
   sendPhone,
   sendCode,
   setUserToken,
-} from '../redux/actions/loginActions';
+} from '../redux/actions/login-actions';
 
 const SELLER_SCENARIOS = {
   'SELLER-1': {
@@ -18,7 +24,7 @@ const SELLER_SCENARIOS = {
     text:
       'Добавьте фотографии квартиры. Не скромничайте, чем больше фотографий, тем лучше',
     controls: [
-      props => {
+      (props) => {
         return (
           <Button
             onPress={() => {
@@ -26,7 +32,7 @@ const SELLER_SCENARIOS = {
               store.dispatch(
                 addChatbotUserMessageAction({
                   text: 'Добавить',
-                })
+                }),
               );
               store.dispatch(changeChatbotCurrentScenarioIdAction('SELLER-2'));
             }}
@@ -41,7 +47,7 @@ const SELLER_SCENARIOS = {
     id: 'SELLER-2',
     text: 'Сколько в квартире изолированных комнат?',
     controls: [
-      props => {
+      (props) => {
         return (
           <Button
             onPress={() => {
@@ -49,7 +55,7 @@ const SELLER_SCENARIOS = {
               store.dispatch(
                 addChatbotUserMessageAction({
                   text: 'Студия',
-                })
+                }),
               );
               store.dispatch(changeChatbotCurrentScenarioIdAction('SELLER-3'));
             }}
@@ -58,7 +64,7 @@ const SELLER_SCENARIOS = {
           ></Button>
         );
       },
-      props => {
+      (props) => {
         return (
           <Button
             onPress={() => {
@@ -66,7 +72,7 @@ const SELLER_SCENARIOS = {
               store.dispatch(
                 addChatbotUserMessageAction({
                   text: '1 комната',
-                })
+                }),
               );
               store.dispatch(changeChatbotCurrentScenarioIdAction('SELLER-3'));
             }}
@@ -75,7 +81,7 @@ const SELLER_SCENARIOS = {
           ></Button>
         );
       },
-      props => {
+      (props) => {
         return (
           <Button
             onPress={() => {
@@ -83,7 +89,7 @@ const SELLER_SCENARIOS = {
               store.dispatch(
                 addChatbotUserMessageAction({
                   text: '2 комнаты',
-                })
+                }),
               );
               store.dispatch(changeChatbotCurrentScenarioIdAction('SELLER-3'));
             }}
@@ -98,7 +104,7 @@ const SELLER_SCENARIOS = {
     id: 'SELLER-3',
     text: 'Максимальное количество человек',
     controls: [
-      props => {
+      (props) => {
         return (
           <Button
             onPress={() => {
@@ -106,7 +112,7 @@ const SELLER_SCENARIOS = {
               store.dispatch(
                 addChatbotUserMessageAction({
                   text: 'Один',
-                })
+                }),
               );
               store.dispatch(changeChatbotCurrentScenarioIdAction('SELLER-4'));
             }}
@@ -115,7 +121,7 @@ const SELLER_SCENARIOS = {
           ></Button>
         );
       },
-      props => {
+      (props) => {
         return (
           <Button
             onPress={() => {
@@ -123,7 +129,7 @@ const SELLER_SCENARIOS = {
               store.dispatch(
                 addChatbotUserMessageAction({
                   text: 'Двое',
-                })
+                }),
               );
               store.dispatch(changeChatbotCurrentScenarioIdAction('SELLER-4'));
             }}
@@ -132,7 +138,7 @@ const SELLER_SCENARIOS = {
           ></Button>
         );
       },
-      props => {
+      (props) => {
         return (
           <Button
             onPress={() => {
@@ -140,7 +146,7 @@ const SELLER_SCENARIOS = {
               store.dispatch(
                 addChatbotUserMessageAction({
                   text: 'Трое',
-                })
+                }),
               );
               store.dispatch(changeChatbotCurrentScenarioIdAction('SELLER-4'));
             }}
@@ -155,7 +161,7 @@ const SELLER_SCENARIOS = {
     id: 'SELLER-4',
     text: 'Арендная плата',
     controls: [
-      props => {
+      (props) => {
         return (
           <Button
             onPress={() => {
@@ -163,7 +169,7 @@ const SELLER_SCENARIOS = {
               store.dispatch(
                 addChatbotUserMessageAction({
                   text: '50000',
-                })
+                }),
               );
               store.dispatch(changeChatbotCurrentScenarioIdAction('SELLER-5'));
             }}
@@ -178,7 +184,7 @@ const SELLER_SCENARIOS = {
     id: 'SELLER-5',
     text: 'Срок аренды',
     controls: [
-      props => {
+      (props) => {
         return (
           <Button
             onPress={() => {
@@ -186,7 +192,7 @@ const SELLER_SCENARIOS = {
               store.dispatch(
                 addChatbotUserMessageAction({
                   text: 'Больше года',
-                })
+                }),
               );
               store.dispatch(changeChatbotCurrentScenarioIdAction('SELLER-6'));
             }}
@@ -195,7 +201,7 @@ const SELLER_SCENARIOS = {
           ></Button>
         );
       },
-      props => {
+      (props) => {
         return (
           <Button
             onPress={() => {
@@ -203,7 +209,7 @@ const SELLER_SCENARIOS = {
               store.dispatch(
                 addChatbotUserMessageAction({
                   text: 'Несколько месяцев',
-                })
+                }),
               );
               store.dispatch(changeChatbotCurrentScenarioIdAction('SELLER-6'));
             }}
@@ -218,7 +224,7 @@ const SELLER_SCENARIOS = {
     id: 'SELLER-6',
     text: 'Координаты квартиры',
     controls: [
-      props => {
+      (props) => {
         return (
           <Button
             onPress={() => {
@@ -226,7 +232,7 @@ const SELLER_SCENARIOS = {
               store.dispatch(
                 addChatbotUserMessageAction({
                   text: 'Указать',
-                })
+                }),
               );
               store.dispatch(changeChatbotCurrentScenarioIdAction('SELLER-7'));
             }}
@@ -241,7 +247,7 @@ const SELLER_SCENARIOS = {
     id: 'SELLER-7',
     text: 'Адрес "Лесная, д. 7", правильно?',
     controls: [
-      props => {
+      (props) => {
         return (
           <Button
             onPress={() => {
@@ -249,7 +255,7 @@ const SELLER_SCENARIOS = {
               store.dispatch(
                 addChatbotUserMessageAction({
                   text: 'Правильно',
-                })
+                }),
               );
               store.dispatch(changeChatbotCurrentScenarioIdAction('SELLER-8'));
             }}
@@ -258,7 +264,7 @@ const SELLER_SCENARIOS = {
           ></Button>
         );
       },
-      props => {
+      (props) => {
         return (
           <Button
             onPress={() => {
@@ -266,10 +272,10 @@ const SELLER_SCENARIOS = {
               store.dispatch(
                 addChatbotUserMessageAction({
                   text: 'Неправильно, я сам укажу',
-                })
+                }),
               );
               store.dispatch(
-                changeChatbotCurrentScenarioIdAction('END_OF_SCENARIO')
+                changeChatbotCurrentScenarioIdAction('END_OF_SCENARIO'),
               );
             }}
             title="Неправильно, я сам укажу"
@@ -290,7 +296,7 @@ const BUYER_SCENARIOS = {
     id: 'BUYER-1',
     text: 'Добавьте свои фотографии. Можно одну, но лучше всего несколько)',
     controls: [
-      props => {
+      (props) => {
         return (
           <Button
             onPress={() => {
@@ -298,7 +304,7 @@ const BUYER_SCENARIOS = {
               store.dispatch(
                 addChatbotUserMessageAction({
                   text: 'Добавить',
-                })
+                }),
               );
               store.dispatch(changeChatbotCurrentScenarioIdAction('BUYER-2'));
             }}
@@ -313,7 +319,7 @@ const BUYER_SCENARIOS = {
     id: 'BUYER-2',
     text: 'Выберите минимальное количество комнат',
     controls: [
-      props => {
+      (props) => {
         return (
           <Button
             onPress={() => {
@@ -321,7 +327,7 @@ const BUYER_SCENARIOS = {
               store.dispatch(
                 addChatbotUserMessageAction({
                   text: 'Не важно',
-                })
+                }),
               );
               store.dispatch(changeChatbotCurrentScenarioIdAction('BUYER-3'));
             }}
@@ -330,7 +336,7 @@ const BUYER_SCENARIOS = {
           ></Button>
         );
       },
-      props => {
+      (props) => {
         return (
           <Button
             onPress={() => {
@@ -338,7 +344,7 @@ const BUYER_SCENARIOS = {
               store.dispatch(
                 addChatbotUserMessageAction({
                   text: 'Одна',
-                })
+                }),
               );
               store.dispatch(changeChatbotCurrentScenarioIdAction('BUYER-3'));
             }}
@@ -347,7 +353,7 @@ const BUYER_SCENARIOS = {
           ></Button>
         );
       },
-      props => {
+      (props) => {
         return (
           <Button
             onPress={() => {
@@ -355,7 +361,7 @@ const BUYER_SCENARIOS = {
               store.dispatch(
                 addChatbotUserMessageAction({
                   text: 'Две',
-                })
+                }),
               );
               store.dispatch(changeChatbotCurrentScenarioIdAction('BUYER-3'));
             }}
@@ -370,7 +376,7 @@ const BUYER_SCENARIOS = {
     id: 'BUYER-3',
     text: 'Сколько человек будет проживать?',
     controls: [
-      props => {
+      (props) => {
         return (
           <Button
             onPress={() => {
@@ -378,7 +384,7 @@ const BUYER_SCENARIOS = {
               store.dispatch(
                 addChatbotUserMessageAction({
                   text: 'Только я',
-                })
+                }),
               );
               store.dispatch(changeChatbotCurrentScenarioIdAction('BUYER-4'));
             }}
@@ -387,7 +393,7 @@ const BUYER_SCENARIOS = {
           ></Button>
         );
       },
-      props => {
+      (props) => {
         return (
           <Button
             onPress={() => {
@@ -395,7 +401,7 @@ const BUYER_SCENARIOS = {
               store.dispatch(
                 addChatbotUserMessageAction({
                   text: 'Двое',
-                })
+                }),
               );
               store.dispatch(changeChatbotCurrentScenarioIdAction('BUYER-4'));
             }}
@@ -404,7 +410,7 @@ const BUYER_SCENARIOS = {
           ></Button>
         );
       },
-      props => {
+      (props) => {
         return (
           <Button
             onPress={() => {
@@ -412,7 +418,7 @@ const BUYER_SCENARIOS = {
               store.dispatch(
                 addChatbotUserMessageAction({
                   text: 'Трое',
-                })
+                }),
               );
               store.dispatch(changeChatbotCurrentScenarioIdAction('BUYER-4'));
             }}
@@ -427,7 +433,7 @@ const BUYER_SCENARIOS = {
     id: 'BUYER-4',
     text: 'Оптимальная цена? Мы будем искать максимально близкие варианты.',
     controls: [
-      props => {
+      (props) => {
         return (
           <Button
             onPress={() => {
@@ -435,7 +441,7 @@ const BUYER_SCENARIOS = {
               store.dispatch(
                 addChatbotUserMessageAction({
                   text: '50000',
-                })
+                }),
               );
               store.dispatch(changeChatbotCurrentScenarioIdAction('BUYER-5'));
             }}
@@ -450,7 +456,7 @@ const BUYER_SCENARIOS = {
     id: 'BUYER-5',
     text: 'Срок аренды',
     controls: [
-      props => {
+      (props) => {
         return (
           <Button
             onPress={() => {
@@ -458,7 +464,7 @@ const BUYER_SCENARIOS = {
               store.dispatch(
                 addChatbotUserMessageAction({
                   text: 'Больше года',
-                })
+                }),
               );
               store.dispatch(changeChatbotCurrentScenarioIdAction('BUYER-6'));
             }}
@@ -467,7 +473,7 @@ const BUYER_SCENARIOS = {
           ></Button>
         );
       },
-      props => {
+      (props) => {
         return (
           <Button
             onPress={() => {
@@ -475,7 +481,7 @@ const BUYER_SCENARIOS = {
               store.dispatch(
                 addChatbotUserMessageAction({
                   text: 'Несколько месяцев',
-                })
+                }),
               );
               store.dispatch(changeChatbotCurrentScenarioIdAction('BUYER-6'));
             }}
@@ -490,7 +496,7 @@ const BUYER_SCENARIOS = {
     id: 'BUYER-6',
     text: 'В районе какой станции метро будем искать?',
     controls: [
-      props => {
+      (props) => {
         return (
           <Button
             onPress={() => {
@@ -498,7 +504,7 @@ const BUYER_SCENARIOS = {
               store.dispatch(
                 addChatbotUserMessageAction({
                   text: 'Белорусская',
-                })
+                }),
               );
               store.dispatch(changeChatbotCurrentScenarioIdAction('BUYER-7'));
             }}
@@ -522,17 +528,17 @@ const FIRST_TIME_SORRY_SCENARIOS = {
     id: 'FIRST_TIME_SORRY-1',
     text: 'Простите, мои друзья разработчики еще не сделали регистрацию.',
     controls: [
-      props => {
+      (props) => {
         return (
           <Button
             onPress={() => {
               store.dispatch(
                 addChatbotUserMessageAction({
                   text: 'Хорошо',
-                })
+                }),
               );
               store.dispatch(
-                changeChatbotCurrentScenarioIdAction('ENTRANCE-4')
+                changeChatbotCurrentScenarioIdAction('ENTRANCE-4'),
               );
             }}
             title="Хорошо, побуду Петей"
@@ -549,7 +555,7 @@ const FIRST_TIME_SCENARIOS = {
     id: 'FIRST_TIME-1',
     text: 'Введите свой номер телефона',
     controls: [
-      props => {
+      (props) => {
         return (
           <Button
             onPress={() => {
@@ -557,10 +563,10 @@ const FIRST_TIME_SCENARIOS = {
               store.dispatch(
                 addChatbotUserMessageAction({
                   text: '+7(926)222-33-88',
-                })
+                }),
               );
               store.dispatch(
-                changeChatbotCurrentScenarioIdAction('FIRST_TIME-2')
+                changeChatbotCurrentScenarioIdAction('FIRST_TIME-2'),
               );
               store.dispatch(sendPhone('+7(926)222-33-88'));
             }}
@@ -580,7 +586,7 @@ const FIRST_TIME_SCENARIOS = {
     id: 'FIRST_TIME-3',
     text: 'На нее нужно нажать',
     controls: [
-      props => {
+      (props) => {
         return (
           <Button
             onPress={() => {
@@ -588,10 +594,10 @@ const FIRST_TIME_SCENARIOS = {
               store.dispatch(
                 addChatbotUserMessageAction({
                   text: 'Готово',
-                })
+                }),
               );
               store.dispatch(
-                changeChatbotCurrentScenarioIdAction('FIRST_TIME-4')
+                changeChatbotCurrentScenarioIdAction('FIRST_TIME-4'),
               );
               store.dispatch(sendCode('7766'));
               store.dispatch(setUserToken('token'));
@@ -613,17 +619,17 @@ const FIRST_TIME_SCENARIOS = {
     text:
       'У нас все немного иначе чем обычно бывает. Вы ищите квартиру, и одновременно хозяин квартиры ищет вас. Чтобы показать вам результаты поиска нам нужно узнать что вы ищите и кто вы сами. Готовы?',
     controls: [
-      props => {
+      (props) => {
         return (
           <Button
             onPress={() => {
               store.dispatch(
                 addChatbotUserMessageAction({
                   text: 'Спрашивай',
-                })
+                }),
               );
               store.dispatch(
-                changeChatbotCurrentScenarioIdAction('FIRST_TIME-6')
+                changeChatbotCurrentScenarioIdAction('FIRST_TIME-6'),
               );
             }}
             title="Спрашивай"
@@ -637,7 +643,7 @@ const FIRST_TIME_SCENARIOS = {
     id: 'FIRST_TIME-6',
     text: 'Как вас зовут?',
     controls: [
-      props => {
+      (props) => {
         return (
           <Button
             onPress={() => {
@@ -645,10 +651,10 @@ const FIRST_TIME_SCENARIOS = {
               store.dispatch(
                 addChatbotUserMessageAction({
                   text: 'Миша',
-                })
+                }),
               );
               store.dispatch(
-                changeChatbotCurrentScenarioIdAction('FIRST_TIME-7')
+                changeChatbotCurrentScenarioIdAction('FIRST_TIME-7'),
               );
             }}
             title="Миша"
@@ -662,7 +668,7 @@ const FIRST_TIME_SCENARIOS = {
     id: 'FIRST_TIME-7',
     text: 'Сколько вам лет?',
     controls: [
-      props => {
+      (props) => {
         return (
           <Button
             onPress={() => {
@@ -670,10 +676,10 @@ const FIRST_TIME_SCENARIOS = {
               store.dispatch(
                 addChatbotUserMessageAction({
                   text: '31',
-                })
+                }),
               );
               store.dispatch(
-                changeChatbotCurrentScenarioIdAction('FIRST_TIME-8')
+                changeChatbotCurrentScenarioIdAction('FIRST_TIME-8'),
               );
             }}
             title="31"
@@ -687,14 +693,14 @@ const FIRST_TIME_SCENARIOS = {
     id: 'FIRST_TIME-8',
     text: 'Вы снимаете или сдаете?',
     controls: [
-      props => {
+      (props) => {
         return (
           <Button
             onPress={() => {
               store.dispatch(
                 addChatbotUserMessageAction({
                   text: 'Снимаю',
-                })
+                }),
               );
               store.dispatch(changeChatbotCurrentScenarioIdAction('BUYER-1'));
             }}
@@ -703,14 +709,14 @@ const FIRST_TIME_SCENARIOS = {
           ></Button>
         );
       },
-      props => {
+      (props) => {
         return (
           <Button
             onPress={() => {
               store.dispatch(
                 addChatbotUserMessageAction({
                   text: 'Сдаю',
-                })
+                }),
               );
               store.dispatch(changeChatbotCurrentScenarioIdAction('SELLER-1'));
             }}
@@ -738,17 +744,17 @@ const ENTRANCE_SCENARIOS = {
     id: 'ENTRANCE-3',
     text: 'Вы у нас первый раз?',
     controls: [
-      props => {
+      (props) => {
         return (
           <Button
             onPress={() => {
               store.dispatch(
                 addChatbotUserMessageAction({
                   text: 'Да, покажи мне тут все',
-                })
+                }),
               );
               store.dispatch(
-                changeChatbotCurrentScenarioIdAction('FIRST_TIME_SORRY-1')
+                changeChatbotCurrentScenarioIdAction('FIRST_TIME_SORRY-1'),
               );
             }}
             title="Да, покажи мне тут все"
@@ -756,17 +762,17 @@ const ENTRANCE_SCENARIOS = {
           ></Button>
         );
       },
-      props => {
+      (props) => {
         return (
           <Button
             onPress={() => {
               store.dispatch(
                 addChatbotUserMessageAction({
                   text: 'Нет, авторизуй меня',
-                })
+                }),
               );
               store.dispatch(
-                changeChatbotCurrentScenarioIdAction('ENTRANCE-4')
+                changeChatbotCurrentScenarioIdAction('ENTRANCE-4'),
               );
             }}
             title="Нет, авторизуй меня"
@@ -780,18 +786,18 @@ const ENTRANCE_SCENARIOS = {
     id: 'ENTRANCE-4',
     text: 'Выберите пользователя',
     controls: [
-      props => {
+      (props) => {
         return (
           <Button
             onPress={() => {
               store.dispatch(
                 addChatbotUserMessageAction({
                   text: 'Петя',
-                })
+                }),
               );
               store.dispatch(setUserToken('1'));
               store.dispatch(
-                changeChatbotCurrentScenarioIdAction('AUTH_SUCCESS-1')
+                changeChatbotCurrentScenarioIdAction('AUTH_SUCCESS-1'),
               );
             }}
             title="Петя"
@@ -799,18 +805,18 @@ const ENTRANCE_SCENARIOS = {
           ></Button>
         );
       },
-      props => {
+      (props) => {
         return (
           <Button
             onPress={() => {
               store.dispatch(
                 addChatbotUserMessageAction({
                   text: 'Лена',
-                })
+                }),
               );
               store.dispatch(setUserToken('2'));
               store.dispatch(
-                changeChatbotCurrentScenarioIdAction('AUTH_SUCCESS-1')
+                changeChatbotCurrentScenarioIdAction('AUTH_SUCCESS-1'),
               );
             }}
             title="Лена"
@@ -827,7 +833,7 @@ const AUTH_SUCCESS_SCENARIOS = {
     id: 'AUTH_SUCCESS-1',
     text: 'Отлично! Я уже нашел подходящие варианты.',
     controls: [
-      props => {
+      (props) => {
         return (
           <Button
             onPress={() => {

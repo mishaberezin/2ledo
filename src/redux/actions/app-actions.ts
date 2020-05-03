@@ -1,4 +1,4 @@
-import { config } from '@src/config';
+import { config } from '@app/config';
 import { Asset } from 'expo-asset';
 import * as Font from 'expo-font';
 
