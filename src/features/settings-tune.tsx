@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setCurrentCardId } from '@src/redux/actions/local-state-actions';
+import { setCurrentCardId } from '@src/redux/slices';
 import { logOut } from '@src/redux/slices';
 import { View } from 'react-native';
 import { ButtonGroup, Button } from 'react-native-elements';

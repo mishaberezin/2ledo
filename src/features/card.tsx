@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { View, StyleSheet } from 'react-native';
-import { getShelfCard } from '@src/redux/actions/shelf-actions';
+import { getShelfCard } from '@src/redux/slices';
 
 import { Spinner } from '@ui-kitten/components';
 import { ItemDetailCard } from '@src/components/card';

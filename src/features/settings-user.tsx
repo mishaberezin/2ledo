@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setUserProp } from '@src/redux/actions/user-actions';
+import { setUserProp } from '@src/redux/slices';
 import { View } from 'react-native';
 import { SchemaUserSettings } from './settings/schema-user-settings';
 

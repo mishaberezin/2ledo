@@ -1,8 +1,8 @@
 import { images } from '../assets';
 import { landmarks } from '../data/landmarks';
-import { Store } from './reducer';
+import { AppState } from './reducer';
 
-export const sampleState: Store = {
+export const sampleState: AppState = {
   localState: {
     currentCardId: 'nc84n897ncz7hh',
   },

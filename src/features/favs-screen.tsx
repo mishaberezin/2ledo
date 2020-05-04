@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { StyleSheet } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { Layout } from '@ui-kitten/components';
-import { archiveCard } from '@src/redux/actions/shelf-actions';
+import { archiveCard } from '@src/redux/slices';
 import { FavsGroupsList } from './favs-screen/favs-groups-list';
 
 import { SCREEN_BACKGROUND } from '@src/constants/colors';
@@ -15,7 +15,7 @@ export const FavsScreen = (props) => {
     (id) => {
       navigation.navigate('Card', { id });
     },
-    [navigation],
+    [navigation]
   );
 
   const onItemDelete = (id) => {

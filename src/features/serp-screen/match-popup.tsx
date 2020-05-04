@@ -9,7 +9,7 @@ import {
 } from '@ui-kitten/components';
 
 import { LinearGradient } from 'expo-linear-gradient';
-import { hideMatchPopup } from '@src/redux/actions/local-state-actions';
+import { hideMatchPopup } from '@src/redux/slices';
 import { ToledoButton } from '@src/components';
 
 import { Ionicons } from '@expo/vector-icons';

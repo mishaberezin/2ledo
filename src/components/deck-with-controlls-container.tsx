@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { StyleSheet, View, Text } from 'react-native';
 import { DeckWithControlls } from './deck-with-controlls';
-import { requestCards } from '../redux/actions/card-actions';
-import { likeCard, dislikeCard } from '../redux/actions/shelf-actions';
+import { requestCards, likeCard, dislikeCard } from '../redux/slices';
 
 const DeckWithControllsContainerBare = ({
   cards,
@@ -35,7 +34,7 @@ const DeckWithControllsContainerBare = ({
         dislikeCard(cardId);
       }
     },
-    [dislikeCard, likeCard],
+    [dislikeCard, likeCard]
   );
 
   return (
@@ -77,5 +76,5 @@ const mapDispatchToProps = (dispath) =>
 
 export const DeckWithControllsContainer = connect(
   mapStateToProps,
-  mapDispatchToProps,
+  mapDispatchToProps
 )(DeckWithControllsContainerBare);

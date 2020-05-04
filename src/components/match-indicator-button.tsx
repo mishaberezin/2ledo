@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button } from 'react-native-elements';
-import { hideMatchIndicator } from '@src/redux/actions/local-state-actions';
+import { setMatchIndicator } from '@src/redux/slices';
 
 export const MatchIndicatorButton = (props) => {
   const { onPress } = props;
@@ -26,7 +26,7 @@ export const MatchIndicatorButton = (props) => {
       icon={icon}
       onPress={() => {
         if (active) {
-          dispatch(hideMatchIndicator());
+          dispatch(setMatchIndicator(false));
         }
         onPress();
       }}

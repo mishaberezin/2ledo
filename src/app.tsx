@@ -8,8 +8,7 @@ import * as eva from '@eva-design/eva';
 import { ApplicationProvider } from '@ui-kitten/components';
 import { ThemeProvider } from 'react-native-elements';
 import { reduxStore } from './redux/store';
-import { setAppLoading, restoreAuth } from './redux/slices';
-import { startMatchPolling } from './redux/actions/local-state-actions';
+import { setAppLoading, restoreAuth, startMatchPolling } from './redux/slices';
 import { Navigation } from '@src/navigation';
 
 if (__DEV__) {

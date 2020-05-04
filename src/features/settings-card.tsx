@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setCardProp } from '@src/redux/actions/card-actions';
+import { setCardProp } from '@src/redux/slices';
 import { View } from 'react-native';
 
 import { MAIN_BRIGHT } from '@src/constants/colors';
@@ -10,7 +10,7 @@ import { SchemaHostCardSettings } from './settings/schema-host-card-settings';
 
 export const SettingsCard = (props) => {
   const { type, data, id } = useSelector(
-    (state) => state.cards[state.localState?.currentCardId],
+    (state) => state.cards[state.localState?.currentCardId]
   );
   const dispatch = useDispatch();
 
