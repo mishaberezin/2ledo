@@ -1,14 +1,18 @@
-import { createStore, compose, applyMiddleware } from 'redux';
-import thunk from 'redux-thunk';
-import { rootReducer } from './reducer';
+import { configureStore, getDefaultMiddleware, Action } from '@reduxjs/toolkit';
+import { ThunkAction } from 'redux-thunk';
+import { rootReducer, Store } from './reducer';
 import * as api from '@src/api';
 
 import { sampleState } from './__state';
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+export const reduxStore = configureStore({
+  reducer: rootReducer,
+  preloadedState: sampleState,
+  middleware: getDefaultMiddleware({
+    thunk: {
+      extraArgument: api,
+    },
+  }),
+});
 
-export const reduxStore = createStore(
-  rootReducer,
-  sampleState,
-  composeEnhancers(applyMiddleware(thunk.withExtraArgument(api))),
-);
+export type AppThunk = ThunkAction<void, Store, typeof api, Action<string>>;

@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, View, Text, ImageBackground } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { DeckWithControllsContainer } from '../components/deck-with-controlls-container';
-// import MatchPopup from '../components/MatchPopup';
+import { DeckWithControllsContainer } from '../components';
+import { MatchPopup } from './serp-screen/match-popup';
 
 export const SerpScreen = ({ navigation }) => {
   return (
@@ -11,7 +11,6 @@ export const SerpScreen = ({ navigation }) => {
         style={styles.background}
         source={require('../assets/images/map.png')}
       ></ImageBackground>
-      <Text>HELLLLO</Text>
       <LinearGradient
         style={{
           display: 'flex',

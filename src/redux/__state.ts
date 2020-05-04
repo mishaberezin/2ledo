@@ -1,7 +1,8 @@
 import { images } from '../assets';
 import { landmarks } from '../data/landmarks';
+import { Store } from './reducer';
 
-export const sampleState = {
+export const sampleState: Store = {
   localState: {
     currentCardId: 'nc84n897ncz7hh',
   },

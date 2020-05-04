@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setCurrentCardId } from '@src/redux/actions/local-state-actions';
-import { logOut } from '@src/redux/actions/auth-actions';
+import { logOut } from '@src/redux/slices';
 import { View } from 'react-native';
 import { ButtonGroup, Button } from 'react-native-elements';
 

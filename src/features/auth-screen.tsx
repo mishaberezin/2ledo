@@ -4,12 +4,12 @@ import { StyleSheet, View, KeyboardAvoidingView } from 'react-native';
 import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { Text, Input, Spinner, Button } from '@ui-kitten/components';
-import { logIn } from '@src/redux/actions/auth-actions';
+import { logIn } from '@src/redux/slices';
 import { ToledoButton } from '@src/components';
 import { MAIN_BACKGROUND_COLOR } from '@src/constants/colors';
 import { SCREEN_WIDTH } from '@src/constants/device';
 
-export const LoginScreen = (props) => {
+export const AuthScreen = (props) => {
   const dispatch = useDispatch();
   const initialValues = { phone: '' };
 
@@ -61,7 +61,7 @@ export const LoginScreen = (props) => {
                   onPress={() => {
                     formik.setFieldValue(
                       'phone',
-                      config.demoUsers.landlord.phone,
+                      config.demoUsers.landlord.phone
                     );
                     formik.submitForm();
                   }}
@@ -73,7 +73,7 @@ export const LoginScreen = (props) => {
                   onPress={() => {
                     formik.setFieldValue(
                       'phone',
-                      config.demoUsers.tenant.phone,
+                      config.demoUsers.tenant.phone
                     );
                     formik.submitForm();
                   }}

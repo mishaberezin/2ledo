@@ -107,9 +107,16 @@ expo start --ios --clear
 ```
 
 🍒 Перезагрузка приложения в Симуляторе:
+
 ```txt
 Device → Shake (⌃⌘Z) → Reload
 ```
 
+Действие Shake вызывает меню Expo. Для удобства можно вынести кнопку Shake на тачбар.
+
 Дебаг:
 https://medium.com/@tetsuyahasegawa/how-to-integrate-react-native-debugger-to-your-expo-react-native-project-db1d631fad02
+
+## Ссылки
+
+Старый репозиторий: https://gitlab.com/flitch/frontend

@@ -1,3 +1,5 @@
+export * from './collapsible-row';
+
 export * from './collapsible-checkbox';
 export * from './collapsible-header';
 export * from './collapsible-list-item-input';

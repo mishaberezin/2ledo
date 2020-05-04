@@ -4,6 +4,7 @@ import {
   SHOW_MATCH_POPUP,
   HIDE_MATCH_POPUP,
 } from '../types';
+
 const INITIAL_STATE = {
   matchIndicator: false,
   matchPopup: {

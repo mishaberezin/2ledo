@@ -6,7 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import {
-  LoginScreen,
+  AuthScreen,
   SerpScreen,
   SettingsCard,
   SettingsTune,
@@ -20,7 +20,7 @@ import { Text } from 'react-native';
 import { Button } from 'react-native-elements';
 import { NavHeader, MatchIndicatorButton } from './components';
 
-import { AuthStatus } from './redux/reducers/auth-reducer';
+import { AuthStatus } from './redux/slices';
 
 const SerpStack = createStackNavigator();
 const SerpStackScreen = () => (
@@ -131,7 +131,7 @@ const Tab = createBottomTabNavigator();
 // const MainStack = createStackNavigator();
 const MainStackScreen = () => (
   <Tab.Navigator
-    initialRouteName="SettingsStackScreen"
+    initialRouteName="SerpStackScreen"
     headerMode="none"
     screenOptions={{ animationEnabled: false }}
   >
@@ -165,7 +165,7 @@ const MainStackScreen = () => (
 const LoginStack = createStackNavigator();
 const LoginStackScreen = () => (
   <LoginStack.Navigator>
-    <LoginStack.Screen name="Login" component={LoginScreen} />
+    <LoginStack.Screen name="Login" component={AuthScreen} />
   </LoginStack.Navigator>
 );
 

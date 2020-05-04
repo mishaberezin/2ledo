@@ -1,22 +1,30 @@
 import React, { useEffect, useCallback } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { View, Animated } from 'react-native';
-import { Text, withStyles, Avatar } from '@ui-kitten/components';
+import {
+  StyleService,
+  useStyleSheet,
+  Avatar,
+  Text,
+} from '@ui-kitten/components';
 
 import { LinearGradient } from 'expo-linear-gradient';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { hideMatchPopup } from '../redux/actions/localStateActions';
-import ToledoButton from './ToledoButton';
+import { hideMatchPopup } from '@src/redux/actions/local-state-actions';
+import { ToledoButton } from '@src/components';
 
 import { Ionicons } from '@expo/vector-icons';
 
-const MatchPopup = ({
-  visible,
-  card,
-  currentUserPhotoUri,
-  eva: { style: themedStyle },
-  hideMatchPopup,
-}) => {
+export const MatchPopup = () => {
+  const dispatch = useDispatch();
+  const styles = useStyleSheet(themedStyles);
+
+  const { visible, card } = useSelector((store) => {
+    return store?.localState?.matchPopup;
+  });
+  const currentUserPhotoUri = useSelector((store) => {
+    return store.user.data.UserAvatar;
+  });
+
   const opacity = new Animated.Value(0);
 
   useEffect(() => {
@@ -29,12 +37,12 @@ const MatchPopup = ({
   }, [opacity, visible]);
 
   const handleButtonPress = useCallback(() => {
-    hideMatchPopup();
+    dispatch(hideMatchPopup());
   }, [hideMatchPopup]);
 
   const handleCallButtonPress = useCallback(() => {
     // Звоним по номеру телефона
-    hideMatchPopup();
+    dispatch(hideMatchPopup());
   }, [hideMatchPopup]);
 
   if (!visible) {
@@ -47,10 +55,11 @@ const MatchPopup = ({
       Phone: phone = '+7 909 665 66 44',
     },
   } = card;
+
   return (
-    <Animated.View style={[themedStyle.container, { opacity }]}>
+    <Animated.View style={[styles.container, { opacity }]}>
       <LinearGradient
-        style={themedStyle.gradientContainer}
+        style={styles.gradientContainer}
         colors={[
           'transparent',
           '#A768FE',
@@ -63,33 +72,33 @@ const MatchPopup = ({
         end={[0.5, 1]}
         location={[0.25, 0.4, 1]}
       >
-        <View style={themedStyle.modalContainer}>
-          <Text category="h3" style={themedStyle.header}>
+        <View style={styles.modalContainer}>
+          <Text category="h3" style={styles.header}>
             Это Матч!
           </Text>
-          <View style={themedStyle.avatars}>
+          <View style={styles.avatars}>
             <Avatar
               source={{ uri: currentUserPhotoUri }}
               size="giant"
-              style={themedStyle.avatar}
+              style={styles.avatar}
             />
             <Avatar
               source={{ uri: firstCardPhoto.uri }}
               size="giant"
-              style={themedStyle.avatar}
+              style={styles.avatar}
             />
           </View>
-          <Text category="h6" style={themedStyle.desc}>
+          <Text category="h6" style={styles.desc}>
             Теперь можно договориться о просмотре!
           </Text>
-          <View style={themedStyle.actions}>
-            <View style={themedStyle.action}>
+          <View style={styles.actions}>
+            <View style={styles.action}>
               <ToledoButton onPress={handleButtonPress}>Хорошо</ToledoButton>
             </View>
-            <View style={themedStyle.action}>
+            <View style={styles.action}>
               <ToledoButton onPress={handleCallButtonPress}>
                 <Ionicons name="ios-call" size={16} color={'#fff'} />
-                <Text style={themedStyle.phoneText}> {phone}</Text>
+                <Text style={styles.phoneText}> {phone}</Text>
               </ToledoButton>
             </View>
           </View>
@@ -99,7 +108,7 @@ const MatchPopup = ({
   );
 };
 
-const StyledMatchPopup = withStyles(MatchPopup, () => ({
+const themedStyles = StyleService.create({
   container: {
     display: 'flex',
     position: 'absolute',
@@ -157,17 +166,4 @@ const StyledMatchPopup = withStyles(MatchPopup, () => ({
   phoneText: {
     color: '#fff',
   },
-}));
-
-const mapStateToProps = ({ localState: { matchPopup = false }, user }) => {
-  return {
-    visible: matchPopup && matchPopup.visible,
-    card: matchPopup && matchPopup.card,
-    currentUserPhotoUri: user.data.UserAvatar,
-  };
-};
-
-const mapDispatchToProps = (dispatch) =>
-  bindActionCreators({ hideMatchPopup }, dispatch);
-
-export default connect(mapStateToProps, mapDispatchToProps)(StyledMatchPopup);
+});
