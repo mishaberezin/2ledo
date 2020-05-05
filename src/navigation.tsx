@@ -170,8 +170,8 @@ const LoginStackScreen = () => (
 );
 
 export const Navigation = () => {
-  const app = useSelector((store) => store.app);
-  const auth = useSelector((store) => store.auth);
+  const app = useSelector((state) => state.app);
+  const auth = useSelector((state) => state.auth);
 
   const isAppLoading = app.isAppLoading || auth.status === AuthStatus.PENDING;
   const isAuthorized = auth.status === AuthStatus.AUTHORIZED;

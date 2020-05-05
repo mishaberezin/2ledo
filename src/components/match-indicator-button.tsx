@@ -5,8 +5,8 @@ import { setMatchIndicator } from '@src/redux/slices';
 
 export const MatchIndicatorButton = (props) => {
   const { onPress } = props;
-  const active = useSelector((store) => ({
-    active: store.localState.matchIndicator,
+  const active = useSelector((state) => ({
+    active: state.localState.matchIndicator,
   }));
   const dispatch = useDispatch();
 

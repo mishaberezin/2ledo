@@ -1,12 +1,28 @@
 import { configureStore, getDefaultMiddleware, Action } from '@reduxjs/toolkit';
 import { ThunkAction } from 'redux-thunk';
-import { rootReducer, AppState } from './reducer';
+import {
+  appReducer,
+  authReducer,
+  userReducer,
+  cardsReducer,
+  deckReducer,
+  localStateReducer,
+  shelfReducer,
+} from './slices';
 import * as api from '@src/api';
 
 import { sampleState } from './__state';
 
 export const reduxStore = configureStore({
-  reducer: rootReducer,
+  reducer: {
+    app: appReducer,
+    auth: authReducer,
+    localState: localStateReducer,
+    user: userReducer,
+    cards: cardsReducer,
+    deck: deckReducer,
+    shelf: shelfReducer,
+  },
   preloadedState: sampleState,
   middleware: getDefaultMiddleware({
     thunk: {
@@ -15,4 +31,5 @@ export const reduxStore = configureStore({
   }),
 });
 
+export type AppState = typeof sampleState; // TODO: Описать нормальный тип
 export type AppThunk = ThunkAction<void, AppState, typeof api, Action<string>>;

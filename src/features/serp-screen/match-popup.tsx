@@ -18,11 +18,11 @@ export const MatchPopup = () => {
   const dispatch = useDispatch();
   const styles = useStyleSheet(themedStyles);
 
-  const { visible, card } = useSelector((store) => {
-    return store?.localState?.matchPopup;
+  const { visible, card } = useSelector((state) => {
+    return state?.localState?.matchPopup;
   });
-  const currentUserPhotoUri = useSelector((store) => {
-    return store.user.data.UserAvatar;
+  const currentUserPhotoUri = useSelector((state) => {
+    return state.user.data.UserAvatar;
   });
 
   const opacity = new Animated.Value(0);
