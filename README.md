@@ -17,6 +17,14 @@
     7.А Отсканировать появившийся QR код с помощью камеры на телефоне и открыть ссылку в Expo; <br>
     7.Б Запустить приложение в программе Simulator (идет вместе с Xcode) на компе;
 
+RNDebugger
+
+```sh
+brew update && brew cask install https://raw.githubusercontent.com/caskroom/homebrew-cask/b6ac3795c1df9f97242481c0817b1165e3e6306a/Casks/react-native-debugger.rb
+```
+
+Ждем когда в Expo прорастет RN 0.62, в котором появилась поддержка дебагера [Flipper](https://reactnative.dev/blog/2020/03/26/version-0.62)
+
 ## Данные на фронте
 
 Объекты:

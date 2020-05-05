@@ -31,5 +31,5 @@ export const reduxStore = configureStore({
   }),
 });
 
-export type AppState = typeof sampleState; // TODO: Описать нормальный тип
+export type AppState = ReturnType<typeof reduxStore.getState>;
 export type AppThunk = ThunkAction<void, AppState, typeof api, Action<string>>;
