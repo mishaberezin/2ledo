@@ -61,8 +61,8 @@ export const PlateHeader = withStyles(PlateHeaderContainer, () => ({
   },
   catContainer: {
     position: 'absolute',
-    top: 31,
-    left: 14,
+    top: 21,
+    left: 16,
   },
   headerText: {
     paddingLeft: 20,

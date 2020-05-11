@@ -4,8 +4,7 @@ import { Button } from 'react-native-elements';
 import { AntDesign } from '@expo/vector-icons';
 import Collapsible from 'react-native-collapsible';
 
-export const CollapsibleRow = props => {
-  const { children, title } = props;
+export const CollapsibleRow = ({ children, title }) => {
   const [collapsed, setCollapsed] = useState(true);
 
   return (
