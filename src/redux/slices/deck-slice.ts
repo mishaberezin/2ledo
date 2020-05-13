@@ -1,25 +1,39 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { AppThunk } from '../store';
+
+type Apartment = {
+  id: string;
+  data: any;
+};
+
+type Card = {
+  id: number;
+  type: string;
+  apartment: Apartment;
+};
+
+export const requestCards = createAsyncThunk(
+  'deck/requestCards',
+  async (arg, { extra: { api } }) => {
+    const cards = await api.fetchCards();
+    return cards;
+  }
+);
 
 const deckSlice = createSlice({
   name: 'deck',
   initialState: [],
   reducers: {
-    setDeckCards: (state, action: PayloadAction) => {
-      state.push(...action.payload.cards);
+    // setDeckCards: (state, action: PayloadAction<{ cards: Card[] }>) => {
+    //   state.push(...action.payload.cards);
+    // },
+  },
+  extraReducers: {
+    [requestCards.fulfilled.type]: (state, action) => {
+      return action.payload;
     },
   },
 });
 
 export const { reducer: deckReducer } = deckSlice;
-export const { setDeckCards } = deckSlice.actions;
-
-export const requestCards = (offset, limit = 10): AppThunk => async (
-  dispatch,
-  getState,
-  api
-) => {
-  const cards = await api.fetchCards(offset, limit);
-  dispatch(setDeckCards({ cards }));
-  return cards; // TODO: Зачем?
-};
+// export const { setDeckCards } = deckSlice.actions;

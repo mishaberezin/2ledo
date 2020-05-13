@@ -2,10 +2,8 @@
   "main": "src/app.tsx",
   "name": "arenda",
   "scripts": {
-    "start": "open -a Simulator & expo start --ios",
+    "start": "expo start --ios",
     "test": "echo 🐷",
-    "eject": "expo eject",
-    "devtools": "react-devtools",
     "lint": "eslint ."
   },
   "dependencies": {

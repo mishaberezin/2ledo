@@ -26,7 +26,7 @@ export const reduxStore = configureStore({
   preloadedState: sampleState,
   middleware: getDefaultMiddleware({
     thunk: {
-      extraArgument: api,
+      extraArgument: { api },
     },
   }),
 });

@@ -1,40 +1,39 @@
 import React, { Fragment, useCallback, useEffect, useState } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { StyleSheet, View, Text } from 'react-native';
 import { DeckWithControlls } from './deck-with-controlls';
-import { requestCards, likeCard, dislikeCard } from '../redux/slices';
+import { requestCards, likeCard, dislikeCard } from '@src/redux/slices';
+import { AppState } from '@src/redux/store';
 
-const DeckWithControllsContainerBare = ({
-  cards,
-  requestCards,
-  likeCard,
-  dislikeCard,
-}) => {
+export const DeckWithControllsContainer = () => {
+  const dispatch = useDispatch();
+  const cards = useSelector((state: AppState) => state.deck);
+
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
-      await requestCards();
+      await dispatch(requestCards());
       setIsLoading(false);
     })();
-  }, [requestCards]);
+  }, []);
 
-  const onLastCard = async (offset) => {
+  // Нужно начинать загружать раньше.
+  const onLastCard = async () => {
     setIsLoading(true);
-    await requestCards(offset);
+    await dispatch(requestCards());
     setIsLoading(false);
   };
 
   const onSwipe = useCallback(
     (cardId, direction) => {
       if (direction === 'right') {
-        likeCard(cardId);
+        dispatch(likeCard(cardId));
       } else {
-        dislikeCard(cardId);
+        dispatch(dislikeCard(cardId));
       }
     },
-    [dislikeCard, likeCard]
+    [dispatch, dislikeCard, likeCard]
   );
 
   return (
@@ -45,7 +44,7 @@ const DeckWithControllsContainerBare = ({
         </View>
       )}
       <DeckWithControlls
-        items={cards}
+        cards={cards}
         onLastCard={onLastCard}
         onSwipe={onSwipe}
       />
@@ -65,16 +64,3 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.2)',
   },
 });
-
-const mapStateToProps = (state) => {
-  return {
-    cards: state.deck,
-  };
-};
-const mapDispatchToProps = (dispath) =>
-  bindActionCreators({ requestCards, likeCard, dislikeCard }, dispath);
-
-export const DeckWithControllsContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(DeckWithControllsContainerBare);

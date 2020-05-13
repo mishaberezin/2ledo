@@ -28,7 +28,7 @@ const SerpStackScreen = () => (
     <SerpStack.Screen
       name="Serp"
       component={SerpScreen}
-      options={({ navigation, route }) => ({
+      options={({ navigation }) => ({
         headerLeftContainerStyle: {
           flexDirection: 'row',
         },

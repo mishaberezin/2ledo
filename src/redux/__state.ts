@@ -1,5 +1,5 @@
-import { images } from '../assets';
-import { landmarks } from '../data/landmarks';
+import { images } from '@src/assets';
+import { landmarks } from '@src/data/landmarks';
 
 export const sampleState = {
   localState: {

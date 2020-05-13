@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, View, Text, ImageBackground } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { DeckWithControllsContainer } from '../components';
+import { DeckWithControllsContainer } from './serp-screen/deck-with-controlls-container';
 import { MatchPopup } from './serp-screen/match-popup';
 
-export const SerpScreen = ({ navigation }) => {
+export const SerpScreen = () => {
   return (
     <View style={styles.container}>
       <ImageBackground

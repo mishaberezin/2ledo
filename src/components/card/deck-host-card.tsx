@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import {
   View,
   ScrollView,
@@ -6,50 +6,68 @@ import {
   TouchableWithoutFeedback,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { withStyles } from '@ui-kitten/components';
+import { useStyleSheet, StyleService } from '@ui-kitten/components';
 
 import { DARK_VIOLET_COLOR } from '@src/constants/colors';
 
 import { CardHostShortInfo } from './card-host-short-info';
 import { CardHostDescriptionInfo } from './card-host-description-info';
 import { CardImages } from './card-images';
-import { FreshCardIcon } from './fresh-card-icon';
 
-const DeckHostCardContainer = ({
-  card,
-  opened,
-  onOpen,
-  onClose,
-  cardStyle,
-  eva: { style },
-}) => {
-  const { IsFresh, Photos } = card;
+interface ApartmentCard {
+  id: number;
+  type: string;
+  apartment: {
+    id: string;
+    data: {
+      photos: string[];
+      description: string;
+      rentalPrice: number;
+      roomsCount: number;
+      address: {
+        coords: [number, number];
+        postal: string;
+      };
+      floor: number;
+    };
+  };
+}
+
+interface Props {
+  card: ApartmentCard;
+  onOpen: () => {};
+  onClose: () => {};
+  cardStyle: any;
+}
+
+export const DeckHostCard: FC<Props> = (props) => {
+  const { card, onOpen, onClose, cardStyle } = props;
+  const { apartment } = card;
+  const { photos } = apartment.data;
+  const opened = false; // TODO убрать
+
+  const styles = useStyleSheet(themedStyles);
 
   const onDetailsButtonPress = () => {
-    opened ? onClose() : onOpen();
+    onOpen();
     LayoutAnimation.configureNext(LayoutAnimation.Presets.timing);
   };
 
   return (
     <ScrollView
-      style={[style.container, cardStyle]}
+      style={[styles.container, cardStyle]}
       showsVerticalScrollIndicator={false}
     >
-      <View style={style.cardContainer}>
-        {IsFresh && (
-          <View style={style.freshIconConteiner}>
-            <FreshCardIcon />
-          </View>
-        )}
-        <CardImages photos={Photos} />
+      <View style={styles.cardContainer}>
+        <CardImages photos={photos} />
         <View>
-          <CardHostShortInfo {...card} />
-          <TouchableWithoutFeedback onPress={onDetailsButtonPress}>
+          <CardHostShortInfo {...apartment.data} />
+          {/* <TouchableWithoutFeedback onPress={onDetailsButtonPress}>
             <View
               style={[
-                style.cardButton,
-                style.shadowStyles,
-                opened && style.cardButtonOpened,
+                styles.cardButton,
+                styles.shadowStyles,
+                opened && styles.cardButtonOpened,
               ]}
             >
               <Ionicons
@@ -59,7 +77,7 @@ const DeckHostCardContainer = ({
                 color="#fff"
               />
             </View>
-          </TouchableWithoutFeedback>
+          </TouchableWithoutFeedback> */}
 
           {opened && <CardHostDescriptionInfo {...card} />}
         </View>
@@ -68,7 +86,7 @@ const DeckHostCardContainer = ({
   );
 };
 
-export const DeckHostCard = withStyles(DeckHostCardContainer, () => ({
+const themedStyles = StyleService.create({
   container: {
     backgroundColor: 'white',
   },
@@ -103,4 +121,4 @@ export const DeckHostCard = withStyles(DeckHostCardContainer, () => ({
     right: 5,
     zIndex: 9,
   },
-}));
+});

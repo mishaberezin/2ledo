@@ -1,4 +1,4 @@
-import { deck } from '../data/deck';
+import { deck } from '@src/data/deck';
 
 function httpRequestStub(result, timeout = 500) {
   return new Promise((resolve) => {

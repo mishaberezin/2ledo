@@ -1,11 +1,8 @@
 export * from './collapsible-row';
-
 export * from './collapsible-checkbox';
 export * from './collapsible-header';
 export * from './collapsible-list-item-input';
 export * from './collapsible-list-item';
-export * from './deck-with-controlls-container';
-export * from './deck-with-controlls';
 export * from './match-indicator-button';
 export * from './mute';
 export * from './nav-header';
