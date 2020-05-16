@@ -1,9 +1,10 @@
-import React, { FC } from 'react';
+import React, { FC, useCallback } from 'react';
 import {
   View,
   ScrollView,
   LayoutAnimation,
   TouchableWithoutFeedback,
+  Button,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useStyleSheet, StyleService } from '@ui-kitten/components';
@@ -44,14 +45,13 @@ export const DeckHostCard: FC<Props> = (props) => {
   const { card, onOpen, onClose, cardStyle } = props;
   const { apartment } = card;
   const { photos } = apartment.data;
-  const opened = false; // TODO убрать
 
   const styles = useStyleSheet(themedStyles);
 
-  const onDetailsButtonPress = () => {
-    onOpen();
+  const onDetailsButtonPress = useCallback(() => {
+    onOpen(card.id);
     LayoutAnimation.configureNext(LayoutAnimation.Presets.timing);
-  };
+  }, [card]);
 
   return (
     <ScrollView
@@ -62,6 +62,7 @@ export const DeckHostCard: FC<Props> = (props) => {
         <CardImages photos={photos} />
         <View>
           <CardHostShortInfo {...apartment.data} />
+          <Button title='Подробнее' onPress={onDetailsButtonPress} />
           {/* <TouchableWithoutFeedback onPress={onDetailsButtonPress}>
             <View
               style={[
@@ -78,8 +79,6 @@ export const DeckHostCard: FC<Props> = (props) => {
               />
             </View>
           </TouchableWithoutFeedback> */}
-
-          {opened && <CardHostDescriptionInfo {...card} />}
         </View>
       </View>
     </ScrollView>

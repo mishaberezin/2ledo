@@ -4,7 +4,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { DeckWithControllsContainer } from './serp-screen/deck-with-controlls-container';
 import { MatchPopup } from './serp-screen/match-popup';
 
-export const SerpScreen = () => {
+export const SerpScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -23,7 +23,7 @@ export const SerpScreen = () => {
         end={{ x: 0.5, y: 1 }}
       ></LinearGradient>
       {/* <MatchPopup /> */}
-      <DeckWithControllsContainer />
+      <DeckWithControllsContainer navigation={navigation} />
     </View>
   );
 };
