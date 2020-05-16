@@ -77,7 +77,12 @@ export const DeckWithControlls = (props) => {
   };
 
   const renderCard = ({ card }) => {
-    return <DeckHostCard card={card} cardStyle={styles.cardStyle} />;
+    return (
+      <DeckHostCard
+        card={card}
+        cardStyle={styles.cardStyle}
+        onOpen={props.onDetailButtonPress} />
+    );
   };
 
   const cardStyle = [getCardStyle(), styles.card];
@@ -114,36 +119,36 @@ export const DeckWithControlls = (props) => {
       <Text style={{ marginBottom: 20 }}>Больше нет карточек</Text>
     </Card>
   ) : (
-    <View style={styles.container}>
-      <View>
-        {cardsStack[1] && renderCard({ card: cardsStack[1] })}
-        {renderAnimatedCard({ card: cardsStack[0] })}
+      <View style={styles.container}>
+        <View>
+          {cardsStack[1] && renderCard({ card: cardsStack[1] })}
+          {renderAnimatedCard({ card: cardsStack[0] })}
+        </View>
+        <Animated.View style={styles.controlsContainer}>
+          <TouchableOpacity
+            style={[styles.controlContainer, styles.controlContainerLeft]}
+            onPress={() => hadleControlPress(false)}
+          >
+            <Ionicons
+              name={'ios-close-circle'}
+              size={50}
+              color="red"
+              style={{ position: 'relative', top: 2 }}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.controlContainer, styles.controlContainerRight]}
+            onPress={hadleControlPress}
+          >
+            <Ionicons
+              name={'ios-checkmark-circle'}
+              size={50}
+              color="lightgreen"
+            />
+          </TouchableOpacity>
+        </Animated.View>
       </View>
-      <Animated.View style={styles.controlsContainer}>
-        <TouchableOpacity
-          style={[styles.controlContainer, styles.controlContainerLeft]}
-          onPress={() => hadleControlPress(false)}
-        >
-          <Ionicons
-            name={'ios-close-circle'}
-            size={50}
-            color="red"
-            style={{ position: 'relative', top: 2 }}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[styles.controlContainer, styles.controlContainerRight]}
-          onPress={hadleControlPress}
-        >
-          <Ionicons
-            name={'ios-checkmark-circle'}
-            size={50}
-            color="lightgreen"
-          />
-        </TouchableOpacity>
-      </Animated.View>
-    </View>
-  );
+    );
 };
 
 const themedStyles = StyleService.create({

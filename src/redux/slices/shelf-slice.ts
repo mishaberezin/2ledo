@@ -88,3 +88,8 @@ export const archiveCard = (cardId): AppThunk => async (
     dispatch(addCardToArchive({ card }));
   }
 };
+
+export const getDetailCard = (cardId): AppThunk => async (_, getState) => {
+  const { deck } = getState();
+  return deck.find(({ id }) => cardId === id);;
+};

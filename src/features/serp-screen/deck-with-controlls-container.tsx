@@ -5,7 +5,7 @@ import { DeckWithControlls } from './deck-with-controlls';
 import { requestCards, likeCard, dislikeCard } from '@src/redux/slices';
 import { AppState } from '@src/redux/store';
 
-export const DeckWithControllsContainer = () => {
+export const DeckWithControllsContainer = ({ navigation }) => {
   const dispatch = useDispatch();
   const cards = useSelector((state: AppState) => state.deck);
 
@@ -36,6 +36,13 @@ export const DeckWithControllsContainer = () => {
     [dispatch, dislikeCard, likeCard]
   );
 
+  const onDetailButtonPress = useCallback(
+    (id) => {
+      navigation.navigate('Card', { id });
+    },
+    [navigation]
+  );
+
   return (
     <Fragment>
       {isLoading && (
@@ -45,6 +52,7 @@ export const DeckWithControllsContainer = () => {
       )}
       <DeckWithControlls
         cards={cards}
+        onDetailButtonPress={onDetailButtonPress}
         onLastCard={onLastCard}
         onSwipe={onSwipe}
       />
