@@ -1,0 +1,117 @@
+{
+  "$schema": "https://arkit.pro/schema.json",
+  "components": [
+    {
+      "type": "Entry",
+      "format": "full",
+      "patterns": ["src/app.tsx"]
+    },
+    {
+      "type": "Dependency",
+      "patterns": ["node_modules/*"]
+    },
+    {
+      "type": "Navigation",
+      "format": "full",
+      "patterns": ["src/navigation.tsx"]
+    },
+    {
+      "type": "Component",
+      "patterns": ["src/components/*.tsx", "src/components/index.ts"]
+    },
+    {
+      "type": "Assets",
+      "patterns": ["src/assets/index.ts"]
+    },
+    {
+      "type": "Store",
+      "patterns": ["src/redux/store.ts"]
+    },
+    {
+      "type": "Slice",
+      "patterns": ["src/redux/slices/*.ts"]
+    },
+    {
+      "type": "Data",
+      "patterns": ["src/data/*.ts"]
+    },
+    {
+      "type": "FeaturesIndex",
+      "patterns": ["src/features/index.ts"]
+    },
+    {
+      "type": "Feature",
+      "patterns": ["src/features/*.tsx"]
+    },
+    {
+      "type": "SerpScreen",
+      "patterns": ["src/features/serp-screen/*.tsx"]
+    },
+    {
+      "type": "FavsScreen",
+      "patterns": ["src/features/favs-screen/*.tsx"]
+    },
+    {
+      "type": "Constants",
+      "patterns": ["src/constants/*.ts"]
+    }
+  ],
+  "output": {
+    "path": "relations.svg",
+    "direction": "horizontal",
+    "groups": [
+      {
+        "first": true,
+        "components": ["Entry"]
+      },
+      {
+        "components": ["Navigation"]
+      },
+      {
+        "components": ["Store"]
+      },
+      {
+        "components": ["Component"],
+        "patterns": ["src/components/index.ts"]
+      },
+      {
+        "type": "Components",
+        "components": ["Component"]
+      },
+      {
+        "components": ["Assets"]
+      },
+      {
+        "components": ["Slice"],
+        "patterns": ["src/redux/slices/index.ts"]
+      },
+      {
+        "type": "Slices",
+        "components": ["Slice"]
+      },
+      {
+        "type": "Data",
+        "components": ["Data"]
+      },
+      {
+        "components": ["FeaturesIndex"]
+      },
+      {
+        "type": "Features",
+        "components": ["Feature"]
+      },
+      {
+        "type": "SerpScreen",
+        "components": ["SerpScreen"]
+      },
+      {
+        "type": "FavsScreen",
+        "components": ["FavsScreen"]
+      },
+      {
+        "type": "Constants",
+        "components": ["Constants"]
+      }
+    ]
+  }
+}

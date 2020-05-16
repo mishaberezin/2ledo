@@ -4,7 +4,8 @@
   "scripts": {
     "start": "expo start --ios",
     "test": "echo 🐷",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "arkit": "arkit -f src/app.tsx"
   },
   "dependencies": {
     "@eva-design/eva": "^2.0.0-alpha.1",
@@ -43,6 +44,7 @@
     "@babel/core": "^7.8.6",
     "@types/react": "~16.9.23",
     "@types/react-native": "~0.61.17",
+    "arkit": "^1.6.4",
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-preset-expo": "~8.1.0",
     "prettier": "^2.0.4",
