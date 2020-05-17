@@ -18,11 +18,3 @@ export const isAuthorized = async () => {
   const token = await getToken();
   return token !== null;
 };
-
-export const getAuthHeader = async () => {
-  const token = await getToken();
-
-  return {
-    headers: { Authorization: `Bearer ${token}` },
-  };
-};

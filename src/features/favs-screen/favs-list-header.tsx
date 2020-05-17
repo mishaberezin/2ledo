@@ -2,8 +2,7 @@ import React, { useCallback } from 'react';
 import { View } from 'react-native';
 import { withStyles } from '@ui-kitten/components';
 import { Ionicons } from '@expo/vector-icons';
-import { PlateHeader } from '@src/components/plate-header';
-import { OverflowMenu } from '@src/components/overflow-menu';
+import { PlateHeader, OverflowMenu } from '@src/components';
 
 const FavsListHeaderContainer = ({
   title,

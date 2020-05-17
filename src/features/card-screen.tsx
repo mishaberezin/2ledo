@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { View, StyleSheet } from 'react-native';
 import { getDetailCard } from '@src/redux/slices';
-
 import { Spinner } from '@ui-kitten/components';
 import { ItemDetailCard } from '@src/components/card';
 
-export function Card(props) {
+export const CardScreen = (props) => {
   const { route } = props;
+
   const itemId = route.params.id;
   const dispatch = useDispatch();
 
@@ -26,7 +26,7 @@ export function Card(props) {
       </View>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {

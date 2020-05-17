@@ -7,7 +7,8 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { withStyles, Text } from '@ui-kitten/components';
-import { OverflowMenu } from '@src/components/overflow-menu';
+
+import { OverflowMenu } from '@src/components';
 import {
   CardItemLandmark,
   CardItemNumberOfRooms,
@@ -50,7 +51,7 @@ const FavsListHostItemContainer = ({
         onDelete(id);
       }
     },
-    [id, onPress, onDelete],
+    [id, onPress, onDelete]
   );
 
   return (
