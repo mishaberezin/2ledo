@@ -1,17 +1,23 @@
+import memoize from 'lodash/memoize';
 import { AsyncStorage } from 'react-native';
-import axios, { AxiosRequestConfig } from 'axios';
-import * as api from './index';
 
-const getToken = async () => {
-  return await AsyncStorage.getItem('token');
-};
+type Token = string | null;
 
-export const storeToken = async (token) => {
+export const getToken = memoize(
+  async (): Promise<Token> => {
+    const token = await AsyncStorage.getItem('token');
+    return token;
+  }
+);
+
+export const storeToken = async (token: string) => {
   await AsyncStorage.setItem('token', token);
+  getToken.cache.clear?.();
 };
 
 export const removeToken = async () => {
   await AsyncStorage.removeItem('token');
+  getToken.cache.clear?.();
 };
 
 export const isAuthorized = async () => {

@@ -1,26 +1,38 @@
 import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
-import { isAuthorized, removeToken, storeToken } from '@src/api/token-storage';
-import { AppThunk } from '../store';
+import { isAuthorized, removeToken } from '@src/api/token-storage';
 
 export enum AuthStatus {
-  PENDING,
-  AUTHORIZED,
-  NOT_AUTHORIZED,
+  PENDING = 'PENDING',
+  AUTHORIZED = 'AUTHORIZED',
+  NOT_AUTHORIZED = 'NOT_AUTHORIZED',
 }
 
-export const logIn = createAsyncThunk('auth/logIn', async (props, thunk) => {
-  const { extra: api } = thunk;
-  const { phone } = props;
-  const { token } = await api.logIn({ phone });
+export const resolveAuth = createAsyncThunk(
+  'auth/resolve',
+  async (props, thunk) => {
+    const { api } = thunk.extra;
+    try {
+      if (await isAuthorized()) {
+        return true;
+      }
 
-  await storeToken(token);
+      await api.loginByApplicationId();
+
+      return true;
+    } catch (err) {
+      return false;
+    }
+  }
+);
+
+export const logOut = createAsyncThunk('auth/logout', async (props, thunk) => {
+  await removeToken();
 });
 
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
     status: AuthStatus.PENDING,
-    isAuthorized: AuthStatus.PENDING,
   },
   reducers: {
     setAuthStatus(state, action: PayloadAction<AuthStatus>) {
@@ -28,34 +40,26 @@ const authSlice = createSlice({
     },
   },
   extraReducers: {
-    [logIn.fulfilled.type]: (state) => {
-      state.status = AuthStatus.AUTHORIZED;
+    [resolveAuth.pending.type]: (state) => {
+      state.status = AuthStatus.PENDING;
+    },
+    [resolveAuth.fulfilled.type]: (state, action) => {
+      const { payload } = action;
+
+      if (payload === true) {
+        state.status = AuthStatus.AUTHORIZED;
+      } else {
+        state.status = AuthStatus.NOT_AUTHORIZED;
+      }
+    },
+    [resolveAuth.rejected.type]: (state) => {
+      state.status = AuthStatus.NOT_AUTHORIZED;
+    },
+    [logOut.fulfilled.type]: (state) => {
+      state.status = AuthStatus.NOT_AUTHORIZED;
     },
   },
 });
 
 export const { reducer: authReducer } = authSlice;
 export const { setAuthStatus } = authSlice.actions;
-
-export const restoreAuth = () => async (dispatch) => {
-  const isTokenExists = await isAuthorized();
-
-  if (isTokenExists) {
-    dispatch(setAuthStatus(AuthStatus.AUTHORIZED));
-  } else {
-    dispatch(setAuthStatus(AuthStatus.NOT_AUTHORIZED));
-  }
-};
-
-// export const logIn = (props): AppThunk => async (dispatch, getState, api) => {
-//   const { phone } = props;
-//   const { token } = await api.logIn({ phone });
-
-//   await storeToken(token);
-//   dispatch(setAuthStatus(AuthStatus.AUTHORIZED));
-// };
-
-export const logOut = (): AppThunk => async (dispatch) => {
-  await removeToken();
-  dispatch(setAuthStatus(AuthStatus.NOT_AUTHORIZED));
-};

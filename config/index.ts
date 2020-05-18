@@ -2,6 +2,9 @@
 // В будущем сюда нужно добавить внешнюю конфигурацию (.env)
 
 export const config = {
+  api: {
+    host: 'https://toledo-stage.herokuapp.com/api',
+  },
   demoUsers: {
     landlord: {
       phone: '8881234567',
