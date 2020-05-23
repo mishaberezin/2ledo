@@ -84,6 +84,8 @@ const ImageNetOneTwoThree = withStyles(ImageNetOneTwoThreeContainer, () => ({
   container: {
     display: 'flex',
     flex: 1,
+    paddingBottom: 16,
+    backgroundColor: 'rgba(120, 121, 147, 0.1)',
   },
   imageGrid: {
     width: '100%',

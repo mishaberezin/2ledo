@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Image, ScrollView } from 'react-native';
 import { withStyles } from '@ui-kitten/components';
+import { Text } from '@ui-kitten/components';
 
 import { ToledoButton } from '../toledo-button';
 import { GridCardImages } from './grid-card-images';
@@ -17,12 +18,21 @@ const ItemDetailCardContainer = ({ card, eva: { style } }) => {
     rentalPeriod,
     maxNumberOfPeople,
   } = card.apartment.data;
-
+  console.log(card.apartment.data);
   return (
     <ScrollView style={style.container} showsVerticalScrollIndicator={false}>
       <View style={style.cardContainer}>
+
         <GridCardImages photos={card.apartment.data.photos} />
 
+        <View style={style.textBlock}>
+          <Text style={style.textBlockTitle} category='s1'>Название</Text>
+          <Text style={style.textBlockText} category='p1'>{address.postal}</Text>
+        </View>
+        <View style={style.textBlock}>
+          <Text style={style.textBlockTitle} category='s1'>Описание</Text>
+          <Text style={style.textBlockText} category='p1'>{description}</Text>
+        </View>
       </View>
     </ScrollView>
   );
@@ -56,4 +66,17 @@ export const ItemDetailCard = withStyles(ItemDetailCardContainer, () => ({
   cardContainer: {
 
   },
+  textBlock: {
+    paddingHorizontal: 20,
+    paddingVertical: 18,
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgba(120, 121, 147, 0.1)',
+  },
+  textBlockTitle: {
+    color: '#787993',
+    marginBottom: 4,
+  },
+  textBlockText: {
+    color: '#25265E',
+  }
 }));
