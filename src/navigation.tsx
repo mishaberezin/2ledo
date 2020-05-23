@@ -50,7 +50,19 @@ const MainStackScreen = () => (
       })}
     />
     <MainStack.Screen name="Favs" component={FavsScreen} />
-    <MainStack.Screen name="Card" component={CardScreen} />
+    <MainStack.Screen
+      name="Card"
+      component={CardScreen}
+      options={() => ({
+        title: '',
+        headerBackTitleVisible: false,
+        headerTransparent: true,
+        headerTintColor: '#25265E',
+        headerLeftContainerStyle: {
+          paddingLeft: 16,
+          paddingTop: 16
+        }
+      })} />
     <MainStack.Screen name="Settings" component={SettingsScreen} />
   </MainStack.Navigator>
 );
@@ -72,8 +84,8 @@ export const Navigation = () => {
   return isAppLoading ? (
     <AppLoading />
   ) : (
-    <NavigationContainer>
-      {isAuthorized ? <MainStackScreen /> : <AuthStackScreen />}
-    </NavigationContainer>
-  );
+      <NavigationContainer>
+        {isAuthorized ? <MainStackScreen /> : <AuthStackScreen />}
+      </NavigationContainer>
+    );
 };
