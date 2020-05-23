@@ -3,10 +3,7 @@ import { View, StyleSheet } from 'react-native';
 import Svg, { Path } from 'react-native-svg';
 
 export const SvgCat = ({ size = 'm' }) => {
-  const [width, height] = {
-    s: [16, 16],
-    m: [24, 24],
-  }[size];
+  const [width, height] = { s: [16, 16], m: [24, 24] }[size];
 
   return (
     <View

@@ -65,7 +65,19 @@ const SerpStackScreen = () => (
         ),
       })}
     />
-    <SerpStack.Screen name="Card" component={Card} />
+    <SerpStack.Screen
+      name="Card"
+      component={Card}
+      options={() => ({
+        title: '',
+        headerBackTitleVisible: false,
+        headerTransparent: true,
+        headerTintColor: '#25265E',
+        headerLeftContainerStyle: {
+          paddingLeft: 16,
+          paddingTop: 16
+        }
+      })} />
   </SerpStack.Navigator>
 );
 
@@ -179,8 +191,8 @@ export const Navigation = () => {
   return isAppLoading ? (
     <AppLoading />
   ) : (
-    <NavigationContainer>
-      {isAuthorized ? <MainStackScreen /> : <LoginStackScreen />}
-    </NavigationContainer>
-  );
+      <NavigationContainer>
+        {isAuthorized ? <MainStackScreen /> : <LoginStackScreen />}
+      </NavigationContainer>
+    );
 };
