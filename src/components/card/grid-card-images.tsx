@@ -6,9 +6,15 @@ import { Ionicons } from '@expo/vector-icons';
 import { DARK_VIOLET_COLOR } from '../../constants/colors';
 import { SCREEN_HEIGHT, SCREEN_WIDTH } from '../../constants/device';
 
-const GridCardImagesContainer = ({ photos, eva: { style } }) => {
-  const image = photos[0];
-  console.log('image--->', photos[1]);
+const GridCardImagesContainer = ({ photos }) => {
+  return <ImageNetOneTwoThree photos={photos} />
+};
+export const GridCardImages = withStyles(GridCardImagesContainer, () => ({}));
+
+// TODO: перенести в компонент. Это самый простой вариант сетки
+const ImageNetOneTwoThreeContainer = ({ photos, eva: { style } }) => {
+  const [image] = photos;
+
   return (
     <View style={style.container}>
 
@@ -27,7 +33,7 @@ const GridCardImagesContainer = ({ photos, eva: { style } }) => {
           {photos.slice(1, 3).map((image, i) => {
             const imgBlockStyle = [
               style.imageGridTwoImages,
-              ...(i % 2 ? [style.imageGridTwoImagesOdd] : [style.imageGridTwoImagesEven])
+              ...(i % 2 ? [style.imageGridTwoImagesSecond] : [style.imageGridTwoImagesFirst])
             ];
 
             return (
@@ -44,10 +50,16 @@ const GridCardImagesContainer = ({ photos, eva: { style } }) => {
         </View>
 
         <View style={style.imageGridRow}>
-          {photos.slice(3, 7).map((image, i) => {
+          {photos.slice(3, 6).map((image, i) => {
+            const classes = [
+              style.imageGridTreeImagesFirst,
+              style.imageGridTreeImagesSecond,
+              style.imageGridTreeImagesThird
+            ];
+
             const imgBlockStyle = [
               style.imageGridThreeImages,
-              ...(i % 2 ? [style.imageGridTwoImagesOdd] : [style.imageGridTwoImagesEven])
+              classes[i % 3],
             ];
 
             return (
@@ -66,9 +78,9 @@ const GridCardImagesContainer = ({ photos, eva: { style } }) => {
       </View>
     </View>
   );
-};
+}
 
-export const GridCardImages = withStyles(GridCardImagesContainer, () => ({
+const ImageNetOneTwoThree = withStyles(ImageNetOneTwoThreeContainer, () => ({
   container: {
     display: 'flex',
     flex: 1,
@@ -98,15 +110,25 @@ export const GridCardImages = withStyles(GridCardImagesContainer, () => ({
     height: 150,
     padding: 8,
   },
-  imageGridTwoImagesEven: {
+  imageGridTwoImagesFirst: {
     paddingRight: 3,
   },
-  imageGridTwoImagesOdd: {
+  imageGridTwoImagesSecond: {
     paddingLeft: 3,
   },
   imageGridThreeImages: {
-    width: '33%',
+    width: '33.33%',
     height: 150,
-    padding: 8,
+    paddingHorizontal: 8,
+  },
+  imageGridTreeImagesFirst: {
+    paddingRight: 3,
+  },
+  imageGridTreeImagesSecond: {
+    paddingLeft: 3,
+    paddingRight: 3,
+  },
+  imageGridTreeImagesThird: {
+    paddingLeft: 3,
   }
 }));
