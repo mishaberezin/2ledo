@@ -4,7 +4,6 @@ export * from './collapsible-header';
 export * from './collapsible-list-item-input';
 export * from './collapsible-list-item';
 export * from './match-indicator-button';
-export * from './mute';
 export * from './nav-header';
 export * from './overflow-menu';
 export * from './plate-header';

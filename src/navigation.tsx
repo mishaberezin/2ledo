@@ -1,73 +1,58 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { AppLoading } from 'expo';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
 import {
   AuthScreen,
   SerpScreen,
-  SettingsCard,
-  SettingsTune,
-  SettingsUser,
-  SettingsPreview,
   FavsScreen,
-  Card,
+  CardScreen,
+  SettingsScreen,
 } from '@src/features';
-
-import { Text } from 'react-native';
 import { Button } from 'react-native-elements';
-import { NavHeader, MatchIndicatorButton } from './components';
+import { MatchIndicatorButton } from './components';
 
 import { AuthStatus } from './redux/slices';
 
-const SerpStack = createStackNavigator();
-const SerpStackScreen = () => (
-  <SerpStack.Navigator initialRouteName="Serp">
-    <SerpStack.Screen
+const MainStack = createStackNavigator();
+const MainStackScreen = () => (
+  <MainStack.Navigator
+    initialRouteName="SerpStackScreen"
+    screenOptions={{ animationEnabled: false }}
+  >
+    <MainStack.Screen
       name="Serp"
       component={SerpScreen}
-      options={({ navigation }) => ({
+      options={({ navigation, route }) => ({
         headerLeftContainerStyle: {
           flexDirection: 'row',
         },
-        headerLeft: () => (
-          <Fragment>
+        headerLeft: () => {
+          return (
             <Button
               buttonStyle={{
                 justifyContent: 'space-between',
               }}
               type="clear"
               icon={{ type: 'material', name: 'person' }}
-              onPress={() => navigation.navigate('SettingsStackScreen')}
+              onPress={() => navigation.navigate('Settings')}
             />
-            <Button
-              buttonStyle={{
-                justifyContent: 'space-between',
-              }}
-              type="clear"
-              icon={{ type: 'entypo', name: 'map' }}
-              onPress={() => navigation.navigate('SettingsStackScreen')}
-              disabled={true}
-              disabledStyle={{
-                opacity: 0.3,
-              }}
-            />
-          </Fragment>
-        ),
+          );
+        },
         headerRight: () => (
           <MatchIndicatorButton
             onPress={() => {
-              navigation.navigate('FavsStackScreen');
+              navigation.navigate('Favs');
             }}
           />
         ),
       })}
     />
-    <SerpStack.Screen
+    <MainStack.Screen name="Favs" component={FavsScreen} />
+    <MainStack.Screen
       name="Card"
-      component={Card}
+      component={CardScreen}
       options={() => ({
         title: '',
         headerBackTitleVisible: false,
@@ -78,107 +63,15 @@ const SerpStackScreen = () => (
           paddingTop: 16
         }
       })} />
-  </SerpStack.Navigator>
+    <MainStack.Screen name="Settings" component={SettingsScreen} />
+  </MainStack.Navigator>
 );
 
-const FavsStack = createStackNavigator();
-const FavsStackScreen = () => (
-  <FavsStack.Navigator
-    initialRouteName="Favs"
-    screenOptions={{ title: 'Избранное' }}
-  >
-    <FavsStack.Screen name="Favs" component={FavsScreen} />
-    <FavsStack.Screen name="Card" component={Card} />
-  </FavsStack.Navigator>
-);
-
-const SettingsStack = createStackNavigator();
-const SettingsStackScreen = () => (
-  <SettingsStack.Navigator
-    initialRouteName="SettingsCard"
-    screenOptions={{
-      header: ({ scene, navigation }) => {
-        let cardItem;
-
-        if (scene.route.name === 'SettingsCard') {
-          cardItem = {
-            text: 'Превью',
-            style: { color: 'blue' },
-            onPress: () => navigation.navigate('SettingsPreview'),
-          };
-        } else {
-          cardItem = {
-            text: 'Карточка',
-            onPress: () => navigation.navigate('SettingsCard'),
-          };
-        }
-
-        return (
-          <NavHeader
-            title="Настройки"
-            menuItems={[
-              cardItem,
-              {
-                text: 'О себе',
-                onPress: () => navigation.navigate('SettingsUser'),
-              },
-              {
-                text: 'Прочее',
-                onPress: () => navigation.navigate('SettingsTune'),
-              },
-            ]}
-          />
-        );
-      },
-    }}
-  >
-    <SettingsStack.Screen name="SettingsCard" component={SettingsCard} />
-    <SettingsStack.Screen name="SettingsTune" component={SettingsTune} />
-    <SettingsStack.Screen name="SettingsUser" component={SettingsUser} />
-    <SettingsStack.Screen name="SettingsPreview" component={SettingsPreview} />
-  </SettingsStack.Navigator>
-);
-
-const Tab = createBottomTabNavigator();
-// const MainStack = createStackNavigator();
-const MainStackScreen = () => (
-  <Tab.Navigator
-    initialRouteName="SerpStackScreen"
-    headerMode="none"
-    screenOptions={{ animationEnabled: false }}
-  >
-    <Tab.Screen
-      name="SerpStackScreen"
-      options={{
-        tabBarLabel: 'Лента',
-        tabBarIcon: () => <Text>🔥</Text>,
-      }}
-      component={SerpStackScreen}
-    />
-    <Tab.Screen
-      name="SettingsStackScreen"
-      options={{
-        tabBarLabel: 'Настройки',
-        tabBarIcon: () => <Text>⚙️</Text>,
-      }}
-      component={SettingsStackScreen}
-    />
-    <Tab.Screen
-      name="FavsStackScreen"
-      options={{
-        tabBarLabel: 'Избранное',
-        tabBarIcon: () => <Text>💚</Text>,
-      }}
-      component={FavsStackScreen}
-    />
-  </Tab.Navigator>
-);
-
-const LoginStack = createStackNavigator();
-const LoginStackScreen = () => (
-  <LoginStack.Navigator>
-    <LoginStack.Screen name="Login" component={AuthScreen} />
-  </LoginStack.Navigator>
+const AuthStack = createStackNavigator();
+const AuthStackScreen = () => (
+  <AuthStack.Navigator>
+    <AuthStack.Screen name="Login" component={AuthScreen} />
+  </AuthStack.Navigator>
 );
 
 export const Navigation = () => {
@@ -192,7 +85,7 @@ export const Navigation = () => {
     <AppLoading />
   ) : (
       <NavigationContainer>
-        {isAuthorized ? <MainStackScreen /> : <LoginStackScreen />}
+        {isAuthorized ? <MainStackScreen /> : <AuthStackScreen />}
       </NavigationContainer>
     );
 };

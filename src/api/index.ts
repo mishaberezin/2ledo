@@ -27,3 +27,11 @@ export const logIn = (data) => {
 };
 
 export const checkMatch = () => httpRequestStub(false, 500);
+
+export const getAuthHeader = async () => {
+  const token = await getToken();
+
+  return {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+};

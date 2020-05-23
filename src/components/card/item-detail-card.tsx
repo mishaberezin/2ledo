@@ -1,6 +1,7 @@
-import React from 'react';
-import { View, Image, ScrollView } from 'react-native';
+import React, { useState } from 'react';
+import { View, TouchableOpacity, ScrollView } from 'react-native';
 import { withStyles } from '@ui-kitten/components';
+import { Ionicons } from '@expo/vector-icons';
 import { Text } from '@ui-kitten/components';
 
 import { ToledoButton } from '../toledo-button';
@@ -18,7 +19,12 @@ const ItemDetailCardContainer = ({ card, eva: { style } }) => {
     rentalPeriod,
     maxNumberOfPeople,
   } = card.apartment.data;
-  console.log(card.apartment.data);
+
+  const [opened, setOpened] = useState(false);
+  const handleOpen = () => {
+    setOpened(!opened);
+  };
+
   return (
     <ScrollView style={style.container} showsVerticalScrollIndicator={false}>
       <View style={style.cardContainer}>
@@ -33,30 +39,45 @@ const ItemDetailCardContainer = ({ card, eva: { style } }) => {
           <Text style={style.textBlockTitle} category='s1'>Описание</Text>
           <Text style={style.textBlockText} category='p1'>{description}</Text>
         </View>
+
+        {/* TODO: в <отдельный компонент> */}
+        <View>
+          <View style={[style.textBlock, style.textBlockGroup]}>
+            <View style={style.textBlockGroupName}>
+              <Text style={style.textBlockGroupNameText} category='s2'>Аренда</Text>
+            </View>
+            <View style={style.textBlockGroupOpenIcon}>
+              <TouchableOpacity onPress={handleOpen}>
+                <Ionicons
+                  name={`ios-arrow-${opened ? 'up' : 'down'}`}
+                  size={24}
+                  color={'rgb(163, 163, 241)'}
+                />
+              </TouchableOpacity>
+            </View>
+          </View>
+          {opened && (
+            <React.Fragment>
+              <View style={style.textBlock}>
+                <Text style={style.textBlockTitle} category='s1'>Квартира</Text>
+              </View>
+              <View style={style.textBlock}>
+                <Text style={style.textBlockTitle} category='s1'>От 1 года и надолго</Text>
+              </View>
+              <View style={style.textBlock}>
+                <Text style={style.textBlockTitle} category='s1'>1 комната</Text>
+              </View>
+              <View style={style.textBlock}>
+                <Text style={style.textBlockTitle} category='s1'>От 35 000 ₽</Text>
+              </View>
+            </React.Fragment>
+          )}
+        </View>
+        {/* </отдельный компонент> */}
+
       </View>
     </ScrollView>
   );
-
-  // return (
-  //   <ScrollView style={style.container} showsVerticalScrollIndicator={false}>
-  //     <View style={style.cardContainer}>
-  //       <CardImages photos={card.apartment.data.photos} />
-  //       <View>
-  //         <CardHostShortInfo
-  //           rentalPrice={rentalPrice}
-  //           roomsCount={roomsCount} />
-  //         <CardHostDescriptionInfo
-  //           description={description}
-  //           address={address}
-  //           rentalPeriod={rentalPeriod}
-  //           maxNumberOfPeople={maxNumberOfPeople} />
-  //         <View style={style.cardActions}>
-  //           <ToledoButton>Связаться</ToledoButton>
-  //         </View>
-  //       </View>
-  //     </View>
-  //   </ScrollView>
-  // );
 };
 
 export const ItemDetailCard = withStyles(ItemDetailCardContainer, () => ({
@@ -78,5 +99,20 @@ export const ItemDetailCard = withStyles(ItemDetailCardContainer, () => ({
   },
   textBlockText: {
     color: '#25265E',
+    lineHeight: 18,
+  },
+  textBlockGroup: {
+    backgroundColor: '#fafaff',
+    flexDirection: 'row',
+  },
+  textBlockGroupName: {
+    width: '90%',
+  },
+  textBlockGroupNameText: {
+    fontSize: 22,
+  },
+  textBlockGroupOpenIcon: {
+    width: '10%',
+    top: 5,
   }
 }));
