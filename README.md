@@ -92,6 +92,8 @@ Device → Shake (⌃⌘Z) → Reload
 
 ## Ссылки
 
+API: https://toledo-stage.herokuapp.com/webjars/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config
+
 Старый репозиторий: https://gitlab.com/flitch/frontend
 
 Состояние репозитория перед тем как все было переделано для Прототипа, находится в ветке `archive`.
