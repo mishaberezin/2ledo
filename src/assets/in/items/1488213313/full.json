@@ -1,0 +1,181 @@
+{
+  "refs": {
+    "locations": {
+      "659200": { "name": "Удмуртия" },
+      "659300": { "name": "Ижевск", "parentId": 659200 }
+    },
+    "categories": {
+      "4": { "name": "Недвижимость" },
+      "24": { "name": "Квартиры", "parentId": 4 }
+    },
+    "districts": {
+      "164": { "name": "Октябрьский", "altName": "р-н Октябрьский" }
+    }
+  },
+  "id": 1488213313,
+  "categoryId": 24,
+  "locationId": 659300,
+  "districtId": 164,
+  "sharing": {
+    "fb": "https://www.avito.ru/izhevsk/kvartiry/2-k_kvartira_45_m_116_et._1488213313?utm_campaign=fb&utm_medium=item_page_mavnew&utm_source=soc_sharing",
+    "gp": "https://www.avito.ru/izhevsk/kvartiry/2-k_kvartira_45_m_116_et._1488213313?utm_campaign=gp&utm_medium=item_page_mavnew&utm_source=soc_sharing",
+    "lj": "https://www.avito.ru/izhevsk/kvartiry/2-k_kvartira_45_m_116_et._1488213313?utm_campaign=lj&utm_medium=item_page_mavnew&utm_source=soc_sharing",
+    "mm": "https://www.avito.ru/izhevsk/kvartiry/2-k_kvartira_45_m_116_et._1488213313?utm_campaign=mm&utm_medium=item_page_mavnew&utm_source=soc_sharing",
+    "native": "https://www.avito.ru/izhevsk/kvartiry/2-k_kvartira_45_m_116_et._1488213313?utm_campaign=native&utm_medium=item_page_mavnew&utm_source=soc_sharing",
+    "ok": "https://www.avito.ru/izhevsk/kvartiry/2-k_kvartira_45_m_116_et._1488213313?utm_campaign=ok&utm_medium=item_page_mavnew&utm_source=soc_sharing",
+    "tw": "https://www.avito.ru/izhevsk/kvartiry/2-k_kvartira_45_m_116_et._1488213313?utm_campaign=tw&utm_medium=item_page_mavnew&utm_source=soc_sharing",
+    "vk": "https://www.avito.ru/izhevsk/kvartiry/2-k_kvartira_45_m_116_et._1488213313?utm_campaign=vk&utm_medium=item_page_mavnew&utm_source=soc_sharing",
+    "url": "https://www.avito.ru/izhevsk/kvartiry/2-k_kvartira_45_m_116_et._1488213313"
+  },
+  "coords": { "lat": 56.872215, "lng": 53.187134 },
+  "address": "Ижевск, 8-я Подлесная улица, 44",
+  "geoReferences": [{ "content": "р-н Октябрьский" }],
+  "title": "2-к квартира, 45 м², 1/16 эт.",
+  "titleGenerated": true,
+  "userType": "private",
+  "time": 1570732977,
+  "description": "Сдам квартиру в аренду, площадь 45 кв м, персональная парковка, консьерж. Все вопросы по телефону.",
+  "parameters": {
+    "flat": [
+      { "title": "Категория", "description": "Квартиры" },
+      { "title": "Залог, мес.", "description": "1" },
+      { "title": "Право собственности", "description": "Собственник" },
+      { "title": "Тип объявления", "description": "Снять" },
+      { "title": "Площадь кухни, м²", "description": "10" },
+      { "title": "Жилая площадь, м²", "description": "20" },
+      { "title": "Тип дома", "description": "Монолитный" },
+      { "title": "Срок аренды", "description": "На длительный срок" }
+    ],
+    "groups": []
+  },
+  "images": [
+    {
+      "640x480": "https://87.img.avito.st/640x480/5460846087.jpg",
+      "432x324": "https://87.img.avito.st/432x324/5460846087.jpg",
+      "240x180": "https://87.img.avito.st/240x180/5460846087.jpg",
+      "140x105": "https://87.img.avito.st/140x105/5460846087.jpg",
+      "100x75": "https://87.img.avito.st/100x75/5460846087.jpg"
+    },
+    {
+      "240x180": "https://90.img.avito.st/240x180/5460846090.jpg",
+      "140x105": "https://90.img.avito.st/140x105/5460846090.jpg",
+      "100x75": "https://90.img.avito.st/100x75/5460846090.jpg",
+      "640x480": "https://90.img.avito.st/640x480/5460846090.jpg",
+      "432x324": "https://90.img.avito.st/432x324/5460846090.jpg"
+    },
+    {
+      "140x105": "https://77.img.avito.st/140x105/5460846177.jpg",
+      "100x75": "https://77.img.avito.st/100x75/5460846177.jpg",
+      "640x480": "https://77.img.avito.st/640x480/5460846177.jpg",
+      "432x324": "https://77.img.avito.st/432x324/5460846177.jpg",
+      "240x180": "https://77.img.avito.st/240x180/5460846177.jpg"
+    },
+    {
+      "240x180": "https://10.img.avito.st/240x180/5460846210.jpg",
+      "140x105": "https://10.img.avito.st/140x105/5460846210.jpg",
+      "100x75": "https://10.img.avito.st/100x75/5460846210.jpg",
+      "640x480": "https://10.img.avito.st/640x480/5460846210.jpg",
+      "432x324": "https://10.img.avito.st/432x324/5460846210.jpg"
+    },
+    {
+      "432x324": "https://65.img.avito.st/432x324/5460846265.jpg",
+      "240x180": "https://65.img.avito.st/240x180/5460846265.jpg",
+      "140x105": "https://65.img.avito.st/140x105/5460846265.jpg",
+      "100x75": "https://65.img.avito.st/100x75/5460846265.jpg",
+      "640x480": "https://65.img.avito.st/640x480/5460846265.jpg"
+    },
+    {
+      "640x480": "https://42.img.avito.st/640x480/5460846342.jpg",
+      "432x324": "https://42.img.avito.st/432x324/5460846342.jpg",
+      "240x180": "https://42.img.avito.st/240x180/5460846342.jpg",
+      "140x105": "https://42.img.avito.st/140x105/5460846342.jpg",
+      "100x75": "https://42.img.avito.st/100x75/5460846342.jpg"
+    },
+    {
+      "100x75": "https://47.img.avito.st/100x75/5460846347.jpg",
+      "640x480": "https://47.img.avito.st/640x480/5460846347.jpg",
+      "432x324": "https://47.img.avito.st/432x324/5460846347.jpg",
+      "240x180": "https://47.img.avito.st/240x180/5460846347.jpg",
+      "140x105": "https://47.img.avito.st/140x105/5460846347.jpg"
+    }
+  ],
+  "price": { "title": "Цена", "value": "15 000", "metric": "руб. в месяц" },
+  "seller": {
+    "title": "Арендодатель",
+    "name": "Сергей",
+    "connection": {
+      "title": "Подтверждён",
+      "sources": [{ "type": "phone" }, { "type": "email" }]
+    },
+    "link": "ru.avito://1/user/profile?userKey=47e146411f5f1ad89f71e0f5a6e6516f&context=H4sIAAAAAAAAA0u0MrKqLgYSSpkpStaZVoYmFhZGhsbGhsbWxVbGVkrFRclKQJYJUL4kNVfJuhYAoovPDTEAAAA",
+    "images": {
+      "24x24": "https://www.avito.st/stub_avatars/%D0%A1/4_24x24.png",
+      "36x36": "https://www.avito.st/stub_avatars/%D0%A1/4_36x36.png",
+      "48x48": "https://www.avito.st/stub_avatars/%D0%A1/4_48x48.png",
+      "64x64": "https://www.avito.st/stub_avatars/%D0%A1/4_64x64.png",
+      "72x72": "https://www.avito.st/stub_avatars/%D0%A1/4_72x72.png",
+      "96x96": "https://www.avito.st/stub_avatars/%D0%A1/4_96x96.png",
+      "128x128": "https://www.avito.st/stub_avatars/%D0%A1/4_128x128.png",
+      "192x192": "https://www.avito.st/stub_avatars/%D0%A1/4_192x192.png",
+      "256x256": "https://www.avito.st/stub_avatars/%D0%A1/4_256x256.png"
+    },
+    "summary": "3 объявления",
+    "postfix": "Частное лицо",
+    "userHashId": "122150819",
+    "online": false,
+    "replyTime": { "category": 3, "text": "Отвечает за несколько часов" },
+    "isVerified": false,
+    "userHash": "47e146411f5f1ad89f71e0f5a6e6516f"
+  },
+  "stats": { "views": { "today": 59, "total": 567 } },
+  "contacts": {
+    "list": [
+      {
+        "type": "phone",
+        "value": {
+          "title": "Позвонить",
+          "uri": "ru.avito://1/phone/get?itemId=1488213313"
+        }
+      },
+      {
+        "type": "messenger",
+        "value": {
+          "title": "Написать",
+          "uri": "ru.avito://1/item/channel/create?itemId=1488213313"
+        }
+      }
+    ]
+  },
+  "firebaseParams": {
+    "itemID": "1488213313",
+    "itemPrice": "15000",
+    "withDelivery": "0",
+    "ne_posledniy_etazh": "не последний",
+    "deposit": "1 мес.",
+    "commission": "Собственник",
+    "offer_type": "Сдам",
+    "area_kitchen": "10 м²",
+    "area_live": "20 м²",
+    "floor": "1",
+    "floors_count": "16",
+    "area": "45 м²",
+    "house_type": "Монолитный",
+    "lease_period": "На длительный срок",
+    "rooms": "2",
+    "userAuth": "0",
+    "isShop": "0",
+    "isASDClient": "0",
+    "vertical": "RE",
+    "categoryId": "24",
+    "categorySlug": "kvartiry",
+    "microCategoryId": "4956",
+    "locationId": "659300"
+  },
+  "needToCheckCreditInfo": true,
+  "adjustParams": {
+    "categoryId": "24",
+    "vertical": "RE",
+    "microCategoryId": "4956"
+  },
+  "needToCheckSimilarItems": true
+}

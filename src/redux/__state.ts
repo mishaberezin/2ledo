@@ -18,7 +18,6 @@ export const sampleState = {
         images.userAdditionalImage,
         images.userAdditionalImage2,
       ],
-      UserAvatar: images.avatarMale9,
     },
   },
   cards: {
@@ -51,7 +50,7 @@ export const sampleState = {
       users: ['hekdjnv84ns8c'],
       type: 'tenant',
       data: {
-        Photos: [images.faceImage, images.runningManImage, images.sampleFemale],
+        Photos: [images.faceImage],
         NumberOfPeople: 2,
         Description: 'Неторопливо ищу квартиру на продолжительный срок.',
         TargetPrice: 50000,

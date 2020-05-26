@@ -1,0 +1,218 @@
+{
+  "refs": {
+    "locations": {
+      "624770": { "name": "Волгоградская область" },
+      "624850": { "name": "Волжский", "parentId": 624770 }
+    },
+    "categories": {
+      "4": { "name": "Недвижимость" },
+      "24": { "name": "Квартиры", "parentId": 4 }
+    },
+    "districts": {
+      "473": { "name": "Новый Город", "altName": "р-н Новый Город" }
+    }
+  },
+  "id": 1768312876,
+  "categoryId": 24,
+  "locationId": 624850,
+  "districtId": 473,
+  "sharing": {
+    "fb": "https://www.avito.ru/volgogradskaya_oblast_volzhskiy/kvartiry/2-k_kvartira_44_m_45_et._1768312876?utm_campaign=fb&utm_medium=item_page_mavnew&utm_source=soc_sharing",
+    "gp": "https://www.avito.ru/volgogradskaya_oblast_volzhskiy/kvartiry/2-k_kvartira_44_m_45_et._1768312876?utm_campaign=gp&utm_medium=item_page_mavnew&utm_source=soc_sharing",
+    "lj": "https://www.avito.ru/volgogradskaya_oblast_volzhskiy/kvartiry/2-k_kvartira_44_m_45_et._1768312876?utm_campaign=lj&utm_medium=item_page_mavnew&utm_source=soc_sharing",
+    "mm": "https://www.avito.ru/volgogradskaya_oblast_volzhskiy/kvartiry/2-k_kvartira_44_m_45_et._1768312876?utm_campaign=mm&utm_medium=item_page_mavnew&utm_source=soc_sharing",
+    "native": "https://www.avito.ru/volgogradskaya_oblast_volzhskiy/kvartiry/2-k_kvartira_44_m_45_et._1768312876?utm_campaign=native&utm_medium=item_page_mavnew&utm_source=soc_sharing",
+    "ok": "https://www.avito.ru/volgogradskaya_oblast_volzhskiy/kvartiry/2-k_kvartira_44_m_45_et._1768312876?utm_campaign=ok&utm_medium=item_page_mavnew&utm_source=soc_sharing",
+    "tw": "https://www.avito.ru/volgogradskaya_oblast_volzhskiy/kvartiry/2-k_kvartira_44_m_45_et._1768312876?utm_campaign=tw&utm_medium=item_page_mavnew&utm_source=soc_sharing",
+    "vk": "https://www.avito.ru/volgogradskaya_oblast_volzhskiy/kvartiry/2-k_kvartira_44_m_45_et._1768312876?utm_campaign=vk&utm_medium=item_page_mavnew&utm_source=soc_sharing",
+    "url": "https://www.avito.ru/volgogradskaya_oblast_volzhskiy/kvartiry/2-k_kvartira_44_m_45_et._1768312876"
+  },
+  "coords": { "lat": 48.769432, "lng": 44.80103 },
+  "address": "Волгоградская область, Волжский, улица Александрова, 10В",
+  "geoReferences": [{ "content": "р-н Новый Город" }],
+  "title": "2-к квартира, 44 м², 4/5 эт.",
+  "titleGenerated": true,
+  "userType": "private",
+  "time": 1570732313,
+  "description": "Сдaм чистую, теплую и уютную 2-x кoмнaтную квaртиру на 4-м эт. в 5-ти этажнoм домe, в удобнo рaсполoженнoм мecтe 23 м/p. Pядом ВолгaMoлл, 30 Шк, кaдетскaя шк, дeтcкие caды. Kомнaты изoлирoвaнныe на pазныe cтoрoны, с/у paздельный.В квартиpе eсть все для кoмфоpтнoго проживaния. Оcтaетcя вcя мeбель и тeхника кaк нa фото: холодильник, стиральная машинка, микроволновка, мягкая мебель, стенка, шкаф и т.д. Сдаётся на длительный срок, для русской семьи, без животных. Оплата ежемесячно 13000 руб. + счётчики.",
+  "parameters": {
+    "flat": [
+      { "title": "Категория", "description": "Квартиры" },
+      { "title": "Залог, мес.", "description": "1" },
+      { "title": "Право собственности", "description": "Собственник" },
+      { "title": "Тип объявления", "description": "Снять" },
+      { "title": "Площадь кухни, м²", "description": "9" },
+      { "title": "Жилая площадь, м²", "description": "30" },
+      { "title": "Тип дома", "description": "Панельный" },
+      { "title": "Срок аренды", "description": "На длительный срок" }
+    ],
+    "groups": []
+  },
+  "images": [
+    {
+      "640x480": "https://26.img.avito.st/640x480/5875969026.jpg",
+      "432x324": "https://26.img.avito.st/432x324/5875969026.jpg",
+      "240x180": "https://26.img.avito.st/240x180/5875969026.jpg",
+      "140x105": "https://26.img.avito.st/140x105/5875969026.jpg",
+      "100x75": "https://26.img.avito.st/100x75/5875969026.jpg"
+    },
+    {
+      "640x480": "https://31.img.avito.st/640x480/5875969031.jpg",
+      "432x324": "https://31.img.avito.st/432x324/5875969031.jpg",
+      "240x180": "https://31.img.avito.st/240x180/5875969031.jpg",
+      "140x105": "https://31.img.avito.st/140x105/5875969031.jpg",
+      "100x75": "https://31.img.avito.st/100x75/5875969031.jpg"
+    },
+    {
+      "432x324": "https://23.img.avito.st/432x324/5875969023.jpg",
+      "240x180": "https://23.img.avito.st/240x180/5875969023.jpg",
+      "140x105": "https://23.img.avito.st/140x105/5875969023.jpg",
+      "100x75": "https://23.img.avito.st/100x75/5875969023.jpg",
+      "640x480": "https://23.img.avito.st/640x480/5875969023.jpg"
+    },
+    {
+      "432x324": "https://21.img.avito.st/432x324/5875969021.jpg",
+      "240x180": "https://21.img.avito.st/240x180/5875969021.jpg",
+      "140x105": "https://21.img.avito.st/140x105/5875969021.jpg",
+      "100x75": "https://21.img.avito.st/100x75/5875969021.jpg",
+      "640x480": "https://21.img.avito.st/640x480/5875969021.jpg"
+    },
+    {
+      "640x480": "https://34.img.avito.st/640x480/5875969034.jpg",
+      "432x324": "https://34.img.avito.st/432x324/5875969034.jpg",
+      "240x180": "https://34.img.avito.st/240x180/5875969034.jpg",
+      "140x105": "https://34.img.avito.st/140x105/5875969034.jpg",
+      "100x75": "https://34.img.avito.st/100x75/5875969034.jpg"
+    },
+    {
+      "640x480": "https://29.img.avito.st/640x480/5875969029.jpg",
+      "432x324": "https://29.img.avito.st/432x324/5875969029.jpg",
+      "240x180": "https://29.img.avito.st/240x180/5875969029.jpg",
+      "140x105": "https://29.img.avito.st/140x105/5875969029.jpg",
+      "100x75": "https://29.img.avito.st/100x75/5875969029.jpg"
+    },
+    {
+      "640x480": "https://24.img.avito.st/640x480/5875969024.jpg",
+      "432x324": "https://24.img.avito.st/432x324/5875969024.jpg",
+      "240x180": "https://24.img.avito.st/240x180/5875969024.jpg",
+      "140x105": "https://24.img.avito.st/140x105/5875969024.jpg",
+      "100x75": "https://24.img.avito.st/100x75/5875969024.jpg"
+    },
+    {
+      "240x180": "https://22.img.avito.st/240x180/5875969022.jpg",
+      "140x105": "https://22.img.avito.st/140x105/5875969022.jpg",
+      "100x75": "https://22.img.avito.st/100x75/5875969022.jpg",
+      "640x480": "https://22.img.avito.st/640x480/5875969022.jpg",
+      "432x324": "https://22.img.avito.st/432x324/5875969022.jpg"
+    },
+    {
+      "640x480": "https://33.img.avito.st/640x480/5875969033.jpg",
+      "432x324": "https://33.img.avito.st/432x324/5875969033.jpg",
+      "240x180": "https://33.img.avito.st/240x180/5875969033.jpg",
+      "140x105": "https://33.img.avito.st/140x105/5875969033.jpg",
+      "100x75": "https://33.img.avito.st/100x75/5875969033.jpg"
+    },
+    {
+      "140x105": "https://20.img.avito.st/140x105/5875969020.jpg",
+      "100x75": "https://20.img.avito.st/100x75/5875969020.jpg",
+      "640x480": "https://20.img.avito.st/640x480/5875969020.jpg",
+      "432x324": "https://20.img.avito.st/432x324/5875969020.jpg",
+      "240x180": "https://20.img.avito.st/240x180/5875969020.jpg"
+    },
+    {
+      "432x324": "https://27.img.avito.st/432x324/5875969027.jpg",
+      "240x180": "https://27.img.avito.st/240x180/5875969027.jpg",
+      "140x105": "https://27.img.avito.st/140x105/5875969027.jpg",
+      "100x75": "https://27.img.avito.st/100x75/5875969027.jpg",
+      "640x480": "https://27.img.avito.st/640x480/5875969027.jpg"
+    },
+    {
+      "640x480": "https://28.img.avito.st/640x480/5875969028.jpg",
+      "432x324": "https://28.img.avito.st/432x324/5875969028.jpg",
+      "240x180": "https://28.img.avito.st/240x180/5875969028.jpg",
+      "140x105": "https://28.img.avito.st/140x105/5875969028.jpg",
+      "100x75": "https://28.img.avito.st/100x75/5875969028.jpg"
+    },
+    {
+      "640x480": "https://35.img.avito.st/640x480/5875969035.jpg",
+      "432x324": "https://35.img.avito.st/432x324/5875969035.jpg",
+      "240x180": "https://35.img.avito.st/240x180/5875969035.jpg",
+      "140x105": "https://35.img.avito.st/140x105/5875969035.jpg",
+      "100x75": "https://35.img.avito.st/100x75/5875969035.jpg"
+    }
+  ],
+  "price": { "title": "Цена", "value": "13 000", "metric": "руб. в месяц" },
+  "seller": {
+    "title": "Арендодатель",
+    "name": "Олег",
+    "connection": {
+      "title": "Подтверждён",
+      "sources": [{ "type": "phone" }, { "type": "email" }]
+    },
+    "link": "ru.avito://1/user/profile?userKey=dbddeb8de623fb38fe4d2cd0e3f9b43535691f0264530a17cd63236e290527a2&context=H4sIAAAAAAAAA0u0MrKqLgYSSpkpStaZVobmZhbGhkYW5mbWxVbGVkrFRclKQJYJUL4kNVfJuhYAjCKyvDEAAAA",
+    "images": {
+      "24x24": "https://www.avito.st/stub_avatars/%D0%9E/15_24x24.png",
+      "36x36": "https://www.avito.st/stub_avatars/%D0%9E/15_36x36.png",
+      "48x48": "https://www.avito.st/stub_avatars/%D0%9E/15_48x48.png",
+      "64x64": "https://www.avito.st/stub_avatars/%D0%9E/15_64x64.png",
+      "72x72": "https://www.avito.st/stub_avatars/%D0%9E/15_72x72.png",
+      "96x96": "https://www.avito.st/stub_avatars/%D0%9E/15_96x96.png",
+      "128x128": "https://www.avito.st/stub_avatars/%D0%9E/15_128x128.png",
+      "192x192": "https://www.avito.st/stub_avatars/%D0%9E/15_192x192.png",
+      "256x256": "https://www.avito.st/stub_avatars/%D0%9E/15_256x256.png"
+    },
+    "postfix": "Частное лицо",
+    "userHashId": "134609162",
+    "online": false,
+    "isVerified": false,
+    "userHash": "dbddeb8de623fb38fe4d2cd0e3f9b43535691f0264530a17cd63236e290527a2"
+  },
+  "stats": { "views": { "today": 49, "total": 689 } },
+  "contacts": {
+    "list": [
+      {
+        "type": "phone",
+        "value": {
+          "title": "Позвонить",
+          "uri": "ru.avito://1/phone/get?itemId=1768312876"
+        }
+      }
+    ]
+  },
+  "firebaseParams": {
+    "itemID": "1768312876",
+    "itemPrice": "13000",
+    "withDelivery": "0",
+    "ne_posledniy_etazh": "не последний",
+    "deposit": "1 мес.",
+    "commission": "Собственник",
+    "offer_type": "Сдам",
+    "area_kitchen": "9 м²",
+    "area_live": "30 м²",
+    "floor": "4",
+    "floors_count": "5",
+    "area": "44 м²",
+    "house_type": "Панельный",
+    "lease_period": "На длительный срок",
+    "rooms": "2",
+    "userAuth": "0",
+    "isShop": "0",
+    "isASDClient": "0",
+    "vertical": "RE",
+    "categoryId": "24",
+    "categorySlug": "kvartiry",
+    "microCategoryId": "4956",
+    "locationId": "624850"
+  },
+  "anonymousNumber": {
+    "title": "Номер продавца защищён",
+    "subtitle": "СМС и сообщения в WhatsApp, Viber доставлены не будут."
+  },
+  "needToCheckCreditInfo": true,
+  "adjustParams": {
+    "categoryId": "24",
+    "vertical": "RE",
+    "microCategoryId": "4956"
+  },
+  "needToCheckSimilarItems": true
+}

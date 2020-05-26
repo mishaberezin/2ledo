@@ -8,12 +8,6 @@ export const images = {
   userAdditionalImage2: {
     source: require('./images/user-additional2.png'),
   },
-  sampleFemale: {
-    source: require('./in/avatars/female/1.jpg'),
-  },
-  runningManImage: {
-    source: require('./s3/xru48t89eecj74.png'),
-  },
   flatInterior: {
     source: require('./images/flat_1.png'),
   },
@@ -22,75 +16,6 @@ export const images = {
   },
   flatToilet: {
     source: require('./images/flat_3.jpeg'),
-  },
-  avatarFemale1: {
-    source: require('./in/avatars/female/1.jpg'),
-  },
-  avatarFemale2: {
-    source: require('./in/avatars/female/2.jpg'),
-  },
-  avatarFemale3: {
-    source: require('./in/avatars/female/3.jpg'),
-  },
-  avatarFemale4: {
-    source: require('./in/avatars/female/4.jpg'),
-  },
-  avatarFemale5: {
-    source: require('./in/avatars/female/5.jpg'),
-  },
-  avatarFemale6: {
-    source: require('./in/avatars/female/6.jpg'),
-  },
-  avatarFemale7: {
-    source: require('./in/avatars/female/7.jpg'),
-  },
-  avatarFemale8: {
-    source: require('./in/avatars/female/8.jpg'),
-  },
-  avatarFemale9: {
-    source: require('./in/avatars/female/9.jpg'),
-  },
-  avatarFemale10: {
-    source: require('./in/avatars/female/10.jpg'),
-  },
-  avatarFemale11: {
-    source: require('./in/avatars/female/11.jpg'),
-  },
-  avatarFemale12: {
-    source: require('./in/avatars/female/12.jpg'),
-  },
-  avatarFemale13: {
-    source: require('./in/avatars/female/13.jpg'),
-  },
-  avatarMale1: {
-    source: require('./in/avatars/male/1.jpg'),
-  },
-  avatarMale2: {
-    source: require('./in/avatars/male/2.jpg'),
-  },
-  avatarMale3: {
-    source: require('./in/avatars/male/3.jpg'),
-  },
-  avatarMale4: {
-    source: require('./in/avatars/male/4.jpg'),
-  },
-  avatarMale5: {
-    source: require('./in/avatars/male/5.jpg'),
-  },
-  avatarMale6: {
-    source: require('./in/avatars/male/6.jpg'),
-  },
-  avatarMale7: {
-    source: require('./in/avatars/male/7.jpg'),
-  },
-  avatarMale8: {
-    source: require('./in/avatars/male/8.jpg'),
-  },
-  avatarMale9: {
-    source: require('./in/avatars/male/9.jpg'),
-  },
-  avatarMale10: {
-    source: require('./in/avatars/male/10.jpg'),
   },
 };
 

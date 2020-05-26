@@ -1,0 +1,193 @@
+{
+  "refs": {
+    "locations": {
+      "625330": { "name": "Вологодская область" },
+      "625540": { "name": "Сокол", "parentId": 625330 }
+    },
+    "categories": {
+      "4": { "name": "Недвижимость" },
+      "24": { "name": "Квартиры", "parentId": 4 }
+    }
+  },
+  "id": 1804463066,
+  "categoryId": 24,
+  "locationId": 625540,
+  "sharing": {
+    "fb": "https://www.avito.ru/vologodskaya_oblast_sokol/kvartiry/1-k_kvartira_33_m_13_et._1804463066?utm_campaign=fb&utm_medium=item_page_mavnew&utm_source=soc_sharing",
+    "gp": "https://www.avito.ru/vologodskaya_oblast_sokol/kvartiry/1-k_kvartira_33_m_13_et._1804463066?utm_campaign=gp&utm_medium=item_page_mavnew&utm_source=soc_sharing",
+    "lj": "https://www.avito.ru/vologodskaya_oblast_sokol/kvartiry/1-k_kvartira_33_m_13_et._1804463066?utm_campaign=lj&utm_medium=item_page_mavnew&utm_source=soc_sharing",
+    "mm": "https://www.avito.ru/vologodskaya_oblast_sokol/kvartiry/1-k_kvartira_33_m_13_et._1804463066?utm_campaign=mm&utm_medium=item_page_mavnew&utm_source=soc_sharing",
+    "native": "https://www.avito.ru/vologodskaya_oblast_sokol/kvartiry/1-k_kvartira_33_m_13_et._1804463066?utm_campaign=native&utm_medium=item_page_mavnew&utm_source=soc_sharing",
+    "ok": "https://www.avito.ru/vologodskaya_oblast_sokol/kvartiry/1-k_kvartira_33_m_13_et._1804463066?utm_campaign=ok&utm_medium=item_page_mavnew&utm_source=soc_sharing",
+    "tw": "https://www.avito.ru/vologodskaya_oblast_sokol/kvartiry/1-k_kvartira_33_m_13_et._1804463066?utm_campaign=tw&utm_medium=item_page_mavnew&utm_source=soc_sharing",
+    "vk": "https://www.avito.ru/vologodskaya_oblast_sokol/kvartiry/1-k_kvartira_33_m_13_et._1804463066?utm_campaign=vk&utm_medium=item_page_mavnew&utm_source=soc_sharing",
+    "url": "https://www.avito.ru/vologodskaya_oblast_sokol/kvartiry/1-k_kvartira_33_m_13_et._1804463066"
+  },
+  "coords": { "lat": 59.444843, "lng": 40.141148 },
+  "address": "Вологодская область, городское поселение Город Сокол, Сокол, Коллективная улица",
+  "geoReferences": [],
+  "title": "1-к квартира, 33 м², 1/3 эт.",
+  "titleGenerated": true,
+  "userType": "company",
+  "time": 1570731524,
+  "description": "Сдаётся 1-комнатная квартира, Коллективная, с мебелью и бытовой техникой, только порядочным людям, без животных, на длительный срок с 1 ноября. Цена :13000+счётчики",
+  "parameters": {
+    "flat": [
+      { "title": "Категория", "description": "Квартиры" },
+      { "title": "Залог, мес.", "description": "0" },
+      { "title": "Право собственности", "description": "Собственник" },
+      { "title": "Тип объявления", "description": "Снять" },
+      { "title": "Тип дома", "description": "Кирпичный" },
+      { "title": "Срок аренды", "description": "На длительный срок" }
+    ],
+    "groups": []
+  },
+  "images": [
+    {
+      "240x180": "https://67.img.avito.st/240x180/6179852467.jpg",
+      "140x105": "https://67.img.avito.st/140x105/6179852467.jpg",
+      "100x75": "https://67.img.avito.st/100x75/6179852467.jpg",
+      "640x480": "https://67.img.avito.st/640x480/6179852467.jpg",
+      "432x324": "https://67.img.avito.st/432x324/6179852467.jpg"
+    },
+    {
+      "640x480": "https://45.img.avito.st/640x480/6179852445.jpg",
+      "432x324": "https://45.img.avito.st/432x324/6179852445.jpg",
+      "240x180": "https://45.img.avito.st/240x180/6179852445.jpg",
+      "140x105": "https://45.img.avito.st/140x105/6179852445.jpg",
+      "100x75": "https://45.img.avito.st/100x75/6179852445.jpg"
+    },
+    {
+      "240x180": "https://70.img.avito.st/240x180/6179852470.jpg",
+      "140x105": "https://70.img.avito.st/140x105/6179852470.jpg",
+      "100x75": "https://70.img.avito.st/100x75/6179852470.jpg",
+      "640x480": "https://70.img.avito.st/640x480/6179852470.jpg",
+      "432x324": "https://70.img.avito.st/432x324/6179852470.jpg"
+    },
+    {
+      "640x480": "https://64.img.avito.st/640x480/6179852464.jpg",
+      "432x324": "https://64.img.avito.st/432x324/6179852464.jpg",
+      "240x180": "https://64.img.avito.st/240x180/6179852464.jpg",
+      "140x105": "https://64.img.avito.st/140x105/6179852464.jpg",
+      "100x75": "https://64.img.avito.st/100x75/6179852464.jpg"
+    },
+    {
+      "140x105": "https://72.img.avito.st/140x105/6179852472.jpg",
+      "100x75": "https://72.img.avito.st/100x75/6179852472.jpg",
+      "640x480": "https://72.img.avito.st/640x480/6179852472.jpg",
+      "432x324": "https://72.img.avito.st/432x324/6179852472.jpg",
+      "240x180": "https://72.img.avito.st/240x180/6179852472.jpg"
+    },
+    {
+      "640x480": "https://74.img.avito.st/640x480/6179852474.jpg",
+      "432x324": "https://74.img.avito.st/432x324/6179852474.jpg",
+      "240x180": "https://74.img.avito.st/240x180/6179852474.jpg",
+      "140x105": "https://74.img.avito.st/140x105/6179852474.jpg",
+      "100x75": "https://74.img.avito.st/100x75/6179852474.jpg"
+    },
+    {
+      "640x480": "https://63.img.avito.st/640x480/6179852463.jpg",
+      "432x324": "https://63.img.avito.st/432x324/6179852463.jpg",
+      "240x180": "https://63.img.avito.st/240x180/6179852463.jpg",
+      "140x105": "https://63.img.avito.st/140x105/6179852463.jpg",
+      "100x75": "https://63.img.avito.st/100x75/6179852463.jpg"
+    },
+    {
+      "100x75": "https://51.img.avito.st/100x75/6179852451.jpg",
+      "640x480": "https://51.img.avito.st/640x480/6179852451.jpg",
+      "432x324": "https://51.img.avito.st/432x324/6179852451.jpg",
+      "240x180": "https://51.img.avito.st/240x180/6179852451.jpg",
+      "140x105": "https://51.img.avito.st/140x105/6179852451.jpg"
+    },
+    {
+      "640x480": "https://71.img.avito.st/640x480/6179852471.jpg",
+      "432x324": "https://71.img.avito.st/432x324/6179852471.jpg",
+      "240x180": "https://71.img.avito.st/240x180/6179852471.jpg",
+      "140x105": "https://71.img.avito.st/140x105/6179852471.jpg",
+      "100x75": "https://71.img.avito.st/100x75/6179852471.jpg"
+    },
+    {
+      "240x180": "https://73.img.avito.st/240x180/6179852473.jpg",
+      "140x105": "https://73.img.avito.st/140x105/6179852473.jpg",
+      "100x75": "https://73.img.avito.st/100x75/6179852473.jpg",
+      "640x480": "https://73.img.avito.st/640x480/6179852473.jpg",
+      "432x324": "https://73.img.avito.st/432x324/6179852473.jpg"
+    }
+  ],
+  "price": { "title": "Цена", "value": "13 000", "metric": "руб. в месяц" },
+  "seller": {
+    "title": "Арендодатель",
+    "name": "Юлия",
+    "postfix": "Агентство",
+    "connection": {
+      "title": "Подтверждён",
+      "sources": [{ "type": "phone" }, { "type": "email" }]
+    },
+    "link": "ru.avito://1/user/profile?userKey=b2c3c09ebd758eab54060fe47109394a&context=H4sIAAAAAAAAA0u0MrKqLgYSSpkpStaZVoYWBiYmZsYGZmbWxVbGVkrFRclKQJYJUL4kNVfJuhYAl7jXYDEAAAA",
+    "images": {
+      "24x24": "https://www.avito.st/stub_avatars/%D0%AE/1_24x24.png",
+      "36x36": "https://www.avito.st/stub_avatars/%D0%AE/1_36x36.png",
+      "48x48": "https://www.avito.st/stub_avatars/%D0%AE/1_48x48.png",
+      "64x64": "https://www.avito.st/stub_avatars/%D0%AE/1_64x64.png",
+      "72x72": "https://www.avito.st/stub_avatars/%D0%AE/1_72x72.png",
+      "96x96": "https://www.avito.st/stub_avatars/%D0%AE/1_96x96.png",
+      "128x128": "https://www.avito.st/stub_avatars/%D0%AE/1_128x128.png",
+      "192x192": "https://www.avito.st/stub_avatars/%D0%AE/1_192x192.png",
+      "256x256": "https://www.avito.st/stub_avatars/%D0%AE/1_256x256.png"
+    },
+    "summary": "15 объявлений",
+    "userHashId": "33963534",
+    "online": false,
+    "isVerified": false,
+    "userHash": "b2c3c09ebd758eab54060fe47109394a"
+  },
+  "stats": { "views": { "today": 43, "total": 43 } },
+  "contacts": {
+    "list": [
+      {
+        "type": "phone",
+        "value": {
+          "title": "Позвонить",
+          "uri": "ru.avito://1/phone/get?itemId=1804463066"
+        }
+      },
+      {
+        "type": "messenger",
+        "value": {
+          "title": "Написать",
+          "uri": "ru.avito://1/item/channel/create?itemId=1804463066"
+        }
+      }
+    ]
+  },
+  "firebaseParams": {
+    "itemID": "1804463066",
+    "itemPrice": "13000",
+    "withDelivery": "0",
+    "ne_posledniy_etazh": "не последний",
+    "deposit": "0",
+    "commission": "Собственник",
+    "offer_type": "Сдам",
+    "floor": "1",
+    "floors_count": "3",
+    "area": "33 м²",
+    "house_type": "Кирпичный",
+    "lease_period": "На длительный срок",
+    "rooms": "1",
+    "userAuth": "0",
+    "isShop": "0",
+    "isASDClient": "0",
+    "vertical": "RE",
+    "categoryId": "24",
+    "categorySlug": "kvartiry",
+    "microCategoryId": "4958",
+    "locationId": "625540"
+  },
+  "needToCheckCreditInfo": true,
+  "adjustParams": {
+    "categoryId": "24",
+    "vertical": "RE",
+    "microCategoryId": "4958"
+  },
+  "needToCheckSimilarItems": true
+}

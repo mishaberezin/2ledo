@@ -1,0 +1,198 @@
+{
+  "refs": {
+    "locations": {
+      "632660": { "name": "Краснодарский край" },
+      "632980": { "name": "Веселое", "parentId": 632660 }
+    },
+    "categories": {
+      "4": { "name": "Недвижимость" },
+      "24": { "name": "Квартиры", "parentId": 4 }
+    }
+  },
+  "id": 1785401178,
+  "categoryId": 24,
+  "locationId": 632980,
+  "sharing": {
+    "fb": "https://www.avito.ru/veseloe/kvartiry/studiya_20_m_22_et._1785401178?utm_campaign=fb&utm_medium=item_page_mavnew&utm_source=soc_sharing",
+    "gp": "https://www.avito.ru/veseloe/kvartiry/studiya_20_m_22_et._1785401178?utm_campaign=gp&utm_medium=item_page_mavnew&utm_source=soc_sharing",
+    "lj": "https://www.avito.ru/veseloe/kvartiry/studiya_20_m_22_et._1785401178?utm_campaign=lj&utm_medium=item_page_mavnew&utm_source=soc_sharing",
+    "mm": "https://www.avito.ru/veseloe/kvartiry/studiya_20_m_22_et._1785401178?utm_campaign=mm&utm_medium=item_page_mavnew&utm_source=soc_sharing",
+    "native": "https://www.avito.ru/veseloe/kvartiry/studiya_20_m_22_et._1785401178?utm_campaign=native&utm_medium=item_page_mavnew&utm_source=soc_sharing",
+    "ok": "https://www.avito.ru/veseloe/kvartiry/studiya_20_m_22_et._1785401178?utm_campaign=ok&utm_medium=item_page_mavnew&utm_source=soc_sharing",
+    "tw": "https://www.avito.ru/veseloe/kvartiry/studiya_20_m_22_et._1785401178?utm_campaign=tw&utm_medium=item_page_mavnew&utm_source=soc_sharing",
+    "vk": "https://www.avito.ru/veseloe/kvartiry/studiya_20_m_22_et._1785401178?utm_campaign=vk&utm_medium=item_page_mavnew&utm_source=soc_sharing",
+    "url": "https://www.avito.ru/veseloe/kvartiry/studiya_20_m_22_et._1785401178"
+  },
+  "coords": { "lat": 43.4127315806154, "lng": 40.0003187634918 },
+  "address": "Краснодарский край, село Весёлое, улица имени Героя Советского Союза Е.К. Гараняна, 5А",
+  "geoReferences": [],
+  "title": "Студия, 20 м², 2/2 эт.",
+  "titleGenerated": true,
+  "userType": "private",
+  "time": 1570732803,
+  "description": "Cдается квaртирa-студия в частном дoме. B кваpтиру идeт отдельный вход, еcть cвoи вaннaя комната и куxня, a тaкжe все нeoбxодимoe для пpоживaния: xолoдильник, тeлeвизоp.\n\nДо oлимпийcкoго пaркa 7 минут нa автобусе, дo моpя 15 минут.\n\nСдаетcя толькo в дoлгосрочную аренду от меcяцa.\n\nПрoсим обpатить внимaние, жильцов с детьми не размещаем!",
+  "parameters": {
+    "flat": [
+      { "title": "Категория", "description": "Квартиры" },
+      { "title": "Залог, мес.", "description": "0" },
+      { "title": "Право собственности", "description": "Собственник" },
+      { "title": "Тип объявления", "description": "Снять" },
+      { "title": "Площадь кухни, м²", "description": "4" },
+      { "title": "Жилая площадь, м²", "description": "16" },
+      { "title": "Тип дома", "description": "Блочный" },
+      { "title": "Срок аренды", "description": "На длительный срок" }
+    ],
+    "groups": []
+  },
+  "images": [
+    {
+      "140x105": "https://43.img.avito.st/140x105/5725751743.jpg",
+      "100x75": "https://43.img.avito.st/100x75/5725751743.jpg",
+      "640x480": "https://43.img.avito.st/640x480/5725751743.jpg",
+      "432x324": "https://43.img.avito.st/432x324/5725751743.jpg",
+      "240x180": "https://43.img.avito.st/240x180/5725751743.jpg"
+    },
+    {
+      "140x105": "https://45.img.avito.st/140x105/5725751745.jpg",
+      "100x75": "https://45.img.avito.st/100x75/5725751745.jpg",
+      "640x480": "https://45.img.avito.st/640x480/5725751745.jpg",
+      "432x324": "https://45.img.avito.st/432x324/5725751745.jpg",
+      "240x180": "https://45.img.avito.st/240x180/5725751745.jpg"
+    },
+    {
+      "640x480": "https://39.img.avito.st/640x480/5725751739.jpg",
+      "432x324": "https://39.img.avito.st/432x324/5725751739.jpg",
+      "240x180": "https://39.img.avito.st/240x180/5725751739.jpg",
+      "140x105": "https://39.img.avito.st/140x105/5725751739.jpg",
+      "100x75": "https://39.img.avito.st/100x75/5725751739.jpg"
+    },
+    {
+      "640x480": "https://61.img.avito.st/640x480/5725751761.jpg",
+      "432x324": "https://61.img.avito.st/432x324/5725751761.jpg",
+      "240x180": "https://61.img.avito.st/240x180/5725751761.jpg",
+      "140x105": "https://61.img.avito.st/140x105/5725751761.jpg",
+      "100x75": "https://61.img.avito.st/100x75/5725751761.jpg"
+    },
+    {
+      "140x105": "https://58.img.avito.st/140x105/5725751758.jpg",
+      "100x75": "https://58.img.avito.st/100x75/5725751758.jpg",
+      "640x480": "https://58.img.avito.st/640x480/5725751758.jpg",
+      "432x324": "https://58.img.avito.st/432x324/5725751758.jpg",
+      "240x180": "https://58.img.avito.st/240x180/5725751758.jpg"
+    },
+    {
+      "432x324": "https://54.img.avito.st/432x324/5725751754.jpg",
+      "240x180": "https://54.img.avito.st/240x180/5725751754.jpg",
+      "140x105": "https://54.img.avito.st/140x105/5725751754.jpg",
+      "100x75": "https://54.img.avito.st/100x75/5725751754.jpg",
+      "640x480": "https://54.img.avito.st/640x480/5725751754.jpg"
+    },
+    {
+      "100x75": "https://42.img.avito.st/100x75/5725751742.jpg",
+      "640x480": "https://42.img.avito.st/640x480/5725751742.jpg",
+      "432x324": "https://42.img.avito.st/432x324/5725751742.jpg",
+      "240x180": "https://42.img.avito.st/240x180/5725751742.jpg",
+      "140x105": "https://42.img.avito.st/140x105/5725751742.jpg"
+    },
+    {
+      "640x480": "https://41.img.avito.st/640x480/5725751741.jpg",
+      "432x324": "https://41.img.avito.st/432x324/5725751741.jpg",
+      "240x180": "https://41.img.avito.st/240x180/5725751741.jpg",
+      "140x105": "https://41.img.avito.st/140x105/5725751741.jpg",
+      "100x75": "https://41.img.avito.st/100x75/5725751741.jpg"
+    },
+    {
+      "100x75": "https://71.img.avito.st/100x75/5725751771.jpg",
+      "640x480": "https://71.img.avito.st/640x480/5725751771.jpg",
+      "432x324": "https://71.img.avito.st/432x324/5725751771.jpg",
+      "240x180": "https://71.img.avito.st/240x180/5725751771.jpg",
+      "140x105": "https://71.img.avito.st/140x105/5725751771.jpg"
+    },
+    {
+      "240x180": "https://75.img.avito.st/240x180/5725751775.jpg",
+      "140x105": "https://75.img.avito.st/140x105/5725751775.jpg",
+      "100x75": "https://75.img.avito.st/100x75/5725751775.jpg",
+      "640x480": "https://75.img.avito.st/640x480/5725751775.jpg",
+      "432x324": "https://75.img.avito.st/432x324/5725751775.jpg"
+    }
+  ],
+  "price": { "title": "Цена", "value": "15 000", "metric": "руб. в месяц" },
+  "seller": {
+    "title": "Арендодатель",
+    "name": "Игорь",
+    "connection": {
+      "title": "Подтверждён",
+      "sources": [{ "type": "phone" }, { "type": "email" }]
+    },
+    "link": "ru.avito://1/user/profile?userKey=8ca1d96051dc9703f97d747663676743&context=H4sIAAAAAAAAA0u0MrKqLgYSSpkpStaZVobmFqYmBoZAyrrYythKqbgoWQnIMgHKl6TmKlnXAgBtWwuIMQAAAA",
+    "images": {
+      "24x24": "https://www.avito.st/stub_avatars/%D0%98/8_24x24.png",
+      "36x36": "https://www.avito.st/stub_avatars/%D0%98/8_36x36.png",
+      "48x48": "https://www.avito.st/stub_avatars/%D0%98/8_48x48.png",
+      "64x64": "https://www.avito.st/stub_avatars/%D0%98/8_64x64.png",
+      "72x72": "https://www.avito.st/stub_avatars/%D0%98/8_72x72.png",
+      "96x96": "https://www.avito.st/stub_avatars/%D0%98/8_96x96.png",
+      "128x128": "https://www.avito.st/stub_avatars/%D0%98/8_128x128.png",
+      "192x192": "https://www.avito.st/stub_avatars/%D0%98/8_192x192.png",
+      "256x256": "https://www.avito.st/stub_avatars/%D0%98/8_256x256.png"
+    },
+    "postfix": "Частное лицо",
+    "userHashId": "32467291",
+    "online": false,
+    "replyTime": { "category": 3, "text": "Отвечает за несколько часов" },
+    "isVerified": false,
+    "userHash": "8ca1d96051dc9703f97d747663676743"
+  },
+  "stats": { "views": { "today": 52, "total": 2235 } },
+  "contacts": {
+    "list": [
+      {
+        "type": "phone",
+        "value": {
+          "title": "Позвонить",
+          "uri": "ru.avito://1/phone/get?itemId=1785401178"
+        }
+      },
+      {
+        "type": "messenger",
+        "value": {
+          "title": "Написать",
+          "uri": "ru.avito://1/item/channel/create?itemId=1785401178"
+        }
+      }
+    ]
+  },
+  "firebaseParams": {
+    "itemID": "1785401178",
+    "itemPrice": "15000",
+    "withDelivery": "0",
+    "kol_vo_spalnykh_mest": "2",
+    "deposit": "0",
+    "commission": "Собственник",
+    "kol_vo_krovatey": "1",
+    "offer_type": "Сдам",
+    "area_kitchen": "4 м²",
+    "area_live": "16 м²",
+    "floor": "2",
+    "floors_count": "2",
+    "area": "20 м²",
+    "house_type": "Блочный",
+    "lease_period": "На длительный срок",
+    "rooms": "Студия",
+    "userAuth": "0",
+    "isShop": "0",
+    "isASDClient": "0",
+    "vertical": "RE",
+    "categoryId": "24",
+    "categorySlug": "kvartiry",
+    "microCategoryId": "4960",
+    "locationId": "632980"
+  },
+  "needToCheckCreditInfo": true,
+  "adjustParams": {
+    "categoryId": "24",
+    "vertical": "RE",
+    "microCategoryId": "4960"
+  },
+  "needToCheckSimilarItems": true
+}

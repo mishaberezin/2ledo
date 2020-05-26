@@ -1,0 +1,176 @@
+{
+  "refs": {
+    "locations": {
+      "621550": { "name": "Крым" },
+      "621581": { "name": "Евпатория", "parentId": 621550 }
+    },
+    "categories": {
+      "4": { "name": "Недвижимость" },
+      "24": { "name": "Квартиры", "parentId": 4 }
+    }
+  },
+  "id": 1236920894,
+  "categoryId": 24,
+  "locationId": 621581,
+  "sharing": {
+    "fb": "https://www.avito.ru/evpatoriya/kvartiry/1-k_kvartira_31_m_35_et._1236920894?utm_campaign=fb&utm_medium=item_page_mavnew&utm_source=soc_sharing",
+    "gp": "https://www.avito.ru/evpatoriya/kvartiry/1-k_kvartira_31_m_35_et._1236920894?utm_campaign=gp&utm_medium=item_page_mavnew&utm_source=soc_sharing",
+    "lj": "https://www.avito.ru/evpatoriya/kvartiry/1-k_kvartira_31_m_35_et._1236920894?utm_campaign=lj&utm_medium=item_page_mavnew&utm_source=soc_sharing",
+    "mm": "https://www.avito.ru/evpatoriya/kvartiry/1-k_kvartira_31_m_35_et._1236920894?utm_campaign=mm&utm_medium=item_page_mavnew&utm_source=soc_sharing",
+    "native": "https://www.avito.ru/evpatoriya/kvartiry/1-k_kvartira_31_m_35_et._1236920894?utm_campaign=native&utm_medium=item_page_mavnew&utm_source=soc_sharing",
+    "ok": "https://www.avito.ru/evpatoriya/kvartiry/1-k_kvartira_31_m_35_et._1236920894?utm_campaign=ok&utm_medium=item_page_mavnew&utm_source=soc_sharing",
+    "tw": "https://www.avito.ru/evpatoriya/kvartiry/1-k_kvartira_31_m_35_et._1236920894?utm_campaign=tw&utm_medium=item_page_mavnew&utm_source=soc_sharing",
+    "vk": "https://www.avito.ru/evpatoriya/kvartiry/1-k_kvartira_31_m_35_et._1236920894?utm_campaign=vk&utm_medium=item_page_mavnew&utm_source=soc_sharing",
+    "url": "https://www.avito.ru/evpatoriya/kvartiry/1-k_kvartira_31_m_35_et._1236920894"
+  },
+  "coords": { "lat": 45.30673218, "lng": 33.03407288 },
+  "address": "Республика Крым, посёлок городского типа Мирный, улица Сырникова",
+  "geoReferences": [],
+  "title": "1-к квартира, 31 м², 3/5 эт.",
+  "titleGenerated": true,
+  "userType": "private",
+  "time": 1570733090,
+  "description": "Сдам квартиру в пригороде Евпаторий,Мирном.Квартира на 3 этаже,5-этажного дома.Чистая,с мебелью и бытовой техникой.Рядом море.",
+  "parameters": {
+    "flat": [
+      { "title": "Категория", "description": "Квартиры" },
+      { "title": "Залог, мес.", "description": "0" },
+      { "title": "Право собственности", "description": "Собственник" },
+      { "title": "Тип объявления", "description": "Снять" },
+      { "title": "Площадь кухни, м²", "description": "7" },
+      { "title": "Тип дома", "description": "Блочный" },
+      { "title": "Срок аренды", "description": "На длительный срок" }
+    ],
+    "groups": []
+  },
+  "images": [
+    {
+      "640x480": "https://08.img.avito.st/640x480/5566519208.jpg",
+      "432x324": "https://08.img.avito.st/432x324/5566519208.jpg",
+      "240x180": "https://08.img.avito.st/240x180/5566519208.jpg",
+      "140x105": "https://08.img.avito.st/140x105/5566519208.jpg",
+      "100x75": "https://08.img.avito.st/100x75/5566519208.jpg"
+    },
+    {
+      "640x480": "https://83.img.avito.st/640x480/5566520183.jpg",
+      "432x324": "https://83.img.avito.st/432x324/5566520183.jpg",
+      "240x180": "https://83.img.avito.st/240x180/5566520183.jpg",
+      "140x105": "https://83.img.avito.st/140x105/5566520183.jpg",
+      "100x75": "https://83.img.avito.st/100x75/5566520183.jpg"
+    },
+    {
+      "140x105": "https://95.img.avito.st/140x105/5566520795.jpg",
+      "100x75": "https://95.img.avito.st/100x75/5566520795.jpg",
+      "640x480": "https://95.img.avito.st/640x480/5566520795.jpg",
+      "432x324": "https://95.img.avito.st/432x324/5566520795.jpg",
+      "240x180": "https://95.img.avito.st/240x180/5566520795.jpg"
+    },
+    {
+      "640x480": "https://57.img.avito.st/640x480/5566520857.jpg",
+      "432x324": "https://57.img.avito.st/432x324/5566520857.jpg",
+      "240x180": "https://57.img.avito.st/240x180/5566520857.jpg",
+      "140x105": "https://57.img.avito.st/140x105/5566520857.jpg",
+      "100x75": "https://57.img.avito.st/100x75/5566520857.jpg"
+    },
+    {
+      "100x75": "https://22.img.avito.st/100x75/5566521122.jpg",
+      "640x480": "https://22.img.avito.st/640x480/5566521122.jpg",
+      "432x324": "https://22.img.avito.st/432x324/5566521122.jpg",
+      "240x180": "https://22.img.avito.st/240x180/5566521122.jpg",
+      "140x105": "https://22.img.avito.st/140x105/5566521122.jpg"
+    },
+    {
+      "140x105": "https://27.img.avito.st/140x105/5566521827.jpg",
+      "100x75": "https://27.img.avito.st/100x75/5566521827.jpg",
+      "640x480": "https://27.img.avito.st/640x480/5566521827.jpg",
+      "432x324": "https://27.img.avito.st/432x324/5566521827.jpg",
+      "240x180": "https://27.img.avito.st/240x180/5566521827.jpg"
+    },
+    {
+      "432x324": "https://90.img.avito.st/432x324/5566523590.jpg",
+      "240x180": "https://90.img.avito.st/240x180/5566523590.jpg",
+      "140x105": "https://90.img.avito.st/140x105/5566523590.jpg",
+      "100x75": "https://90.img.avito.st/100x75/5566523590.jpg",
+      "640x480": "https://90.img.avito.st/640x480/5566523590.jpg"
+    }
+  ],
+  "price": {
+    "title": "Цена",
+    "value": "10 000",
+    "metric": "руб. в месяц",
+    "value_old": "18 000",
+    "value_old_signed": "18 000 руб."
+  },
+  "seller": {
+    "title": "Арендодатель",
+    "name": "Заозерное",
+    "connection": {
+      "title": "Подтверждён",
+      "sources": [{ "type": "phone" }, { "type": "email" }]
+    },
+    "link": "ru.avito://1/user/profile?userKey=2c995921aef6524dee945a12b39c07492db77e0e238814ba14528cc06c076dad&context=H4sIAAAAAAAAA0u0MrKqLgYSSpkpStaZVoZGxmaWRgYWlibWxVbGVkrFRclKQJYJUL4kNVfJuhYA-VdQkTEAAAA",
+    "images": {
+      "24x24": "https://www.avito.st/stub_avatars/%D0%97/7_24x24.png",
+      "36x36": "https://www.avito.st/stub_avatars/%D0%97/7_36x36.png",
+      "48x48": "https://www.avito.st/stub_avatars/%D0%97/7_48x48.png",
+      "64x64": "https://www.avito.st/stub_avatars/%D0%97/7_64x64.png",
+      "72x72": "https://www.avito.st/stub_avatars/%D0%97/7_72x72.png",
+      "96x96": "https://www.avito.st/stub_avatars/%D0%97/7_96x96.png",
+      "128x128": "https://www.avito.st/stub_avatars/%D0%97/7_128x128.png",
+      "192x192": "https://www.avito.st/stub_avatars/%D0%97/7_192x192.png",
+      "256x256": "https://www.avito.st/stub_avatars/%D0%97/7_256x256.png"
+    },
+    "postfix": "Частное лицо",
+    "userHashId": "136266544",
+    "online": false,
+    "isVerified": false,
+    "userHash": "2c995921aef6524dee945a12b39c07492db77e0e238814ba14528cc06c076dad"
+  },
+  "stats": { "views": { "today": 26, "total": 799 } },
+  "contacts": {
+    "list": [
+      {
+        "type": "phone",
+        "value": {
+          "title": "Позвонить",
+          "uri": "ru.avito://1/phone/get?itemId=1236920894"
+        }
+      }
+    ]
+  },
+  "firebaseParams": {
+    "itemID": "1236920894",
+    "itemPrice": "10000",
+    "withDelivery": "0",
+    "ne_posledniy_etazh": "не последний",
+    "deposit": "0",
+    "commission": "Собственник",
+    "offer_type": "Сдам",
+    "area_kitchen": "7 м²",
+    "floor": "3",
+    "floors_count": "5",
+    "area": "31 м²",
+    "house_type": "Блочный",
+    "lease_period": "На длительный срок",
+    "rooms": "1",
+    "userAuth": "0",
+    "isShop": "0",
+    "isASDClient": "0",
+    "vertical": "RE",
+    "categoryId": "24",
+    "categorySlug": "kvartiry",
+    "microCategoryId": "4958",
+    "locationId": "621581"
+  },
+  "anonymousNumber": {
+    "title": "Номер продавца защищён",
+    "subtitle": "СМС и сообщения в WhatsApp, Viber доставлены не будут."
+  },
+  "needToCheckCreditInfo": true,
+  "adjustParams": {
+    "categoryId": "24",
+    "vertical": "RE",
+    "microCategoryId": "4958"
+  },
+  "needToCheckSimilarItems": true
+}
