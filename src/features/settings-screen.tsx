@@ -1,4 +1,6 @@
-import React, { useCallback } from 'react';
+import React, { FC, useCallback } from 'react';
+import { StackScreenProps } from '@react-navigation/stack';
+import { MainStackParamList } from '@src/navigation';
 import { useDispatch } from 'react-redux';
 import { logOut } from '@src/redux/slices';
 import { View } from 'react-native';
@@ -6,7 +8,9 @@ import { Button } from 'react-native-elements';
 
 import { SCREEN_BACKGROUND } from '@src/constants/colors';
 
-export function SettingsScreen(props) {
+type Props = StackScreenProps<MainStackParamList, 'Settings'>;
+
+export const SettingsScreen: FC<Props> = (props) => {
   const { navigation } = props;
 
   const dispatch = useDispatch();
@@ -30,4 +34,4 @@ export function SettingsScreen(props) {
       />
     </View>
   );
-}
+};

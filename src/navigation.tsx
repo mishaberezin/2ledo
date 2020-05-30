@@ -15,19 +15,23 @@ import { MatchIndicatorButton } from './components';
 
 import { AuthStatus } from './redux/slices';
 
-const MainStack = createStackNavigator();
+export type MainStackParamList = {
+  Serp: undefined;
+  Card: undefined;
+  Favs: undefined;
+  Settings: undefined;
+};
+
+const MainStack = createStackNavigator<MainStackParamList>();
 const MainStackScreen = () => (
   <MainStack.Navigator
-    initialRouteName="SerpStackScreen"
-    screenOptions={{ animationEnabled: false }}
+    initialRouteName="Serp"
+    screenOptions={{ animationEnabled: false }} // TODO Написать зачем это или убрать
   >
     <MainStack.Screen
       name="Serp"
       component={SerpScreen}
-      options={({ navigation, route }) => ({
-        headerLeftContainerStyle: {
-          flexDirection: 'row',
-        },
+      options={({ navigation }) => ({
         headerLeft: () => {
           return (
             <Button
@@ -60,17 +64,22 @@ const MainStackScreen = () => (
         headerTintColor: '#25265E',
         headerLeftContainerStyle: {
           paddingLeft: 16,
-          paddingTop: 16
-        }
-      })} />
+          paddingTop: 16,
+        },
+      })}
+    />
     <MainStack.Screen name="Settings" component={SettingsScreen} />
   </MainStack.Navigator>
 );
 
-const AuthStack = createStackNavigator();
+export type AuthStackParamList = {
+  Auth: undefined;
+};
+
+const AuthStack = createStackNavigator<AuthStackParamList>();
 const AuthStackScreen = () => (
   <AuthStack.Navigator>
-    <AuthStack.Screen name="Login" component={AuthScreen} />
+    <AuthStack.Screen name="Auth" component={AuthScreen} />
   </AuthStack.Navigator>
 );
 
@@ -84,8 +93,8 @@ export const Navigation = () => {
   return isAppLoading ? (
     <AppLoading />
   ) : (
-      <NavigationContainer>
-        {isAuthorized ? <MainStackScreen /> : <AuthStackScreen />}
-      </NavigationContainer>
-    );
+    <NavigationContainer>
+      {isAuthorized ? <MainStackScreen /> : <AuthStackScreen />}
+    </NavigationContainer>
+  );
 };
