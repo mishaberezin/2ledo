@@ -4,11 +4,12 @@ import { withStyles } from '@ui-kitten/components';
 import { Ionicons } from '@expo/vector-icons';
 import { Text } from '@ui-kitten/components';
 
-import { ToledoButton } from '../toledo-button';
+//import { ToledoButton } from '../toledo-button';
 import { GridCardImages } from './grid-card-images';
-import { CardImages } from './card-images';
-import { CardHostShortInfo } from './card-host-short-info';
-import { CardHostDescriptionInfo } from './card-host-description-info';
+import { CollapsibleRow } from '../collapsible-row';
+// import { CardImages } from './card-images';
+// import { CardHostShortInfo } from './card-host-short-info';
+// import { CardHostDescriptionInfo } from './card-host-description-info';
 
 const ItemDetailCardContainer = ({ card, eva: { style } }) => {
   const {
@@ -39,6 +40,21 @@ const ItemDetailCardContainer = ({ card, eva: { style } }) => {
           <Text style={style.textBlockTitle} category='s1'>Описание</Text>
           <Text style={style.textBlockText} category='p1'>{description}</Text>
         </View>
+
+        <CollapsibleRow title='Аренда'>
+          <View style={style.textBlock}>
+            <Text style={style.textBlockTitle} category='s1'>Квартира</Text>
+          </View>
+          <View style={style.textBlock}>
+            <Text style={style.textBlockTitle} category='s1'>От 1 года и надолго</Text>
+          </View>
+          <View style={style.textBlock}>
+            <Text style={style.textBlockTitle} category='s1'>1 комната</Text>
+          </View>
+          <View style={style.textBlock}>
+            <Text style={style.textBlockTitle} category='s1'>От 35 000 ₽</Text>
+          </View>
+        </CollapsibleRow>
 
         {/* TODO: в <отдельный компонент> */}
         <View>
