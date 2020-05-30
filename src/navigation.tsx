@@ -1,19 +1,19 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { AppLoading } from 'expo';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import React from "react";
+import { useSelector } from "react-redux";
+import { AppLoading } from "expo";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 import {
   AuthScreen,
   SerpScreen,
   FavsScreen,
   CardScreen,
   SettingsScreen,
-} from '@src/features';
-import { Button } from 'react-native-elements';
-import { MatchIndicatorButton } from './components';
+} from "@src/features";
+import { Button } from "react-native-elements";
+import { MatchIndicatorButton } from "./components";
 
-import { AuthStatus } from './redux/slices';
+import { AuthStatus } from "./redux/slices";
 
 export type MainStackParamList = {
   Serp: undefined;
@@ -36,18 +36,18 @@ const MainStackScreen = () => (
           return (
             <Button
               buttonStyle={{
-                justifyContent: 'space-between',
+                justifyContent: "space-between",
               }}
               type="clear"
-              icon={{ type: 'material', name: 'person' }}
-              onPress={() => navigation.navigate('Settings')}
+              icon={{ type: "material", name: "person" }}
+              onPress={() => navigation.navigate("Settings")}
             />
           );
         },
         headerRight: () => (
           <MatchIndicatorButton
             onPress={() => {
-              navigation.navigate('Favs');
+              navigation.navigate("Favs");
             }}
           />
         ),
@@ -58,10 +58,10 @@ const MainStackScreen = () => (
       name="Card"
       component={CardScreen}
       options={() => ({
-        title: '',
+        title: "",
         headerBackTitleVisible: false,
         headerTransparent: true,
-        headerTintColor: '#25265E',
+        headerTintColor: "#25265E",
         headerLeftContainerStyle: {
           paddingLeft: 16,
           paddingTop: 16,

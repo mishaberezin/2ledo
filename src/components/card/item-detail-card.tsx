@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { View, TouchableOpacity, ScrollView } from 'react-native';
-import { withStyles } from '@ui-kitten/components';
-import { Ionicons } from '@expo/vector-icons';
-import { Text } from '@ui-kitten/components';
+import React, { useState } from "react";
+import { View, TouchableOpacity, ScrollView } from "react-native";
+import { withStyles } from "@ui-kitten/components";
+import { Ionicons } from "@expo/vector-icons";
+import { Text } from "@ui-kitten/components";
 
-import { GridCardImages } from './grid-card-images';
-import { CollapsibleRow } from '../collapsible-row';
+import { GridCardImages } from "./grid-card-images";
+import { CollapsibleRow } from "../collapsible-row";
 // import { CardImages } from './card-images';
 // import { CardHostShortInfo } from './card-host-short-info';
 // import { CardHostDescriptionInfo } from './card-host-description-info';
@@ -28,33 +28,47 @@ const ItemDetailCardContainer = ({ card, eva: { style } }) => {
   return (
     <ScrollView style={style.container} showsVerticalScrollIndicator={false}>
       <View style={style.cardContainer}>
-
         <GridCardImages photos={card.apartment.data.photos} />
 
         <View style={style.textBlock}>
-          <Text style={style.textBlockTitle} category='s1'>Название</Text>
-          <Text style={style.textBlockText} category='p1'>{address.postal}</Text>
+          <Text style={style.textBlockTitle} category="s1">
+            Название
+          </Text>
+          <Text style={style.textBlockText} category="p1">
+            {address.postal}
+          </Text>
         </View>
         <View style={style.textBlock}>
-          <Text style={style.textBlockTitle} category='s1'>Описание</Text>
-          <Text style={style.textBlockText} category='p1'>{description}</Text>
+          <Text style={style.textBlockTitle} category="s1">
+            Описание
+          </Text>
+          <Text style={style.textBlockText} category="p1">
+            {description}
+          </Text>
         </View>
 
-        <CollapsibleRow title='Аренда'>
+        <CollapsibleRow title="Аренда">
           <View style={style.textBlock}>
-            <Text style={style.textBlockTitle} category='s1'>Квартира</Text>
+            <Text style={style.textBlockTitle} category="s1">
+              Квартира
+            </Text>
           </View>
           <View style={style.textBlock}>
-            <Text style={style.textBlockTitle} category='s1'>От 1 года и надолго</Text>
+            <Text style={style.textBlockTitle} category="s1">
+              От 1 года и надолго
+            </Text>
           </View>
           <View style={style.textBlock}>
-            <Text style={style.textBlockTitle} category='s1'>1 комната</Text>
+            <Text style={style.textBlockTitle} category="s1">
+              1 комната
+            </Text>
           </View>
           <View style={style.textBlock}>
-            <Text style={style.textBlockTitle} category='s1'>От 35 000 ₽</Text>
+            <Text style={style.textBlockTitle} category="s1">
+              От 35 000 ₽
+            </Text>
           </View>
         </CollapsibleRow>
-
       </View>
     </ScrollView>
   );
@@ -62,7 +76,7 @@ const ItemDetailCardContainer = ({ card, eva: { style } }) => {
 
 export const ItemDetailCard = withStyles(ItemDetailCardContainer, () => ({
   container: {
-    backgroundColor: 'white',
+    backgroundColor: "white",
   },
   cardContainer: {
     // TODO: поправить отступ, придумать что-то
@@ -72,28 +86,28 @@ export const ItemDetailCard = withStyles(ItemDetailCardContainer, () => ({
     paddingHorizontal: 20,
     paddingVertical: 18,
     borderBottomWidth: 1,
-    borderBottomColor: 'rgba(120, 121, 147, 0.1)',
+    borderBottomColor: "rgba(120, 121, 147, 0.1)",
   },
   textBlockTitle: {
-    color: '#787993',
+    color: "#787993",
     marginBottom: 4,
   },
   textBlockText: {
-    color: '#25265E',
+    color: "#25265E",
     lineHeight: 18,
   },
   textBlockGroup: {
-    backgroundColor: '#fafaff',
-    flexDirection: 'row',
+    backgroundColor: "#fafaff",
+    flexDirection: "row",
   },
   textBlockGroupName: {
-    width: '90%',
+    width: "90%",
   },
   textBlockGroupNameText: {
     fontSize: 22,
   },
   textBlockGroupOpenIcon: {
-    width: '10%',
+    width: "10%",
     top: 5,
-  }
+  },
 }));

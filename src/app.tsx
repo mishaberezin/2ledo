@@ -1,15 +1,15 @@
-import React, { useEffect } from 'react';
-import { config } from '@app/config';
-import { registerRootComponent } from 'expo';
-import { Provider } from 'react-redux';
-import { Asset } from 'expo-asset';
-import * as Font from 'expo-font';
-import * as eva from '@eva-design/eva';
-import { ApplicationProvider } from '@ui-kitten/components';
-import { ThemeProvider } from 'react-native-elements';
-import { reduxStore } from './redux/store';
-import { setAppLoading, resolveAuth, startMatchPolling } from './redux/slices';
-import { Navigation } from '@src/navigation';
+import React, { useEffect } from "react";
+import { config } from "@app/config";
+import { registerRootComponent } from "expo";
+import { Provider } from "react-redux";
+import { Asset } from "expo-asset";
+import * as Font from "expo-font";
+import * as eva from "@eva-design/eva";
+import { ApplicationProvider } from "@ui-kitten/components";
+import { ThemeProvider } from "react-native-elements";
+import { reduxStore } from "./redux/store";
+import { setAppLoading, resolveAuth, startMatchPolling } from "./redux/slices";
+import { Navigation } from "@src/navigation";
 
 if (__DEV__) {
   // Отключает ворнинги поверх страницы.

@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { View } from 'react-native';
-import { Button } from 'react-native-elements';
-import { Ionicons } from '@expo/vector-icons';
-import { withStyles } from '@ui-kitten/components';
-import Collapsible from 'react-native-collapsible';
+import React, { useState } from "react";
+import { View } from "react-native";
+import { Button } from "react-native-elements";
+import { Ionicons } from "@expo/vector-icons";
+import { withStyles } from "@ui-kitten/components";
+import Collapsible from "react-native-collapsible";
 
 const CollapsibleRowContainer = ({ children, title, eva: { style } }) => {
   const [collapsed, setCollapsed] = useState(true);
@@ -16,9 +16,9 @@ const CollapsibleRowContainer = ({ children, title, eva: { style } }) => {
         type="clear"
         icon={
           <Ionicons
-            name={`ios-arrow-${collapsed ? 'down' : 'up'}`}
+            name={`ios-arrow-${collapsed ? "down" : "up"}`}
             size={24}
-            color={'rgb(163, 163, 241)'}
+            color={"rgb(163, 163, 241)"}
           />
         }
         iconRight={true}
@@ -35,28 +35,28 @@ export const CollapsibleRow = withStyles(CollapsibleRowContainer, () => ({
     paddingHorizontal: 20,
     paddingVertical: 18,
     borderBottomWidth: 1,
-    borderBottomColor: 'rgba(120, 121, 147, 0.1)',
-    backgroundColor: '#fafaff',
-    flexDirection: 'row',
+    borderBottomColor: "rgba(120, 121, 147, 0.1)",
+    backgroundColor: "#fafaff",
+    flexDirection: "row",
   },
   title: {
-    color: '#25265E',
+    color: "#25265E",
     fontSize: 22,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   button: {
     height: 66,
-    justifyContent: 'space-between',
+    justifyContent: "space-between",
 
     paddingHorizontal: 20,
     paddingRight: 35,
     paddingVertical: 18,
     borderBottomWidth: 1,
-    borderBottomColor: 'rgba(120, 121, 147, 0.1)',
-    backgroundColor: '#fafaff',
-    flexDirection: 'row',
+    borderBottomColor: "rgba(120, 121, 147, 0.1)",
+    backgroundColor: "#fafaff",
+    flexDirection: "row",
   },
   icon: {
-    color: 'rgb(163, 163, 241)'
-  }
-}))
+    color: "rgb(163, 163, 241)",
+  },
+}));

@@ -1,7 +1,7 @@
-import React from 'react';
-import { View } from 'react-native';
-import { Text, withStyles } from '@ui-kitten/components';
-import { Ionicons } from '@expo/vector-icons';
+import React from "react";
+import { View } from "react-native";
+import { Text, withStyles } from "@ui-kitten/components";
+import { Ionicons } from "@expo/vector-icons";
 
 const CardItemLandmarkBare = ({ landmark, eva: { style } }) => {
   return (
@@ -18,10 +18,10 @@ const CardItemLandmarkBare = ({ landmark, eva: { style } }) => {
 
 export const CardItemLandmark = withStyles(CardItemLandmarkBare, () => ({
   container: {
-    display: 'flex',
+    display: "flex",
   },
   landmark: {
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   icon: {
     marginRight: 4,

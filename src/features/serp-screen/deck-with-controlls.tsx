@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
-import reject from 'lodash/reject';
-import { View, Animated, PanResponder, TouchableOpacity } from 'react-native';
-import { StyleService, useStyleSheet, Text } from '@ui-kitten/components';
-import { Ionicons } from '@expo/vector-icons';
-import { Card } from 'react-native-elements';
-import { DeckHostCard } from '@src/components/card';
-import { SCREEN_WIDTH } from '@src/constants/device';
+import React, { useState, useEffect, useRef } from "react";
+import reject from "lodash/reject";
+import { View, Animated, PanResponder, TouchableOpacity } from "react-native";
+import { StyleService, useStyleSheet, Text } from "@ui-kitten/components";
+import { Ionicons } from "@expo/vector-icons";
+import { Card } from "react-native-elements";
+import { DeckHostCard } from "@src/components/card";
+import { SCREEN_WIDTH } from "@src/constants/device";
 
 const SWIPE_THRESHOLD = 0.4 * SCREEN_WIDTH;
 
@@ -19,7 +19,7 @@ export const DeckWithControlls = (props) => {
 
   useEffect(() => {
     const firstCard = cardsStack[0];
-    const tailStack = reject(cards, ['id', firstCard?.id]);
+    const tailStack = reject(cards, ["id", firstCard?.id]);
 
     // Оставляем верхнюю, чтобы убрать некрасивые ререндеры
     const newStack = [firstCard, ...tailStack].filter(Boolean);
@@ -38,7 +38,7 @@ export const DeckWithControlls = (props) => {
   const position = useRef(new Animated.ValueXY()).current;
 
   const forceSwipe = (direction) => {
-    const x = (direction === 'right' ? SCREEN_WIDTH : -SCREEN_WIDTH) * 2;
+    const x = (direction === "right" ? SCREEN_WIDTH : -SCREEN_WIDTH) * 2;
     Animated.timing(position, {
       toValue: { x, y: 0 },
       duration: 250,
@@ -63,7 +63,7 @@ export const DeckWithControlls = (props) => {
   const getCardStyle = () => {
     const rotate = position.x.interpolate({
       inputRange: [-SCREEN_WIDTH * 1.5, 0, SCREEN_WIDTH * 1.5],
-      outputRange: ['-45deg', '0deg', '45deg'],
+      outputRange: ["-45deg", "0deg", "45deg"],
     });
 
     return {
@@ -73,7 +73,7 @@ export const DeckWithControlls = (props) => {
   };
 
   const hadleControlPress = (toRight = false) => {
-    forceSwipe(toRight ? 'right' : 'left');
+    forceSwipe(toRight ? "right" : "left");
   };
 
   const renderCard = ({ card }) => {
@@ -81,7 +81,8 @@ export const DeckWithControlls = (props) => {
       <DeckHostCard
         card={card}
         cardStyle={styles.cardStyle}
-        onOpen={props.onDetailButtonPress} />
+        onOpen={props.onDetailButtonPress}
+      />
     );
   };
 
@@ -97,9 +98,9 @@ export const DeckWithControlls = (props) => {
     },
     onPanResponderRelease: (evt, gesture) => {
       if (gesture.dx > SWIPE_THRESHOLD) {
-        forceSwipe('right');
+        forceSwipe("right");
       } else if (gesture.dx < -SWIPE_THRESHOLD) {
-        forceSwipe('left');
+        forceSwipe("left");
       } else {
         resetPosition();
       }
@@ -115,78 +116,78 @@ export const DeckWithControlls = (props) => {
   };
 
   return cardsStack.length === 0 ? (
-    <Card title={'Упс!'}>
+    <Card title={"Упс!"}>
       <Text style={{ marginBottom: 20 }}>Больше нет карточек</Text>
     </Card>
   ) : (
-      <View style={styles.container}>
-        <View>
-          {cardsStack[1] && renderCard({ card: cardsStack[1] })}
-          {renderAnimatedCard({ card: cardsStack[0] })}
-        </View>
-        <Animated.View style={styles.controlsContainer}>
-          <TouchableOpacity
-            style={[styles.controlContainer, styles.controlContainerLeft]}
-            onPress={() => hadleControlPress(false)}
-          >
-            <Ionicons
-              name={'ios-close-circle'}
-              size={50}
-              color="red"
-              style={{ position: 'relative', top: 2 }}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={[styles.controlContainer, styles.controlContainerRight]}
-            onPress={hadleControlPress}
-          >
-            <Ionicons
-              name={'ios-checkmark-circle'}
-              size={50}
-              color="lightgreen"
-            />
-          </TouchableOpacity>
-        </Animated.View>
+    <View style={styles.container}>
+      <View>
+        {cardsStack[1] && renderCard({ card: cardsStack[1] })}
+        {renderAnimatedCard({ card: cardsStack[0] })}
       </View>
-    );
+      <Animated.View style={styles.controlsContainer}>
+        <TouchableOpacity
+          style={[styles.controlContainer, styles.controlContainerLeft]}
+          onPress={() => hadleControlPress(false)}
+        >
+          <Ionicons
+            name={"ios-close-circle"}
+            size={50}
+            color="red"
+            style={{ position: "relative", top: 2 }}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.controlContainer, styles.controlContainerRight]}
+          onPress={hadleControlPress}
+        >
+          <Ionicons
+            name={"ios-checkmark-circle"}
+            size={50}
+            color="lightgreen"
+          />
+        </TouchableOpacity>
+      </Animated.View>
+    </View>
+  );
 };
 
 const themedStyles = StyleService.create({
   container: {
-    display: 'flex',
-    flexDirection: 'row',
+    display: "flex",
+    flexDirection: "row",
     flex: 1,
   },
   card: {
     width: SCREEN_WIDTH,
-    justifyContent: 'center',
-    position: 'absolute',
+    justifyContent: "center",
+    position: "absolute",
   },
   cardStyle: {
-    borderColor: '#f0f0ff',
+    borderColor: "#f0f0ff",
     borderWidth: 1,
     margin: 10,
     borderRadius: 20,
   },
   controlsContainer: {
-    position: 'absolute',
+    position: "absolute",
     bottom: 0,
     opacity: 0.6,
     height: 60,
     width: SCREEN_WIDTH,
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    flexDirection: 'row',
+    alignItems: "center",
+    justifyContent: "space-between",
+    flexDirection: "row",
   },
   controlContainer: {
-    display: 'flex',
-    backgroundColor: '#fff',
+    display: "flex",
+    backgroundColor: "#fff",
     borderWidth: 1,
-    borderColor: '#fff',
+    borderColor: "#fff",
     height: 100,
     width: 100,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   controlContainerLeft: {
     borderTopRightRadius: 100,

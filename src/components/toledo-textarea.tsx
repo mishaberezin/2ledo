@@ -1,9 +1,9 @@
-import React from 'react';
-import { Input } from 'react-native-elements';
-import { SUBTITLE_COLOR, TEXT_COLOR } from '@src/constants/colors';
+import React from "react";
+import { Input } from "react-native-elements";
+import { SUBTITLE_COLOR, TEXT_COLOR } from "@src/constants/colors";
 
 export function ToledoTextarea(props) {
-  const { label, value = '', onChange, numberOfLines = 4 } = props;
+  const { label, value = "", onChange, numberOfLines = 4 } = props;
 
   return (
     <Input

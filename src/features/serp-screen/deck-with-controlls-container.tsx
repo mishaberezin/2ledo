@@ -1,9 +1,9 @@
-import React, { Fragment, useCallback, useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { StyleSheet, View, Text } from 'react-native';
-import { DeckWithControlls } from './deck-with-controlls';
-import { requestCards, likeCard, dislikeCard } from '@src/redux/slices';
-import { AppState } from '@src/redux/store';
+import React, { Fragment, useCallback, useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { StyleSheet, View, Text } from "react-native";
+import { DeckWithControlls } from "./deck-with-controlls";
+import { requestCards, likeCard, dislikeCard } from "@src/redux/slices";
+import { AppState } from "@src/redux/store";
 
 export const DeckWithControllsContainer = ({ navigation }) => {
   const dispatch = useDispatch();
@@ -27,7 +27,7 @@ export const DeckWithControllsContainer = ({ navigation }) => {
 
   const onSwipe = useCallback(
     (cardId, direction) => {
-      if (direction === 'right') {
+      if (direction === "right") {
         dispatch(likeCard(cardId));
       } else {
         dispatch(dislikeCard(cardId));
@@ -38,7 +38,7 @@ export const DeckWithControllsContainer = ({ navigation }) => {
 
   const onDetailButtonPress = useCallback(
     (id) => {
-      navigation.navigate('Card', { id });
+      navigation.navigate("Card", { id });
     },
     [navigation]
   );
@@ -62,13 +62,13 @@ export const DeckWithControllsContainer = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   loaderContainer: {
-    display: 'flex',
-    position: 'absolute',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: '100%',
-    width: '100%',
+    display: "flex",
+    position: "absolute",
+    alignItems: "center",
+    justifyContent: "center",
+    height: "100%",
+    width: "100%",
     zIndex: 9,
-    backgroundColor: 'rgba(0,0,0,0.2)',
+    backgroundColor: "rgba(0,0,0,0.2)",
   },
 });

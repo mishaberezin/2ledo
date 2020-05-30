@@ -1,21 +1,21 @@
-import React, { useCallback } from 'react';
+import React, { useCallback } from "react";
 import {
   View,
   ScrollView,
   Dimensions,
   Image,
   TouchableOpacity,
-} from 'react-native';
-import { withStyles, Text } from '@ui-kitten/components';
+} from "react-native";
+import { withStyles, Text } from "@ui-kitten/components";
 
-import { OverflowMenu } from '@src/components';
+import { OverflowMenu } from "@src/components";
 import {
   CardItemLandmark,
   CardItemNumberOfRooms,
   CardItemHostAvatar,
-} from '@src/components/card';
+} from "@src/components/card";
 
-import { Ionicons } from '@expo/vector-icons';
+import { Ionicons } from "@expo/vector-icons";
 
 const FavsListHostItemContainer = ({
   item,
@@ -35,8 +35,8 @@ const FavsListHostItemContainer = ({
   } = item;
 
   const menuItems = [
-    { type: 'view', title: 'Просмотр' },
-    { type: 'delete', title: 'Удалить' },
+    { type: "view", title: "Просмотр" },
+    { type: "delete", title: "Удалить" },
   ];
 
   const handleItemPress = useCallback(() => {
@@ -45,7 +45,7 @@ const FavsListHostItemContainer = ({
 
   const handleMenuItemPress = useCallback(
     ({ type }) => {
-      if (type === 'view') {
+      if (type === "view") {
         onPress(id);
       } else {
         onDelete(id);
@@ -107,23 +107,23 @@ export const FavsListHostItem = withStyles(FavsListHostItemContainer, () => ({
     paddingHorizontal: 10,
     paddingVertical: 10,
     marginBottom: 10,
-    backgroundColor: '#fff',
-    minWidth: Dimensions.get('window').width,
+    backgroundColor: "#fff",
+    minWidth: Dimensions.get("window").width,
   },
   listItemInfo: {
     flex: 1,
-    flexDirection: 'row',
-    flexWrap: 'nowrap',
+    flexDirection: "row",
+    flexWrap: "nowrap",
   },
   listItemInfoBlock: {
     padding: 5,
     flex: 1,
-    minWidth: Dimensions.get('window').width / 3,
+    minWidth: Dimensions.get("window").width / 3,
   },
   listItemBottomBlock: {
     flex: 1,
-    flexDirection: 'row',
-    flexWrap: 'nowrap',
+    flexDirection: "row",
+    flexWrap: "nowrap",
   },
   listItemBottomTextBlock: {
     flex: 3,
@@ -139,8 +139,8 @@ export const FavsListHostItem = withStyles(FavsListHostItemContainer, () => ({
     //position: 'relative',
   },
   iconMore: {
-    display: 'flex',
-    alignItems: 'center',
+    display: "flex",
+    alignItems: "center",
     width: 40,
   },
 }));

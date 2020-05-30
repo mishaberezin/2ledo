@@ -1,12 +1,12 @@
-import React from 'react';
-import { View } from 'react-native';
-import { Text, withStyles } from '@ui-kitten/components';
-import { Ionicons } from '@expo/vector-icons';
+import React from "react";
+import { View } from "react-native";
+import { Text, withStyles } from "@ui-kitten/components";
+import { Ionicons } from "@expo/vector-icons";
 
 const CardItemRentalPeriodBare = ({ value, eva: { style } }) => {
   const textValue = {
-    long: 'На долгий срок',
-    short: 'Быстрая аренда',
+    long: "На долгий срок",
+    short: "Быстрая аренда",
   }[value];
 
   return (
@@ -25,13 +25,13 @@ export const CardItemRentalPeriod = withStyles(
   CardItemRentalPeriodBare,
   () => ({
     container: {
-      display: 'flex',
+      display: "flex",
     },
     wrap: {
-      flexDirection: 'row',
+      flexDirection: "row",
     },
     icon: {
       marginRight: 4,
     },
-  }),
+  })
 );

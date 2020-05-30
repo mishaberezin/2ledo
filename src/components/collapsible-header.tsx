@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { ListItem } from 'react-native-elements';
-import { View } from 'react-native';
-import { ToledoHeader5 } from './toledo-header-5';
-import Collapsible from 'react-native-collapsible';
+import React, { useState } from "react";
+import { ListItem } from "react-native-elements";
+import { View } from "react-native";
+import { ToledoHeader5 } from "./toledo-header-5";
+import Collapsible from "react-native-collapsible";
 // import { DEFAULT_SIDE_MARGIN } from '@src/constants/layout';
-import { SETTINGS_DIVIDER_COLOR } from '@src/constants/colors';
+import { SETTINGS_DIVIDER_COLOR } from "@src/constants/colors";
 
 export const CollapsibleHeader = (props) => {
   const {
@@ -20,9 +20,9 @@ export const CollapsibleHeader = (props) => {
   return (
     <View
       style={{
-        backgroundColor: '#fff',
+        backgroundColor: "#fff",
         borderColor: SETTINGS_DIVIDER_COLOR,
-        borderStyle: 'solid',
+        borderStyle: "solid",
         borderTopWidth: 1,
         borderBottomWidth: 1,
       }}
@@ -31,7 +31,7 @@ export const CollapsibleHeader = (props) => {
         title={<ToledoHeader5>{title}</ToledoHeader5>}
         containerStyle={{
           height: 56,
-          backgroundColor: 'transparent',
+          backgroundColor: "transparent",
         }}
         // titleStyle={{
         //   color: TEXT_COLOR,
@@ -43,9 +43,9 @@ export const CollapsibleHeader = (props) => {
         //   flexDirection: 'column-reverse',
         // }}
         chevron={{
-          name: collapsed ? 'chevron-down' : 'chevron-up',
-          type: 'feather',
-          color: 'black',
+          name: collapsed ? "chevron-down" : "chevron-up",
+          type: "feather",
+          color: "black",
         }}
         onPress={() => setCollapsed(!collapsed)}
         {...listItemProps}

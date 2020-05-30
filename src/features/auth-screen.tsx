@@ -1,13 +1,13 @@
-import React, { FC } from 'react';
-import { StackScreenProps } from '@react-navigation/stack';
-import { AuthStackParamList } from '@src/navigation';
-import { StyleSheet, View } from 'react-native';
-import { useDispatch } from 'react-redux';
-import { Button } from '@ui-kitten/components';
-import { resolveAuth } from '@src/redux/slices';
-import { SCREEN_WIDTH } from '@src/constants/device';
+import React, { FC } from "react";
+import { StackScreenProps } from "@react-navigation/stack";
+import { AuthStackParamList } from "@src/navigation";
+import { StyleSheet, View } from "react-native";
+import { useDispatch } from "react-redux";
+import { Button } from "@ui-kitten/components";
+import { resolveAuth } from "@src/redux/slices";
+import { SCREEN_WIDTH } from "@src/constants/device";
 
-type Props = StackScreenProps<AuthStackParamList, 'Auth'>;
+type Props = StackScreenProps<AuthStackParamList, "Auth">;
 
 export const AuthScreen: FC<Props> = () => {
   const dispatch = useDispatch();
@@ -28,7 +28,7 @@ export const AuthScreen: FC<Props> = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: "center",
     width: SCREEN_WIDTH,
   },
   button: {

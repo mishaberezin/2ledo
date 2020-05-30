@@ -1,16 +1,16 @@
-import React from 'react';
-import { View } from 'react-native';
-import { Text, withStyles } from '@ui-kitten/components';
-import { Ionicons } from '@expo/vector-icons';
+import React from "react";
+import { View } from "react-native";
+import { Text, withStyles } from "@ui-kitten/components";
+import { Ionicons } from "@expo/vector-icons";
 
 const CardItemMaxNumberOfPeopleBare = ({ value, eva: { style } }) => {
   let textValue = null;
   if (!value) {
     return null;
   } else if (value === 1) {
-    textValue = 'Сдам одному жильцу';
+    textValue = "Сдам одному жильцу";
   } else if (value === 2) {
-    textValue = 'Сдам одному или двум жильцам';
+    textValue = "Сдам одному или двум жильцам";
   }
 
   return (
@@ -31,13 +31,13 @@ export const CardItemMaxNumberOfPeople = withStyles(
   CardItemMaxNumberOfPeopleBare,
   () => ({
     container: {
-      display: 'flex',
+      display: "flex",
     },
     rooms: {
-      flexDirection: 'row',
+      flexDirection: "row",
     },
     icon: {
       marginRight: 4,
     },
-  }),
+  })
 );

@@ -1,19 +1,19 @@
-import React, { FC, useCallback } from 'react';
+import React, { FC, useCallback } from "react";
 import {
   View,
   ScrollView,
   LayoutAnimation,
   TouchableWithoutFeedback,
   Button,
-} from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import { useStyleSheet, StyleService } from '@ui-kitten/components';
+} from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import { useStyleSheet, StyleService } from "@ui-kitten/components";
 
-import { DARK_VIOLET_COLOR } from '@src/constants/colors';
+import { DARK_VIOLET_COLOR } from "@src/constants/colors";
 
-import { CardHostShortInfo } from './card-host-short-info';
-import { CardHostDescriptionInfo } from './card-host-description-info';
-import { CardImages } from './card-images';
+import { CardHostShortInfo } from "./card-host-short-info";
+import { CardHostDescriptionInfo } from "./card-host-description-info";
+import { CardImages } from "./card-images";
 
 interface ApartmentCard {
   id: number;
@@ -62,7 +62,7 @@ export const DeckHostCard: FC<Props> = (props) => {
         <CardImages photos={photos} />
         <View>
           <CardHostShortInfo {...apartment.data} />
-          <Button title='Подробнее' onPress={onDetailsButtonPress} />
+          <Button title="Подробнее" onPress={onDetailsButtonPress} />
           {/* <TouchableWithoutFeedback onPress={onDetailsButtonPress}>
             <View
               style={[
@@ -87,14 +87,14 @@ export const DeckHostCard: FC<Props> = (props) => {
 
 const themedStyles = StyleService.create({
   container: {
-    backgroundColor: 'white',
+    backgroundColor: "white",
   },
   cardContainer: {
     marginBottom: 30,
     padding: 5,
   },
   shadowStyles: {
-    shadowColor: 'black',
+    shadowColor: "black",
     shadowOpacity: 0.2,
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 5,
@@ -105,17 +105,17 @@ const themedStyles = StyleService.create({
     borderRadius: 10,
     width: 50,
     height: 50,
-    alignSelf: 'flex-end',
-    alignItems: 'center',
-    justifyContent: 'center',
-    position: 'absolute',
+    alignSelf: "flex-end",
+    alignItems: "center",
+    justifyContent: "center",
+    position: "absolute",
     top: 70,
   },
   cardButtonOpened: {
     top: 55,
   },
   freshIconConteiner: {
-    position: 'absolute',
+    position: "absolute",
     top: 5,
     right: 5,
     zIndex: 9,

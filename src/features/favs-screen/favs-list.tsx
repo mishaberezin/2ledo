@@ -1,11 +1,11 @@
-import React, { useState, useCallback } from 'react';
-import { withStyles, Text } from '@ui-kitten/components';
-import { View, FlatList } from 'react-native';
-import Collapsible from 'react-native-collapsible';
-import { FavsListHeader } from './favs-list-header';
-import { FavsListHostItem } from './favs-list-host-item';
+import React, { useState, useCallback } from "react";
+import { withStyles, Text } from "@ui-kitten/components";
+import { View, FlatList } from "react-native";
+import Collapsible from "react-native-collapsible";
+import { FavsListHeader } from "./favs-list-header";
+import { FavsListHostItem } from "./favs-list-host-item";
 
-import { MAIN_BACKGROUND_COLOR } from '@src/constants/colors';
+import { MAIN_BACKGROUND_COLOR } from "@src/constants/colors";
 
 const FavsListContainer = ({
   eva: { style: themedStyle },
@@ -19,7 +19,7 @@ const FavsListContainer = ({
 
   const renderItem = useCallback(
     ({ item: { data, id, Type } }) => {
-      if (Type === 'host') {
+      if (Type === "host") {
         return (
           <FavsListHostItem
             style={themedStyle.listItemStyle}
@@ -32,7 +32,7 @@ const FavsListContainer = ({
         return null;
       }
     },
-    [onItemDelete, onItemPress, themedStyle.listItemStyle],
+    [onItemDelete, onItemPress, themedStyle.listItemStyle]
   );
 
   return (
@@ -48,7 +48,7 @@ const FavsListContainer = ({
       <Collapsible collapsed={!opened} style={themedStyle.listContainer}>
         {items.length > 0 ? (
           <FlatList
-            keyExtractor={(item) => '' + item.id}
+            keyExtractor={(item) => "" + item.id}
             showsVerticalScrollIndicator={false}
             data={items}
             renderItem={renderItem}
@@ -67,16 +67,16 @@ const LIST_MARGIN = 10;
 
 export const FavsList = withStyles(FavsListContainer, () => ({
   container: {
-    justifyContent: 'center',
-    allignItems: 'center',
+    justifyContent: "center",
+    allignItems: "center",
     marginVertical: 10,
 
-    shadowColor: 'black',
+    shadowColor: "black",
     shadowOpacity: 0.15,
     shadowOffset: { width: 0, height: 2 },
     shadowRadius: 5,
 
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     borderColor: MAIN_BACKGROUND_COLOR,
     borderWidth: 2,
     borderRadius: 20,
@@ -85,7 +85,7 @@ export const FavsList = withStyles(FavsListContainer, () => ({
   containerOpened: {
     paddingBottom: 20,
     backgroundColor: MAIN_BACKGROUND_COLOR,
-    height: 'auto',
+    height: "auto",
   },
   listIsEmptyContainer: {
     padding: 20,

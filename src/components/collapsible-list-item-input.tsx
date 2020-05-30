@@ -1,6 +1,6 @@
-import React from 'react';
-import { Input } from 'react-native-elements';
-import { CollapsibleListItem } from './collapsible-list-item';
+import React from "react";
+import { Input } from "react-native-elements";
+import { CollapsibleListItem } from "./collapsible-list-item";
 
 export const CollapsibleListItemInput = (props) => {
   const { inputProps, onChange, value, ...collapsibleListItemProps } = props;

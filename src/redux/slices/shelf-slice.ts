@@ -1,9 +1,9 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { AppThunk } from '../store';
-import { showMatchPopup } from './local-state-slice';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { AppThunk } from "../store";
+import { showMatchPopup } from "./local-state-slice";
 
 const shelfSlice = createSlice({
-  name: 'shelf',
+  name: "shelf",
   initialState: {
     liked: [],
     disliked: [],
@@ -91,5 +91,5 @@ export const archiveCard = (cardId): AppThunk => async (
 
 export const getDetailCard = (cardId): AppThunk => async (_, getState) => {
   const { deck } = getState();
-  return deck.find(({ id }) => cardId === id);;
+  return deck.find(({ id }) => cardId === id);
 };

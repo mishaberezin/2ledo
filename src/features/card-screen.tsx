@@ -1,13 +1,13 @@
-import React, { FC, useState, useEffect } from 'react';
-import { StackScreenProps } from '@react-navigation/stack';
-import { MainStackParamList } from '@src/navigation';
-import { useDispatch } from 'react-redux';
-import { View, StyleSheet } from 'react-native';
-import { getDetailCard } from '@src/redux/slices';
-import { Spinner } from '@ui-kitten/components';
-import { ItemDetailCard } from '@src/components/card';
+import React, { FC, useState, useEffect } from "react";
+import { StackScreenProps } from "@react-navigation/stack";
+import { MainStackParamList } from "@src/navigation";
+import { useDispatch } from "react-redux";
+import { View, StyleSheet } from "react-native";
+import { getDetailCard } from "@src/redux/slices";
+import { Spinner } from "@ui-kitten/components";
+import { ItemDetailCard } from "@src/components/card";
 
-type Props = StackScreenProps<MainStackParamList, 'Card'>;
+type Props = StackScreenProps<MainStackParamList, "Card">;
 
 export const CardScreen: FC<Props> = (props) => {
   const { route } = props;
@@ -35,10 +35,10 @@ export const CardScreen: FC<Props> = (props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
+    alignItems: "center",
   },
   main: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
 });

@@ -1,14 +1,14 @@
-import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
-import { isAuthorized, removeToken } from '@src/api/token-storage';
+import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
+import { isAuthorized, removeToken } from "@src/api/token-storage";
 
 export enum AuthStatus {
-  PENDING = 'PENDING',
-  AUTHORIZED = 'AUTHORIZED',
-  NOT_AUTHORIZED = 'NOT_AUTHORIZED',
+  PENDING = "PENDING",
+  AUTHORIZED = "AUTHORIZED",
+  NOT_AUTHORIZED = "NOT_AUTHORIZED",
 }
 
 export const resolveAuth = createAsyncThunk(
-  'auth/resolve',
+  "auth/resolve",
   async (props, thunk) => {
     const { api } = thunk.extra;
     try {
@@ -25,12 +25,12 @@ export const resolveAuth = createAsyncThunk(
   }
 );
 
-export const logOut = createAsyncThunk('auth/logout', async (props, thunk) => {
+export const logOut = createAsyncThunk("auth/logout", async (props, thunk) => {
   await removeToken();
 });
 
 const authSlice = createSlice({
-  name: 'auth',
+  name: "auth",
   initialState: {
     status: AuthStatus.PENDING,
   },

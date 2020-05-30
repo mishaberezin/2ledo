@@ -1,6 +1,6 @@
-import React from 'react';
-import { View } from 'react-native';
-import { Text, Avatar, withStyles } from '@ui-kitten/components';
+import React from "react";
+import { View } from "react-native";
+import { Text, Avatar, withStyles } from "@ui-kitten/components";
 
 const CardItemHostAvatarBare = ({ uri, name, eva: { style } }) => {
   return (
@@ -15,9 +15,9 @@ const CardItemHostAvatarBare = ({ uri, name, eva: { style } }) => {
 
 export const CardItemHostAvatar = withStyles(CardItemHostAvatarBare, () => ({
   container: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "flex-start",
     minHeight: 30,
   },
   avatarBlockName: {

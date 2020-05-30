@@ -1,7 +1,7 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const appSlice = createSlice({
-  name: 'app',
+  name: "app",
   initialState: {
     isAppLoading: true,
     serpLoading: false,

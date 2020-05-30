@@ -1,15 +1,15 @@
-import React, { FC, useCallback } from 'react';
-import { StackScreenProps } from '@react-navigation/stack';
-import { MainStackParamList } from '@src/navigation';
-import { StyleSheet } from 'react-native';
-import { useDispatch } from 'react-redux';
-import { Layout } from '@ui-kitten/components';
-import { archiveCard } from '@src/redux/slices';
-import { FavsGroupsList } from './favs-screen/favs-groups-list';
+import React, { FC, useCallback } from "react";
+import { StackScreenProps } from "@react-navigation/stack";
+import { MainStackParamList } from "@src/navigation";
+import { StyleSheet } from "react-native";
+import { useDispatch } from "react-redux";
+import { Layout } from "@ui-kitten/components";
+import { archiveCard } from "@src/redux/slices";
+import { FavsGroupsList } from "./favs-screen/favs-groups-list";
 
-import { SCREEN_BACKGROUND } from '@src/constants/colors';
+import { SCREEN_BACKGROUND } from "@src/constants/colors";
 
-type Props = StackScreenProps<MainStackParamList, 'Favs'>;
+type Props = StackScreenProps<MainStackParamList, "Favs">;
 
 export const FavsScreen: FC<Props> = (props) => {
   const { navigation } = props;
@@ -17,7 +17,7 @@ export const FavsScreen: FC<Props> = (props) => {
 
   const onItemPress = useCallback(
     (id) => {
-      navigation.navigate('Card', { id });
+      navigation.navigate("Card", { id });
     },
     [navigation]
   );
