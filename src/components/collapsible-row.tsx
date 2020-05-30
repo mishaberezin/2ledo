@@ -41,7 +41,7 @@ const CollapsibleRowContainer = ({ children, title, rowHeight, eva: { style }, o
         titleStyle={style.title}
         type="clear"
         icon={
-          <AntDesign name={collapsed ? 'down' : 'up'} size={22} color={style.icon.color} />
+          <AntDesign name={collapsed ? 'down' : 'up'} size={24} color={style.icon.color} />
         }
         iconRight={true}
         title={title}
