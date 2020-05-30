@@ -6,7 +6,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { withStyles } from '@ui-kitten/components';
 import Collapsible from 'react-native-collapsible';
 
-const CollapsibleRowContainer = ({ children, title, eva: { style }, onOpenClose }) => {
+const CollapsibleRowContainer = ({ children, title, rowHeight, eva: { style }, onOpenClose }) => {
   const [collapsed, setCollapsed] = useState(true);
   const [blockClosedY, setBlockClosedY] = useState(null);
   const [blockOpenedY, setBlockOpenedY] = useState(null);
@@ -16,7 +16,7 @@ const CollapsibleRowContainer = ({ children, title, eva: { style }, onOpenClose 
   const handleLayout = ({
     nativeEvent: { layout: { y, height } },
   }) => {
-    const maxHeight = height + y + children.length * 60;
+    const maxHeight = height + y + children.length * rowHeight;
 
     if (!blockClosedY) {
       setBlockClosedY(height + y);
@@ -47,7 +47,9 @@ const CollapsibleRowContainer = ({ children, title, eva: { style }, onOpenClose 
         title={title}
         onPress={handlePress}
       />
-      <Collapsible collapsed={collapsed}>{children}</Collapsible>
+      <Collapsible collapsed={collapsed}>
+        {children}
+      </Collapsible>
     </View>
   );
 };

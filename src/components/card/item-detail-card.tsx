@@ -31,7 +31,7 @@ class ItemDetailCardContainer extends Component {
     const onCollapsibleOpenClose = (opened, blockY) => {
       // небольшой хак с срокллом блока при открытии списка.
       if (opened) {
-        this.scroll.scrollTo({ y: blockY, animated: true });
+        this.scroll.scrollTo({ y: blockY + 20, animated: true });
       }
     };
 
@@ -54,7 +54,7 @@ class ItemDetailCardContainer extends Component {
             <Text style={style.textBlockText} category='p1'>{description}</Text>
           </View>
 
-          <CollapsibleRow title='Аренда' onOpenClose={onCollapsibleOpenClose}>
+          <CollapsibleRow title='Аренда' rowHeight={60} onOpenClose={onCollapsibleOpenClose}>
             <View style={style.textBlock}>
               <Text style={style.textBlockTitle} category='s1'>Квартира</Text>
             </View>
