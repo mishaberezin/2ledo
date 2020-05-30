@@ -4,7 +4,6 @@ import { withStyles } from '@ui-kitten/components';
 import { Ionicons } from '@expo/vector-icons';
 import { Text } from '@ui-kitten/components';
 
-//import { ToledoButton } from '../toledo-button';
 import { GridCardImages } from './grid-card-images';
 import { CollapsibleRow } from '../collapsible-row';
 // import { CardImages } from './card-images';
@@ -56,41 +55,6 @@ const ItemDetailCardContainer = ({ card, eva: { style } }) => {
           </View>
         </CollapsibleRow>
 
-        {/* TODO: в <отдельный компонент> */}
-        <View>
-          <View style={[style.textBlock, style.textBlockGroup]}>
-            <View style={style.textBlockGroupName}>
-              <Text style={style.textBlockGroupNameText} category='s2'>Аренда</Text>
-            </View>
-            <View style={style.textBlockGroupOpenIcon}>
-              <TouchableOpacity onPress={handleOpen}>
-                <Ionicons
-                  name={`ios-arrow-${opened ? 'up' : 'down'}`}
-                  size={24}
-                  color={'rgb(163, 163, 241)'}
-                />
-              </TouchableOpacity>
-            </View>
-          </View>
-          {opened && (
-            <React.Fragment>
-              <View style={style.textBlock}>
-                <Text style={style.textBlockTitle} category='s1'>Квартира</Text>
-              </View>
-              <View style={style.textBlock}>
-                <Text style={style.textBlockTitle} category='s1'>От 1 года и надолго</Text>
-              </View>
-              <View style={style.textBlock}>
-                <Text style={style.textBlockTitle} category='s1'>1 комната</Text>
-              </View>
-              <View style={style.textBlock}>
-                <Text style={style.textBlockTitle} category='s1'>От 35 000 ₽</Text>
-              </View>
-            </React.Fragment>
-          )}
-        </View>
-        {/* </отдельный компонент> */}
-
       </View>
     </ScrollView>
   );
@@ -101,7 +65,8 @@ export const ItemDetailCard = withStyles(ItemDetailCardContainer, () => ({
     backgroundColor: 'white',
   },
   cardContainer: {
-
+    // TODO: поправить отступ, придумать что-то
+    paddingBottom: 100,
   },
   textBlock: {
     paddingHorizontal: 20,
