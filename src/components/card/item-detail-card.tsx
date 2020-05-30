@@ -28,9 +28,10 @@ class ItemDetailCardContainer extends Component {
       maxNumberOfPeople,
     } = card.apartment.data;
 
-    const onCollapsiblePress = opened => {
+    const onCollapsibleOpenClose = (opened, blockY) => {
+      // небольшой хак с срокллом блока при открытии списка.
       if (opened) {
-        setTimeout(() => this.scroll.scrollToEnd({ animated: true }), 100);
+        this.scroll.scrollTo({ y: blockY, animated: true });
       }
     };
 
@@ -53,7 +54,7 @@ class ItemDetailCardContainer extends Component {
             <Text style={style.textBlockText} category='p1'>{description}</Text>
           </View>
 
-          <CollapsibleRow title='Аренда' onPress={onCollapsiblePress}>
+          <CollapsibleRow title='Аренда' onOpenClose={onCollapsibleOpenClose}>
             <View style={style.textBlock}>
               <Text style={style.textBlockTitle} category='s1'>Квартира</Text>
             </View>

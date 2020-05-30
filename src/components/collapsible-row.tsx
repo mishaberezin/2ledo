@@ -1,15 +1,41 @@
 import React, { useState } from 'react';
+// import debounce from 'lodash/debounce';
 import { View } from 'react-native';
 import { Button } from 'react-native-elements';
 import { AntDesign } from '@expo/vector-icons';
 import { withStyles } from '@ui-kitten/components';
 import Collapsible from 'react-native-collapsible';
 
-const CollapsibleRowContainer = ({ children, title, eva: { style }, onPress }) => {
+const CollapsibleRowContainer = ({ children, title, eva: { style }, onOpenClose }) => {
   const [collapsed, setCollapsed] = useState(true);
+  const [blockClosedY, setBlockClosedY] = useState(null);
+  const [blockOpenedY, setBlockOpenedY] = useState(null);
+
+  const debouncedSetBlockOpenedY = setBlockOpenedY;
+
+  const handleLayout = ({
+    nativeEvent: { layout: { y, height } },
+  }) => {
+    const maxHeight = height + y + children.length * 60;
+
+    if (!blockClosedY) {
+      setBlockClosedY(height + y);
+    }
+    if (!collapsed && blockOpenedY !== maxHeight) {
+      debouncedSetBlockOpenedY(height + y);
+    } else if (collapsed && blockOpenedY === null) {
+      setBlockOpenedY(maxHeight);
+    }
+  };
+
+  const handlePress = () => {
+    setCollapsed(!collapsed);
+    const blockPosY = collapsed ? blockOpenedY : blockClosedY;
+    setTimeout(() => onOpenClose(collapsed, blockPosY), 100);
+  };
 
   return (
-    <View>
+    <View onLayout={handleLayout}>
       <Button
         buttonStyle={style.button}
         titleStyle={style.title}
@@ -19,10 +45,7 @@ const CollapsibleRowContainer = ({ children, title, eva: { style }, onPress }) =
         }
         iconRight={true}
         title={title}
-        onPress={() => { 
-          setCollapsed(!collapsed);
-          onPress && onPress(collapsed);
-        }}
+        onPress={handlePress}
       />
       <Collapsible collapsed={collapsed}>{children}</Collapsible>
     </View>
