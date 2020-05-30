@@ -1,31 +1,55 @@
-import React, { useState } from "react";
-import { View } from "react-native";
-import { Button } from "react-native-elements";
-import { Ionicons } from "@expo/vector-icons";
-import { withStyles } from "@ui-kitten/components";
-import Collapsible from "react-native-collapsible";
+import React, { useState } from 'react';
+import debounce from 'lodash/debounce';
+import { View } from 'react-native';
+import { Button } from 'react-native-elements';
+import { AntDesign } from '@expo/vector-icons';
+import { withStyles } from '@ui-kitten/components';
+import Collapsible from 'react-native-collapsible';
 
-const CollapsibleRowContainer = ({ children, title, eva: { style } }) => {
+const CollapsibleRowContainer = ({ children, title, rowHeight, eva: { style }, onOpenClose }) => {
   const [collapsed, setCollapsed] = useState(true);
+  const [blockClosedY, setBlockClosedY] = useState(null);
+  const [blockOpenedY, setBlockOpenedY] = useState(null);
+
+  const debouncedSetBlockOpenedY = debounce(setBlockOpenedY, 50);
+
+  const handleLayout = ({
+    nativeEvent: { layout: { y, height } },
+  }) => {
+    const maxHeight = height + y + children.length * rowHeight;
+
+    if (!blockClosedY) {
+      setBlockClosedY(height + y);
+    }
+    if (!collapsed && blockOpenedY !== maxHeight) {
+      debouncedSetBlockOpenedY(height + y);
+    } else if (collapsed && blockOpenedY === null) {
+      setBlockOpenedY(maxHeight);
+    }
+  };
+
+  const handlePress = () => {
+    setCollapsed(!collapsed);
+    const blockPosY = collapsed ? blockOpenedY : blockClosedY;
+    setTimeout(() => onOpenClose(collapsed, blockPosY), 100);
+  };
 
   return (
-    <View>
+    <View onLayout={handleLayout}>
       <Button
         buttonStyle={style.button}
         titleStyle={style.title}
         type="clear"
         icon={
-          <Ionicons
-            name={`ios-arrow-${collapsed ? "down" : "up"}`}
-            size={24}
-            color={"rgb(163, 163, 241)"}
-          />
+          <AntDesign name={collapsed ? 'down' : 'up'} size={24} color={style.icon.color} />
         }
         iconRight={true}
         title={title}
-        onPress={() => setCollapsed(!collapsed)}
+        onPress={handlePress}
       />
-      <Collapsible collapsed={collapsed}>{children}</Collapsible>
+      <Collapsible collapsed={collapsed}>
+        {children}
+      </Collapsible>
     </View>
   );
 };
