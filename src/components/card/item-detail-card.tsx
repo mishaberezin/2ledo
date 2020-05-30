@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Component } from 'react';
 import { View, TouchableOpacity, ScrollView } from 'react-native';
 import { withStyles } from '@ui-kitten/components';
 import { Ionicons } from '@expo/vector-icons';
@@ -10,54 +10,69 @@ import { CollapsibleRow } from '../collapsible-row';
 // import { CardHostShortInfo } from './card-host-short-info';
 // import { CardHostDescriptionInfo } from './card-host-description-info';
 
-const ItemDetailCardContainer = ({ card, eva: { style } }) => {
-  const {
-    rentalPrice,
-    roomsCount,
-    description,
-    address,
-    rentalPeriod,
-    maxNumberOfPeople,
-  } = card.apartment.data;
+class ItemDetailCardContainer extends Component {
 
-  const [opened, setOpened] = useState(false);
-  const handleOpen = () => {
-    setOpened(!opened);
-  };
+  constructor(props) {
+    super(props);
+    this.scroll = null;
+  }
 
-  return (
-    <ScrollView style={style.container} showsVerticalScrollIndicator={false}>
-      <View style={style.cardContainer}>
+  render() {
+    const { card, eva: { style } } = this.props;
+    const {
+      rentalPrice,
+      roomsCount,
+      description,
+      address,
+      rentalPeriod,
+      maxNumberOfPeople,
+    } = card.apartment.data;
 
-        <GridCardImages photos={card.apartment.data.photos} />
+    const onCollapsiblePress = opened => {
+      if (opened) {
+        setTimeout(() => this.scroll.scrollToEnd({ animated: true }), 100);
+      }
+    };
 
-        <View style={style.textBlock}>
-          <Text style={style.textBlockTitle} category='s1'>Название</Text>
-          <Text style={style.textBlockText} category='p1'>{address.postal}</Text>
+    return (
+      <ScrollView
+        ref={ref => this.scroll = ref}
+        style={style.container}
+        showsVerticalScrollIndicator={false}
+      >
+        <View style={style.cardContainer}>
+
+          <GridCardImages photos={card.apartment.data.photos} />
+
+          <View style={style.textBlock}>
+            <Text style={style.textBlockTitle} category='s1'>Название</Text>
+            <Text style={style.textBlockText} category='p1'>{address.postal}</Text>
+          </View>
+          <View style={style.textBlock}>
+            <Text style={style.textBlockTitle} category='s1'>Описание</Text>
+            <Text style={style.textBlockText} category='p1'>{description}</Text>
+          </View>
+
+          <CollapsibleRow title='Аренда' onPress={onCollapsiblePress}>
+            <View style={style.textBlock}>
+              <Text style={style.textBlockTitle} category='s1'>Квартира</Text>
+            </View>
+            <View style={style.textBlock}>
+              <Text style={style.textBlockTitle} category='s1'>От 1 года и надолго</Text>
+            </View>
+            <View style={style.textBlock}>
+              <Text style={style.textBlockTitle} category='s1'>1 комната</Text>
+            </View>
+            <View style={style.textBlock}>
+              <Text style={style.textBlockTitle} category='s1'>От 35 000 ₽</Text>
+            </View>
+          </CollapsibleRow>
+
         </View>
-        <View style={style.textBlock}>
-          <Text style={style.textBlockTitle} category='s1'>Описание</Text>
-          <Text style={style.textBlockText} category='p1'>{description}</Text>
-        </View>
+      </ScrollView>
+    );
+  }
 
-        <CollapsibleRow title='Аренда'>
-          <View style={style.textBlock}>
-            <Text style={style.textBlockTitle} category='s1'>Квартира</Text>
-          </View>
-          <View style={style.textBlock}>
-            <Text style={style.textBlockTitle} category='s1'>От 1 года и надолго</Text>
-          </View>
-          <View style={style.textBlock}>
-            <Text style={style.textBlockTitle} category='s1'>1 комната</Text>
-          </View>
-          <View style={style.textBlock}>
-            <Text style={style.textBlockTitle} category='s1'>От 35 000 ₽</Text>
-          </View>
-        </CollapsibleRow>
-
-      </View>
-    </ScrollView>
-  );
 };
 
 export const ItemDetailCard = withStyles(ItemDetailCardContainer, () => ({
