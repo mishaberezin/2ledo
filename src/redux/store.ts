@@ -1,5 +1,5 @@
-import { configureStore, getDefaultMiddleware, Action } from '@reduxjs/toolkit';
-import { ThunkAction } from 'redux-thunk';
+import { configureStore, getDefaultMiddleware, Action } from "@reduxjs/toolkit";
+import { ThunkAction } from "redux-thunk";
 import {
   appReducer,
   authReducer,
@@ -8,10 +8,10 @@ import {
   deckReducer,
   localStateReducer,
   shelfReducer,
-} from './slices';
-import * as api from '@src/api';
+} from "./slices";
+import * as api from "@src/api";
 
-import { sampleState } from './__state';
+import { sampleState } from "./__state";
 
 export const reduxStore = configureStore({
   reducer: {

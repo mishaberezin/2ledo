@@ -1,8 +1,8 @@
-import React, { useCallback } from 'react';
-import { withStyles, Text } from '@ui-kitten/components';
-import { View, TouchableWithoutFeedback } from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import { SvgCat } from './svg-cat';
+import React, { useCallback } from "react";
+import { withStyles, Text } from "@ui-kitten/components";
+import { View, TouchableWithoutFeedback } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
+import { SvgCat } from "./svg-cat";
 
 const PlateHeaderContainer = ({
   opened,
@@ -43,7 +43,7 @@ const PlateHeaderContainer = ({
           <View style={themedStyle.controlWrapper}>
             {
               <Ionicons
-                name={`ios-arrow-${opened ? 'up' : 'down'}`}
+                name={`ios-arrow-${opened ? "up" : "down"}`}
                 size={22}
                 color="black"
               />
@@ -57,34 +57,34 @@ const PlateHeaderContainer = ({
 
 export const PlateHeader = withStyles(PlateHeaderContainer, () => ({
   headerContainer: {
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   catContainer: {
-    position: 'absolute',
+    position: "absolute",
     top: 21,
     left: 16,
   },
   headerText: {
     paddingLeft: 20,
     paddingBottom: 5,
-    justifyContent: 'center',
+    justifyContent: "center",
     flex: 4,
   },
   headerControls: {
     flex: 2,
-    flexDirection: 'row',
+    flexDirection: "row",
     paddingRight: 20,
-    alignItems: 'flex-end',
-    justifyContent: 'space-between',
+    alignItems: "flex-end",
+    justifyContent: "space-between",
   },
   controlWrapper: {
     width: 50,
     paddingBottom: 10,
     paddingTop: 10,
     paddingHorizontal: 10,
-    alignItems: 'center',
+    alignItems: "center",
   },
   catContainerOpened: {
-    display: 'none',
+    display: "none",
   },
 }));

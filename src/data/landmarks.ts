@@ -1,42 +1,42 @@
 export const landmarks = [
   {
-    id: 'belarik',
-    type: 'metro',
+    id: "belarik",
+    type: "metro",
     data: {
-      name: 'Белорусская',
-      color: 'green',
+      name: "Белорусская",
+      color: "green",
     },
   },
   {
-    id: 'novoslo',
-    type: 'metro',
+    id: "novoslo",
+    type: "metro",
     data: {
-      name: 'Новослободская',
-      color: 'brown',
+      name: "Новослободская",
+      color: "brown",
     },
   },
   {
-    id: 'dinamo',
-    type: 'metro',
+    id: "dinamo",
+    type: "metro",
     data: {
-      name: 'Динамо',
-      color: 'green',
+      name: "Динамо",
+      color: "green",
     },
   },
   {
-    id: 'mendeley',
-    type: 'metro',
+    id: "mendeley",
+    type: "metro",
     data: {
-      name: 'Менделеевская',
-      color: 'gray',
+      name: "Менделеевская",
+      color: "gray",
     },
   },
   {
-    id: 'mayako',
-    type: 'metro',
+    id: "mayako",
+    type: "metro",
     data: {
-      name: 'Маяковская',
-      color: 'green',
+      name: "Маяковская",
+      color: "green",
     },
   },
 ];

@@ -1,7 +1,7 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export const cardsSlice = createSlice({
-  name: 'cards',
+  name: "cards",
   initialState: {},
   reducers: {
     addCard(state, action: PayloadAction) {

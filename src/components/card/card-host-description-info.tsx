@@ -1,8 +1,8 @@
-import React from 'react';
-import { View } from 'react-native';
-import { Text, withStyles } from '@ui-kitten/components';
-import { CardItemRentalPeriod } from './card-item-rental-period';
-import { CardItemMaxNumberOfPeople } from './card-item-max-number-of-people';
+import React from "react";
+import { View } from "react-native";
+import { Text, withStyles } from "@ui-kitten/components";
+import { CardItemRentalPeriod } from "./card-item-rental-period";
+import { CardItemMaxNumberOfPeople } from "./card-item-max-number-of-people";
 
 const CardHostDescriptionInfoContainer = ({
   description,
@@ -40,8 +40,8 @@ export const CardHostDescriptionInfo = withStyles(
       paddingVertical: 5,
     },
     blockWithLine: {
-      borderColor: 'lightgray',
+      borderColor: "lightgray",
       borderBottomWidth: 1,
     },
-  }),
+  })
 );

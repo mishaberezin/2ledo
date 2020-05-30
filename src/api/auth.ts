@@ -1,11 +1,11 @@
-import ExpoConstants from 'expo-constants';
-import { apiAxios } from './axios';
-import { storeToken } from './token-storage';
+import ExpoConstants from "expo-constants";
+import { apiAxios } from "./axios";
+import { storeToken } from "./token-storage";
 
 export const loginByApplicationId = async () => {
-  const { data } = await apiAxios.post('/auth/login', {
+  const { data } = await apiAxios.post("/auth/login", {
     clientId: ExpoConstants.installationId,
-    secret: '',
+    secret: "",
   });
 
   const { token } = data;

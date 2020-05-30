@@ -1,5 +1,5 @@
-import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
-import { AppThunk } from '../store';
+import { createSlice, PayloadAction, createAsyncThunk } from "@reduxjs/toolkit";
+import { AppThunk } from "../store";
 
 type Apartment = {
   id: string;
@@ -13,7 +13,7 @@ type Card = {
 };
 
 export const requestCards = createAsyncThunk(
-  'deck/requestCards',
+  "deck/requestCards",
   async (arg, { extra: { api } }) => {
     const cards = await api.fetchCards();
     return cards;
@@ -21,7 +21,7 @@ export const requestCards = createAsyncThunk(
 );
 
 const deckSlice = createSlice({
-  name: 'deck',
+  name: "deck",
   initialState: [],
   reducers: {
     // setDeckCards: (state, action: PayloadAction<{ cards: Card[] }>) => {

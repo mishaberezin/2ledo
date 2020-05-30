@@ -1,13 +1,13 @@
-import React from 'react';
-import { View, Image, Animated, TouchableOpacity } from 'react-native';
-import { withStyles } from '@ui-kitten/components';
-import { Ionicons } from '@expo/vector-icons';
+import React from "react";
+import { View, Image, Animated, TouchableOpacity } from "react-native";
+import { withStyles } from "@ui-kitten/components";
+import { Ionicons } from "@expo/vector-icons";
 
-import { DARK_VIOLET_COLOR } from '../../constants/colors';
-import { SCREEN_HEIGHT, SCREEN_WIDTH } from '../../constants/device';
+import { DARK_VIOLET_COLOR } from "../../constants/colors";
+import { SCREEN_HEIGHT, SCREEN_WIDTH } from "../../constants/device";
 
 const GridCardImagesContainer = ({ photos }) => {
-  return <ImageNetOneTwoThree photos={photos} />
+  return <ImageNetOneTwoThree photos={photos} />;
 };
 export const GridCardImages = withStyles(GridCardImagesContainer, () => ({}));
 
@@ -17,9 +17,7 @@ const ImageNetOneTwoThreeContainer = ({ photos, eva: { style } }) => {
 
   return (
     <View style={style.container}>
-
       <View style={style.imageGrid}>
-
         <View style={style.imageGridRow}>
           <View style={style.imageGridWideImage}>
             <Image
@@ -33,13 +31,13 @@ const ImageNetOneTwoThreeContainer = ({ photos, eva: { style } }) => {
           {photos.slice(1, 3).map((image, i) => {
             const imgBlockStyle = [
               style.imageGridTwoImages,
-              ...(i % 2 ? [style.imageGridTwoImagesSecond] : [style.imageGridTwoImagesFirst])
+              ...(i % 2
+                ? [style.imageGridTwoImagesSecond]
+                : [style.imageGridTwoImagesFirst]),
             ];
 
             return (
-              <View
-                key={'imageGridTwoImages_' + i}
-                style={imgBlockStyle}>
+              <View key={"imageGridTwoImages_" + i} style={imgBlockStyle}>
                 <Image
                   source={image ? image.source : {}}
                   style={[style.imageGridImage, style.imageGridImageRounded]}
@@ -54,18 +52,13 @@ const ImageNetOneTwoThreeContainer = ({ photos, eva: { style } }) => {
             const classes = [
               style.imageGridTreeImagesFirst,
               style.imageGridTreeImagesSecond,
-              style.imageGridTreeImagesThird
+              style.imageGridTreeImagesThird,
             ];
 
-            const imgBlockStyle = [
-              style.imageGridThreeImages,
-              classes[i % 3],
-            ];
+            const imgBlockStyle = [style.imageGridThreeImages, classes[i % 3]];
 
             return (
-              <View
-                key={'imageGridTwoImages_' + i}
-                style={imgBlockStyle}>
+              <View key={"imageGridTwoImages_" + i} style={imgBlockStyle}>
                 <Image
                   source={image ? image.source : {}}
                   style={[style.imageGridImage, style.imageGridImageRounded]}
@@ -74,41 +67,40 @@ const ImageNetOneTwoThreeContainer = ({ photos, eva: { style } }) => {
             );
           })}
         </View>
-
       </View>
     </View>
   );
-}
+};
 
 const ImageNetOneTwoThree = withStyles(ImageNetOneTwoThreeContainer, () => ({
   container: {
-    display: 'flex',
+    display: "flex",
     flex: 1,
     paddingBottom: 16,
-    backgroundColor: 'rgba(120, 121, 147, 0.1)',
+    backgroundColor: "rgba(120, 121, 147, 0.1)",
   },
   imageGrid: {
-    width: '100%',
+    width: "100%",
   },
   imageGridRow: {
     flex: 1,
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   imageGridImage: {
     flex: 1,
-    width: '100%',
+    width: "100%",
   },
   imageGridImageRounded: {
     borderRadius: 10,
-    borderColor: '#f0f0ff',
+    borderColor: "#f0f0ff",
     borderWidth: 1,
   },
   imageGridWideImage: {
-    width: '100%',
+    width: "100%",
     height: SCREEN_HEIGHT * 0.3,
   },
   imageGridTwoImages: {
-    width: '50%',
+    width: "50%",
     height: 150,
     padding: 8,
   },
@@ -119,7 +111,7 @@ const ImageNetOneTwoThree = withStyles(ImageNetOneTwoThreeContainer, () => ({
     paddingLeft: 3,
   },
   imageGridThreeImages: {
-    width: '33.33%',
+    width: "33.33%",
     height: 150,
     paddingHorizontal: 8,
   },
@@ -132,5 +124,5 @@ const ImageNetOneTwoThree = withStyles(ImageNetOneTwoThreeContainer, () => ({
   },
   imageGridTreeImagesThird: {
     paddingLeft: 3,
-  }
+  },
 }));

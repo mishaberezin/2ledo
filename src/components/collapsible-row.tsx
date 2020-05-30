@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import debounce from 'lodash/debounce';
+import debounce from 'lodash/debounce';
 import { View } from 'react-native';
 import { Button } from 'react-native-elements';
 import { AntDesign } from '@expo/vector-icons';
@@ -11,7 +11,7 @@ const CollapsibleRowContainer = ({ children, title, rowHeight, eva: { style }, o
   const [blockClosedY, setBlockClosedY] = useState(null);
   const [blockOpenedY, setBlockOpenedY] = useState(null);
 
-  const debouncedSetBlockOpenedY = setBlockOpenedY;
+  const debouncedSetBlockOpenedY = debounce(setBlockOpenedY, 50);
 
   const handleLayout = ({
     nativeEvent: { layout: { y, height } },
@@ -59,28 +59,28 @@ export const CollapsibleRow = withStyles(CollapsibleRowContainer, () => ({
     paddingHorizontal: 20,
     paddingVertical: 18,
     borderBottomWidth: 1,
-    borderBottomColor: 'rgba(120, 121, 147, 0.1)',
-    backgroundColor: '#fafaff',
-    flexDirection: 'row',
+    borderBottomColor: "rgba(120, 121, 147, 0.1)",
+    backgroundColor: "#fafaff",
+    flexDirection: "row",
   },
   title: {
-    color: '#25265E',
+    color: "#25265E",
     fontSize: 22,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   button: {
     height: 66,
-    justifyContent: 'space-between',
+    justifyContent: "space-between",
 
     paddingHorizontal: 20,
     paddingRight: 35,
     paddingVertical: 18,
     borderBottomWidth: 1,
-    borderBottomColor: 'rgba(120, 121, 147, 0.1)',
-    backgroundColor: '#fafaff',
-    flexDirection: 'row',
+    borderBottomColor: "rgba(120, 121, 147, 0.1)",
+    backgroundColor: "#fafaff",
+    flexDirection: "row",
   },
   icon: {
-    color: 'rgb(163, 163, 241)'
-  }
-}))
+    color: "rgb(163, 163, 241)",
+  },
+}));

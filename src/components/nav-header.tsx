@@ -1,9 +1,9 @@
-import React from 'react';
-import { StyleSheet, View, ScrollView } from 'react-native';
-import { Text } from '@ui-kitten/components';
+import React from "react";
+import { StyleSheet, View, ScrollView } from "react-native";
+import { Text } from "@ui-kitten/components";
 
-import { ToledoHeader4 } from './toledo-header-4';
-import { TEXT_COLOR } from '@src/constants/colors';
+import { ToledoHeader4 } from "./toledo-header-4";
+import { TEXT_COLOR } from "@src/constants/colors";
 
 function HeaderText(props) {
   return (
@@ -13,7 +13,7 @@ function HeaderText(props) {
           fontSize: 15,
           lineHeight: 18,
           color: TEXT_COLOR,
-          fontFamily: 'ceracy-desktop-medium',
+          fontFamily: "ceracy-desktop-medium",
         },
         ...props.style,
       ]}
@@ -42,8 +42,8 @@ export function NavHeader(props) {
         <ScrollView
           style={styles.menuLine}
           contentContainerStyle={{
-            alignItems: 'center',
-            flexDirection: 'row',
+            alignItems: "center",
+            flexDirection: "row",
           }}
           horizontal={true}
         >
@@ -64,7 +64,7 @@ export function NavHeader(props) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#FFF',
+    backgroundColor: "#FFF",
   },
   containerNormal: {
     height: 170,

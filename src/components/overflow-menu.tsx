@@ -1,10 +1,10 @@
-import React, { useState, useCallback } from 'react';
-import { View } from 'react-native';
+import React, { useState, useCallback } from "react";
+import { View } from "react-native";
 import {
   OverflowMenu as UIKittenOverflowMenu,
   withStyles,
-} from '@ui-kitten/components';
-import { TouchableOpacity } from 'react-native';
+} from "@ui-kitten/components";
+import { TouchableOpacity } from "react-native";
 
 const OverflowMenuContainer = ({
   items = [],
@@ -48,7 +48,7 @@ const OverflowMenuContainer = ({
 
 export const OverflowMenu = withStyles(OverflowMenuContainer, () => ({
   container: {
-    display: 'flex',
-    flexDirection: 'row',
+    display: "flex",
+    flexDirection: "row",
   },
 }));

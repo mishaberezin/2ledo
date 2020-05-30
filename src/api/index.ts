@@ -1,6 +1,6 @@
-import { deck } from '@src/data/deck';
+import { deck } from "@src/data/deck";
 
-export * from './auth';
+export * from "./auth";
 
 function httpRequestStub(result, timeout = 500) {
   return new Promise((resolve) => {

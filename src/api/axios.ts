@@ -1,6 +1,6 @@
-import axios from 'axios';
-import { getToken } from './token-storage';
-import { config } from '@app/config';
+import axios from "axios";
+import { getToken } from "./token-storage";
+import { config } from "@app/config";
 
 export const apiAxios = axios.create({
   baseURL: config.api.host,
@@ -8,7 +8,7 @@ export const apiAxios = axios.create({
 });
 
 // В эти ручки не нужно передавать токен.
-const omitTokenList = ['/auth/login'];
+const omitTokenList = ["/auth/login"];
 
 apiAxios.interceptors.request.use(async (config) => {
   const token = await getToken();

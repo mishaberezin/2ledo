@@ -1,49 +1,53 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-import { AppLoading } from 'expo';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import React from "react";
+import { useSelector } from "react-redux";
+import { AppLoading } from "expo";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 import {
   AuthScreen,
   SerpScreen,
   FavsScreen,
   CardScreen,
   SettingsScreen,
-} from '@src/features';
-import { Button } from 'react-native-elements';
-import { MatchIndicatorButton } from './components';
+} from "@src/features";
+import { Button } from "react-native-elements";
+import { MatchIndicatorButton } from "./components";
 
-import { AuthStatus } from './redux/slices';
+import { AuthStatus } from "./redux/slices";
 
-const MainStack = createStackNavigator();
+export type MainStackParamList = {
+  Serp: undefined;
+  Card: undefined;
+  Favs: undefined;
+  Settings: undefined;
+};
+
+const MainStack = createStackNavigator<MainStackParamList>();
 const MainStackScreen = () => (
   <MainStack.Navigator
-    initialRouteName="SerpStackScreen"
-    screenOptions={{ animationEnabled: false }}
+    initialRouteName="Serp"
+    screenOptions={{ animationEnabled: false }} // TODO Написать зачем это или убрать
   >
     <MainStack.Screen
       name="Serp"
       component={SerpScreen}
-      options={({ navigation, route }) => ({
-        headerLeftContainerStyle: {
-          flexDirection: 'row',
-        },
+      options={({ navigation }) => ({
         headerLeft: () => {
           return (
             <Button
               buttonStyle={{
-                justifyContent: 'space-between',
+                justifyContent: "space-between",
               }}
               type="clear"
-              icon={{ type: 'material', name: 'person' }}
-              onPress={() => navigation.navigate('Settings')}
+              icon={{ type: "material", name: "person" }}
+              onPress={() => navigation.navigate("Settings")}
             />
           );
         },
         headerRight: () => (
           <MatchIndicatorButton
             onPress={() => {
-              navigation.navigate('Favs');
+              navigation.navigate("Favs");
             }}
           />
         ),
@@ -54,23 +58,28 @@ const MainStackScreen = () => (
       name="Card"
       component={CardScreen}
       options={() => ({
-        title: '',
+        title: "",
         headerBackTitleVisible: false,
         headerTransparent: true,
-        headerTintColor: '#25265E',
+        headerTintColor: "#25265E",
         headerLeftContainerStyle: {
           paddingLeft: 16,
-          paddingTop: 16
-        }
-      })} />
+          paddingTop: 16,
+        },
+      })}
+    />
     <MainStack.Screen name="Settings" component={SettingsScreen} />
   </MainStack.Navigator>
 );
 
-const AuthStack = createStackNavigator();
+export type AuthStackParamList = {
+  Auth: undefined;
+};
+
+const AuthStack = createStackNavigator<AuthStackParamList>();
 const AuthStackScreen = () => (
   <AuthStack.Navigator>
-    <AuthStack.Screen name="Login" component={AuthScreen} />
+    <AuthStack.Screen name="Auth" component={AuthScreen} />
   </AuthStack.Navigator>
 );
 
@@ -84,8 +93,8 @@ export const Navigation = () => {
   return isAppLoading ? (
     <AppLoading />
   ) : (
-      <NavigationContainer>
-        {isAuthorized ? <MainStackScreen /> : <AuthStackScreen />}
-      </NavigationContainer>
-    );
+    <NavigationContainer>
+      {isAuthorized ? <MainStackScreen /> : <AuthStackScreen />}
+    </NavigationContainer>
+  );
 };

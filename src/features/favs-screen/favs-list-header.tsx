@@ -1,8 +1,8 @@
-import React, { useCallback } from 'react';
-import { View } from 'react-native';
-import { withStyles } from '@ui-kitten/components';
-import { Ionicons } from '@expo/vector-icons';
-import { PlateHeader, OverflowMenu } from '@src/components';
+import React, { useCallback } from "react";
+import { View } from "react-native";
+import { withStyles } from "@ui-kitten/components";
+import { Ionicons } from "@expo/vector-icons";
+import { PlateHeader, OverflowMenu } from "@src/components";
 
 const FavsListHeaderContainer = ({
   title,
@@ -31,14 +31,14 @@ const FavsListHeaderContainer = ({
 
 export const FavsListHeader = withStyles(FavsListHeaderContainer, () => ({
   iconMore: {
-    display: 'flex',
-    alignItems: 'center',
+    display: "flex",
+    alignItems: "center",
     width: 40,
   },
   overflowMenu: {
-    position: 'relative',
+    position: "relative",
     top: 10,
-    borderColor: 'red',
+    borderColor: "red",
     borderWidth: 2,
   },
 }));

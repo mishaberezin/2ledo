@@ -1,7 +1,7 @@
-import React from 'react';
-import { View } from 'react-native';
-import { Text, withStyles } from '@ui-kitten/components';
-import { Ionicons } from '@expo/vector-icons';
+import React from "react";
+import { View } from "react-native";
+import { Text, withStyles } from "@ui-kitten/components";
+import { Ionicons } from "@expo/vector-icons";
 
 const CardItemNumberOfRoomsBare = ({ value, eva: { style } }) => {
   return (
@@ -20,13 +20,13 @@ export const CardItemNumberOfRooms = withStyles(
   CardItemNumberOfRoomsBare,
   () => ({
     container: {
-      display: 'flex',
+      display: "flex",
     },
     rooms: {
-      flexDirection: 'row',
+      flexDirection: "row",
     },
     icon: {
       marginRight: 4,
     },
-  }),
+  })
 );

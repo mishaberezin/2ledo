@@ -1,8 +1,8 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { AppThunk } from '../store';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { AppThunk } from "../store";
 
 const localStateSlice = createSlice({
-  name: 'localState',
+  name: "localState",
   initialState: {
     matchIndicator: false,
     matchPopup: {

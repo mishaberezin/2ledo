@@ -1,14 +1,9 @@
 import React, { Component } from 'react';
 import { View, TouchableOpacity, ScrollView } from 'react-native';
 import { withStyles } from '@ui-kitten/components';
-import { Ionicons } from '@expo/vector-icons';
 import { Text } from '@ui-kitten/components';
-
-import { GridCardImages } from './grid-card-images';
-import { CollapsibleRow } from '../collapsible-row';
-// import { CardImages } from './card-images';
-// import { CardHostShortInfo } from './card-host-short-info';
-// import { CardHostDescriptionInfo } from './card-host-description-info';
+import { GridCardImages } from "./grid-card-images";
+import { CollapsibleRow } from "../collapsible-row";
 
 class ItemDetailCardContainer extends Component {
 
@@ -73,12 +68,11 @@ class ItemDetailCardContainer extends Component {
       </ScrollView>
     );
   }
-
 };
 
 export const ItemDetailCard = withStyles(ItemDetailCardContainer, () => ({
   container: {
-    backgroundColor: 'white',
+    backgroundColor: "white",
   },
   cardContainer: {
     // TODO: поправить отступ, придумать что-то
@@ -88,28 +82,28 @@ export const ItemDetailCard = withStyles(ItemDetailCardContainer, () => ({
     paddingHorizontal: 20,
     paddingVertical: 18,
     borderBottomWidth: 1,
-    borderBottomColor: 'rgba(120, 121, 147, 0.1)',
+    borderBottomColor: "rgba(120, 121, 147, 0.1)",
   },
   textBlockTitle: {
-    color: '#787993',
+    color: "#787993",
     marginBottom: 4,
   },
   textBlockText: {
-    color: '#25265E',
+    color: "#25265E",
     lineHeight: 18,
   },
   textBlockGroup: {
-    backgroundColor: '#fafaff',
-    flexDirection: 'row',
+    backgroundColor: "#fafaff",
+    flexDirection: "row",
   },
   textBlockGroupName: {
-    width: '90%',
+    width: "90%",
   },
   textBlockGroupNameText: {
     fontSize: 22,
   },
   textBlockGroupOpenIcon: {
-    width: '10%',
+    width: "10%",
     top: 5,
-  }
+  },
 }));

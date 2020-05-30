@@ -1,11 +1,11 @@
-import React from 'react';
-import { View } from 'react-native';
-import { useStyleSheet, StyleService } from '@ui-kitten/components';
+import React from "react";
+import { View } from "react-native";
+import { useStyleSheet, StyleService } from "@ui-kitten/components";
 
-import { ToledoHeader4 } from '../toledo-header-4';
-import { CardItemLandmark } from './card-item-landmark';
-import { CardItemNumberOfRooms } from './card-item-number-of-rooms';
-import { CardItemHostAvatar } from './card-item-host-avatar';
+import { ToledoHeader4 } from "../toledo-header-4";
+import { CardItemLandmark } from "./card-item-landmark";
+import { CardItemNumberOfRooms } from "./card-item-number-of-rooms";
+import { CardItemHostAvatar } from "./card-item-host-avatar";
 
 export const CardHostShortInfo = (props) => {
   const styles = useStyleSheet(themedStyles);
@@ -33,16 +33,16 @@ const themedStyles = StyleService.create({
   },
   infoBlock: {
     marginVertical: 10,
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    flexWrap: 'nowrap',
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+    flexWrap: "nowrap",
   },
   infoBlockCol: {
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'flex-start',
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "flex-start",
   },
   avatarBlock: {
     marginTop: 10,
