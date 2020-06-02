@@ -1,13 +1,20 @@
-import React from "react";
+import React, { FC } from "react";
 import { View } from "react-native";
-import { Text, withStyles } from "@ui-kitten/components";
+import { Text, useStyleSheet, StyleService } from "@ui-kitten/components";
 import { Ionicons } from "@expo/vector-icons";
 
-const CardItemNumberOfRoomsBare = ({ value, eva: { style } }) => {
+interface Props {
+  value: string;
+}
+
+export const CardItemNumberOfRooms: FC<Props> = (props) => {
+  const { value } = props;
+  const styles = useStyleSheet(themedStyles);
+
   return (
-    <View style={style.container}>
-      <View style={style.rooms}>
-        <View style={style.icon}>
+    <View style={styles.container}>
+      <View style={styles.rooms}>
+        <View style={styles.icon}>
           <Ionicons name="ios-cube" size={16} color="gray" />
         </View>
         <Text category="p2">{value} комн.</Text>
@@ -16,17 +23,14 @@ const CardItemNumberOfRoomsBare = ({ value, eva: { style } }) => {
   );
 };
 
-export const CardItemNumberOfRooms = withStyles(
-  CardItemNumberOfRoomsBare,
-  () => ({
-    container: {
-      display: "flex",
-    },
-    rooms: {
-      flexDirection: "row",
-    },
-    icon: {
-      marginRight: 4,
-    },
-  })
-);
+const themedStyles = StyleService.create({
+  container: {
+    display: "flex",
+  },
+  rooms: {
+    flexDirection: "row",
+  },
+  icon: {
+    marginRight: 4,
+  },
+});

@@ -5,8 +5,7 @@ type Token = string | null;
 
 export const getToken = memoize(
   async (): Promise<Token> => {
-    const token = await AsyncStorage.getItem("token");
-    return token;
+    return await AsyncStorage.getItem("token");
   }
 );
 

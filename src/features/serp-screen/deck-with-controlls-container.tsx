@@ -1,74 +1,64 @@
-import React, { Fragment, useCallback, useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { StyleSheet, View, Text } from "react-native";
+import React, { FC, useEffect } from "react";
+import ms from "ms";
+import { useDispatch } from "react-redux";
+import { useAppSelector } from "@src/redux/store";
+import {
+  fetchCards,
+  DeckStatus,
+  selectAllCards,
+  likeCard,
+  dislikeCard,
+} from "@src/redux/slices/deck-slice";
 import { DeckWithControlls } from "./deck-with-controlls";
-import { requestCards, likeCard, dislikeCard } from "@src/redux/slices";
-import { AppState } from "@src/redux/store";
 
-export const DeckWithControllsContainer = ({ navigation }) => {
-  const dispatch = useDispatch();
-  const cards = useSelector((state: AppState) => state.deck);
-
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    (async () => {
-      await dispatch(requestCards());
-      setIsLoading(false);
-    })();
-  }, []);
-
-  // Нужно начинать загружать раньше.
-  const onLastCard = async () => {
-    setIsLoading(true);
-    await dispatch(requestCards());
-    setIsLoading(false);
-  };
-
-  const onSwipe = useCallback(
-    (cardId, direction) => {
-      if (direction === "right") {
-        dispatch(likeCard(cardId));
-      } else {
-        dispatch(dislikeCard(cardId));
-      }
-    },
-    [dispatch, dislikeCard, likeCard]
-  );
-
-  const onDetailButtonPress = useCallback(
-    (id) => {
-      navigation.navigate("Card", { id });
-    },
-    [navigation]
-  );
-
-  return (
-    <Fragment>
-      {isLoading && (
-        <View style={styles.loaderContainer}>
-          <Text>Loading...</Text>
-        </View>
-      )}
-      <DeckWithControlls
-        cards={cards}
-        onDetailButtonPress={onDetailButtonPress}
-        onLastCard={onLastCard}
-        onSwipe={onSwipe}
-      />
-    </Fragment>
-  );
+const isRefreshTimeoutGone = (lastFetchedAt: number) => {
+  return Date.now() - lastFetchedAt > ms("5 min");
 };
 
-const styles = StyleSheet.create({
-  loaderContainer: {
-    display: "flex",
-    position: "absolute",
-    alignItems: "center",
-    justifyContent: "center",
-    height: "100%",
-    width: "100%",
-    zIndex: 9,
-    backgroundColor: "rgba(0,0,0,0.2)",
-  },
-});
+interface Props {
+  onCardDetails: (id: string) => void;
+}
+
+export const DeckWithControllsContainer: FC<Props> = (props) => {
+  const dispatch = useDispatch();
+  const { onCardDetails } = props;
+  const { status, lastFetchedAt } = useAppSelector((state) => state.deck);
+  const cards = useAppSelector(selectAllCards);
+
+  const isLoading = status === DeckStatus.PENDING;
+
+  useEffect(() => {
+    if (cards.length > 3) {
+      return;
+    }
+
+    if (status === DeckStatus.UNFINISHED) {
+      dispatch(fetchCards());
+    } else if (
+      status === DeckStatus.FINISHED &&
+      isRefreshTimeoutGone(lastFetchedAt)
+    ) {
+      dispatch(fetchCards());
+    } else {
+      return;
+    }
+  }, [cards]);
+
+  const onCardLike = (cardId: string) => {
+    dispatch(likeCard(cardId));
+  };
+
+  const onCardDislike = (cardId: string) => {
+    dispatch(dislikeCard(cardId));
+  };
+
+  return (
+    <DeckWithControlls
+      cards={cards}
+      isLoading={isLoading}
+      onCardLike={onCardLike}
+      onCardDislike={onCardDislike}
+      onCardDetails={onCardDetails}
+    />
+  );
+};

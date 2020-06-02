@@ -8,7 +8,7 @@ import * as eva from "@eva-design/eva";
 import { ApplicationProvider } from "@ui-kitten/components";
 import { ThemeProvider } from "react-native-elements";
 import { reduxStore } from "./redux/store";
-import { setAppLoading, resolveAuth, startMatchPolling } from "./redux/slices";
+import { setAppLoading, resolveAuth } from "./redux/slices";
 import { Navigation } from "@src/navigation";
 
 if (__DEV__) {
@@ -34,7 +34,6 @@ export default registerRootComponent(() => {
         ]);
       } finally {
         reduxStore.dispatch(setAppLoading(false));
-        reduxStore.dispatch(startMatchPolling());
       }
     }
 

@@ -16,7 +16,7 @@ apiAxios.interceptors.request.use(async (config) => {
 
   // Если токена нет, лучше не слать ничего.
   if (token && !omitToken) {
-    config.headers.authorization = `Bearer ${token}`;
+    config.headers.Authorization = `Bearer ${token}`;
   }
 
   return config;

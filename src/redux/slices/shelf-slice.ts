@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { AppThunk } from "../store";
-import { showMatchPopup } from "./local-state-slice";
 
 const shelfSlice = createSlice({
   name: "shelf",
@@ -45,35 +44,6 @@ export const getShelfCard = (cardId): AppThunk => async (_, getState) => {
     card = disliked.find(({ id }) => cardId === id);
   }
   return Promise.resolve(card);
-};
-
-export const likeCard = (cardId): AppThunk => async (
-  dispatch,
-  getState,
-  api
-) => {
-  const state = getState();
-  const card = state.deck.find(({ id }) => cardId === id);
-
-  if (card) {
-    await api.likeCard(cardId);
-    dispatch(addCardToLiked({ card }));
-    dispatch(showMatchPopup({ card }));
-  }
-};
-
-export const dislikeCard = (cardId): AppThunk => async (
-  dispatch,
-  getState,
-  api
-) => {
-  const state = getState();
-  const card = state.deck.find(({ id }) => cardId === id);
-
-  if (card) {
-    await api.dislikeCard(cardId);
-    dispatch(addCardToDisliked({ card }));
-  }
 };
 
 export const archiveCard = (cardId): AppThunk => async (

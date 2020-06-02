@@ -1,10 +1,10 @@
 import { configureStore, getDefaultMiddleware, Action } from "@reduxjs/toolkit";
+import { useSelector, TypedUseSelectorHook } from "react-redux";
 import { ThunkAction } from "redux-thunk";
 import {
   appReducer,
   authReducer,
   userReducer,
-  cardsReducer,
   deckReducer,
   localStateReducer,
   shelfReducer,
@@ -19,7 +19,6 @@ export const reduxStore = configureStore({
     auth: authReducer,
     localState: localStateReducer,
     user: userReducer,
-    cards: cardsReducer,
     deck: deckReducer,
     shelf: shelfReducer,
   },
@@ -33,3 +32,9 @@ export const reduxStore = configureStore({
 
 export type AppState = ReturnType<typeof reduxStore.getState>;
 export type AppThunk = ThunkAction<void, AppState, typeof api, Action<string>>;
+export type AppThunkExtraArg = {
+  api: typeof api;
+};
+
+// Типизированная версия useSelector
+export const useAppSelector: TypedUseSelectorHook<AppState> = useSelector;

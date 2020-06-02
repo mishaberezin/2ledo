@@ -20,47 +20,6 @@ export const sampleState = {
       ],
     },
   },
-  cards: {
-    nc84n897ncz7hh: {
-      id: "nc84n897ncz7hh",
-      users: ["hekdjnv84ns8c"],
-      type: "host",
-      data: {
-        HostUser: {
-          name: "Виктор",
-          avatarUri:
-            "https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ2MTEyNjMzMV5BMl5BanBnXkFtZTYwODE0MzQ2._V1_UX172_CR0,0,172,256_AL_.jpg",
-        },
-        Address: {
-          coords: [55.756459, 37.64482],
-          postal: "Москва, Большой Златоустинский переулок, 6с1",
-        },
-        Landmark: landmarks[2],
-        NumberOfRooms: 2,
-        Floor: 4,
-        Photos: [images.flatInterior, images.flatExterior, images.flatToilet],
-        RentalPeriod: "long",
-        RentalPrice: 60000,
-        MaxNumberOfPeople: 2,
-        Description: "Сдаю только не беспокоить славянам просьба спасибо.",
-      },
-    },
-    nc84n821ncz7hb: {
-      id: "nc84n821ncz7hb",
-      users: ["hekdjnv84ns8c"],
-      type: "tenant",
-      data: {
-        Photos: [images.faceImage],
-        NumberOfPeople: 2,
-        Description: "Неторопливо ищу квартиру на продолжительный срок.",
-        TargetPrice: 50000,
-        MinNumberOfRooms: 1,
-        RentalPeriod: "long",
-        Landmark: landmarks[0],
-      },
-    },
-  },
-  deck: [],
   shelf: {
     disliked: [],
     liked: [

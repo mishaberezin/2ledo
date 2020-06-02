@@ -17,7 +17,7 @@ import { AuthStatus } from "./redux/slices";
 
 export type MainStackParamList = {
   Serp: undefined;
-  Card: undefined;
+  Card: { id: string };
   Favs: undefined;
   Settings: undefined;
 };

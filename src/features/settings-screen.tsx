@@ -15,9 +15,9 @@ export const SettingsScreen: FC<Props> = (props) => {
 
   const dispatch = useDispatch();
 
-  const handleExitButtonPress = useCallback(() => {
+  const handleExitButtonPress = () => {
     dispatch(logOut());
-  }, [navigation]);
+  };
 
   return (
     <View

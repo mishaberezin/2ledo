@@ -1,67 +1,67 @@
-import React, { Component } from "react";
+import React, { FC, useState } from "react";
 import { View, Image, Animated, TouchableOpacity } from "react-native";
-import { withStyles } from "@ui-kitten/components";
+import { useStyleSheet, StyleService } from "@ui-kitten/components";
 import { Ionicons } from "@expo/vector-icons";
 
 import { DARK_VIOLET_COLOR } from "../../constants/colors";
 import { SCREEN_HEIGHT } from "../../constants/device";
 
-class CardImagesContainer extends Component {
-  state = {
-    imageIndex: 0,
-    imageWidth: null,
-  };
+interface Props {
+  photos: any[];
+}
 
-  constructor(props) {
-    super(props);
-    this.translate = new Animated.Value(0);
-  }
+export const CardImages: FC<Props> = (props) => {
+  const styles = useStyleSheet(themedStyles);
 
-  handleLayout = ({
-    nativeEvent: {
-      layout: { width: imageWidth },
-    },
-  }) => {
-    if (!this.state.imageWidth) {
-      this.setState({ imageWidth });
+  const { photos } = props;
+
+  const [imageIndex, setImageIndex] = useState(0);
+  const [imageWidth, setImageWidth] = useState(null);
+
+  const translate = new Animated.Value(0);
+
+  const handleLayout = (event) => {
+    const imageWidth = event.nativeEvent.layout.width;
+
+    if (!imageWidth) {
+      setImageWidth({ imageWidth });
     }
   };
 
-  handleNextItemPress = () => {
-    if (this.state.imageIndex < this.props.photos.length - 1) {
-      const translateValue =
-        (this.state.imageIndex + 1) * this.state.imageWidth;
-      Animated.spring(this.translate, {
+  const handleNextItemPress = () => {
+    if (imageIndex < photos.length - 1) {
+      const translateValue = (imageIndex + 1) * imageWidth;
+
+      Animated.spring(translate, {
         toValue: -translateValue,
       }).start();
-      this.setState({ imageIndex: this.state.imageIndex + 1 });
+
+      setImageIndex(imageIndex + 1);
     }
   };
 
-  handlePrevItemPress = () => {
-    if (this.state.imageIndex !== 0) {
-      const translateValue =
-        (this.state.imageIndex - 1) * this.state.imageWidth;
-      Animated.spring(this.translate, {
+  const handlePrevItemPress = () => {
+    if (imageIndex !== 0) {
+      const translateValue = (imageIndex - 1) * imageWidth;
+
+      Animated.spring(translate, {
         toValue: translateValue < 0 ? 0 : -translateValue,
       }).start();
-      this.setState({ imageIndex: this.state.imageIndex - 1 });
+
+      setImageIndex(imageIndex - 1);
     }
   };
 
-  renderImagesNavigation = () => {
-    const {
-      photos,
-      eva: { style },
-    } = this.props;
+  const renderImagesNavigation = () => {
     if (!photos || photos.length <= 1) {
       return null;
     }
+
     return (
-      <View style={style.navContainer}>
-        <View style={style.photosNavigation}>
-          <View style={style.navElement}>
-            <TouchableOpacity onPress={this.handlePrevItemPress}>
+      <View style={styles.navContainer}>
+        <View style={styles.photosNavigation}>
+          <View style={styles.navElement}>
+            <TouchableOpacity onPress={handlePrevItemPress}>
               <Ionicons
                 name="ios-arrow-back"
                 size={50}
@@ -69,8 +69,8 @@ class CardImagesContainer extends Component {
               />
             </TouchableOpacity>
           </View>
-          <View style={style.navElement}>
-            <TouchableOpacity onPress={this.handleNextItemPress}>
+          <View style={styles.navElement}>
+            <TouchableOpacity onPress={handleNextItemPress}>
               <Ionicons
                 name="ios-arrow-forward"
                 size={50}
@@ -83,51 +83,42 @@ class CardImagesContainer extends Component {
     );
   };
 
-  render() {
-    const {
-      photos,
-      eva: { style },
-    } = this.props;
-
-    return (
-      <View style={style.container}>
-        <Animated.View
-          style={[
-            style.photosContainer,
-            { transform: [{ translateX: this.translate }] },
-          ]}
-          onLayout={this.handleLayout}
-        >
-          {photos.map((image, index) => (
-            <View key={index} style={style.imageContainer}>
-              <Image
-                source={image ? image.source || image : {}}
-                style={style.image}
+  return (
+    <View style={styles.container}>
+      <Animated.View
+        style={[
+          styles.photosContainer,
+          { transform: [{ translateX: translate }] },
+        ]}
+        onLayout={handleLayout}
+      >
+        {photos.map((image, index) => (
+          <View key={index} style={styles.imageContainer}>
+            <Image
+              source={image ? image.source || image : {}}
+              style={styles.image}
+            />
+          </View>
+        ))}
+      </Animated.View>
+      {renderImagesNavigation()}
+      <View style={styles.photosCountContainer}>
+        {photos.length > 1 &&
+          photos.map((_, index) => (
+            <View key={index} style={styles.photosCountDot}>
+              <Ionicons
+                name="ios-radio-button-on"
+                size={12}
+                color={imageIndex === index ? DARK_VIOLET_COLOR : "#fff"}
               />
             </View>
           ))}
-        </Animated.View>
-        {this.renderImagesNavigation()}
-        <View style={style.photosCountContainer}>
-          {photos.length > 1 &&
-            photos.map((_, index) => (
-              <View key={index} style={style.photosCountDot}>
-                <Ionicons
-                  name="ios-radio-button-on"
-                  size={12}
-                  color={
-                    this.state.imageIndex === index ? DARK_VIOLET_COLOR : "#fff"
-                  }
-                />
-              </View>
-            ))}
-        </View>
       </View>
-    );
-  }
-}
+    </View>
+  );
+};
 
-export const CardImages = withStyles(CardImagesContainer, () => ({
+const themedStyles = StyleService.create({
   container: {},
   photosContainer: {
     display: "flex",
@@ -170,4 +161,4 @@ export const CardImages = withStyles(CardImagesContainer, () => ({
   photosCountDot: {
     marginHorizontal: 2,
   },
-}));
+});

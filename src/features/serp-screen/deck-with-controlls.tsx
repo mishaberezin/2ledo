@@ -1,44 +1,55 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { FC, useState, useEffect, useRef } from "react";
 import reject from "lodash/reject";
 import { View, Animated, PanResponder, TouchableOpacity } from "react-native";
 import { StyleService, useStyleSheet, Text } from "@ui-kitten/components";
 import { Ionicons } from "@expo/vector-icons";
 import { Card } from "react-native-elements";
-import { DeckHostCard } from "@src/components/card";
+import { DeckCard } from "@src/components/card";
 import { SCREEN_WIDTH } from "@src/constants/device";
+
+import { ApartmentCard } from "@src/redux/slices/deck-slice";
 
 const SWIPE_THRESHOLD = 0.4 * SCREEN_WIDTH;
 
-export const DeckWithControlls = (props) => {
+interface Props {
+  cards: ApartmentCard[];
+  isLoading: boolean;
+  onCardLike: (id: string) => void;
+  onCardDislike: (id: string) => void;
+  onCardDetails: (id: string) => void;
+}
+
+export const DeckWithControlls: FC<Props> = (props) => {
+  const { cards, isLoading, onCardLike, onCardDislike, onCardDetails } = props;
+
   const styles = useStyleSheet(themedStyles);
 
-  const { cards, onLastCard, onSwipe } = props;
+  // Храним карточки во вспомогательном стеке:
+  // 1. Удобнее работать
+  // 2. Нужно по-особому работать с первой карточкой
+  const [cardsStack, setCardsStack] = useState(cards);
+  const [frontCard, nextCard] = cardsStack;
 
-  const [cardsStack, setCardsStack] = useState([]);
-  const [frontCard] = cardsStack;
-
+  // Обновляем стек через useEffect, не трогаем первую карточку.
   useEffect(() => {
-    const firstCard = cardsStack[0];
-    const tailStack = reject(cards, ["id", firstCard?.id]);
+    const tailStack = reject(cards, ["id", frontCard?.id]);
 
-    // Оставляем верхнюю, чтобы убрать некрасивые ререндеры
-    const newStack = [firstCard, ...tailStack].filter(Boolean);
+    // Оставляем верхнюю, чтобы избежать некрасивые ререндеры.
+    // Фильтруем на случай если первой карточки нет.
+    const newStack = [frontCard, ...tailStack].filter(Boolean);
 
     setCardsStack(newStack);
   }, [cards]);
 
   const shiftStack = () => {
     setCardsStack(cardsStack.slice(1));
-
-    if (cardsStack.length === 1) {
-      onLastCard();
-    }
   };
 
   const position = useRef(new Animated.ValueXY()).current;
 
   const forceSwipe = (direction) => {
     const x = (direction === "right" ? SCREEN_WIDTH : -SCREEN_WIDTH) * 2;
+
     Animated.timing(position, {
       toValue: { x, y: 0 },
       duration: 250,
@@ -48,7 +59,13 @@ export const DeckWithControlls = (props) => {
   };
 
   const onSwipeComplete = (direction) => {
-    onSwipe(frontCard.id, direction);
+    const { id } = frontCard;
+
+    if (direction === "right") {
+      onCardLike(id);
+    } else {
+      onCardDislike(id);
+    }
     position.setValue({ x: 0, y: 0 });
     shiftStack();
   };
@@ -60,7 +77,7 @@ export const DeckWithControlls = (props) => {
     }).start();
   };
 
-  const getCardStyle = () => {
+  const getPositionStyles = () => {
     const rotate = position.x.interpolate({
       inputRange: [-SCREEN_WIDTH * 1.5, 0, SCREEN_WIDTH * 1.5],
       outputRange: ["-45deg", "0deg", "45deg"],
@@ -71,22 +88,6 @@ export const DeckWithControlls = (props) => {
       transform: [{ rotate }],
     };
   };
-
-  const hadleControlPress = (toRight = false) => {
-    forceSwipe(toRight ? "right" : "left");
-  };
-
-  const renderCard = ({ card }) => {
-    return (
-      <DeckHostCard
-        card={card}
-        cardStyle={styles.cardStyle}
-        onOpen={props.onDetailButtonPress}
-      />
-    );
-  };
-
-  const cardStyle = [getCardStyle(), styles.card];
 
   const panResponder = PanResponder.create({
     onStartShouldSetPanResponder: () => true,
@@ -107,28 +108,41 @@ export const DeckWithControlls = (props) => {
     },
   });
 
-  const renderAnimatedCard = (props) => {
-    return (
-      <Animated.View style={cardStyle} {...panResponder.panHandlers}>
-        {renderCard(props)}
-      </Animated.View>
-    );
-  };
-
   return cardsStack.length === 0 ? (
-    <Card title={"Упс!"}>
-      <Text style={{ marginBottom: 20 }}>Больше нет карточек</Text>
+    <Card>
+      <Text style={{ marginBottom: 20 }}>
+        {isLoading ? "Загружаем..." : "Больше нет карточек"}
+      </Text>
     </Card>
   ) : (
     <View style={styles.container}>
       <View>
-        {cardsStack[1] && renderCard({ card: cardsStack[1] })}
-        {renderAnimatedCard({ card: cardsStack[0] })}
+        {nextCard && (
+          <View>
+            <DeckCard
+              card={cardsStack[1]}
+              cardStyle={styles.cardStyle}
+              onOpen={onCardDetails}
+            />
+          </View>
+        )}
+        <Animated.View
+          style={[styles.animatedContainer, getPositionStyles()]}
+          {...panResponder.panHandlers}
+        >
+          <DeckCard
+            card={frontCard}
+            cardStyle={styles.cardStyle}
+            onOpen={onCardDetails}
+          />
+        </Animated.View>
       </View>
       <Animated.View style={styles.controlsContainer}>
         <TouchableOpacity
           style={[styles.controlContainer, styles.controlContainerLeft]}
-          onPress={() => hadleControlPress(false)}
+          onPress={() => {
+            forceSwipe("right");
+          }}
         >
           <Ionicons
             name={"ios-close-circle"}
@@ -139,7 +153,9 @@ export const DeckWithControlls = (props) => {
         </TouchableOpacity>
         <TouchableOpacity
           style={[styles.controlContainer, styles.controlContainerRight]}
-          onPress={hadleControlPress}
+          onPress={() => {
+            forceSwipe("left");
+          }}
         >
           <Ionicons
             name={"ios-checkmark-circle"}
@@ -158,7 +174,7 @@ const themedStyles = StyleService.create({
     flexDirection: "row",
     flex: 1,
   },
-  card: {
+  animatedContainer: {
     width: SCREEN_WIDTH,
     justifyContent: "center",
     position: "absolute",
@@ -172,7 +188,6 @@ const themedStyles = StyleService.create({
   controlsContainer: {
     position: "absolute",
     bottom: 0,
-    opacity: 0.6,
     height: 60,
     width: SCREEN_WIDTH,
     alignItems: "center",

@@ -10,6 +10,10 @@ type Props = StackScreenProps<MainStackParamList, "Serp">;
 export const SerpScreen: FC<Props> = (props) => {
   const { navigation } = props;
 
+  const onCardDetails = (id: string) => {
+    navigation.navigate("Card", { id });
+  };
+
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -27,7 +31,7 @@ export const SerpScreen: FC<Props> = (props) => {
         start={{ x: 0.5, y: 0 }}
         end={{ x: 0.5, y: 1 }}
       />
-      <DeckWithControllsContainer navigation={navigation} />
+      <DeckWithControllsContainer onCardDetails={onCardDetails} />
     </View>
   );
 };

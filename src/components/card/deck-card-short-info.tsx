@@ -1,13 +1,16 @@
-import React from "react";
+import React, { FC } from "react";
 import { View } from "react-native";
 import { useStyleSheet, StyleService } from "@ui-kitten/components";
 
 import { ToledoHeader4 } from "../toledo-header-4";
-import { CardItemLandmark } from "./card-item-landmark";
 import { CardItemNumberOfRooms } from "./card-item-number-of-rooms";
-import { CardItemHostAvatar } from "./card-item-host-avatar";
 
-export const CardHostShortInfo = (props) => {
+interface Props {
+  rentalPrice: number;
+  roomsCount: number;
+}
+
+export const DeckCardShortInfo: FC<Props> = (props) => {
   const styles = useStyleSheet(themedStyles);
   const { rentalPrice, roomsCount } = props;
 
@@ -17,12 +20,8 @@ export const CardHostShortInfo = (props) => {
         <ToledoHeader4>{rentalPrice} руб</ToledoHeader4>
         <View style={styles.infoBlockCol}>
           <CardItemNumberOfRooms value={roomsCount} />
-          {/* <CardItemLandmark landmark={Landmark} /> */}
         </View>
       </View>
-      {/* <View style={styles.avatarBlock}>
-        <CardItemHostAvatar uri={HostUser.avatarUri} name={HostUser.name} />
-      </View> */}
     </View>
   );
 };
