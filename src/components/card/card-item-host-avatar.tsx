@@ -5,7 +5,7 @@ import { Text, Avatar, withStyles } from "@ui-kitten/components";
 const CardItemHostAvatarBare = ({ uri, name, eva: { style } }) => {
   return (
     <View style={style.container}>
-      <Avatar source={uri ? uri.source || { uri } : {}} size="small" />
+      <Avatar source={uri ? uri.source || { uri } : {}} />
       <Text style={style.avatarBlockName} category="s1">
         {name}
       </Text>
