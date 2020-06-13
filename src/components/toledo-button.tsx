@@ -27,8 +27,9 @@ export const ToledoButton = withStyles(
       flex: 1,
       backgroundColor: DARK_VIOLET_COLOR,
       borderColor: DARK_VIOLET_COLOR,
-      borderRadius: 30,
+      borderRadius: 60,
       borderWidth: 1,
+      paddingHorizontal: 0,
     },
   })
 );

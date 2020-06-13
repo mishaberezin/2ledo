@@ -56,7 +56,6 @@ const ImageNetOneTwoThreeContainer = ({ photos, eva: { style } }) => {
             ];
 
             const imgBlockStyle = [style.imageGridThreeImages, classes[i % 3]];
-
             return (
               <View key={"imageGridTwoImages_" + i} style={imgBlockStyle}>
                 <Image

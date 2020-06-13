@@ -6,7 +6,8 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-import { withStyles, Text } from "@ui-kitten/components";
+import { ToledoButton } from '../../components/toledo-button';
+import { withStyles, Text, Button } from "@ui-kitten/components";
 
 import { OverflowMenu } from "@src/components";
 import {
@@ -28,11 +29,11 @@ const FavsListHostItemContainer = ({
     id,
     Photos: [firstPhoto],
     RentalPrice,
-    Address: { postal },
     Landmark,
     NumberOfRooms,
     HostUser,
   } = item;
+
 
   const menuItems = [
     { type: "view", title: "Просмотр" },
@@ -64,39 +65,32 @@ const FavsListHostItemContainer = ({
         <View style={themedStyle.listItemInfoBlock}>
           <TouchableOpacity onPress={handleItemPress}>
             <Image
-              source={{ firstPhoto }}
-              style={{ width: 100, height: 100 }}
+              style={themedStyle.imageRounded}
+              source={firstPhoto}
             />
+            <View style={themedStyle.avatarBlock}>
+              <CardItemHostAvatar uri={HostUser.avatarUri} />
+            </View>
           </TouchableOpacity>
         </View>
 
         <View style={themedStyle.listItemInfoBlock}>
-          <Text category="h5">{RentalPrice} Р</Text>
-          <CardItemHostAvatar uri={HostUser.avatarUri} />
+          <View style={themedStyle.listItemInfo}>
+            <Text category="h5">{RentalPrice} ₽</Text>
+            <CardItemNumberOfRooms value={NumberOfRooms} />
+            <CardItemLandmark landmark={Landmark} />
+          </View>
+
+          <View style={themedStyle.callButton}>
+            <ToledoButton>
+              <Ionicons style={themedStyle.callButtonIcon} name="md-call" size={16} />
+              <Text style={themedStyle.callButtonText} category="s3">   Готов обсудить</Text>
+            </ToledoButton>
+          </View>
+
         </View>
 
-        <View style={themedStyle.listItemInfoBlock}>
-          <CardItemNumberOfRooms value={NumberOfRooms} />
-          <CardItemLandmark landmark={Landmark} />
-        </View>
       </ScrollView>
-      <View style={themedStyle.listItemBottomBlock}>
-        <View style={themedStyle.listItemBottomTextBlock}>
-          <Text category="p2">{postal}</Text>
-        </View>
-
-        <View style={themedStyle.listItemActions}>
-          {/* <OverflowMenu
-            items={menuItems}
-            menuContainerStyle={themedStyle.menuStyle}
-            onItemPress={handleMenuItemPress}
-          >
-            <View style={themedStyle.iconMore}>
-              <Ionicons name="md-more" size={32} color="gray" />
-            </View>
-          </OverflowMenu> */}
-        </View>
-      </View>
     </View>
   );
 };
@@ -115,20 +109,26 @@ export const FavsListHostItem = withStyles(FavsListHostItemContainer, () => ({
     flexDirection: "row",
     flexWrap: "nowrap",
   },
+  avatarBlock: {
+    position: "absolute",
+    top: 5,
+    left: 112,
+  },
+  imageRounded: {
+    width: 158,
+    height: 158,
+    borderRadius: 10,
+    borderColor: "#f0f0ff",
+    borderWidth: 1,
+  },
   listItemInfoBlock: {
     padding: 5,
     flex: 1,
-    minWidth: Dimensions.get("window").width / 3,
+    maxWidth: Dimensions.get("window").width / 2,
   },
-  listItemBottomBlock: {
-    flex: 1,
-    flexDirection: "row",
-    flexWrap: "nowrap",
-  },
-  listItemBottomTextBlock: {
-    flex: 3,
-    paddingHorizontal: 5,
-    paddingVertical: 10,
+  listItemInfo: {
+    paddingHorizontal: 10,
+    minHeight: 102,
   },
   listItemActions: {
     marginLeft: 10,
@@ -143,4 +143,15 @@ export const FavsListHostItem = withStyles(FavsListHostItemContainer, () => ({
     alignItems: "center",
     width: 40,
   },
+  callButton: {
+    paddingTop: 10,
+    width: 150,
+  },
+  callButtonText: {
+    fontSize: 13,
+    color: '#fff',
+    fontWeight: 'bold',
+    marginLeft: 5,
+    padding: 100,
+  }
 }));

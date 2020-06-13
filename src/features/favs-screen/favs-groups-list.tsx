@@ -13,13 +13,11 @@ export const FavsGroupsList = ({ onItemPress, onItemDelete }) => {
         items={shelf.liked}
         onItemPress={onItemPress}
         onItemDelete={onItemDelete}
-        withCat
       />
       <FavsList
         title="Нет"
         items={shelf.disliked}
         onItemDelete={onItemDelete}
-        withCat
       />
     </ScrollView>
   );
