@@ -8,6 +8,7 @@ import {
   deckReducer,
   localStateReducer,
   shelfReducer,
+  favoritesReducer,
 } from "./slices";
 import * as api from "@src/api";
 
@@ -20,7 +21,8 @@ export const reduxStore = configureStore({
     localState: localStateReducer,
     user: userReducer,
     deck: deckReducer,
-    shelf: shelfReducer,
+    shelf: favoritesReducer,
+    favorites: favoritesReducer,
   },
   preloadedState: sampleState,
   middleware: getDefaultMiddleware({

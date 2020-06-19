@@ -108,6 +108,8 @@ export const FavsListHostItem = withStyles(FavsListHostItemContainer, () => ({
     flex: 1,
     flexDirection: "row",
     flexWrap: "nowrap",
+    paddingHorizontal: 10,
+    minHeight: 102,
   },
   avatarBlock: {
     position: "absolute",
@@ -125,10 +127,6 @@ export const FavsListHostItem = withStyles(FavsListHostItemContainer, () => ({
     padding: 5,
     flex: 1,
     maxWidth: Dimensions.get("window").width / 2,
-  },
-  listItemInfo: {
-    paddingHorizontal: 10,
-    minHeight: 102,
   },
   listItemActions: {
     marginLeft: 10,

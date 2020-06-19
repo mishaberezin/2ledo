@@ -99,3 +99,7 @@ API: https://toledo-stage.herokuapp.com/webjars/swagger-ui/index.html?configUrl=
 Старый репозиторий: https://gitlab.com/flitch/frontend
 
 Состояние репозитория перед тем как все было переделано для Прототипа, находится в ветке `archive`.
+
+## DEBUGGER
+
+REACT_DEBUGGER="unset ELECTRON_RUN_AS_NODE && open -g 'rndebugger://set-debugger-loc?port=19001' ||" npm start

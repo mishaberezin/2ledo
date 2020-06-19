@@ -7,6 +7,11 @@ export const fetchCards = async () => {
   return data;
 };
 
+export const fetchFavoritesCards = async () => {
+  const { data } = await apiAxios.get("/persons/my/favorites/");
+  return data;
+};
+
 export const likeCard = async (cardId: string) => {
   await apiAxios.post(`/persons/my/deck/${cardId}/like`);
 };
