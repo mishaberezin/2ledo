@@ -30,11 +30,13 @@ const FavoritesListContainer = ({
   );
 
   if (isLoading) {
-    <View style={themedStyle.container}>
-      <View style={themedStyle.listIsEmptyContainer}>
-        <Text>Загружаем...</Text>
+    return (
+      <View style={themedStyle.container}>
+        <View style={themedStyle.listIsEmptyContainer}>
+          <Text>Загружаем...</Text>
+        </View>
       </View>
-    </View>
+    );
   }
 
   return (

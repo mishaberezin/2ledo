@@ -37,7 +37,7 @@ export const FavsScreen: FC<Props> = (props) => {
     [navigation]
   );
 
-  const onItemDelete = (id) => {
+  const onItemDelete = id => {
     dispatch(archiveCard(id));
   };
 
@@ -56,7 +56,6 @@ export const FavsScreen: FC<Props> = (props) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 30,
     backgroundColor: SCREEN_BACKGROUND,
   },
 });
