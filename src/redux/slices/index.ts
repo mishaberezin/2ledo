@@ -3,5 +3,4 @@ export * from "./auth-slice";
 export * from "./user-slice";
 export * from "./deck-slice";
 export * from "./local-state-slice";
-export * from "./shelf-slice";
 export * from "./favorites-slice";

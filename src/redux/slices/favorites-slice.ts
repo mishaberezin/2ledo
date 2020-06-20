@@ -5,7 +5,6 @@ import {
 } from "@reduxjs/toolkit";
 
 import { AppState, AppThunkExtraArg } from "@src/redux/store";
-import { MAX_CARDS_PER_FETCH } from "@src/api/deck";
 
 export enum FavoritesStatus {
   PENDING = "PENDING",
@@ -13,22 +12,25 @@ export enum FavoritesStatus {
   UNFINISHED = "UNFINISHED",
 }
 
+export type ApartmentData = {
+  title: string;
+  description: string;
+  rentalPrice: number;
+  roomsCount: number;
+  floor: number;
+  photos: any[];
+  address: { oneLine: string; lat: number; lon: number };
+};
+
 export type ApartmentFavoriteCard = {
   id: string;
   type: "APARTMENT";
   apartment: {
     id: string;
-    data: {
-      title: string;
-      description: string;
-      rentalPrice: number;
-      roomsCount: number;
-      floor: number;
-      photos: any[];
-      address: { oneLine: string; lat: number; lon: number };
-    };
+    data: ApartmentData;
   };
 };
+
 export const fetchFavoritesCards = createAsyncThunk<
   ApartmentFavoriteCard[],
   void,
@@ -54,11 +56,9 @@ const favoritesSlice = createSlice({
       state.status = FavoritesStatus.PENDING;
     },
     [fetchFavoritesCards.fulfilled.type]: (state, action) => {
-      const cards = action.payload;
+      const favorites = action.payload;
       state.status = FavoritesStatus.FINISHED;
-      console.log('cards---->', cards);
-      favoritesAdapter.addMany(state, cards);
-      //favoritesAdapter.upsertMany(state, cards);
+      favoritesAdapter.upsertMany(state, favorites);
       state.lastFetchedAt = Date.now();
     },
     [fetchFavoritesCards.rejected.type]: (state) => {
@@ -70,9 +70,9 @@ const favoritesSlice = createSlice({
 
 export const { reducer: favoritesReducer } = favoritesSlice;
 export const {
-  selectById: selectFavoriteCardById,
-  selectIds: selectFavoriteCardIds,
-  selectEntities: selectFavoriteCardEntities,
+  //selectById: selectFavoriteCardById,
+  //selectIds: selectFavoriteCardIds,
+  // selectEntities: selectFavoriteCardEntities,
   selectAll: selectAllFavoriteCards,
-  selectTotal: selectTotalFavoriteCards,
+  // selectTotal: selectTotalFavoriteCards,
 } = favoritesAdapter.getSelectors<AppState>((state) => state.favorites);

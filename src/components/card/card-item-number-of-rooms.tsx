@@ -14,9 +14,6 @@ export const CardItemNumberOfRooms: FC<Props> = (props) => {
   return (
     <View style={styles.container}>
       <View style={styles.rooms}>
-        <View style={styles.icon}>
-          <Ionicons name="ios-cube" size={16} color="gray" />
-        </View>
         <Text category="p2">{value} комн.</Text>
       </View>
     </View>
@@ -25,7 +22,7 @@ export const CardItemNumberOfRooms: FC<Props> = (props) => {
 
 const themedStyles = StyleService.create({
   container: {
-    display: "flex",
+    display: "flex"
   },
   rooms: {
     flexDirection: "row",

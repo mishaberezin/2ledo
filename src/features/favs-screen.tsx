@@ -10,7 +10,8 @@ import {
   FavoritesStatus,
   selectAllFavoriteCards,
 } from "@src/redux/slices/favorites-slice";
-import { FavsGroupsList } from "./favs-screen/favs-groups-list";
+
+import { FavoritesList } from "./favs-screen/favorites-list";
 import { fetchFavoritesCards } from "@src/redux/slices/favorites-slice";
 
 import { SCREEN_BACKGROUND } from "@src/constants/colors";
@@ -21,19 +22,13 @@ export const FavsScreen: FC<Props> = (props) => {
   const { navigation } = props;
   const dispatch = useDispatch();
   const { status } = useAppSelector((state) => state.favorites);
+  const isLoading = status === FavoritesStatus.PENDING;
+
   const cards = useAppSelector(selectAllFavoriteCards);
-  console.log('cards::', cards);
+
   useEffect(() => {
-    if (status === FavoritesStatus.UNFINISHED) {
-      dispatch(fetchFavoritesCards());
-    } else if (
-      status === FavoritesStatus.FINISHED
-    ) {
-      dispatch(fetchFavoritesCards());
-    } else {
-      return;
-    }
-  }, [cards]);
+    dispatch(fetchFavoritesCards());
+  }, []);
 
   const onItemPress = useCallback(
     (id) => {
@@ -48,7 +43,12 @@ export const FavsScreen: FC<Props> = (props) => {
 
   return (
     <Layout style={styles.container}>
-      <FavsGroupsList onItemPress={onItemPress} onItemDelete={onItemDelete} />
+      <FavoritesList
+        isLoading={isLoading}
+        items={cards}
+        onItemPress={onItemPress}
+        onItemDelete={onItemDelete}
+      />
     </Layout>
   );
 };

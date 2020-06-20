@@ -15,45 +15,60 @@ import {
   CardItemNumberOfRooms,
   CardItemHostAvatar,
 } from "@src/components/card";
+import { ApartmentData } from "@src/redux/slices/favorites-slice";
 
 import { Ionicons } from "@expo/vector-icons";
 
+type FavsListHostItemContainerProps = {
+  itemId: string,
+  item: ApartmentData,
+  style: object,
+  onPress: (itemId: string) => {},
+  onDelete: () => {},
+  eva: any
+};
+
 const FavsListHostItemContainer = ({
+  itemId,
   item,
   style,
   onPress,
   onDelete,
   eva: { style: themedStyle },
-}) => {
+}: FavsListHostItemContainerProps) => {
+
   const {
-    id,
-    Photos: [firstPhoto],
-    RentalPrice,
-    Landmark,
-    NumberOfRooms,
-    HostUser,
+    title,
+    description,
+    rentalPrice,
+    roomsCount,
+    floor,
+    photos,
+    address,
   } = item;
 
 
-  const menuItems = [
-    { type: "view", title: "Просмотр" },
-    { type: "delete", title: "Удалить" },
-  ];
+  // const menuItems = [
+  //   { type: "view", title: "Просмотр" },
+  //   { type: "delete", title: "Удалить" },
+  // ];
 
   const handleItemPress = useCallback(() => {
-    onPress(id);
-  }, [id, onPress]);
+    onPress(itemId);
+  }, [itemId, onPress]);
 
-  const handleMenuItemPress = useCallback(
-    ({ type }) => {
-      if (type === "view") {
-        onPress(id);
-      } else {
-        onDelete(id);
-      }
-    },
-    [id, onPress, onDelete]
-  );
+  const [firstPhoto] = photos;
+
+  // const handleMenuItemPress = useCallback(
+  //   ({ type }) => {
+  //     if (type === "view") {
+  //       onPress(id);
+  //     } else {
+  //       onDelete(id);
+  //     }
+  //   },
+  //   [id, onPress, onDelete]
+  // );
 
   return (
     <View style={[style, themedStyle.listItemContainer]}>
@@ -64,21 +79,28 @@ const FavsListHostItemContainer = ({
       >
         <View style={themedStyle.listItemInfoBlock}>
           <TouchableOpacity onPress={handleItemPress}>
-            <Image
+            {firstPhoto && (<Image
               style={themedStyle.imageRounded}
               source={firstPhoto}
-            />
-            <View style={themedStyle.avatarBlock}>
-              <CardItemHostAvatar uri={HostUser.avatarUri} />
-            </View>
+            />)}
           </TouchableOpacity>
         </View>
 
         <View style={themedStyle.listItemInfoBlock}>
           <View style={themedStyle.listItemInfo}>
-            <Text category="h5">{RentalPrice} ₽</Text>
-            <CardItemNumberOfRooms value={NumberOfRooms} />
-            <CardItemLandmark landmark={Landmark} />
+            <View style={[themedStyle.infoRow, themedStyle.priceRow]}>
+              <Text category="h5">{rentalPrice} ₽</Text>
+            </View>
+
+            <View style={themedStyle.infoRow}>
+              <CardItemNumberOfRooms value={roomsCount} />
+            </View>
+
+            <View style={themedStyle.infoRow}>
+              <Text category="p2">{floor} этаж</Text>
+            </View>
+
+            <Text category="p2">{address.oneLine}</Text>
           </View>
 
           <View style={themedStyle.callButton}>
@@ -97,7 +119,6 @@ const FavsListHostItemContainer = ({
 
 export const FavsListHostItem = withStyles(FavsListHostItemContainer, () => ({
   listItemContainer: {
-    flex: 1,
     paddingHorizontal: 10,
     paddingVertical: 10,
     marginBottom: 10,
@@ -105,11 +126,10 @@ export const FavsListHostItem = withStyles(FavsListHostItemContainer, () => ({
     minWidth: Dimensions.get("window").width,
   },
   listItemInfo: {
-    flex: 1,
     flexDirection: "row",
-    flexWrap: "nowrap",
+    flexWrap: "wrap",
     paddingHorizontal: 10,
-    minHeight: 102,
+    minHeight: 20,
   },
   avatarBlock: {
     position: "absolute",
@@ -125,13 +145,19 @@ export const FavsListHostItem = withStyles(FavsListHostItemContainer, () => ({
   },
   listItemInfoBlock: {
     padding: 5,
-    flex: 1,
     maxWidth: Dimensions.get("window").width / 2,
   },
   listItemActions: {
     marginLeft: 10,
     minWidth: 15,
     paddingVertical: 5,
+  },
+  infoRow: {
+    paddingBottom: 5,
+    width: '100%',
+  },
+  priceRow: {
+    paddingBottom: 15,
   },
   menuStyle: {
     //position: 'relative',
