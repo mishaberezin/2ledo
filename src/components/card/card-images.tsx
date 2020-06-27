@@ -13,7 +13,7 @@ interface Props {
 export const CardImages: FC<Props> = (props) => {
   const styles = useStyleSheet(themedStyles);
 
-  const { photos } = props;
+  const photos = props.photos || [];
 
   const [imageIndex, setImageIndex] = useState(0);
   const [imageWidth, setImageWidth] = useState(null);

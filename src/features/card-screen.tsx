@@ -1,9 +1,9 @@
-import React, { FC, useState, useEffect } from "react";
+import React, { FC } from "react";
 import { StackScreenProps } from "@react-navigation/stack";
 import { MainStackParamList } from "@src/navigation";
-import { useDispatch } from "react-redux";
 import { View, StyleSheet } from "react-native";
-import { getDetailCard } from "@src/redux/slices";
+import { selectCardById, selectFavoriteCardById } from "@src/redux/slices";
+import { useAppSelector } from "@src/redux/store";
 import { Spinner } from "@ui-kitten/components";
 import { ItemDetailCard } from "@src/components/card";
 
@@ -11,17 +11,15 @@ type Props = StackScreenProps<MainStackParamList, "Card">;
 
 export const CardScreen: FC<Props> = (props) => {
   const { route } = props;
+  const cardId = route.params.id;
 
-  const itemId = route.params.id;
-  const dispatch = useDispatch();
+  const deckCard = useAppSelector((state) => selectCardById(state, cardId));
+  const favoriteCard = useAppSelector((state) =>
+    selectFavoriteCardById(state, cardId)
+  );
 
-  const [card, setCard] = useState();
-  useEffect(() => {
-    (async () => {
-      const card = await dispatch(getDetailCard(itemId));
-      setCard(card);
-    })();
-  }, [getDetailCard, itemId]);
+  // TODO: Переделать на единый слайс с карточками
+  const card = deckCard || favoriteCard;
 
   return (
     <View style={styles.container}>

@@ -70,7 +70,7 @@ const favoritesSlice = createSlice({
 
 export const { reducer: favoritesReducer } = favoritesSlice;
 export const {
-  //selectById: selectFavoriteCardById,
+  selectById: selectFavoriteCardById,
   //selectIds: selectFavoriteCardIds,
   // selectEntities: selectFavoriteCardEntities,
   selectAll: selectAllFavoriteCards,
