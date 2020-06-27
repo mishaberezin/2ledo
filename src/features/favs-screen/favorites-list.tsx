@@ -1,24 +1,21 @@
-import React, { useState, useCallback } from "react";
-import { withStyles, Text } from "@ui-kitten/components";
+import React, { useCallback } from "react";
+import { useStyleSheet, StyleService, Text } from "@ui-kitten/components";
 import { View, FlatList } from "react-native";
 import { FavsListHostItem } from "./favs-list-host-item";
 import { ApartmentFavoriteCard } from "@src/redux/slices/favorites-slice";
 
-import { MAIN_BACKGROUND_COLOR } from "@src/constants/colors";
-
-const FavoritesListContainer = ({
+const FavoritesList = ({
   isLoading,
-  eva: { style: themedStyle },
   items,
   onItemPress,
   onItemDelete,
 }) => {
-
+  const styles = useStyleSheet(themedStyles);
   const renderItem = useCallback(
     ({ item }: { item: ApartmentFavoriteCard }) => {
       return (
         <FavsListHostItem
-          style={themedStyle.listItemStyle}
+          style={styles.listItemStyle}
           itemId={item.apartment.id}
           item={item.apartment.data}
           onPress={onItemPress}
@@ -26,13 +23,13 @@ const FavoritesListContainer = ({
         />
       );
     },
-    [onItemDelete, onItemPress, themedStyle.listItemStyle]
+    [onItemDelete, onItemPress, styles.listItemStyle]
   );
 
   if (isLoading) {
     return (
-      <View style={themedStyle.container}>
-        <View style={themedStyle.listIsEmptyContainer}>
+      <View style={styles.container}>
+        <View style={styles.listIsEmptyContainer}>
           <Text>Загружаем...</Text>
         </View>
       </View>
@@ -40,7 +37,7 @@ const FavoritesListContainer = ({
   }
 
   return (
-    <View style={themedStyle.container}>
+    <View style={styles.container}>
       {items.length > 0 ? (
         <FlatList
           keyExtractor={(item) => String(item.id)}
@@ -49,7 +46,7 @@ const FavoritesListContainer = ({
           renderItem={renderItem}
         />
       ) : (
-          <View style={themedStyle.listIsEmptyContainer}>
+          <View style={styles.listIsEmptyContainer}>
             <Text>Тут пока ничего нет</Text>
           </View>
         )}
@@ -59,23 +56,28 @@ const FavoritesListContainer = ({
 
 const LIST_MARGIN = 10;
 
-export const FavoritesList = withStyles(FavoritesListContainer, () => ({
-  container: {
-    justifyContent: "center",
-    allignItems: "center",
-    marginVertical: 10,
+const themedStyles = StyleService.create(
+  {
+    container: {
+      justifyContent: "center",
+      allignItems: "center",
+      marginVertical: 10,
 
-    shadowColor: "black",
-    shadowOpacity: 0.15,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 5,
+      shadowColor: "black",
+      shadowOpacity: 0.15,
+      shadowOffset: { width: 0, height: 2 },
+      shadowRadius: 5,
 
-    marginHorizontal: LIST_MARGIN,
-  },
-  listIsEmptyContainer: {
-    padding: 20,
-  },
-  listItemStyle: {
-    transform: [{ translateX: -LIST_MARGIN }],
-  },
-}));
+      marginHorizontal: LIST_MARGIN,
+    },
+    listIsEmptyContainer: {
+      padding: 20,
+    },
+    listItemStyle: {
+      transform: [{ translateX: -LIST_MARGIN }],
+    },
+  }
+);
+
+export default FavoritesList;
+

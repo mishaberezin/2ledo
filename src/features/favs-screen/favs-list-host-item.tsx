@@ -7,9 +7,8 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { ToledoButton } from '../../components/toledo-button';
-import { withStyles, Text, Button } from "@ui-kitten/components";
+import { useStyleSheet, StyleService, Text, Button } from "@ui-kitten/components";
 
-import { OverflowMenu } from "@src/components";
 import {
   CardItemLandmark,
   CardItemNumberOfRooms,
@@ -28,18 +27,17 @@ type FavsListHostItemContainerProps = {
   eva: any
 };
 
-const FavsListHostItemContainer = ({
+export const FavsListHostItem = ({
   itemId,
   item,
   style,
   onPress,
-  onDelete,
-  eva: { style: themedStyle },
+  onDelete
 }: FavsListHostItemContainerProps) => {
 
   const {
-    title,
-    description,
+    // title,
+    // description,
     rentalPrice,
     roomsCount,
     floor,
@@ -47,7 +45,7 @@ const FavsListHostItemContainer = ({
     address,
   } = item;
 
-
+  const styles = useStyleSheet(themedStyle);
   // const menuItems = [
   //   { type: "view", title: "Просмотр" },
   //   { type: "delete", title: "Удалить" },
@@ -71,42 +69,39 @@ const FavsListHostItemContainer = ({
   // );
 
   return (
-    <View style={[style, themedStyle.listItemContainer]}>
+    <View style={[style, styles.listItemContainer]}>
       <ScrollView
-        style={themedStyle.listItemInfo}
+        style={styles.listItemInfo}
         showsHorizontalScrollIndicator={false}
         horizontal
       >
-        <View style={themedStyle.listItemInfoBlock}>
+        <View style={styles.listItemInfoBlock}>
           <TouchableOpacity onPress={handleItemPress}>
-            {firstPhoto && (<Image
-              style={themedStyle.imageRounded}
-              source={firstPhoto}
-            />)}
+            {firstPhoto && (<Image style={styles.imageRounded} source={firstPhoto} />)}
           </TouchableOpacity>
         </View>
 
-        <View style={themedStyle.listItemInfoBlock}>
-          <View style={themedStyle.listItemInfo}>
-            <View style={[themedStyle.infoRow, themedStyle.priceRow]}>
+        <View style={styles.listItemInfoBlock}>
+          <View style={styles.listItemInfo}>
+            <View style={[styles.infoRow, styles.priceRow]}>
               <Text category="h5">{rentalPrice} ₽</Text>
             </View>
 
-            <View style={themedStyle.infoRow}>
+            <View style={styles.infoRow}>
               <CardItemNumberOfRooms value={roomsCount} />
             </View>
 
-            <View style={themedStyle.infoRow}>
+            <View style={styles.infoRow}>
               <Text category="p2">{floor} этаж</Text>
             </View>
 
             <Text category="p2">{address.oneLine}</Text>
           </View>
 
-          <View style={themedStyle.callButton}>
+          <View style={styles.callButton}>
             <ToledoButton>
-              <Ionicons style={themedStyle.callButtonIcon} name="md-call" size={16} />
-              <Text style={themedStyle.callButtonText} category="s3">   Готов обсудить</Text>
+              <Ionicons style={styles.callButtonIcon} name="md-call" size={16} />
+              <Text style={styles.callButtonText} category="s3">   Готов обсудить</Text>
             </ToledoButton>
           </View>
 
@@ -117,7 +112,7 @@ const FavsListHostItemContainer = ({
   );
 };
 
-export const FavsListHostItem = withStyles(FavsListHostItemContainer, () => ({
+const themedStyle = StyleService.create({
   listItemContainer: {
     paddingHorizontal: 10,
     paddingVertical: 10,
@@ -178,4 +173,4 @@ export const FavsListHostItem = withStyles(FavsListHostItemContainer, () => ({
     marginLeft: 5,
     padding: 100,
   }
-}));
+});

@@ -11,7 +11,7 @@ import {
   selectAllFavoriteCards,
 } from "@src/redux/slices/favorites-slice";
 
-import { FavoritesList } from "./favs-screen/favorites-list";
+import FavoritesList from "./favs-screen/favorites-list";
 import { fetchFavoritesCards } from "@src/redux/slices/favorites-slice";
 
 import { SCREEN_BACKGROUND } from "@src/constants/colors";
