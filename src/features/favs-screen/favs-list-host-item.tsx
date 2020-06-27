@@ -7,84 +7,101 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { ToledoButton } from '../../components/toledo-button';
-import { withStyles, Text, Button } from "@ui-kitten/components";
+import { useStyleSheet, StyleService, Text, Button } from "@ui-kitten/components";
 
-import { OverflowMenu } from "@src/components";
 import {
   CardItemLandmark,
   CardItemNumberOfRooms,
   CardItemHostAvatar,
 } from "@src/components/card";
+import { ApartmentData } from "@src/redux/slices/favorites-slice";
 
 import { Ionicons } from "@expo/vector-icons";
 
-const FavsListHostItemContainer = ({
+type FavsListHostItemContainerProps = {
+  itemId: string,
+  item: ApartmentData,
+  style: object,
+  onPress: (itemId: string) => {},
+  onDelete: () => {},
+  eva: any
+};
+
+export const FavsListHostItem = ({
+  itemId,
   item,
   style,
   onPress,
-  onDelete,
-  eva: { style: themedStyle },
-}) => {
+  onDelete
+}: FavsListHostItemContainerProps) => {
+
   const {
-    id,
-    Photos: [firstPhoto],
-    RentalPrice,
-    Landmark,
-    NumberOfRooms,
-    HostUser,
+    // title,
+    // description,
+    rentalPrice,
+    roomsCount,
+    floor,
+    photos,
+    address,
   } = item;
 
-
-  const menuItems = [
-    { type: "view", title: "Просмотр" },
-    { type: "delete", title: "Удалить" },
-  ];
+  const styles = useStyleSheet(themedStyle);
+  // const menuItems = [
+  //   { type: "view", title: "Просмотр" },
+  //   { type: "delete", title: "Удалить" },
+  // ];
 
   const handleItemPress = useCallback(() => {
-    onPress(id);
-  }, [id, onPress]);
+    onPress(itemId);
+  }, [itemId, onPress]);
 
-  const handleMenuItemPress = useCallback(
-    ({ type }) => {
-      if (type === "view") {
-        onPress(id);
-      } else {
-        onDelete(id);
-      }
-    },
-    [id, onPress, onDelete]
-  );
+  const [firstPhoto] = photos;
+
+  // const handleMenuItemPress = useCallback(
+  //   ({ type }) => {
+  //     if (type === "view") {
+  //       onPress(id);
+  //     } else {
+  //       onDelete(id);
+  //     }
+  //   },
+  //   [id, onPress, onDelete]
+  // );
 
   return (
-    <View style={[style, themedStyle.listItemContainer]}>
+    <View style={[style, styles.listItemContainer]}>
       <ScrollView
-        style={themedStyle.listItemInfo}
+        style={styles.listItemInfo}
         showsHorizontalScrollIndicator={false}
         horizontal
       >
-        <View style={themedStyle.listItemInfoBlock}>
+        <View style={styles.listItemInfoBlock}>
           <TouchableOpacity onPress={handleItemPress}>
-            <Image
-              style={themedStyle.imageRounded}
-              source={firstPhoto}
-            />
-            <View style={themedStyle.avatarBlock}>
-              <CardItemHostAvatar uri={HostUser.avatarUri} />
-            </View>
+            {firstPhoto && (<Image style={styles.imageRounded} source={firstPhoto} />)}
           </TouchableOpacity>
         </View>
 
-        <View style={themedStyle.listItemInfoBlock}>
-          <View style={themedStyle.listItemInfo}>
-            <Text category="h5">{RentalPrice} ₽</Text>
-            <CardItemNumberOfRooms value={NumberOfRooms} />
-            <CardItemLandmark landmark={Landmark} />
+        <View style={styles.listItemInfoBlock}>
+          <View style={styles.listItemInfo}>
+            <View style={[styles.infoRow, styles.priceRow]}>
+              <Text category="h5">{rentalPrice} ₽</Text>
+            </View>
+
+            <View style={styles.infoRow}>
+              <CardItemNumberOfRooms value={roomsCount} />
+            </View>
+
+            <View style={styles.infoRow}>
+              <Text category="p2">{floor} этаж</Text>
+            </View>
+
+            <Text category="p2">{address.oneLine}</Text>
           </View>
 
-          <View style={themedStyle.callButton}>
+          <View style={styles.callButton}>
             <ToledoButton>
-              <Ionicons style={themedStyle.callButtonIcon} name="md-call" size={16} />
-              <Text style={themedStyle.callButtonText} category="s3">   Готов обсудить</Text>
+              <Ionicons style={styles.callButtonIcon} name="md-call" size={16} />
+              <Text style={styles.callButtonText} category="s3">   Готов обсудить</Text>
             </ToledoButton>
           </View>
 
@@ -95,9 +112,8 @@ const FavsListHostItemContainer = ({
   );
 };
 
-export const FavsListHostItem = withStyles(FavsListHostItemContainer, () => ({
+const themedStyle = StyleService.create({
   listItemContainer: {
-    flex: 1,
     paddingHorizontal: 10,
     paddingVertical: 10,
     marginBottom: 10,
@@ -105,9 +121,10 @@ export const FavsListHostItem = withStyles(FavsListHostItemContainer, () => ({
     minWidth: Dimensions.get("window").width,
   },
   listItemInfo: {
-    flex: 1,
     flexDirection: "row",
-    flexWrap: "nowrap",
+    flexWrap: "wrap",
+    paddingHorizontal: 10,
+    minHeight: 20,
   },
   avatarBlock: {
     position: "absolute",
@@ -123,17 +140,19 @@ export const FavsListHostItem = withStyles(FavsListHostItemContainer, () => ({
   },
   listItemInfoBlock: {
     padding: 5,
-    flex: 1,
     maxWidth: Dimensions.get("window").width / 2,
-  },
-  listItemInfo: {
-    paddingHorizontal: 10,
-    minHeight: 102,
   },
   listItemActions: {
     marginLeft: 10,
     minWidth: 15,
     paddingVertical: 5,
+  },
+  infoRow: {
+    paddingBottom: 5,
+    width: '100%',
+  },
+  priceRow: {
+    paddingBottom: 15,
   },
   menuStyle: {
     //position: 'relative',
@@ -154,4 +173,4 @@ export const FavsListHostItem = withStyles(FavsListHostItemContainer, () => ({
     marginLeft: 5,
     padding: 100,
   }
-}));
+});

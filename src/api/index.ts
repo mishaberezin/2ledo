@@ -1,5 +1,6 @@
 export * from "./auth";
 export * from "./deck";
+export * from "./favs";
 
 function httpRequestStub(result, timeout = 500) {
   return new Promise((resolve) => {

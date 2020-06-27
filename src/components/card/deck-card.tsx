@@ -18,6 +18,7 @@ interface Props {
 export const DeckCard: FC<Props> = (props) => {
   const { card, onOpen, cardStyle } = props;
   const { apartment } = card;
+
   const { photos, rentalPrice, roomsCount } = apartment.data;
 
   const styles = useStyleSheet(themedStyles);

@@ -3,6 +3,7 @@ import { ScrollView } from "react-native";
 import { useSelector } from "react-redux";
 import { FavsList } from "./favs-list";
 
+
 export const FavsGroupsList = ({ onItemPress, onItemDelete }) => {
   const shelf = useSelector((state) => state.shelf);
 
