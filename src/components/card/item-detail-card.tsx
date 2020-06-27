@@ -1,20 +1,26 @@
-import React, { Component } from 'react';
-import { View, TouchableOpacity, ScrollView } from 'react-native';
-import { withStyles } from '@ui-kitten/components';
-import { Text } from '@ui-kitten/components';
+import React, { Component } from "react";
+import { View, ScrollView } from "react-native";
+import { withStyles } from "@ui-kitten/components";
+import { Text } from "@ui-kitten/components";
 import { GridCardImages } from "./grid-card-images";
 import { CollapsibleRow } from "../collapsible-row";
 
 class ItemDetailCardContainer extends Component {
-
   constructor(props) {
     super(props);
     this.scroll = null;
   }
 
   render() {
-    const { card, eva: { style } } = this.props;
     const {
+      card,
+      eva: { style },
+    } = this.props;
+
+    console.log(card);
+
+    const {
+      photos,
       rentalPrice,
       roomsCount,
       description,
@@ -32,43 +38,61 @@ class ItemDetailCardContainer extends Component {
 
     return (
       <ScrollView
-        ref={ref => this.scroll = ref}
+        ref={(ref) => (this.scroll = ref)}
         style={style.container}
         showsVerticalScrollIndicator={false}
       >
         <View style={style.cardContainer}>
-
-          <GridCardImages photos={card.apartment.data.photos} />
+          <GridCardImages photos={photos} />
 
           <View style={style.textBlock}>
-            <Text style={style.textBlockTitle} category='s1'>Название</Text>
-            <Text style={style.textBlockText} category='p1'>{address.postal}</Text>
+            <Text style={style.textBlockTitle} category="s1">
+              Название
+            </Text>
+            <Text style={style.textBlockText} category="p1">
+              {address.oneLine}
+            </Text>
           </View>
           <View style={style.textBlock}>
-            <Text style={style.textBlockTitle} category='s1'>Описание</Text>
-            <Text style={style.textBlockText} category='p1'>{description}</Text>
+            <Text style={style.textBlockTitle} category="s1">
+              Описание
+            </Text>
+            <Text style={style.textBlockText} category="p1">
+              {description}
+            </Text>
           </View>
 
-          <CollapsibleRow title='Аренда' rowHeight={60} onOpenClose={onCollapsibleOpenClose}>
+          <CollapsibleRow
+            title="Аренда"
+            rowHeight={60}
+            onOpenClose={onCollapsibleOpenClose}
+          >
             <View style={style.textBlock}>
-              <Text style={style.textBlockTitle} category='s1'>Квартира</Text>
+              <Text style={style.textBlockTitle} category="s1">
+                Квартира
+              </Text>
             </View>
             <View style={style.textBlock}>
-              <Text style={style.textBlockTitle} category='s1'>От 1 года и надолго</Text>
+              <Text style={style.textBlockTitle} category="s1">
+                От 1 года и надолго
+              </Text>
             </View>
             <View style={style.textBlock}>
-              <Text style={style.textBlockTitle} category='s1'>1 комната</Text>
+              <Text style={style.textBlockTitle} category="s1">
+                1 комната
+              </Text>
             </View>
             <View style={style.textBlock}>
-              <Text style={style.textBlockTitle} category='s1'>От 35 000 ₽</Text>
+              <Text style={style.textBlockTitle} category="s1">
+                От 35 000 ₽
+              </Text>
             </View>
           </CollapsibleRow>
-
         </View>
       </ScrollView>
     );
   }
-};
+}
 
 export const ItemDetailCard = withStyles(ItemDetailCardContainer, () => ({
   container: {
