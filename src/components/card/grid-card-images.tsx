@@ -13,22 +13,19 @@ export const GridCardImages = withStyles(GridCardImagesContainer, () => ({}));
 
 // TODO: перенести в компонент. Это самый простой вариант сетки
 const ImageNetOneTwoThreeContainer = ({ photos, eva: { style } }) => {
-  const [image] = photos;
+  const [firstImage = {}] = photos;
 
   return (
     <View style={style.container}>
       <View style={style.imageGrid}>
         <View style={style.imageGridRow}>
           <View style={style.imageGridWideImage}>
-            <Image
-              source={photos[0] ? photos[0].source : {}}
-              style={style.imageGridImage}
-            />
+            <Image source={firstImage} style={style.imageGridImage} />
           </View>
         </View>
 
         <View style={style.imageGridRow}>
-          {photos.slice(1, 3).map((image, i) => {
+          {photos.slice(1, 3).map((image = {}, i) => {
             const imgBlockStyle = [
               style.imageGridTwoImages,
               ...(i % 2
@@ -39,7 +36,7 @@ const ImageNetOneTwoThreeContainer = ({ photos, eva: { style } }) => {
             return (
               <View key={"imageGridTwoImages_" + i} style={imgBlockStyle}>
                 <Image
-                  source={image ? image.source : {}}
+                  source={image}
                   style={[style.imageGridImage, style.imageGridImageRounded]}
                 />
               </View>
@@ -48,7 +45,7 @@ const ImageNetOneTwoThreeContainer = ({ photos, eva: { style } }) => {
         </View>
 
         <View style={style.imageGridRow}>
-          {photos.slice(3, 6).map((image, i) => {
+          {photos.slice(3, 6).map((image = {}, i) => {
             const classes = [
               style.imageGridTreeImagesFirst,
               style.imageGridTreeImagesSecond,
@@ -59,7 +56,7 @@ const ImageNetOneTwoThreeContainer = ({ photos, eva: { style } }) => {
             return (
               <View key={"imageGridTwoImages_" + i} style={imgBlockStyle}>
                 <Image
-                  source={image ? image.source : {}}
+                  source={image}
                   style={[style.imageGridImage, style.imageGridImageRounded]}
                 />
               </View>

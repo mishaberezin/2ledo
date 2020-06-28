@@ -17,8 +17,6 @@ class ItemDetailCardContainer extends Component {
       eva: { style },
     } = this.props;
 
-    console.log(card);
-
     const {
       photos,
       rentalPrice,
