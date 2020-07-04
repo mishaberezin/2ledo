@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { View, Image, Animated, TouchableOpacity } from 'react-native';
-import { withStyles } from '@ui-kitten/components';
-import { Ionicons } from '@expo/vector-icons';
+import React, { Component } from "react";
+import { View, Image, Animated, TouchableOpacity } from "react-native";
+import { withStyles } from "@ui-kitten/components";
+import { Ionicons } from "@expo/vector-icons";
 
-import { DARK_VIOLET_COLOR } from '../../constants/colors';
-import { SCREEN_HEIGHT } from '../../constants/device';
+import { DARK_VIOLET_COLOR } from "../../constants/colors";
+import { SCREEN_HEIGHT } from "../../constants/device";
 
 class CardImagesContainer extends Component {
   state = {
@@ -124,7 +124,7 @@ class CardImagesContainer extends Component {
                   name="ios-radio-button-on"
                   size={12}
                   color={
-                    this.state.imageIndex === index ? DARK_VIOLET_COLOR : '#fff'
+                    this.state.imageIndex === index ? DARK_VIOLET_COLOR : "#fff"
                   }
                 />
               </View>
@@ -138,42 +138,42 @@ class CardImagesContainer extends Component {
 export const CardImages = withStyles(CardImagesContainer, () => ({
   container: {},
   photosContainer: {
-    display: 'flex',
+    display: "flex",
     flex: 1,
-    flexDirection: 'row',
-    flexWrap: 'nowrap',
+    flexDirection: "row",
+    flexWrap: "nowrap",
   },
   navContainer: {
-    position: 'absolute',
+    position: "absolute",
     top: SCREEN_HEIGHT / 4,
     transform: [{ translateY: -25 }],
-    display: 'flex',
-    width: '100%',
+    display: "flex",
+    width: "100%",
     flex: 1,
   },
   photosNavigation: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
     paddingHorizontal: 10,
   },
   imageContainer: {
-    width: '100%',
+    width: "100%",
     padding: 5,
   },
   image: {
     flex: 1,
     height: SCREEN_HEIGHT / 2,
-    width: '100%',
+    width: "100%",
   },
   photosCountContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    position: 'absolute',
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    position: "absolute",
     bottom: 10,
-    width: '100%',
+    width: "100%",
   },
   photosCountDot: {
     marginHorizontal: 2,
