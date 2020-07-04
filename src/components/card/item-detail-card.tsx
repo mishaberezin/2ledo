@@ -47,9 +47,11 @@ class ItemDetailCardContainer extends Component {
             <Text style={style.textBlockTitle} category="s1">
               Название
             </Text>
-            <Text style={style.textBlockText} category="p1">
-              {address.oneLine}
-            </Text>
+            {address && (
+              <Text style={style.textBlockText} category="p1">
+                {address.oneLine}
+              </Text>
+            )}
           </View>
           <View style={style.textBlock}>
             <Text style={style.textBlockTitle} category="s1">
