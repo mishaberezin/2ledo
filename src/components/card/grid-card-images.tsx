@@ -12,9 +12,22 @@ const GridCardImagesContainer = ({ photos }) => {
 export const GridCardImages = withStyles(GridCardImagesContainer, () => ({}));
 
 // TODO: перенести в компонент. Это самый простой вариант сетки
-const ImageNetOneTwoThreeContainer = ({ photos, eva: { style } }) => {
-  const [firstImage = {}] = photos;
+const ImageNetOneTwoThreeContainer = ({ photos = [], eva: { style } }) => {
+  if (!photos || !photos.length) {
+    return (
+      <View style={style.container}>
+        <View style={style.imageGrid}>
+          <View style={style.imageGridRow}>
+            <View style={style.imageGridWideImage}>
 
+            </View>
+          </View>
+        </View>
+      </View>
+    );
+  }
+
+  const [firstImage = {}] = photos;
   return (
     <View style={style.container}>
       <View style={style.imageGrid}>
