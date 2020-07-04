@@ -34,7 +34,7 @@ export const DeckCard: FC<Props> = (props) => {
       showsVerticalScrollIndicator={false}
     >
       <View style={styles.cardContainer}>
-        <CardImages photos={photos} />
+        <CardImages photos={photos} cardId={card.id} />
         <View>
           <DeckCardShortInfo
             rentalPrice={rentalPrice}
