@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { View } from "react-native";
+import { View, Text, TouchableHighlight } from "react-native";
 import { useStyleSheet, StyleService } from "@ui-kitten/components";
 
 import { ToledoHeader4 } from "../toledo-header-4";
@@ -8,20 +8,22 @@ import { CardItemNumberOfRooms } from "./card-item-number-of-rooms";
 interface Props {
   rentalPrice: number;
   roomsCount: number;
+  location: string;
 }
 
 export const DeckCardShortInfo: FC<Props> = (props) => {
   const styles = useStyleSheet(themedStyles);
-  const { rentalPrice, roomsCount } = props;
+  const { rentalPrice, roomsCount, location } = props;
 
   return (
     <View style={styles.container}>
       <View style={styles.infoBlock}>
-        <ToledoHeader4>{rentalPrice} руб</ToledoHeader4>
+        <ToledoHeader4>{rentalPrice.toLocaleString("ru-RU")}</ToledoHeader4>
         <View style={styles.infoBlockCol}>
           <CardItemNumberOfRooms value={roomsCount} />
         </View>
       </View>
+      <Text style={styles.locationText}>{location}</Text>
     </View>
   );
 };
@@ -31,7 +33,8 @@ const themedStyles = StyleService.create({
     marginHorizontal: 10,
   },
   infoBlock: {
-    marginVertical: 10,
+    marginTop: 10,
+    marginBottom: 5,
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
@@ -43,7 +46,8 @@ const themedStyles = StyleService.create({
     justifyContent: "center",
     alignItems: "flex-start",
   },
-  avatarBlock: {
-    marginTop: 10,
+  locationText: {
+    color: "#787993",
+    fontSize: 13,
   },
 });

@@ -102,6 +102,8 @@ export const DeckWithControlls: FC<Props> = (props) => {
         forceSwipe("right");
       } else if (gesture.dx < -SWIPE_THRESHOLD) {
         forceSwipe("left");
+      } else if (gesture.dx === 0 && gesture.dy === 0) {
+        onCardDetails(frontCard.id);
       } else {
         resetPosition();
       }
@@ -119,11 +121,7 @@ export const DeckWithControlls: FC<Props> = (props) => {
       <View>
         {nextCard && (
           <View>
-            <DeckCard
-              card={cardsStack[1]}
-              cardStyle={styles.cardStyle}
-              onOpen={onCardDetails}
-            />
+            <DeckCard card={cardsStack[1]} cardStyle={styles.cardStyle} />
           </View>
         )}
         <Animated.View
@@ -133,7 +131,7 @@ export const DeckWithControlls: FC<Props> = (props) => {
           <DeckCard
             card={frontCard}
             cardStyle={styles.cardStyle}
-            onOpen={onCardDetails}
+            // onOpen={onCardDetails}
           />
         </Animated.View>
       </View>

@@ -20,8 +20,9 @@ interface Props {
 }
 
 export const DeckWithControllsContainer: FC<Props> = (props) => {
-  const dispatch = useDispatch();
   const { onCardDetails } = props;
+
+  const dispatch = useDispatch();
   const { status, lastFetchedAt } = useAppSelector((state) => state.deck);
   const cards = useAppSelector(selectAllCards);
 

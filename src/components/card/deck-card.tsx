@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { View, ScrollView, LayoutAnimation, Button } from "react-native";
+import { View, ScrollView, LayoutAnimation } from "react-native";
 import { useStyleSheet, StyleService } from "@ui-kitten/components";
 
 import { DARK_VIOLET_COLOR } from "@src/constants/colors";
@@ -19,14 +19,22 @@ export const DeckCard: FC<Props> = (props) => {
   const { card, onOpen, cardStyle } = props;
   const { apartment } = card;
 
-  const { photos, rentalPrice, roomsCount } = apartment.data;
+  const {
+    photos,
+    rentalPrice,
+    roomsCount,
+    address: { oneLine },
+  } = apartment.data;
 
   const styles = useStyleSheet(themedStyles);
 
-  const onDetailsButtonPress = () => {
-    onOpen(card.id);
-    LayoutAnimation.configureNext(LayoutAnimation.Presets.timing);
-  };
+  // const onDetailsButtonPress = () => {
+  //   onOpen(card.id);
+  //   LayoutAnimation.configureNext(LayoutAnimation.Presets.timing);
+  // };
+
+  const [city, part, district, smething, street, house] = oneLine.split(", ");
+  const location = [city, part, street, house].join(", ");
 
   return (
     <ScrollView
@@ -35,13 +43,11 @@ export const DeckCard: FC<Props> = (props) => {
     >
       <View style={styles.cardContainer}>
         <CardImages photos={photos} cardId={card.id} />
-        <View>
-          <DeckCardShortInfo
-            rentalPrice={rentalPrice}
-            roomsCount={roomsCount}
-          />
-          <Button title="Подробнее" onPress={onDetailsButtonPress} />
-        </View>
+        <DeckCardShortInfo
+          rentalPrice={rentalPrice}
+          roomsCount={roomsCount}
+          location={location}
+        />
       </View>
     </ScrollView>
   );
